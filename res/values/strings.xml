@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">paiooB</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- 下拉刷新 -->
+    <string name="pull_to_refresh_release_to_fresh">松开可以刷新...</string>
+    <string name="pull_to_refresh_pull_can">下拉可刷新...</string>
+    <string name="pull_to_refresh_refreshing">正在刷新...</string>
+    <string name="pull_to_refresh_chick_refresh">点击刷新...</string>
+    <!-- 下拉刷新 -->
+
+
+    <!-- lv滚动到底部加载 -->
+    <string name="lv_footer_more">更多 </string>
+    <string name="lv_footer_loading">加载中...</string>
+    <!-- lv滚动到底部加载 -->
+
+
+    <!-- splash -->
+    <string name="login">登\t\t 录</string>
+    <string name="register">注册</string>
+
+    <!-- login.xml -->
+    <string name="email">电子邮箱</string>
+    <string name="pwd">密码</string>
+    <string name="free_register">免费注册</string>
+    <string name="forget_pwd">忘记密码？</string>
+
+    <!-- free_register.xml -->
+    <string name="fr_account">账\t\t号：</string>
+    <string name="fr_pwd">密  码：</string>
+    <string name="fr_sure_pwd">确认密码：</string>
+    <string name="fr_contacts">联 系 人：</string>
+    <string name="fr_cellphone">手 机 号：</string>
+    <string name="fr_mail">邮 \t\t箱：</string>
+    <string name="fr_next">下一步</string>
+
+    <!-- extra_company_info.xml -->
+    <string name="eci_company_name">公司名称：</string>
+    <string name="eci_company_location">所  在  地：</string>
+    <string name="eci_company_address">地        址：</string>
+    <string name="eci_company_property">企业性质：</string>
+    <string name="eci_company_capital">注册资本：</string>
+    <string name="eci_company_info_title">补充公司信息</string>
+    <string name="eci_read_yes">我已阅读并同意</string>
+    <string name="eci_company_protocol">《芝麻广告平台用户注册协议》</string>
+
+    <!-- 侧滑菜单      （这个和title bar的文本，以及tab文本相对应） -->
+    <string name="slidemenu_home">首页</string>
+    <string name="slidemenu_finance">财务</string>
+    <string name="slidemenu_preview">预览</string>
+    <string name="slidemenu_recharge">账号充值</string>
+    <string name="slidemenu_recommend_friends">推荐好友</string>
+    <string name="slidemenu_switch_account">余额转账</string>
+    <string name="slidemenu_coupon">优惠劵</string>
+    <string name="slidemenu_setup">设置</string>
+
+    <!-- nav_finance.xml -->
+    <string name="current_balance">当前余额</string>
+    <string name="frozen_capital">冻结金额0元</string>
+    <string name="ad_put_in">（广告投放中）</string>
+    <string name="total_recharge">总充值</string>
+    <string name="recommended_reward">推荐奖励</string>
+    <string name="balance_switch">余额转账</string>
+    <string name="ad">广告消费</string>
+
+    <!-- 充值记录，recharge_record.xml -->
+
+    <string name="carid">卡号：</string>
+    <string name="business_success">交易成功</string>
+    <string name="business_fail">交易失败</string>
+    <!-- common -->
+    <string name="submit">提\t\t交</string>
+
+    <!-- 设置tab -->
+    <string name="modify_contact_way">修改联系方式</string>
+    <string name="modify_password">修改密码</string>
+    <string name="suggest">意见反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="check_version">检测版本</string>
+    <string name="exit_app">退出账号</string>
+    <string name="setup_safe_exit">安全退出</string>
+    <string name="setup_contacts">联系人</string>
+    <string name="setup_cellphone">手机号</string>
+    <string name="setup_telephone">固话</string>
+    <string name="setup_mail">邮箱</string>
+    <string name="setup_old_password">旧密码</string>
+    <string name="setup_new_pasword">新密码</string>
+    <string name="setup_sure_password">确认密码</string>
+
+    <!-- 意见反馈 -->
+    <string name="welcome_suggest">欢迎您在这里留下宝贵的意见</string>
+    <string name="ask_phone_number">咨询服务热线</string>
+    <!-- toash 提示 -->
+    <string name="warn_toast_account_isempty">hi,账号不能为空哦！</string>
+    <string name="warn_toast_pwd_isempty">hi,你的密码真的没填！</string>
+    <string name="warn_toast_contacts_isempty">联系人为空</string>
+    <string name="warn_toast_cellphone_isempty">手机号码为空</string>
+    <string name="warn_toast_telephone_isempty">固话为空</string>
+    <string name="warn_toast_mail_isempty">邮箱为空</string>
+    <string name="warn_toast_mail_unstandard">邮箱格式不对</string>
+    <string name="warn_toast_cellphone_unstandard">手机号不标准</string>
+    <string name="warn_toast_telephone_unstandard">固话号码不标准</string>
+    <string name="warn_toast_old_pwd_isempty">旧密码为空</string>
+    <string name="warn_toast_new_pwd_isempty">新密码为空</string>
+    <string name="warn_toast_twice_pwd_difference">两次密码不一致</string>
+    <string name="warn_toast_pwd_unstandard">密码格式有误</string>
+    <string name="warn_toast_cardid_isempty">卡号为空</string>
+    <string name="warn_toast_cardid_unstandard">卡号格式有误</string>
+    <string name="warn_toast_company_name_isempty">公司名字为空</string>
+    <string name="warn_toast_location_isempty">所在地为空</string>
+    <string name="warn_toast_address_isempty">地址为空</string>
+    <string name="warn_toast_property_isempty">企业性质为空</string>
+    <string name="warn_toast_capital_isempty">注册资本为空</string>
+
+</resources>

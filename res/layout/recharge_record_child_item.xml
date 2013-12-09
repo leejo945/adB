@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp" >
+
+    <TextView
+        android:id="@+id/recharge_record_child_item_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="12-12"
+        android:textSize="@dimen/textSize_large_"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carid"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/recharge_record_child_item_cardid_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1233445"
+            android:textSize="@dimen/textSize_large_"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/recharge_record_child_item_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1000"
+            android:textSize="@dimen/textSize_large_"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/recharge_record_child_item_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/business_success" />
+    </LinearLayout>
+
+</RelativeLayout>

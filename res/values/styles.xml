@@ -1,0 +1,199 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 免费注册， -->
+    <style name="fr_ll">
+        <item name="android:background">#00ff00</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="fr_et">
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="fr_tv">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="bt_style">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/textSize_large</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bt_height</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+
+    <style name="bt_orange" parent="bt_style">
+        <item name="android:background">@drawable/selector_bt_orange</item>
+    </style>
+
+    <style name="bt_white" parent="bt_style">
+        <item name="android:background">@drawable/selector_bt_white</item>
+    </style>
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="wh_match_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="wh_match_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wh_wrap_match">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="wh_wrap_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/share_dialog_bg</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- login.xml 登录界面 -->
+    <style name="login_mail_pwd_iv">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+    </style>
+
+    <style name="login_mail_pwd_et">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="login_login_register_bt" parent="bt_style">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="logo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">60dp</item>
+        <item name="android:layout_marginRight">60dp</item>
+        <item name="android:src">@drawable/logo</item>
+    </style>
+
+    <!-- 财务页 nav_finance.xml，首页nav_home,小彩条相关 -->
+    <style name="small_color_bar_outside">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="small_color_bar_inner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:background">#00ff00</item>
+    </style>
+
+    <style name="small_color_bar_inner_text_tv">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/total_recharge</item>
+    </style>
+
+    <style name="small_color_bar_inner_number_tv">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">￥12000.00</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">5sp</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <!-- 设置界面 -->
+    <style name="setup_item_rl">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">#00ff00</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+
+    <style name="setup_item_tv" parent="wh_wrap_wrap">
+        <item name="android:textSize">@dimen/textSize_large</item>
+    </style>
+
+    <!-- slidemenu 菜单条目 -->
+    <style name="slidemenu_item_rb">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_slidemenu_item_bg</item>
+        <item name="android:button">@drawable/ic_launcher</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/textSize_large</item>
+    </style>
+
+    <!-- title  部分 -->
+    <style name="title_iv_left">
+          
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="title_iv_right">
+          <item name="android:visibility">gone</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+</resources>

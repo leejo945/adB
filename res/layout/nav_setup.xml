@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <RelativeLayout
+       style="@style/setup_item_rl"
+        android:id="@+id/setup_modify_contact_way_rl"
+        >
+
+        <TextView
+             style="@style/setup_item_tv"
+            android:text="@string/modify_contact_way" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setup_modify_password_rl"
+       style="@style/setup_item_rl" >
+
+        <TextView
+           style="@style/setup_item_tv"
+            android:text="@string/modify_password" />
+    </RelativeLayout>
+
+       <RelativeLayout
+       
+       style="@style/setup_item_rl" >
+
+        <TextView
+           style="@style/setup_item_tv"
+            android:text="@string/suggest" />
+    </RelativeLayout>
+    
+       <RelativeLayout
+     
+       style="@style/setup_item_rl" >
+
+        <TextView
+           style="@style/setup_item_tv"
+            android:text="@string/about_us" />
+    </RelativeLayout>
+    
+    
+    <RelativeLayout
+        android:id="@+id/setup_check_update_rl"
+        style="@style/setup_item_rl">
+
+        <TextView
+           style="@style/setup_item_tv"
+            android:text="@string/check_version" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/setup_safe_exit_bt"
+         style="@style/bt_orange"
+        android:text="@string/exit_app" />
+
+</LinearLayout>

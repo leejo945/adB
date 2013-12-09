@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <ImageView
+        style="@style/logo"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/login_mail_pwd_bg"
+        android:orientation="vertical"
+          >
+
+        <LinearLayout
+              android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageView
+                
+                style="@style/login_mail_pwd_iv"
+                android:src="@drawable/login_mail_icon" />
+
+            <EditText
+               
+                android:hint="@string/email"
+                android:id="@+id/login_mail_et"
+                style="@style/login_mail_pwd_et" />
+        </LinearLayout>
+     <ImageView 
+         android:background="@drawable/divider_land"
+          android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+         />
+    
+
+        <LinearLayout
+            android:gravity="center_vertical"
+                android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageView
+                style="@style/login_mail_pwd_iv"
+                android:src="@drawable/login_lock_icon" />
+
+            <EditText
+                android:hint="@string/pwd"
+                android:id="@+id/login_pwd_et"
+                style="@style/login_mail_pwd_et" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="@string/login"
+        android:id="@+id/login_login_bt"
+        style="@style/login_login_register_bt"
+        android:background="@drawable/selector_bt_orange" />
+
+    <Button
+        android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"
+         android:text="@string/free_register"
+        android:id="@+id/login_register_bt"
+        style="@style/login_login_register_bt"
+        android:background="@drawable/selector_bt_white" />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:text="@string/forget_pwd"
+        android:id="@+id/login_forget_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
+          />
+
+</LinearLayout>

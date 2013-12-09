@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/eci_company_name" />
+
+                <EditText
+                    android:id="@+id/eci_company_name_et"
+                    style="@style/fr_et" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/eci_company_location" />
+
+                <EditText
+                    android:id="@+id/eci_company_location_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/eci_company_address" />
+
+                <EditText
+                    android:id="@+id/eci_company_address_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/eci_company_property" />
+
+                <EditText
+                    android:id="@+id/eci_company_property_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/eci_company_capital" />
+
+                <EditText
+                    android:id="@+id/eci_company_capital_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                   
+                    android:src="@drawable/eci_sel_bg" />
+
+                <ImageView
+                    android:id="@+id/eci_company_right_iv"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                     android:paddingBottom="5dp"
+                    android:src="@drawable/eci_right" />
+
+                <TextView
+                    android:id="@+id/eci_read_yes_tv"
+                   android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/eci_company_right_iv"
+                    android:text="@string/eci_read_yes"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                     android:layout_toRightOf="@id/eci_read_yes_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     android:layout_centerVertical="true"
+                    android:singleLine="true"
+                    android:text="@string/eci_company_protocol"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/textSize_small" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/eci_company_submit_bt"
+                style="@style/bt_orange"
+                android:text="@string/submit" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

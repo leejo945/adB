@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+   <!-- 账号 -->
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_account" />
+
+                <EditText
+                    android:id="@+id/free_register_account_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+   <!-- 密码 -->
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_pwd" />
+
+                <EditText
+                    android:inputType="textPassword"
+                    android:id="@+id/free_register_pwd_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_sure_pwd" />
+
+                <EditText
+                     android:inputType="textPassword"
+                    android:id="@+id/free_register_sure_pwd_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_contacts" />
+
+                <EditText
+                    android:inputType="textPersonName"
+                    android:id="@+id/free_register_contacts_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_cellphone" />
+
+                <EditText
+                    android:maxLength="11"
+                     android:inputType="number"
+                    android:id="@+id/free_register_cellphone_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/fr_ll" >
+
+                <TextView
+                    style="@style/fr_tv"
+                    android:text="@string/fr_mail" />
+
+                <EditText
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/free_register_mail_et"
+                    style="@style/fr_et" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/free_register_submit_bt"
+                style="@style/bt_orange"
+                android:text="@string/fr_next" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

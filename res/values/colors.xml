@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#FF6100</color>
+     <color name="business_success_text">#69B900</color>
+    
+     <color name="business_fail_text">#FF0100</color>
+    
+      
+      
+       <!-- 侧滑菜单背景颜色 -->
+       <color name="slidemenu_menu_bg">#333331</color>
+         <!-- 侧滑菜单点击条目，选择条目颜色，分割线颜色，titlebar颜色 -->
+       <color name="title_bar_bg">#222222</color>
+       
+       
+</resources>
