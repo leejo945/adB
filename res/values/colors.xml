@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="orange">#FF6100</color>
-     <color name="business_success_text">#69B900</color>
-    
-     <color name="business_fail_text">#FF0100</color>
-    
-      
-      
-       <!-- 侧滑菜单背景颜色 -->
-       <color name="slidemenu_menu_bg">#333331</color>
-         <!-- 侧滑菜单点击条目，选择条目颜色，分割线颜色，titlebar颜色 -->
-       <color name="title_bar_bg">#222222</color>
-       
-       
+    <color name="business_success_text">#69B900</color>
+    <color name="business_fail_text">#FF0100</color>
+
+    <!-- 侧滑菜单背景颜色 -->
+    <color name="slidemenu_menu_bg">#333331</color>
+    <!-- 侧滑菜单点击条目，选择条目颜色，分割线颜色，titlebar颜色 -->
+    <color name="title_bar_bg">#222222</color>
+    <!-- 侧滑菜单分割线颜色 -->
+    <color name="slidemenu_menu_diver">#434341</color>
+
+    <!-- 首页几个彩色模块的颜色 -->
+    <!-- 左上角 -->
+    <color name="home_orange">#FD621F</color>
+    <!-- 右上角 -->
+    <color name="powder_blue1">#17C4EC</color>
+    <!-- 中做 -->
+    <color name="pistac">#87C524</color>
+    <!-- 中右 -->
+    <color name="powder_blue2">#11CCC1</color>
+    <!-- 左下角 -->
+    <color name="peach">#D63C6E</color>
+    <!-- 右下角 -->
+    <color name="orchid">#B65ECE</color>
+ 
+    <!-- 财务     右上角 -->
+    <color name="yellow">#FF8A00</color>
+    <!-- 财务     左下角 -->
+    <color name="powder_peach">#FF5454</color>
+
 </resources>

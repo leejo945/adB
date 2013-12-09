@@ -1,4 +1,4 @@
-package cn.com.paioo.app.util;
+package cn.com.paioo.app.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

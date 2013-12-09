@@ -58,6 +58,10 @@
     <string name="slidemenu_coupon">优惠劵</string>
     <string name="slidemenu_setup">设置</string>
 
+    
+    <string name="a_week_trend">一周点击走势</string>
+    
+    
     <!-- nav_finance.xml -->
     <string name="current_balance">当前余额</string>
     <string name="frozen_capital">冻结金额0元</string>
@@ -72,6 +76,11 @@
     <string name="carid">卡号：</string>
     <string name="business_success">交易成功</string>
     <string name="business_fail">交易失败</string>
+
+    <!-- 推荐好友界面 -->
+ 
+  
+ 
     <!-- common -->
     <string name="submit">提\t\t交</string>
 

@@ -14,13 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <cn.com.paioo.app.util.CustomExpandableListView
+            <cn.com.paioo.app.view.CustomExpandableListView
                 android:divider="@null"
                 android:id="@+id/recharge_record_elv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:groupIndicator="@null" >
-           </cn.com.paioo.app.util.CustomExpandableListView>
+          </cn.com.paioo.app.view.CustomExpandableListView>
         </LinearLayout>
     </cn.com.paioo.app.util.PullToRefreshView>
 

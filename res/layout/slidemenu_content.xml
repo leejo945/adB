@@ -5,4 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <include layout="@layout/title_bar"/>
+    <!-- 首页 -->
+    <include 
+       
+        layout="@layout/nav_home"/>
+    <!-- 财务 -->
+    <include 
+         android:visibility="gone"
+        layout="@layout/nav_finance"/>
 </LinearLayout>

@@ -2,115 +2,98 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEEEE"
     android:orientation="vertical" >
-  <include layout="@layout/title_bar"/>
-  
-   <LinearLayout style="@style/small_color_bar_outside" >
 
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/small_color_bar_inner" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-  
-   <LinearLayout style="@style/small_color_bar_outside" >
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/small_color_bar_inner" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-    
     <LinearLayout style="@style/small_color_bar_outside" >
 
         <LinearLayout
             style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp" >
+            android:layout_marginRight="5dp"
+            android:background="@color/home_orange" >
 
             <TextView style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
 
-        <LinearLayout style="@style/small_color_bar_inner" >
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:background="@color/powder_blue1" >
 
             <TextView style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
     </LinearLayout>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <cn.com.paioo.app.util.CustomListView
-      android:id="@+id/test"
-         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-      ></cn.com.paioo.app.util.CustomListView>
-  
-  
+
+    <LinearLayout style="@style/small_color_bar_outside" >
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:layout_marginRight="5dp"
+            android:background="@color/pistac" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:background="@color/powder_blue2" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/small_color_bar_outside" >
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:layout_marginRight="5dp"
+            android:background="@color/peach" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:background="@color/orchid" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
-        
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingTop="35dp" 
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        
+        >
 
-        <ImageButton
-            android:id="@+id/home_account_recharge_ib"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:src="@drawable/ic_launcher" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/a_week_trend"
+            android:textSize="@dimen/textSize_large_" />
 
-        <ImageButton
-            android:id="@+id/home_recommend_friends_ib"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:src="@drawable/ic_launcher" />
-
-        <ImageButton
-            android:id="@+id/home_balance_switch_ib"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:src="@drawable/ic_launcher" />
+        <cn.com.paioo.app.view.TrendView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </cn.com.paioo.app.view.TrendView>
     </LinearLayout>
 
 </LinearLayout>

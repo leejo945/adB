@@ -35,18 +35,18 @@ public class MainActivity extends SlidingActivity {
 	}
 
 	private void initSlideMenu() {
-         ListView  lv = (ListView) findViewById(R.id.slidemenu_menu_lv);
-        ArrayList<SlideMenuItem> list = new ArrayList<SlideMenuItem>();
-         for(int i=0;i<10;i++){
-        	 SlideMenuItem item = new SlideMenuItem();
-        	 item.name = "Ê×Ò³"+i;
-        	 list.add(item);
-         }
-         
-         
-         
-         
-         lv.setAdapter(new SlideMenuAdapter(this, list));
+//         ListView  lv = (ListView) findViewById(R.id.slidemenu_menu_lv);
+//        ArrayList<SlideMenuItem> list = new ArrayList<SlideMenuItem>();
+//         for(int i=0;i<10;i++){
+//        	 SlideMenuItem item = new SlideMenuItem();
+//        	 item.name = "Ê×Ò³"+i;
+//        	 list.add(item);
+//         }
+//         
+//         
+//         
+//         
+//         lv.setAdapter(new SlideMenuAdapter(this, list));
 	}
 
 	private void createSlideMenu() {

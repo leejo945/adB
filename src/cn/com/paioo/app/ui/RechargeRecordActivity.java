@@ -6,7 +6,7 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.RechargeRecordAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.User;
-import cn.com.paioo.app.util.CustomExpandableListView;
+import cn.com.paioo.app.view.CustomExpandableListView;
 import android.os.Bundle;
 
 public class RechargeRecordActivity extends BaseActivity {

@@ -53,6 +53,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:textSize">16sp</item>
+        
     </style>
 
     <style name="wh_match_match">
@@ -126,7 +127,7 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingLeft">5dp</item>
-        <item name="android:background">#00ff00</item>
+         
     </style>
 
     <style name="small_color_bar_inner_text_tv">
@@ -169,17 +170,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/selector_slidemenu_item_bg</item>
-        <item name="android:button">@drawable/ic_launcher</item>
-        <item name="android:paddingBottom">20dp</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingTop">20dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/ic_launcher</item>
+        <item name="android:padding">10dp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/textSize_large</item>
     </style>
 
     <!-- title  部分 -->
     <style name="title_iv_left">
-          
         <item name="android:visibility">gone</item>
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>
@@ -188,7 +187,7 @@
     </style>
 
     <style name="title_iv_right">
-          <item name="android:visibility">gone</item>
+        <item name="android:visibility">gone</item>
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>
         <item name="android:layout_marginRight">10dp</item>
