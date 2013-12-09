@@ -14,7 +14,7 @@ public class App extends Application {
 	private static final ArrayList<Activity> ACTIVITYS = new ArrayList<Activity>();
     private static User user;
 	
-	
+	  
 	public static void addActivity(Activity activity) {
 		ACTIVITYS.add(activity);
 	}
