@@ -13,30 +13,31 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity  extends Activity//BaseActivity 
+{
 	private static final int LOGOSHOW = 0;
-	private  Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case LOGOSHOW:
-				if(NetUtil.isNetworkConnected(getApplicationContext())){
-					
-				}
-				
-				
-				User user = App.getUser();
-				LinearLayout mLoginRe = (LinearLayout)SplashActivity.this
-						.findViewById(R.id.splash_login_register_ll);
-				if (user == null) {// 没有登录
-					mLoginRe.setVisibility(View.VISIBLE);
-				} else {
-					mLoginRe.setVisibility(View.GONE);
-				}
-				break;
-
-			}
-		};
-	};
+//	private  Handler handler = new Handler() {
+//		public void handleMessage(android.os.Message msg) {
+//			switch (msg.what) {
+//			case LOGOSHOW:
+//				if(NetUtil.isNetworkConnected(getApplicationContext())){
+//					
+//				}
+//				
+//				
+//				User user = App.getUser();
+//				LinearLayout mLoginRe = (LinearLayout)SplashActivity.this
+//						.findViewById(R.id.splash_login_register_ll);
+//				if (user == null) {// 没有登录
+//					mLoginRe.setVisibility(View.VISIBLE);
+//				} else {
+//					mLoginRe.setVisibility(View.GONE);
+//				}
+//				break;
+//
+//			}
+//		};
+//	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class SplashActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.splash_login_bt:
-			UIHelper.switcher(this, LoginActivity.class);
+		 	UIHelper.switcher(this, LoginActivity.class);
 			break;
 
 		case R.id.splash_register_bt:

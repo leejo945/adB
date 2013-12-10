@@ -9,9 +9,13 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.SlideMenuAdapter;
 import cn.com.paioo.app.entity.SlideMenuItem;
 import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.UIHelper;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends SlidingActivity {
 
@@ -28,25 +32,116 @@ public class MainActivity extends SlidingActivity {
 
 	}
 
+	ArrayList<View> temp = new ArrayList<View>();
+	
+	
+	
+	
 	private void init() {
 		TitleUtil.show(this);
 		createSlideMenu();
 		initSlideMenu();
+		initMainTab();
+		 
+		 
+		temp.add(findViewById(R.id.slidemenu_content_home));
+		temp.add(findViewById(R.id.slidemenu_content_finance));
+		temp.add(findViewById(R.id.slidemenu_content_preview));
+		temp.add(findViewById(R.id.slidemenu_content_setup));
+		
+	}
+     
+	public void onClick(View v){
+		switch (v.getId()) {
+		
+		//设置界面
+		case R.id.setup_modify_contact_way_rl:
+			//修改联系方式
+			UIHelper.switcher(this, ModifyContactWayActivity.class);
+			break;
+
+		case R.id.setup_modify_password_rl:
+			UIHelper.switcher(this, ModifyPassword.class);
+			//修改密码
+			break;
+		case R.id.setup_suggest_rl:
+			UIHelper.switcher(this, SuggestActivity.class);
+			//意见反馈
+			break;
+		case R.id.setup_about_us_rl:
+			//关于我们
+			UIHelper.switcher(this, AboutUs.class);
+			break;
+		case R.id.setup_safe_exit_bt:
+			//退出账号
+			
+			UIHelper.switcher(this, LoginActivity.class);
+			
+			
+			break;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void show(int a){
+    	for(int i=0;i<temp.size();i++){
+    		if(i==a){
+    			temp.get(i).setVisibility(View.VISIBLE);
+    		}else{
+    			temp.get(i).setVisibility(View.GONE);
+    		}
+    	}
+    }
+	private void initMainTab() {
+		// TODO Auto-generated method stub
+		RadioGroup rg = (RadioGroup) findViewById(R.id.main_tab_rg);
+		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				switch (checkedId) {
+				case R.id.main_tab_home_rb:
+                    show(0);
+					break;
+
+				case R.id.main_tab_finance_rb:
+					show(1);
+					break;
+
+				case R.id.main_tab_preview_rb:
+					show(2);
+					break;
+
+				case R.id.main_tab_setup_rb:
+					show(3);
+					break;
+				}
+
+			}
+		});
+
 	}
 
 	private void initSlideMenu() {
-//         ListView  lv = (ListView) findViewById(R.id.slidemenu_menu_lv);
-//        ArrayList<SlideMenuItem> list = new ArrayList<SlideMenuItem>();
-//         for(int i=0;i<10;i++){
-//        	 SlideMenuItem item = new SlideMenuItem();
-//        	 item.name = "首页"+i;
-//        	 list.add(item);
-//         }
-//         
-//         
-//         
-//         
-//         lv.setAdapter(new SlideMenuAdapter(this, list));
+		// ListView lv = (ListView) findViewById(R.id.slidemenu_menu_lv);
+		// ArrayList<SlideMenuItem> list = new ArrayList<SlideMenuItem>();
+		// for(int i=0;i<10;i++){
+		// SlideMenuItem item = new SlideMenuItem();
+		// item.name = "首页"+i;
+		// list.add(item);
+		// }
+		//
+		//
+		//
+		//
+		// lv.setAdapter(new SlideMenuAdapter(this, list));
 	}
 
 	private void createSlideMenu() {

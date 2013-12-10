@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-     
+    <include layout="@layout/title_bar" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,59 +42,27 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/comm_money_orange"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="30dp"
-            android:text="2350.33"
-            android:textColor="@android:color/white"
-            android:textSize="50sp" />
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
-    
-    
-    
-    
     <LinearLayout style="@style/small_color_bar_outside" >
 
         <LinearLayout
-            
-            android:background="@color/pistac"
             style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp" >
+            android:layout_marginRight="5dp"
+            android:background="@color/pistac" >
 
             <TextView style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
-
-        <LinearLayout 
-             android:background="@color/yellow"
-            style="@style/small_color_bar_inner" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-          
-         style="@style/small_color_bar_outside" >
 
         <LinearLayout
-             android:background="@color/powder_peach"
             style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp" >
-
-            <TextView style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout 
-               android:background="@color/powder_blue2"
-            style="@style/small_color_bar_inner" >
+            android:background="@color/yellow" >
 
             <TextView style="@style/small_color_bar_inner_text_tv" />
 
@@ -102,8 +70,26 @@
         </LinearLayout>
     </LinearLayout>
 
-    
-    
-    
-    
+    <LinearLayout style="@style/small_color_bar_outside" >
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:layout_marginRight="5dp"
+            android:background="@color/powder_peach" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/small_color_bar_inner"
+            android:background="@color/powder_blue2" >
+
+            <TextView style="@style/small_color_bar_inner_text_tv" />
+
+            <TextView style="@style/small_color_bar_inner_number_tv" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

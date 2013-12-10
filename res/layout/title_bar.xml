@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/title_bar_root_rl"
+    android:id="@+id/title_bar_root"
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:background="@color/title_bar_bg" >
@@ -27,9 +27,13 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/textSize_large" />
 
-    <ImageButton
-        android:id="@+id/title_bar_qrcode_ib"
-        style="@style/title_iv_right"
-        android:background="@drawable/selector_title_bar_qrcode" />
+     
 
+    
+     <ImageButton
+        
+        android:id="@+id/title_bar_recharge_record_ib"
+        style="@style/title_iv_right"
+        android:background="@drawable/selector_title_bar_recharge_record" />
+    
 </RelativeLayout>

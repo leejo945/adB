@@ -2,7 +2,7 @@
 
     <!-- 免费注册， -->
     <style name="fr_ll">
-        <item name="android:background">#00ff00</item>
+        <item name="android:background">@drawable/selector_et_bg</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">5dp</item>
         <item name="android:paddingTop">5dp</item>
@@ -53,7 +53,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:textSize">16sp</item>
-        
+        <item name="android:windowBackground">@color/app_bg</item>
     </style>
 
     <style name="wh_match_match">
@@ -127,7 +127,6 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingLeft">5dp</item>
-         
     </style>
 
     <style name="small_color_bar_inner_text_tv">
@@ -153,15 +152,14 @@
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:paddingLeft">15dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:background">#00ff00</item>
+        <item name="android:background">@drawable/selector_setup_item</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:onClick">onClick</item>
     </style>
 
     <style name="setup_item_tv" parent="wh_wrap_wrap">
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:textSize">@dimen/textSize_large</item>
     </style>
 
@@ -186,6 +184,13 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="main_tab_rb">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">78dp</item>
+        <item name="android:button">@null</item>
+    </style>
+
     <style name="title_iv_right">
         <item name="android:visibility">gone</item>
         <item name="android:layout_width">25dp</item>
@@ -193,6 +198,28 @@
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <!-- 余额转账界面 ，通用的橘色钱的格式 -->
+    <style name="comm_money_orange">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:text">1000.00</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 账号充值，余额转账中相同样式 -->
+    <style name="account_recharge_out">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingBottom">40dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">20dp</item>
     </style>
 
 </resources>

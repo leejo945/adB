@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_tab_rg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/main_tab_bg"
+    android:orientation="horizontal" >
 
-</LinearLayout>
+    <RadioButton
+        android:id="@+id/main_tab_home_rb"
+        style="@style/main_tab_rb"
+        android:background="@drawable/selector_tab_home" />
+
+    <RadioButton
+        android:id="@+id/main_tab_finance_rb"
+        style="@style/main_tab_rb"
+        android:background="@drawable/selector_tab_finance" />
+
+    <RadioButton
+        android:id="@+id/main_tab_preview_rb"
+        style="@style/main_tab_rb"
+        android:background="@drawable/selector_tab_preview" />
+
+    <RadioButton
+        android:id="@+id/main_tab_setup_rb"
+        style="@style/main_tab_rb"
+        android:background="@drawable/selector_tab_setup" />
+
+</RadioGroup>

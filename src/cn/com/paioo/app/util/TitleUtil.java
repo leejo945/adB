@@ -1,9 +1,12 @@
  
 package cn.com.paioo.app.util;
 
+import com.slidingmenu.lib.app.SlidingActivity;
+
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.ui.ExtraCompanyInfoActivity;
 import cn.com.paioo.app.ui.MainActivity;
+import cn.com.paioo.app.ui.RechargeRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
 import android.app.Activity;
 import android.util.Log;
@@ -39,18 +42,25 @@ public class TitleUtil {
 			@Override
 			public void onClick(View v) {
 				 //打开侧滑
+				if(activity instanceof SlidingActivity){
+					 ((SlidingActivity) activity).toggle();
+				}
 			}
 		});
         
+       
         
-        ImageButton qrcode = (ImageButton) activity.findViewById(R.id.title_bar_qrcode_ib);
-        qrcode.setOnClickListener(new OnClickListener() {
+        ImageButton rech_record = (ImageButton) activity.findViewById(R.id.title_bar_recharge_record_ib);
+        rech_record.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				 //进入二维码扫描
+				//  充值记录
+				UIHelper.switcher(activity, RechargeRecordActivity.class);
+				
 			}
 		});
+        
         
         if(RegisterActivity.class.getSimpleName().equals(cur)){//注册界面
         	titleName.setText(R.string.free_register);
@@ -62,7 +72,7 @@ public class TitleUtil {
         }
         if(MainActivity.class.getSimpleName().equals(cur)){
         	slidemenu.setVisibility(View.VISIBLE);
-        	qrcode.setVisibility(View.VISIBLE);
+        	 
         }
         
     }

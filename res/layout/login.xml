@@ -5,89 +5,82 @@
     android:background="@drawable/bg"
     android:orientation="vertical" >
 
-    <ImageView
-        style="@style/logo"
-        />
+    <ImageView style="@style/logo" />
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/login_mail_pwd_bg"
-        android:orientation="vertical"
-          >
+        android:orientation="vertical" >
 
         <LinearLayout
-              android:gravity="center_vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp" >
 
             <ImageView
-                
                 style="@style/login_mail_pwd_iv"
                 android:src="@drawable/login_mail_icon" />
 
             <EditText
-               
-                android:hint="@string/email"
                 android:id="@+id/login_mail_et"
-                style="@style/login_mail_pwd_et" />
+                style="@style/login_mail_pwd_et"
+                android:hint="@string/email" />
         </LinearLayout>
-     <ImageView 
-         android:background="@drawable/divider_land"
-          android:layout_width="fill_parent"
+
+        <ImageView
+            android:layout_width="fill_parent"
             android:layout_height="0.5dp"
-         />
-    
+            android:background="@drawable/divider_land" />
 
         <LinearLayout
-            android:gravity="center_vertical"
-                android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp" >
 
             <ImageView
                 style="@style/login_mail_pwd_iv"
                 android:src="@drawable/login_lock_icon" />
 
             <EditText
-                android:hint="@string/pwd"
                 android:id="@+id/login_pwd_et"
-                style="@style/login_mail_pwd_et" />
+                style="@style/login_mail_pwd_et"
+                android:hint="@string/pwd" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:text="@string/login"
         android:id="@+id/login_login_bt"
         style="@style/login_login_register_bt"
-        android:background="@drawable/selector_bt_orange" />
+        android:background="@drawable/selector_bt_orange"
+        android:text="@string/login" />
 
     <Button
-        android:textColor="@android:color/black"
-        android:layout_marginTop="20dp"
-         android:text="@string/free_register"
         android:id="@+id/login_register_bt"
         style="@style/login_login_register_bt"
-        android:background="@drawable/selector_bt_white" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_bt_white"
+        android:text="@string/free_register"
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:layout_marginLeft="20dp"
-        android:text="@string/forget_pwd"
-        android:id="@+id/login_forget_pwd"
+        android:id="@+id/login_forget_pwd_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:onClick="onClick"
-          />
+        android:text="@string/forget_pwd"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

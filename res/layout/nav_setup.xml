@@ -7,55 +7,54 @@
     <include layout="@layout/title_bar" />
 
     <RelativeLayout
-       style="@style/setup_item_rl"
         android:id="@+id/setup_modify_contact_way_rl"
-        >
+        style="@style/setup_item_rl" >
 
         <TextView
-             style="@style/setup_item_tv"
+          
+            style="@style/setup_item_tv"
             android:text="@string/modify_contact_way" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/setup_modify_password_rl"
-       style="@style/setup_item_rl" >
+        style="@style/setup_item_rl" >
 
         <TextView
-           style="@style/setup_item_tv"
+            style="@style/setup_item_tv"
             android:text="@string/modify_password" />
     </RelativeLayout>
 
-       <RelativeLayout
-       
-       style="@style/setup_item_rl" >
+    <RelativeLayout 
+         android:id="@+id/setup_suggest_rl"
+        style="@style/setup_item_rl" >
 
         <TextView
-           style="@style/setup_item_tv"
+            style="@style/setup_item_tv"
             android:text="@string/suggest" />
     </RelativeLayout>
-    
-       <RelativeLayout
-     
-       style="@style/setup_item_rl" >
+
+    <RelativeLayout
+         android:id="@+id/setup_about_us_rl"
+         style="@style/setup_item_rl" >
 
         <TextView
-           style="@style/setup_item_tv"
+            style="@style/setup_item_tv"
             android:text="@string/about_us" />
     </RelativeLayout>
-    
-    
+
     <RelativeLayout
         android:id="@+id/setup_check_update_rl"
-        style="@style/setup_item_rl">
+        style="@style/setup_item_rl" >
 
         <TextView
-           style="@style/setup_item_tv"
+            style="@style/setup_item_tv"
             android:text="@string/check_version" />
     </RelativeLayout>
 
     <Button
         android:id="@+id/setup_safe_exit_bt"
-         style="@style/bt_orange"
+        style="@style/bt_orange"
         android:text="@string/exit_app" />
 
 </LinearLayout>

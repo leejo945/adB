@@ -3,6 +3,7 @@ package cn.com.paioo.app.ui;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,33 +30,32 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
     public void onClick(View v){
     	switch (v.getId()) {
 		case R.id.eci_company_submit_bt:
-			String companyName = StringUtils.getStringByET(mCompanyName);
-			String location = StringUtils.getStringByET(mLocation);
- 			String address = StringUtils.getStringByET(mAddress);
-			String property = StringUtils.getStringByET(mProperty);
-			String capital = StringUtils.getStringByET(mCapital);
-			if(StringUtils.isEmpty(companyName)){
-            	MyToast.show(this, R.string.warn_toast_company_name_isempty);
-            	return;
-            }
-			if(StringUtils.isEmpty(location)){
-            	MyToast.show(this, R.string.warn_toast_location_isempty);
-            	return;
-            }
-			if(StringUtils.isEmpty(address)){
-            	MyToast.show(this, R.string.warn_toast_address_isempty);
-            	return;
-            }
-			if(StringUtils.isEmpty(property)){
-            	MyToast.show(this, R.string.warn_toast_property_isempty);
-            	return;
-            }
-			if(StringUtils.isEmpty(capital)){
-            	MyToast.show(this, R.string.warn_toast_capital_isempty);
-            	return;
-            }
-			
-			
+//			String companyName = StringUtils.getStringByET(mCompanyName);
+//			String location = StringUtils.getStringByET(mLocation);
+// 			String address = StringUtils.getStringByET(mAddress);
+//			String property = StringUtils.getStringByET(mProperty);
+//			String capital = StringUtils.getStringByET(mCapital);
+//			if(StringUtils.isEmpty(companyName)){
+//            	MyToast.show(this, R.string.warn_toast_company_name_isempty);
+//            	return;
+//            }
+//			if(StringUtils.isEmpty(location)){
+//            	MyToast.show(this, R.string.warn_toast_location_isempty);
+//            	return;
+//            }
+//			if(StringUtils.isEmpty(address)){
+//            	MyToast.show(this, R.string.warn_toast_address_isempty);
+//            	return;
+//            }
+//			if(StringUtils.isEmpty(property)){
+//            	MyToast.show(this, R.string.warn_toast_property_isempty);
+//            	return;
+//            }
+//			if(StringUtils.isEmpty(capital)){
+//            	MyToast.show(this, R.string.warn_toast_capital_isempty);
+//            	return;
+//            }
+			UIHelper.switcher(this, MainActivity.class);
 			break;
 
 		 

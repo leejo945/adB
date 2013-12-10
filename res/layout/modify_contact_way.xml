@@ -52,6 +52,6 @@
       <Button
         android:id="@+id/free_register_submit_bt"
         style="@style/bt_orange"
-        android:text="@string/fr_next" />
+        android:text="@string/next" />
        
 </LinearLayout>

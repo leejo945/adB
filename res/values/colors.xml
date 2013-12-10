@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+   <color name="app_bg">#EEEEEE</color>
     <color name="orange">#FF6100</color>
     <color name="business_success_text">#69B900</color>
     <color name="business_fail_text">#FF0100</color>

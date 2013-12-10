@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <include layout="@layout/title_bar"/>
+  >
+    
     <!-- 首页 -->
     <include 
        
+        android:id="@+id/slidemenu_content_home"
         layout="@layout/nav_home"/>
     <!-- 财务 -->
     <include 
+           
+          android:id="@+id/slidemenu_content_finance"
          android:visibility="gone"
         layout="@layout/nav_finance"/>
-</LinearLayout>
+    
+ 
+     <!-- 预览界面 -->
+    <include 
+           
+          android:id="@+id/slidemenu_content_preview"
+         android:visibility="gone"
+        layout="@layout/nav_preview"/>
+    
+      <!-- 设置界面 -->
+    <include 
+           
+          android:id="@+id/slidemenu_content_setup"
+         android:visibility="gone"
+        layout="@layout/nav_setup"/>
+    
+    
+    <include 
+        layout="@layout/main_tab"/>
+</RelativeLayout>

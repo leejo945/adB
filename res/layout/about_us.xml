@@ -6,25 +6,33 @@
 
     <include layout="@layout/title_bar" />
 
-    <LinearLayout
-        android:padding="10dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" 
+          android:padding="10dp"
+        >
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/bg" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
 
-        <TextView
-            
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-             />
-        
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/about_us_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/about_bg"
+                android:padding="10dp"
+                android:text="一致性有其在Android的地方，但你也可以灵活地自定义您的应用程序的外观，以加强你的品牌。
+通过覆盖Android框架的默认蓝色像复选框UI元素使用你的品牌色彩的口音，进度条，单选按钮，滑块，选项卡和滚动的指标。
+显示在操作栏中的应用程序的启动图标和名称，以便用户可以看到它在你的应用程序的每一个画面。
+你的品牌凸显如何把你的品牌元素融入到你的应用程序的视觉语言这些和其他指针-非常鼓励！" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

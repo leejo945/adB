@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:background="#EEEEEE"
     android:orientation="vertical" >
-
+<include 
+         
+        layout="@layout/title_bar"/>
     <LinearLayout style="@style/small_color_bar_outside" >
 
         <LinearLayout

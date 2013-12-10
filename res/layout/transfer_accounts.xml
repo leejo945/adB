@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/account_recharge_out">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/current_balance"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/textSize_large" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="2355.33元"
+                    android:textSize="@dimen/textSize___large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/at_most_account"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/textSize_large" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/comm_money_orange"
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_et_bg"
+                android:paddingLeft="8dp" >
+
+                <EditText
+                    android:id="@+id/free_register_account_et"
+                    style="@style/fr_et"
+                    android:hint="@string/paioo_usernumber"
+                    android:paddingRight="1dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="0.5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/transfer_card_bg"
+                    android:padding="10dp"
+                    android:src="@drawable/transfer_card" />
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_et_bg"
+                android:hint="@string/how_much_account"
+                android:padding="8dp"
+                android:singleLine="true" />
+
+            <Button
+                style="@style/bt_orange"
+                android:text="@string/next" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

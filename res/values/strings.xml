@@ -36,7 +36,8 @@
     <string name="fr_contacts">联 系 人：</string>
     <string name="fr_cellphone">手 机 号：</string>
     <string name="fr_mail">邮 \t\t箱：</string>
-    <string name="fr_next">下一步</string>
+    <string name="next">下一步</string>
+    <string name="user_name">用户名：</string>
 
     <!-- extra_company_info.xml -->
     <string name="eci_company_name">公司名称：</string>
@@ -57,11 +58,8 @@
     <string name="slidemenu_switch_account">余额转账</string>
     <string name="slidemenu_coupon">优惠劵</string>
     <string name="slidemenu_setup">设置</string>
-
-    
     <string name="a_week_trend">一周点击走势</string>
-    
-    
+
     <!-- nav_finance.xml -->
     <string name="current_balance">当前余额</string>
     <string name="frozen_capital">冻结金额0元</string>
@@ -78,9 +76,24 @@
     <string name="business_fail">交易失败</string>
 
     <!-- 推荐好友界面 -->
- 
-  
- 
+    <string name="your_re_number">您的专属推荐码：</string>
+    <string name="find_friends_install_app1">邀请好友安装APP并注册成功，可获取1元广告充值奖励</string>
+    <string name="qrcode_re">扫一扫推荐</string>
+    <!-- 意见反馈 -->
+    <string name="telephone_number">020-520520520</string>
+
+    <!-- 余额转账 -->
+    <string name="at_most_account">至多可转账</string>
+     <string name="paioo_usernumber">收款人芝麻账号</string>
+      <string name="how_much_account">转账金额</string>
+    
+      
+      
+      <!-- 账号充值 -->
+      <string name="recharge_cardid">充值卡卡号</string>
+      <string name="recharge_pwd">充值卡密码</string>
+      <string name="recharge">充\t\t值</string>
+        <string name="recharge_explain">充值说明：</string>   
     <!-- common -->
     <string name="submit">提\t\t交</string>
 
