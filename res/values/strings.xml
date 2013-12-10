@@ -20,15 +20,21 @@
 
 
     <!-- splash -->
-    <string name="login">登\t\t 录</string>
+    <string name="login">登录</string>
     <string name="register">注册</string>
-
+   
+      <!-- forge_pwd.xml  找回密码解码 -->
+    <string name="find_pwd">找回密码</string>
+    
+    
     <!-- login.xml -->
     <string name="email">电子邮箱</string>
     <string name="pwd">密码</string>
     <string name="free_register">免费注册</string>
     <string name="forget_pwd">忘记密码？</string>
-
+ <string name="login2">登\t\t录</string>
+ 
+ 
     <!-- free_register.xml -->
     <string name="fr_account">账\t\t号：</string>
     <string name="fr_pwd">密  码：</string>

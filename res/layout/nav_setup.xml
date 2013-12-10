@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/title_bar" />
 
     <RelativeLayout
         android:id="@+id/setup_modify_contact_way_rl"

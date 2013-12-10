@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity// BaseActivity
@@ -19,16 +20,7 @@ public class LoginActivity extends Activity// BaseActivity
 	}
 
 	private void init() {
-		 findViewById(R.id.login_forget_pwd_tv).setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				 MyToast.show(LoginActivity.this, "忘记密码");
-					UIHelper.switcher(LoginActivity.this, ForgetActivity.class);
-			}
-		});
-
+		 
 	}
 
 	public void onClick(View v) {
@@ -41,10 +33,11 @@ public class LoginActivity extends Activity// BaseActivity
 		case R.id.login_register_bt:
 			UIHelper.switcher(this, RegisterActivity.class);
 			break;
-//		case R.id.login_forget_pwd_tv:
-//			//忘记密码界面
-//	
-//			break;
+		case R.id.login_forget_pwd_tv:
+			//忘记密码界面
+			Toast.makeText(this, "777777777", 1).show();
+			 UIHelper.switcher(LoginActivity.this, ForgetActivity.class);
+			break;
 		}
 	}
 }

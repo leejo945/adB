@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingActivity;
+import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.SlideMenuAdapter;
@@ -12,13 +13,30 @@ import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.Display;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class MainActivity extends SlidingActivity {
+/**
+ * 
+ * 整个导航界面的设计原则： 侧滑菜单+fragment
+ * 
+ * 1.第一次进入初始首页菜单。 2.fragment动态加载进入。只有fragment为空的时候才加载（如果fragment有数据改变需要加载）。
+ * 3.点击tab是在fragment之间隐藏和显示 4.fragment的切换最好有动态的效果
+ * 
+ * 
+ * 
+ * @author Administrator
+ * 
+ */
 
+public class MainActivity extends SlidingFragmentActivity {
+	public FragmentManager fm;
+    public static Fragment mHome,mFinance,mPreView,mSetup;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,74 +50,19 @@ public class MainActivity extends SlidingActivity {
 
 	}
 
-	ArrayList<View> temp = new ArrayList<View>();
-	
-	
-	
-	
 	private void init() {
-		TitleUtil.show(this);
+		// TitleUtil.show(this);
+	
 		createSlideMenu();
-		initSlideMenu();
 		initMainTab();
-		 
-		 
-		temp.add(findViewById(R.id.slidemenu_content_home));
-		temp.add(findViewById(R.id.slidemenu_content_finance));
-		temp.add(findViewById(R.id.slidemenu_content_preview));
-		temp.add(findViewById(R.id.slidemenu_content_setup));
-		
-	}
-     
-	public void onClick(View v){
-		switch (v.getId()) {
-		
-		//设置界面
-		case R.id.setup_modify_contact_way_rl:
-			//修改联系方式
-			UIHelper.switcher(this, ModifyContactWayActivity.class);
-			break;
 
-		case R.id.setup_modify_password_rl:
-			UIHelper.switcher(this, ModifyPassword.class);
-			//修改密码
-			break;
-		case R.id.setup_suggest_rl:
-			UIHelper.switcher(this, SuggestActivity.class);
-			//意见反馈
-			break;
-		case R.id.setup_about_us_rl:
-			//关于我们
-			UIHelper.switcher(this, AboutUs.class);
-			break;
-		case R.id.setup_safe_exit_bt:
-			//退出账号
-			
-			UIHelper.switcher(this, LoginActivity.class);
-			
-			
-			break;
-		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private void show(int a){
-    	for(int i=0;i<temp.size();i++){
-    		if(i==a){
-    			temp.get(i).setVisibility(View.VISIBLE);
-    		}else{
-    			temp.get(i).setVisibility(View.GONE);
-    		}
-    	}
-    }
+
 	private void initMainTab() {
+		initFragment();
+		
+		
+		
 		// TODO Auto-generated method stub
 		RadioGroup rg = (RadioGroup) findViewById(R.id.main_tab_rg);
 		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -108,19 +71,29 @@ public class MainActivity extends SlidingActivity {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.main_tab_home_rb:
-                    show(0);
+					if(mHome==null){//如果为空，创建并显示。隐藏其他的。
+						//mHome = ;
+						
+					}
+					fm.beginTransaction()
+					.replace(R.id.ccc, new NavHomeFragment()).commit();
 					break;
 
 				case R.id.main_tab_finance_rb:
-					show(1);
+					fm.beginTransaction()
+							.replace(R.id.ccc, new NavFinanceFragment())
+							.commit();
 					break;
 
 				case R.id.main_tab_preview_rb:
-					show(2);
+					fm.beginTransaction()
+							.replace(R.id.ccc, new NavPreViewFragmet())
+							.commit();
 					break;
 
 				case R.id.main_tab_setup_rb:
-					show(3);
+					fm.beginTransaction()
+							.replace(R.id.ccc, new NavSetUpFragment()).commit();
 					break;
 				}
 
@@ -129,19 +102,15 @@ public class MainActivity extends SlidingActivity {
 
 	}
 
-	private void initSlideMenu() {
-		// ListView lv = (ListView) findViewById(R.id.slidemenu_menu_lv);
-		// ArrayList<SlideMenuItem> list = new ArrayList<SlideMenuItem>();
-		// for(int i=0;i<10;i++){
-		// SlideMenuItem item = new SlideMenuItem();
-		// item.name = "首页"+i;
-		// list.add(item);
-		// }
-		//
-		//
-		//
-		//
-		// lv.setAdapter(new SlideMenuAdapter(this, list));
+	private void initFragment() {
+		fm = getSupportFragmentManager();
+		mHome = new NavHomeFragment();
+		//进入的时候默认显示界面
+		fm.beginTransaction()
+		.replace(R.id.ccc, mHome).commit();
+		
+		
+		
 	}
 
 	private void createSlideMenu() {
@@ -151,8 +120,10 @@ public class MainActivity extends SlidingActivity {
 		sm.setShadowWidth(0);
 		// 阴影的颜色
 		// sm.setShadowDrawable(R.drawable.shadow);
-		// 侧滑菜单滑动离右边的距离
-		sm.setBehindOffset(250);
+
+		Display d = getWindowManager().getDefaultDisplay();
+		// 侧滑菜单滑动离右边的距离 (为屏幕宽的一半)
+		sm.setBehindOffset(d.getWidth() / 2);
 		//
 		sm.setFadeDegree(0.35f);
 		// 设置侧滑条拉出来需不需要联动。0-1之间

@@ -19,6 +19,7 @@
          
          
          <Button 
+             android:id="@+id/forget_pwd_submit"
              android:text="@string/submit"
              style="@style/bt_orange"
              

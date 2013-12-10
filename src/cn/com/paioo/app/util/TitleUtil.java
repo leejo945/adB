@@ -5,6 +5,7 @@ import com.slidingmenu.lib.app.SlidingActivity;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.ui.ExtraCompanyInfoActivity;
+import cn.com.paioo.app.ui.ForgetActivity;
 import cn.com.paioo.app.ui.MainActivity;
 import cn.com.paioo.app.ui.RechargeRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
@@ -62,17 +63,22 @@ public class TitleUtil {
 		});
         
         
-        if(RegisterActivity.class.getSimpleName().equals(cur)){//注册界面
+        if(RegisterActivity.class.getSimpleName().equals(cur) 	
+        ){//注册界面
         	titleName.setText(R.string.free_register);
         	back.setVisibility(View.VISIBLE);
         }
+        //补充公司信息
         if(ExtraCompanyInfoActivity.class.getSimpleName().equals(cur)){
         	titleName.setText(R.string.eci_company_info_title);
         	back.setVisibility(View.VISIBLE);
         }
+        if(ForgetActivity.class.getSimpleName().equals(cur)){
+        	titleName.setText(R.string.find_pwd);
+        	back.setVisibility(View.VISIBLE);
+        }
         if(MainActivity.class.getSimpleName().equals(cur)){
         	slidemenu.setVisibility(View.VISIBLE);
-        	 
         }
         
     }
