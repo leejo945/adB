@@ -15,7 +15,7 @@ import android.widget.TextView;
 @SuppressLint("ResourceAsColor")
 public class RechargeRecordAdapter extends BaseExpandableListAdapter {
 	private Context context;
-	private ArrayList<User> list;
+	private ArrayList<User> list;      
     public RechargeRecordAdapter(Context context){
     	this.context =context;
     }
