@@ -54,14 +54,14 @@
     <string name="eci_company_protocol">《芝麻广告平台用户注册协议》</string>
 
     <!-- 侧滑菜单      （这个和title bar的文本，以及tab文本相对应） -->
-    <string name="slidemenu_home">首页</string>
-    <string name="slidemenu_finance">财务</string>
-    <string name="slidemenu_preview">预览</string>
+    <string name="slidemenu_home">首&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;页</string>
+    <string name="slidemenu_finance">财&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;务</string>
+    <string name="slidemenu_preview">预&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;览</string>
     <string name="slidemenu_recharge">账号充值</string>
     <string name="slidemenu_recommend_friends">推荐好友</string>
     <string name="slidemenu_switch_account">余额转账</string>
-    <string name="slidemenu_coupon">优惠劵</string>
-    <string name="slidemenu_setup">设置</string>
+    <string name="slidemenu_coupon">优&#160;&#160;惠&#160;&#160;劵</string>
+    <string name="slidemenu_setup">设&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;置</string>
     <string name="a_week_trend">一周点击走势</string>
 
     <!-- nav_finance.xml -->

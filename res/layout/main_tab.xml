@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_tab_rg"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
+    android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:background="@drawable/main_tab_bg"
-    android:orientation="horizontal" 
     android:gravity="center_vertical"
-    >
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingTop="7dp" >
 
-    <RadioButton
-        android:id="@+id/main_tab_home_rb"
-        style="@style/main_tab_rb"
-        android:background="@drawable/selector_tab_home" />
+    <ImageButton
+       
+        android:id="@+id/main_tab_home_ib"
+        style="@style/main_tab_ib"
+        android:src="@drawable/selector_tab_home" />
 
-    <RadioButton
-        android:id="@+id/main_tab_finance_rb"
-        style="@style/main_tab_rb"
-        android:background="@drawable/selector_tab_finance" />
+    <ImageButton
+        android:id="@+id/main_tab_finance_ib"
+        style="@style/main_tab_ib"
+         android:src="@drawable/selector_tab_finance" />
 
-    <RadioButton
-        android:id="@+id/main_tab_preview_rb"
-        style="@style/main_tab_rb"
-        android:background="@drawable/selector_tab_preview" />
+    <ImageButton
+        android:id="@+id/main_tab_preview_ib"
+        style="@style/main_tab_ib"
+         android:src="@drawable/selector_tab_preview" />
 
-    <RadioButton
-        android:id="@+id/main_tab_setup_rb"
-        style="@style/main_tab_rb"
-        android:background="@drawable/selector_tab_setup" />
+    <ImageButton
+        android:id="@+id/main_tab_setup_ib"
+        style="@style/main_tab_ib"
+         android:src="@drawable/selector_tab_setup" />
 
-</RadioGroup>
+</LinearLayout>

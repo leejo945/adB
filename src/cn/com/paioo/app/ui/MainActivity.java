@@ -20,6 +20,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -43,7 +44,7 @@ import android.widget.RelativeLayout;
 public class MainActivity extends SlidingFragmentActivity {
 	public FragmentManager fm;
 	public static Fragment mHome, mFinance, mPreView, mSetup;
-
+    private ArrayList<ImageButton> tabs;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,45 +66,13 @@ public class MainActivity extends SlidingFragmentActivity {
 
 	}
 
-	 
 	private void initMainTab() {
 		initFragment();
-
-		// TODO Auto-generated method stub
-		RadioGroup rg = (RadioGroup) findViewById(R.id.main_tab_rg);
-
-		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				switch (checkedId) {
-				case R.id.main_tab_home_rb:
-					 
-					fm.beginTransaction()
-							.replace(R.id.ccc, new NavHomeFragment()).commit();
-					break;
-
-				case R.id.main_tab_finance_rb:
-					fm.beginTransaction()
-							.replace(R.id.ccc, new NavFinanceFragment())
-							.commit();
-					break;
-
-				case R.id.main_tab_preview_rb:
-					fm.beginTransaction()
-							.replace(R.id.ccc, new NavPreViewFragmet())
-							.commit();
-					break;
-
-				case R.id.main_tab_setup_rb:
-					fm.beginTransaction()
-							.replace(R.id.ccc, new NavSetUpFragment()).commit();
-					break;
-				}
-
-			}
-		});
-
+		 tabs =   new ArrayList<ImageButton>();
+		 tabs.add((ImageButton) findViewById(R.id.main_tab_home_ib));
+		 tabs.add((ImageButton) findViewById(R.id.main_tab_finance_ib));
+		 tabs.add((ImageButton) findViewById(R.id.main_tab_preview_ib));
+		 tabs.add((ImageButton) findViewById(R.id.main_tab_setup_ib));
 	}
 
 	private void initFragment() {
@@ -111,8 +80,41 @@ public class MainActivity extends SlidingFragmentActivity {
 		mHome = new NavHomeFragment();
 		// 进入的时候默认显示界面
 		fm.beginTransaction().replace(R.id.ccc, mHome).commit();
-        RadioButton rb = (RadioButton) findViewById(R.id.main_tab_home_rb);
-        rb.setChecked(true);
+
+	}
+    
+	
+	
+	
+	public void onClick(View v) {
+	 
+		int id = v.getId();
+		switch (id) {
+		case R.id.main_tab_home_ib:
+			ImageButton ib = (ImageButton) findViewById(id);
+            ib.setImageResource(R.drawable.main_tab_home_pre_che);
+			fm.beginTransaction().replace(R.id.ccc, new NavHomeFragment())
+					.commit();
+
+			break;
+
+		case R.id.main_tab_finance_ib:
+			ImageButton ib1 = (ImageButton) findViewById(id);
+            ib1.setImageResource(R.drawable.main_tab_finance_pre_che);
+			fm.beginTransaction().replace(R.id.ccc, new NavFinanceFragment())
+					.commit();
+			break;
+		case R.id.main_tab_preview_ib:
+			fm.beginTransaction().replace(R.id.ccc, new NavPreViewFragmet())
+					.commit();
+
+			break;
+		case R.id.main_tab_setup_ib:
+			fm.beginTransaction().replace(R.id.ccc, new NavSetUpFragment())
+					.commit();
+
+			break;
+		}
 	}
 
 	private void createSlideMenu() {
