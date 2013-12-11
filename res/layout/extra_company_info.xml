@@ -82,12 +82,14 @@
                 >
 
                 <ImageView
+                     android:onClick="onClick"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                   
+                     android:id="@+id/eci_company_right_iv2"
                     android:src="@drawable/eci_sel_bg" />
 
                 <ImageView
+                    android:onClick="onClick"
                     android:id="@+id/eci_company_right_iv"
                     android:layout_width="28dp"
                     android:layout_height="28dp"

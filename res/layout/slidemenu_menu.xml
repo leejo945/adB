@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menu"
-    android:scrollbars="none"
-     
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/slidemenu_menu_bg" >
+    android:background="@color/slidemenu_menu_bg"
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <ImageView
@@ -19,175 +18,137 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/slidemenu_temp_logo" />
 
-        <RadioGroup
-            
-            android:id="@+id/radioGroup1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+        <!-- 首页 -->
 
-            <RadioButton
-                android:checked="true"
-                style="@style/slidemenu_item_rb"
+        <LinearLayout style="@style/slidemenu_item_ll" >
+
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_home" />
+
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_home" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_financial" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_finance" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_preview" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_preview" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_recharge" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_recharge" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_friends" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_recommend_friends" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_bancele" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_switch_account" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_ticket" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_coupon" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
+        <LinearLayout style="@style/slidemenu_item_ll" >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
+            <ImageView
+                style="@style/slidemenu_item_iv"
+                android:src="@drawable/slidemenu_setup" />
 
-            <RadioButton
-                style="@style/slidemenu_item_rb"
+            <TextView
+                style="@style/slidemenu_item_tv"
                 android:text="@string/slidemenu_setup" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_bar_bg" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/slidemenu_menu_diver" />
-            </LinearLayout>
-        </RadioGroup>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/slidemenu_diver_line" />
     </LinearLayout>
 
 </ScrollView>

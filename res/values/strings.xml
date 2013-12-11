@@ -22,19 +22,17 @@
     <!-- splash -->
     <string name="login">登录</string>
     <string name="register">注册</string>
-   
-      <!-- forge_pwd.xml  找回密码解码 -->
+
+    <!-- forge_pwd.xml  找回密码解码 -->
     <string name="find_pwd">找回密码</string>
-    
-    
+
     <!-- login.xml -->
     <string name="email">电子邮箱</string>
     <string name="pwd">密码</string>
     <string name="free_register">免费注册</string>
     <string name="forget_pwd">忘记密码？</string>
- <string name="login2">登\t\t录</string>
- 
- 
+    <string name="login2">登\t\t录</string>
+
     <!-- free_register.xml -->
     <string name="fr_account">账\t\t号：</string>
     <string name="fr_pwd">密  码：</string>
@@ -90,16 +88,15 @@
 
     <!-- 余额转账 -->
     <string name="at_most_account">至多可转账</string>
-     <string name="paioo_usernumber">收款人芝麻账号</string>
-      <string name="how_much_account">转账金额</string>
-    
-      
-      
-      <!-- 账号充值 -->
-      <string name="recharge_cardid">充值卡卡号</string>
-      <string name="recharge_pwd">充值卡密码</string>
-      <string name="recharge">充\t\t值</string>
-        <string name="recharge_explain">充值说明：</string>   
+    <string name="paioo_usernumber">收款人芝麻账号</string>
+    <string name="how_much_account">转账金额</string>
+
+    <!-- 账号充值 -->
+    <string name="recharge_cardid">充值卡卡号</string>
+    <string name="recharge_pwd">充值卡密码</string>
+    <string name="recharge">充\t\t值</string>
+    <string name="recharge_explain">充值说明：</string>
+
     <!-- common -->
     <string name="submit">提\t\t交</string>
 
@@ -115,13 +112,22 @@
     <string name="setup_cellphone">手机号</string>
     <string name="setup_telephone">固话</string>
     <string name="setup_mail">邮箱</string>
-    <string name="setup_old_password">旧密码</string>
-    <string name="setup_new_pasword">新密码</string>
-    <string name="setup_sure_password">确认密码</string>
 
+    <!-- 修改联系方式 -->
+    <string name="contact_way_contancter">联系人：</string>
+    <string name="contact_way_cellphone">手机号：</string>
+    <string name="contact_way_telephone">固\t话：</string>
+    <string name="contact_way_mail">邮\t箱：</string>
+
+    <!-- 修改密码界面 -->
+    <string name="modify_old_password">现在密码：</string>
+    <string name="modify_new_pasword">密\t\t\t码：</string>
+    <string name="modify_sure_password">确认密码：</string>
+   <string name="modify_password_warn">6位以上含字母和数字</string>
     <!-- 意见反馈 -->
     <string name="welcome_suggest">欢迎您在这里留下宝贵的意见</string>
     <string name="ask_phone_number">咨询服务热线</string>
+
     <!-- toash 提示 -->
     <string name="warn_toast_account_isempty">hi,账号不能为空哦！</string>
     <string name="warn_toast_pwd_isempty">hi,你的密码真的没填！</string>
@@ -132,8 +138,11 @@
     <string name="warn_toast_mail_unstandard">邮箱格式不对</string>
     <string name="warn_toast_cellphone_unstandard">手机号不标准</string>
     <string name="warn_toast_telephone_unstandard">固话号码不标准</string>
-    <string name="warn_toast_old_pwd_isempty">旧密码为空</string>
+    <string name="warn_toast_old_pwd_isempty">现在密码为空</string>
+    <string name="warn_toast_old_pwd_unstandard">现在密码格式不对</string>
+    
     <string name="warn_toast_new_pwd_isempty">新密码为空</string>
+    
     <string name="warn_toast_twice_pwd_difference">两次密码不一致</string>
     <string name="warn_toast_pwd_unstandard">密码格式有误</string>
     <string name="warn_toast_cardid_isempty">卡号为空</string>
@@ -143,5 +152,6 @@
     <string name="warn_toast_address_isempty">地址为空</string>
     <string name="warn_toast_property_isempty">企业性质为空</string>
     <string name="warn_toast_capital_isempty">注册资本为空</string>
-
+     <string name="warn_toast_unagree">你还没有同意协议哦</string>
+    <string name="warn_toast_suggest_isempty">真的不说点...</string>
 </resources>

@@ -3,55 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-  <include layout="@layout/title_bar"/>
+
+    <include layout="@layout/title_bar" />
+
     <LinearLayout style="@style/fr_ll" >
 
         <TextView
             style="@style/fr_tv"
-            android:text="@string/fr_account" />
+            android:text="@string/contact_way_contancter" />
 
         <EditText
-            android:id="@+id/free_register_account_et"
+            android:id="@+id/modify_contact_way_contacts_et"
             style="@style/fr_et" />
     </LinearLayout>
-    
-     <LinearLayout style="@style/fr_ll" >
+
+    <LinearLayout style="@style/fr_ll" >
 
         <TextView
             style="@style/fr_tv"
-            android:text="@string/fr_account" />
+            android:text="@string/contact_way_cellphone" />
 
         <EditText
-            android:id="@+id/free_register_account_et"
+            android:inputType="number"
+            android:maxLength="11"
+            android:id="@+id/modify_contact_way_cellphone_et"
             style="@style/fr_et" />
     </LinearLayout>
-    
-     
-      <LinearLayout style="@style/fr_ll" >
+
+    <LinearLayout style="@style/fr_ll" >
 
         <TextView
             style="@style/fr_tv"
-            android:text="@string/fr_account" />
+            android:text="@string/contact_way_telephone" />
 
         <EditText
-            android:id="@+id/free_register_account_et"
+            android:inputType="number"
+            android:id="@+id/modify_contact_way_telephone_et"
             style="@style/fr_et" />
     </LinearLayout>
-    
-      
-       <LinearLayout style="@style/fr_ll" >
+
+    <LinearLayout style="@style/fr_ll" >
 
         <TextView
             style="@style/fr_tv"
-            android:text="@string/fr_account" />
+            android:text="@string/contact_way_mail" />
 
         <EditText
-            android:id="@+id/free_register_account_et"
+              android:inputType="textEmailAddress"
+            android:id="@+id/modify_contact_way_mail_et"
             style="@style/fr_et" />
     </LinearLayout>
-      <Button
-        android:id="@+id/free_register_submit_bt"
+
+    <Button
+        android:id="@+id/modify_contact_way_submit_bt"
         style="@style/bt_orange"
         android:text="@string/next" />
-       
+
 </LinearLayout>

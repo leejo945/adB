@@ -15,6 +15,12 @@ public class StringUtils {
 	private final static Pattern emailer = Pattern
 			.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
 
+	
+	
+	
+	
+	
+	
 	/**
 	 * 是否是标准卡号
 	 * 
@@ -44,7 +50,7 @@ public class StringUtils {
 	 * @return
 	 */
 	public static boolean isStandardPwd(String number) {
-		return true;
+		return number.length()<6?false:true;
 	}
 
 	/**

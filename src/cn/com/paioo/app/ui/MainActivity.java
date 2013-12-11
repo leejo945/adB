@@ -12,14 +12,20 @@ import cn.com.paioo.app.entity.SlideMenuItem;
 import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
 
+import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.Display;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 
 /**
  * 
@@ -36,7 +42,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends SlidingFragmentActivity {
 	public FragmentManager fm;
-    public static Fragment mHome,mFinance,mPreView,mSetup;
+	public static Fragment mHome, mFinance, mPreView, mSetup;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,31 +59,28 @@ public class MainActivity extends SlidingFragmentActivity {
 
 	private void init() {
 		// TitleUtil.show(this);
-	
+
 		createSlideMenu();
 		initMainTab();
 
 	}
 
+	 
 	private void initMainTab() {
 		initFragment();
-		
-		
-		
+
 		// TODO Auto-generated method stub
 		RadioGroup rg = (RadioGroup) findViewById(R.id.main_tab_rg);
+
 		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.main_tab_home_rb:
-					if(mHome==null){//如果为空，创建并显示。隐藏其他的。
-						//mHome = ;
-						
-					}
+					 
 					fm.beginTransaction()
-					.replace(R.id.ccc, new NavHomeFragment()).commit();
+							.replace(R.id.ccc, new NavHomeFragment()).commit();
 					break;
 
 				case R.id.main_tab_finance_rb:
@@ -105,12 +109,10 @@ public class MainActivity extends SlidingFragmentActivity {
 	private void initFragment() {
 		fm = getSupportFragmentManager();
 		mHome = new NavHomeFragment();
-		//进入的时候默认显示界面
-		fm.beginTransaction()
-		.replace(R.id.ccc, mHome).commit();
-		
-		
-		
+		// 进入的时候默认显示界面
+		fm.beginTransaction().replace(R.id.ccc, mHome).commit();
+        RadioButton rb = (RadioButton) findViewById(R.id.main_tab_home_rb);
+        rb.setChecked(true);
 	}
 
 	private void createSlideMenu() {

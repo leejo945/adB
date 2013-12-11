@@ -20,36 +20,36 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/suggest_submit_bt"
         style="@style/bt_orange"
         android:layout_below="@id/suggest_et"
         android:text="@string/submit" />
 
-    
-
     <RelativeLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/suggest_call_rl"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
         android:background="@drawable/selector_suggest_telephone_bg" >
 
         <LinearLayout
-            android:gravity="center_vertical"
+            
+             
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_marginRight="10dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/suggest_telephone"
-               />
+                android:layout_marginRight="10dp"
+                android:src="@drawable/suggest_telephone" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,10 +59,13 @@
                 android:textSize="@dimen/textSize_large" />
         </LinearLayout>
     </RelativeLayout>
-<TextView
+
+    <TextView
+        android:textColor="@android:color/darker_gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_above="@id/suggest_call_rl"
+        android:layout_centerInParent="true"
         android:text="@string/ask_phone_number" />
+
 </RelativeLayout>

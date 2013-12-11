@@ -5,7 +5,9 @@
     android:background="@drawable/bg"
     android:orientation="vertical" >
 
-    <ImageView style="@style/logo" />
+    <ImageView 
+     
+        style="@style/logo" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -30,6 +32,7 @@
                 android:src="@drawable/login_mail_icon" />
 
             <AutoCompleteTextView
+                android:inputType="textEmailAddress"
                 android:id="@+id/login_mail_et"
                 style="@style/login_mail_pwd_et"
                 android:hint="@string/email" />
@@ -55,6 +58,7 @@
                 android:src="@drawable/login_lock_icon" />
 
             <EditText
+                android:inputType="textPassword"
                 android:id="@+id/login_pwd_et"
                 style="@style/login_mail_pwd_et"
                 android:hint="@string/pwd" />

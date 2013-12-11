@@ -4,11 +4,15 @@ package cn.com.paioo.app.util;
 import com.slidingmenu.lib.app.SlidingActivity;
 
 import cn.com.paioo.app.R;
+import cn.com.paioo.app.ui.AboutUs;
 import cn.com.paioo.app.ui.ExtraCompanyInfoActivity;
 import cn.com.paioo.app.ui.ForgetActivity;
 import cn.com.paioo.app.ui.MainActivity;
+import cn.com.paioo.app.ui.ModifyContactWayActivity;
+import cn.com.paioo.app.ui.ModifyPassword;
 import cn.com.paioo.app.ui.RechargeRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
+import cn.com.paioo.app.ui.SuggestActivity;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
@@ -73,10 +77,33 @@ public class TitleUtil {
         	titleName.setText(R.string.eci_company_info_title);
         	back.setVisibility(View.VISIBLE);
         }
+        //忘记密码
         if(ForgetActivity.class.getSimpleName().equals(cur)){
         	titleName.setText(R.string.find_pwd);
         	back.setVisibility(View.VISIBLE);
         }
+        //修改联系方式
+        if(ModifyContactWayActivity.class.getSimpleName().equals(cur)){
+        	titleName.setText(R.string.modify_contact_way);
+        	back.setVisibility(View.VISIBLE);
+        }
+        //修改密码
+        
+        if(ModifyPassword.class.getSimpleName().equals(cur)){
+        	titleName.setText(R.string.modify_password);
+        	back.setVisibility(View.VISIBLE);
+        }
+        //意见反馈
+        if(SuggestActivity.class.getSimpleName().equals(cur)){
+        	titleName.setText(R.string.suggest);
+        	back.setVisibility(View.VISIBLE);
+        }
+        //关于我们
+        if(AboutUs.class.getSimpleName().equals(cur)){
+        	titleName.setText(R.string.about_us);
+        	back.setVisibility(View.VISIBLE);
+        }
+        
         if(MainActivity.class.getSimpleName().equals(cur)){
         	slidemenu.setVisibility(View.VISIBLE);
         }

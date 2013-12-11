@@ -7,11 +7,14 @@
 
     <!-- 侧滑菜单背景颜色 -->
     <color name="slidemenu_menu_bg">#333331</color>
+     
     <!-- 侧滑菜单点击条目，选择条目颜色，分割线颜色，titlebar颜色 -->
     <color name="title_bar_bg">#222222</color>
     <!-- 侧滑菜单分割线颜色 -->
     <color name="slidemenu_menu_diver">#434341</color>
 
+   
+    
     <!-- 首页几个彩色模块的颜色 -->
     <!-- 左上角 -->
     <color name="home_orange">#FD621F</color>

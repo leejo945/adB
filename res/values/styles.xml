@@ -89,11 +89,11 @@
     </style>
 
     <style name="login_mail_pwd_et">
+        <item name="android:singleLine">true</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@null</item>
-        <item name="android:inputType">textEmailAddress</item>
     </style>
 
     <style name="login_login_register_bt" parent="bt_style">
@@ -102,6 +102,8 @@
     </style>
 
     <style name="logo">
+           
+          <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">60dp</item>
@@ -164,15 +166,29 @@
     </style>
 
     <!-- slidemenu 菜单条目 -->
-    <style name="slidemenu_item_rb">
+    <style name="slidemenu_item_ll">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/selector_slidemenu_item_bg</item>
-        <item name="android:button">@null</item>
-        <item name="android:drawableLeft">@drawable/ic_launcher</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="slidemenu_item_iv">
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">22dp</item>
+        <item name="android:layout_height">22dp</item>
+    </style>
+
+    <style name="slidemenu_item_tv">
         <item name="android:textSize">@dimen/textSize_large</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <!-- title  部分 -->
@@ -186,10 +202,38 @@
 
     <style name="main_tab_rb">
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">78dp</item>
+        <item name="android:gravity">center</item>  
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:padding">0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
         <item name="android:button">@null</item>
     </style>
+    
+    
+    
+       
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <style name="title_iv_right">
         <item name="android:visibility">gone</item>

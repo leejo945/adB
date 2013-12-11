@@ -21,7 +21,7 @@
         <Button
             android:id="@+id/splash_login_bt"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bt_height"
+            android:layout_height="@dimen/splash_bt_height"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:background="@drawable/selector_bt_orange"
@@ -33,7 +33,7 @@
         <Button
             android:id="@+id/splash_register_bt"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bt_height"
+            android:layout_height="@dimen/splash_bt_height"
             android:layout_weight="1"
             android:background="@drawable/selector_bt_white"
             android:onClick="onClick"
