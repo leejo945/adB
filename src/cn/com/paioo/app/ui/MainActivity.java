@@ -12,6 +12,7 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.SlideMenuAdapter;
 import cn.com.paioo.app.entity.SlideMenuItem;
 import cn.com.paioo.app.util.Constant;
+import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
 
@@ -57,15 +58,16 @@ public class MainActivity extends SlidingFragmentActivity implements
 			mSlideMenuItemSetup;
 
 	// main。。tab
-	private ImageButton mTabHome, mTabFinance, mTabPreview, mTabSetup;
+	 private RadioButton mTabHome, mTabFinance, mTabPreview, mTabSetup;
 
 	private FragmentManager fm;
-	private ArrayList<ImageButton> tabs;
+	 
 	private static int mainIndex = Constant.MAIN_INDEX_HOME;
 
 	// 侧滑菜单当前的选项 ,默认为首页
 	private static int slidemenuCurSel = R.id.slidemenu_item_home_ll;
-	private static int tabCurSel = R.id.main_tab_home_ib;
+	private Map<Integer, View> slidemenuItems = new HashMap<Integer, View>();
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 		setBehindContentView(R.layout.slidemenu_menu);
 		// 初始化侧滑菜单
 
-		//init();
+		 init();
 
 	}
 
@@ -87,8 +89,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 		setListener();
 	}
 
-	Map<Integer, View> map = new HashMap<Integer, View>();
-
+	
 	private void initSlideMenu() {
 		// // customize the SlidingMenu
 		SlidingMenu sm = getSlidingMenu();
@@ -122,15 +123,18 @@ public class MainActivity extends SlidingFragmentActivity implements
 		mSlideMenuItemTicket = (LinearLayout) findViewById(R.id.slidemenu_item_ticket_ll);
 		mSlideMenuItemSetup = (LinearLayout) findViewById(R.id.slidemenu_item_setup_ll);
 
-		map.put(R.id.slidemenu_item_home_ll, mSlideMenuItemHome);
-		map.put(R.id.slidemenu_item_finac_ll, mSlideMenuItemFinance);
-		map.put(R.id.slidemenu_item_preview_ll, mSlideMenuItemPreview);
-		map.put(R.id.slidemenu_item_recharge_ll, mSlideMenuItemRecharge);
-		map.put(R.id.slidemenu_item_friends_ll, mSlideMenuItemFriend);
-		map.put(R.id.slidemenu_item_transfer_ll, mSlideMenuItemTransfer);
-		map.put(R.id.slidemenu_item_ticket_ll, mSlideMenuItemTicket);
-		map.put(R.id.slidemenu_item_setup_ll, mSlideMenuItemSetup);
+		slidemenuItems.put(R.id.slidemenu_item_home_ll, mSlideMenuItemHome);
+		slidemenuItems.put(R.id.slidemenu_item_finac_ll, mSlideMenuItemFinance);
+		slidemenuItems.put(R.id.slidemenu_item_preview_ll, mSlideMenuItemPreview);
+		slidemenuItems.put(R.id.slidemenu_item_recharge_ll, mSlideMenuItemRecharge);
+		slidemenuItems.put(R.id.slidemenu_item_friends_ll, mSlideMenuItemFriend);
+		slidemenuItems.put(R.id.slidemenu_item_transfer_ll, mSlideMenuItemTransfer);
+		slidemenuItems.put(R.id.slidemenu_item_ticket_ll, mSlideMenuItemTicket);
+		slidemenuItems.put(R.id.slidemenu_item_setup_ll, mSlideMenuItemSetup);
 
+		
+		//初始选中的菜单
+		slidemenuItems.get(slidemenuCurSel).setBackgroundResource(R.drawable.slidemenu_item_bg_pre_sel);
 	}
 
 	private void initMainTab() {
@@ -139,21 +143,12 @@ public class MainActivity extends SlidingFragmentActivity implements
 		// 进入的时候默认显示界面
 		fm.beginTransaction().replace(R.id.ccc, mFragmentHome).commit();
 
-		mTabHome = (ImageButton) findViewById(R.id.main_tab_home_ib);
-		mTabFinance = (ImageButton) findViewById(R.id.main_tab_finance_ib);
-		mTabPreview = (ImageButton) findViewById(R.id.main_tab_preview_ib);
-		mTabSetup = (ImageButton) findViewById(R.id.main_tab_setup_ib);
-
-		map.put(R.id.main_tab_home_ib, mTabHome);
-		map.put(R.id.main_tab_finance_ib, mTabFinance);
-		map.put(R.id.main_tab_preview_ib, mTabPreview);
-		map.put(R.id.main_tab_setup_ib, mTabSetup);
-
-		// tabs = new ArrayList<ImageButton>();
-		// tabs.add((ImageButton) findViewById(R.id.main_tab_home_ib));
-		// tabs.add((ImageButton) findViewById(R.id.main_tab_finance_ib));
-		// tabs.add((ImageButton) findViewById(R.id.main_tab_preview_ib));
-		// tabs.add((ImageButton) findViewById(R.id.main_tab_setup_ib));
+		mTabHome = (RadioButton) findViewById(R.id.main_tab_home_rb);
+		mTabFinance = (RadioButton) findViewById(R.id.main_tab_finance_rb);
+		mTabPreview = (RadioButton) findViewById(R.id.main_tab_preview_rb);
+		mTabSetup = (RadioButton) findViewById(R.id.main_tab_setup_rb);
+ 
+ 
 	}
 
 	private void setListener() {
@@ -175,11 +170,11 @@ public class MainActivity extends SlidingFragmentActivity implements
 		// 标记是不是点击得tab，如果是tab就不用执行 toggle
 		boolean isTab = false;
 		int id = v.getId();
+		
+		
 		switch (id) {
-
 		// tab+slidemenu 首页 (无论点击tab还是menu。二者都要同时变化)
-		case R.id.main_tab_home_ib:
-			mTabHome.setImageResource(R.drawable.main_tab_home_pre_che);
+		case R.id.main_tab_home_rb:
 			isTab = true;
 		case R.id.slidemenu_item_home_ll:
 			mainIndex = Constant.MAIN_INDEX_HOME;
@@ -188,20 +183,16 @@ public class MainActivity extends SlidingFragmentActivity implements
 			break;
 
 		// tab+slidemenu 财务
-		case R.id.main_tab_finance_ib:
-			mTabFinance.setImageResource(R.drawable.main_tab_finance_pre_che);
+		case R.id.main_tab_finance_rb:
 			isTab = true;
 		case R.id.slidemenu_item_finac_ll:
 			mainIndex = Constant.MAIN_INDEX_FINANCE;
-			ImageButton ib1 = (ImageButton) findViewById(R.id.main_tab_finance_ib);
-			ib1.setImageResource(R.drawable.main_tab_finance_pre_che);
 			fm.beginTransaction().replace(R.id.ccc, new NavFinanceFragment())
 					.commit();
 			break;
 
 		// tab+slidemenu 预览
-		case R.id.main_tab_preview_ib:
-			mTabPreview.setImageResource(R.drawable.main_tab_preview_pre_che);
+		case R.id.main_tab_preview_rb:
 			isTab = true;
 		case R.id.slidemenu_item_preview_ll:
 			mainIndex = Constant.MAIN_INDEX_PREVIEW;
@@ -211,8 +202,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			break;
 
 		// tab+slidemenu 设置
-		case R.id.main_tab_setup_ib:
-			mTabSetup.setImageResource(R.drawable.main_tab_setup_pre_che);
+		case R.id.main_tab_setup_rb:
 			isTab = true;
 		case R.id.slidemenu_item_setup_ll:
 			mainIndex = Constant.MAIN_INDEX_SETUP;
@@ -224,15 +214,17 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 		// 账号充值
 		case R.id.slidemenu_item_recharge_ll: {
-
+			UIHelper.switcher(this, AccountRechargeActivity.class);
 			break;
 		}
 		// 推荐好友
 		case R.id.slidemenu_item_friends_ll: {
+			UIHelper.switcher(this, NavRecommendFriendsActivity.class);
 			break;
 		}
 		// 余额转账
 		case R.id.slidemenu_item_transfer_ll: {
+			UIHelper.switcher(this, TransferAccountActivity.class);
 			break;
 		}
 		// 优惠券
@@ -241,6 +233,23 @@ public class MainActivity extends SlidingFragmentActivity implements
 		}
 
 		}
+		
+		
+		if(!isTab&&id!=slidemenuCurSel){//如果当前选中的条目和当前点击的条目是一样的。就不会做处理了。
+			MyToast.show(this, "aaaa");
+			//将原来的item背景还原
+			View item = slidemenuItems.get(slidemenuCurSel);
+			if(item!=null){
+				item.setBackgroundResource(R.drawable.slidemenu_item_bg_nor);
+				//新点击条目改变背景
+				slidemenuItems.get(id).setBackgroundResource(R.drawable.slidemenu_item_bg_pre_sel);
+				slidemenuCurSel = id;
+			}
+			
+		}
+		
+		
+		
 
 		TitleUtil.show(this, mainIndex);
 		// 是侧滑菜单才执行

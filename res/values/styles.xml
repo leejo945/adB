@@ -127,7 +127,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
     </style>
 
     <style name="small_color_bar_inner_text_tv">
@@ -166,7 +166,8 @@
 
     <!-- slidemenu 菜单条目 -->
     <style name="slidemenu_item_ll">
-         
+        
+         <item name="android:visibility">gone</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">15dp</item>
@@ -200,11 +201,10 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
-    <style name="main_tab_ib">
-         
-           
+    <style name="main_tab_rb">
             
-        
+           
+           
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -225,7 +225,7 @@
     <style name="comm_money_orange">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">8dp</item>
         <item name="android:text">1000.00</item>
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">50sp</item>
@@ -237,10 +237,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">40dp</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingRight">20dp</item>
-        <item name="android:paddingTop">20dp</item>
+        <item name="android:padding">20dp</item>
+         
     </style>
   <style 
       name="preview_detailed_buttom"

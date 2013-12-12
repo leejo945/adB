@@ -87,8 +87,9 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/finance_adconsume_ll"
             style="@style/small_color_bar_inner"
-            android:background="@color/powder_blue2" >
+            android:background="@drawable/selector_color_bar_powder_blue2" >
 
             <TextView
                 style="@style/small_color_bar_inner_text_tv"

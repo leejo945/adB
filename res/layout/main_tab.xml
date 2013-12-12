@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="70dp"
     android:layout_alignParentBottom="true"
+    android:paddingTop="10dp"
     android:background="@drawable/main_tab_bg"
     android:gravity="center_vertical"
     android:orientation="horizontal" >
 
     <RadioButton
-        android:id="@+id/main_tab_home_ib"
-        style="@style/main_tab_ib"
+      
+        android:checked="true"
+        android:id="@+id/main_tab_home_rb"
+        style="@style/main_tab_rb"
         android:drawableTop="@drawable/selector_tab_home" />
 
     <RadioButton
-        android:id="@+id/main_tab_finance_ib"
-        style="@style/main_tab_ib"
+        android:id="@+id/main_tab_finance_rb"
+        style="@style/main_tab_rb"
         android:drawableTop="@drawable/selector_tab_finance" />
 
     <RadioButton
-        android:id="@+id/main_tab_preview_ib"
-        style="@style/main_tab_ib"
+        android:id="@+id/main_tab_preview_rb"
+        style="@style/main_tab_rb"
         android:drawableTop="@drawable/selector_tab_preview" />
 
     <RadioButton
-        android:id="@+id/main_tab_setup_ib"
-        style="@style/main_tab_ib"
+        android:id="@+id/main_tab_setup_rb"
+        style="@style/main_tab_rb"
         android:drawableTop="@drawable/selector_tab_setup" />
 
 </RadioGroup>

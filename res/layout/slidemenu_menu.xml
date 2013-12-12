@@ -11,6 +11,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            
+            >
+
+            <RadioButton
+                  android:paddingLeft="20dp"
+               
+                android:text="首页"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                  android:background="@drawable/selector_slidemenu_item_bg"
+                android:button="@drawable/slidemenu_home" />
+
+            <RadioButton
+                 android:text="首页"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_slidemenu_item_bg"
+                android:button="@drawable/slidemenu_home" />
+        </RadioGroup>
+
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="100dp"
@@ -18,11 +42,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/slidemenu_temp_logo" />
+            android:src="@drawable/slidemenu_temp_logo"
+            android:visibility="gone" />
 
         <!-- 首页 -->
 
-        <LinearLayout 
+        <LinearLayout
             android:id="@+id/slidemenu_item_home_ll"
             style="@style/slidemenu_item_ll" >
 
@@ -40,8 +65,8 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout 
-             android:id="@+id/slidemenu_item_finac_ll"
+        <LinearLayout
+            android:id="@+id/slidemenu_item_finac_ll"
             style="@style/slidemenu_item_ll" >
 
             <ImageView
@@ -59,8 +84,8 @@
             android:background="@drawable/slidemenu_diver_line" />
 
         <LinearLayout
-             android:id="@+id/slidemenu_item_preview_ll"
-             style="@style/slidemenu_item_ll" >
+            android:id="@+id/slidemenu_item_preview_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -76,8 +101,8 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout 
-             android:id="@+id/slidemenu_item_recharge_ll"
+        <LinearLayout
+            android:id="@+id/slidemenu_item_recharge_ll"
             style="@style/slidemenu_item_ll" >
 
             <ImageView
@@ -95,9 +120,8 @@
             android:background="@drawable/slidemenu_diver_line" />
 
         <LinearLayout
-             android:id="@+id/slidemenu_item_friends_ll"
-            
-             style="@style/slidemenu_item_ll" >
+            android:id="@+id/slidemenu_item_friends_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -113,8 +137,8 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout 
-             android:id="@+id/slidemenu_item_transfer_ll"
+        <LinearLayout
+            android:id="@+id/slidemenu_item_transfer_ll"
             style="@style/slidemenu_item_ll" >
 
             <ImageView
@@ -131,8 +155,8 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout 
-             android:id="@+id/slidemenu_item_ticket_ll"
+        <LinearLayout
+            android:id="@+id/slidemenu_item_ticket_ll"
             style="@style/slidemenu_item_ll" >
 
             <ImageView
@@ -149,8 +173,8 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout 
-             android:id="@+id/slidemenu_item_setup_ll"
+        <LinearLayout
+            android:id="@+id/slidemenu_item_setup_ll"
             style="@style/slidemenu_item_ll" >
 
             <ImageView

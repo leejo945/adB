@@ -29,10 +29,10 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
                     android:text="2355.33元"
-                    android:textSize="@dimen/textSize___large"
+                    android:textSize="@dimen/textSize__large"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,7 +58,7 @@
                 android:paddingLeft="8dp" >
 
                 <EditText
-                    android:id="@+id/free_register_account_et"
+                    android:id="@+id/transfer_usernumber_et"
                     style="@style/fr_et"
                     android:hint="@string/paioo_usernumber"
                     android:paddingRight="1dp" />
@@ -76,6 +76,8 @@
             </RelativeLayout>
 
             <EditText
+                  android:id="@+id/transfer_how_et"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
@@ -88,6 +90,7 @@
                 android:singleLine="true" />
 
             <Button
+                android:id="@+id/transfer_next_bt"
                 style="@style/bt_orange"
                 android:text="@string/next" />
         </LinearLayout>

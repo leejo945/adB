@@ -99,7 +99,10 @@
     <string name="carid">卡号：</string>
     <string name="business_success">交易成功</string>
     <string name="business_fail">交易失败</string>
-
+ <string name="title_bar_title_recharge_rocord">充值记录</string>
+     <!-- 广告消费记录 -->
+     <string name="title_bar_title_adcosume">广告消费记录</string>
+    
     <!-- 推荐好友界面 -->
     <string name="your_re_number">您的专属推荐码：</string>
     <string name="find_friends_install_app1">邀请好友安装APP并注册成功，可获取1元广告充值奖励</string>
