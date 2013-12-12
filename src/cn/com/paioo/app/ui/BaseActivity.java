@@ -10,7 +10,7 @@ public class BaseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		App.addActivity(this);
-		TitleUtil.show(this);
+		TitleUtil.show(this,-1);
 		init();
 		setListener();
 	}

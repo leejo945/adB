@@ -1,14 +1,15 @@
  
 package cn.com.paioo.app.ui;
 
+ 
 import cn.com.paioo.app.R;
 import android.os.Bundle;
 
-public class PreviewActivity extends BaseActivity {
+public class RefereeIncomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
-    	setContentView(R.layout.preview);
+    	setContentView(R.layout.referee_income);
     	super.onCreate(savedInstanceState);
     }
 }

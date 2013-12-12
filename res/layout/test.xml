@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingTop="100dp"
+    android:orientation="horizontal"
+    android:background="#ff0000"
+     >
+
+       <RadioButton
+            android:drawableTop="@drawable/selector_tab_home" 
+            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+             android:layout_weight="1"
+              android:background="@null"
+             />
+
+        <RadioButton
+            android:drawableTop="@drawable/selector_tab_finance" 
+              android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+             android:layout_weight="1"
+             />
+
+        <RadioButton
+             android:button="@null"
+           android:layout_weight="1"
+            android:drawableTop="@drawable/selector_tab_preview" 
+             android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          />
+
+        <RadioButton
+             android:layout_weight="1"
+             android:button="@null"
+               android:drawableTop="@drawable/selector_tab_setup" 
+             android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+              />
+    </RadioGroup>
+

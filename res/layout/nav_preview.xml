@@ -3,14 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-<include 
-         
-        layout="@layout/title_bar"/>
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="预览界面"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <cn.com.paioo.app.view.PullToRefreshView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <cn.com.paioo.app.view.CustomListView
+                android:id="@+id/preview_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </cn.com.paioo.app.view.CustomListView>
+        </LinearLayout>
+    </cn.com.paioo.app.view.PullToRefreshView>
 
 </LinearLayout>

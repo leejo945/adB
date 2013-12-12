@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -55,7 +53,9 @@
             android:layout_marginRight="5dp"
             android:background="@color/pistac" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView
+                style="@style/small_color_bar_inner_text_tv"
+                android:text="@string/total_recharge" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -64,7 +64,9 @@
             style="@style/small_color_bar_inner"
             android:background="@color/yellow" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView
+                style="@style/small_color_bar_inner_text_tv"
+                android:text="@string/recommended_reward" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -77,7 +79,9 @@
             android:layout_marginRight="5dp"
             android:background="@color/powder_peach" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView
+                style="@style/small_color_bar_inner_text_tv"
+                android:text="@string/balance_switch" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -86,7 +90,9 @@
             style="@style/small_color_bar_inner"
             android:background="@color/powder_blue2" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView
+                style="@style/small_color_bar_inner_text_tv"
+                android:text="@string/ad" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>

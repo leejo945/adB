@@ -13,7 +13,9 @@
             android:layout_marginRight="5dp"
             android:background="@color/home_orange" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                android:text="@string/home_top_left"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -22,7 +24,9 @@
             style="@style/small_color_bar_inner"
             android:background="@color/powder_blue1" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                  android:text="@string/home_top_right"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -35,7 +39,9 @@
             android:layout_marginRight="5dp"
             android:background="@color/pistac" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                  android:text="@string/home_middle_left"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -44,7 +50,9 @@
             style="@style/small_color_bar_inner"
             android:background="@color/powder_blue2" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                  android:text="@string/home_middle_right"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -57,7 +65,10 @@
             android:layout_marginRight="5dp"
             android:background="@color/peach" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                
+                  android:text="@string/home_bottom_left"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>
@@ -66,7 +77,9 @@
             style="@style/small_color_bar_inner"
             android:background="@color/orchid" >
 
-            <TextView style="@style/small_color_bar_inner_text_tv" />
+            <TextView 
+                  android:text="@string/home_bottom_right"
+                style="@style/small_color_bar_inner_text_tv" />
 
             <TextView style="@style/small_color_bar_inner_number_tv" />
         </LinearLayout>

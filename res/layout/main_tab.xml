@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_tab_rg"
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
     android:background="@drawable/main_tab_bg"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingBottom="5dp"
-    android:paddingTop="7dp" >
+    android:orientation="horizontal" >
 
-    <ImageButton
-       
+    <RadioButton
         android:id="@+id/main_tab_home_ib"
         style="@style/main_tab_ib"
-        android:src="@drawable/selector_tab_home" />
+        android:drawableTop="@drawable/selector_tab_home" />
 
-    <ImageButton
+    <RadioButton
         android:id="@+id/main_tab_finance_ib"
         style="@style/main_tab_ib"
-         android:src="@drawable/selector_tab_finance" />
+        android:drawableTop="@drawable/selector_tab_finance" />
 
-    <ImageButton
+    <RadioButton
         android:id="@+id/main_tab_preview_ib"
         style="@style/main_tab_ib"
-         android:src="@drawable/selector_tab_preview" />
+        android:drawableTop="@drawable/selector_tab_preview" />
 
-    <ImageButton
+    <RadioButton
         android:id="@+id/main_tab_setup_ib"
         style="@style/main_tab_ib"
-         android:src="@drawable/selector_tab_setup" />
+        android:drawableTop="@drawable/selector_tab_setup" />
 
-</LinearLayout>
+</RadioGroup>

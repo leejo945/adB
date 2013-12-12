@@ -6,22 +6,37 @@
 
     <include layout="@layout/title_bar" />
 
-    <cn.com.paioo.app.util.PullToRefreshView
+    <cn.com.paioo.app.view.PullToRefreshView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <cn.com.paioo.app.view.CustomExpandableListView
-                android:divider="@null"
-                android:id="@+id/recharge_record_elv"
+            <TextView 
+                android:text="充值记录"
+                 android:layout_width="match_parent"
+            android:layout_height="match_parent"
+                
+                />
+            
+            
+            
+            
+            
+            
+            
+            <cn.com.paioo.app.view.PinnedSectionListView
+                android:id="@+id/recharge_record_lv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:groupIndicator="@null" >
-          </cn.com.paioo.app.view.CustomExpandableListView>
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false" >
+         </cn.com.paioo.app.view.PinnedSectionListView>
         </LinearLayout>
-    </cn.com.paioo.app.util.PullToRefreshView>
+   </cn.com.paioo.app.view.PullToRefreshView>
 
 </LinearLayout>

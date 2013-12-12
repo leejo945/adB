@@ -22,7 +22,9 @@
 
         <!-- 首页 -->
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+            android:id="@+id/slidemenu_item_home_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -38,7 +40,9 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+             android:id="@+id/slidemenu_item_finac_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -54,7 +58,9 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout
+             android:id="@+id/slidemenu_item_preview_ll"
+             style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -70,7 +76,9 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+             android:id="@+id/slidemenu_item_recharge_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -86,7 +94,10 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout
+             android:id="@+id/slidemenu_item_friends_ll"
+            
+             style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -102,15 +113,17 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+             android:id="@+id/slidemenu_item_transfer_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
-                android:src="@drawable/slidemenu_bancele" />
+                android:src="@drawable/slidemenu_transfer" />
 
             <TextView
                 style="@style/slidemenu_item_tv"
-                android:text="@string/slidemenu_switch_account" />
+                android:text="@string/slidemenu_transfer" />
         </LinearLayout>
 
         <ImageView
@@ -118,7 +131,9 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+             android:id="@+id/slidemenu_item_ticket_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"
@@ -134,7 +149,9 @@
             android:layout_height="1dp"
             android:background="@drawable/slidemenu_diver_line" />
 
-        <LinearLayout style="@style/slidemenu_item_ll" >
+        <LinearLayout 
+             android:id="@+id/slidemenu_item_setup_ll"
+            style="@style/slidemenu_item_ll" >
 
             <ImageView
                 style="@style/slidemenu_item_iv"

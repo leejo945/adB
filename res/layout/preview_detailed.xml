@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    >
 
     <include layout="@layout/title_bar" />
 
@@ -15,21 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingBottom="15dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:padding="10dp" >
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/preview_img"
+                android:layout_height="250dp"
+                android:background="@drawable/preview_detailed_temp_img"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
@@ -53,15 +51,20 @@
             </LinearLayout>
 
             <TextView
+                android:padding="5dp"
+                android:textSize="@dimen/textSize_large_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2013什么乱七八糟的春晓秋冬装"
                 android:textStyle="bold" />
 
             <TextView
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                 
                 android:text="2013什么乱七八糟的春晓秋  3什么晓秋冬装2013什么乱七八糟的春晓秋冬装2013什么乱七八糟的春晓秋冬装" />
 
             <LinearLayout
@@ -80,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="天河城店"
                     android:textColor="@color/orange"
-                    android:textSize="@dimen/textSize_large"
+                    android:textSize="@dimen/textSize_large_"
                     android:textStyle="bold" />
 
                 <TextView
@@ -89,39 +92,34 @@
                     android:text="天河什么区什么县什么玩意" />
 
                 <LinearLayout
-                    
                     android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
                     <ImageView
-                        android:paddingRight="20dp"
+                        
                         android:id="@+id/imageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/preview_cbd" />
+                        style="@style/preview_detailed_buttom"
+                        android:src="@drawable/preview_detailed_cbd" />
 
                     <ImageView 
-                          android:paddingRight="20dp"
+                          
                         android:id="@+id/imageView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/preview_bus" />
+                      style="@style/preview_detailed_buttom"
+                        android:src="@drawable/preview_detailed_bus" />
 
                     <ImageView
-                          android:paddingRight="20dp"
+                          
                         android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/preview_business_home" />
+                          style="@style/preview_detailed_buttom"
+                        android:src="@drawable/preview_detailed_business_home" />
 
                     <ImageView
-                          android:paddingRight="20dp"
+                           
                         android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/preview_hours" />
+                    style="@style/preview_detailed_buttom"
+                        android:src="@drawable/preview_detailed_time" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

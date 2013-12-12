@@ -57,8 +57,8 @@ public class CustomListView extends ListView implements OnScrollListener {
 			int visibleItemCount, int totalItemCount) {
 
 		int lastVisiblePosition = view.getLastVisiblePosition();
-		Log.e(tag, (lastVisiblePosition == (totalItemCount - 1)) + "");
-		Log.e(tag, currScrollState + "-----------" + lastVisiblePosition);
+//		Log.e(tag, (lastVisiblePosition == (totalItemCount - 1)) + "");
+//		Log.e(tag, currScrollState + "-----------" + lastVisiblePosition);
 
 		if (lastVisiblePosition == (totalItemCount - 1)
 				&& lastVisiblePosition > 0) {

@@ -34,19 +34,19 @@
     <string name="login2">登\t\t录</string>
 
     <!-- free_register.xml -->
-    <string name="fr_account">账\t\t号：</string>
-    <string name="fr_pwd">密  码：</string>
+    <string name="fr_account">账&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号：</string>
+    <string name="fr_pwd">密&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;码：</string>
     <string name="fr_sure_pwd">确认密码：</string>
-    <string name="fr_contacts">联 系 人：</string>
-    <string name="fr_cellphone">手 机 号：</string>
-    <string name="fr_mail">邮 \t\t箱：</string>
+    <string name="fr_contacts">联&#160;&#160;系&#160;&#160;人：</string>
+    <string name="fr_cellphone">手&#160;&#160;机&#160;&#160;号：</string>
+    <string name="fr_mail">邮&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;箱：</string>
     <string name="next">下一步</string>
     <string name="user_name">用户名：</string>
 
     <!-- extra_company_info.xml -->
     <string name="eci_company_name">公司名称：</string>
-    <string name="eci_company_location">所  在  地：</string>
-    <string name="eci_company_address">地        址：</string>
+    <string name="eci_company_location">所&#160;&#160;在&#160;&#160;地：</string>
+    <string name="eci_company_address">地&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;址：</string>
     <string name="eci_company_property">企业性质：</string>
     <string name="eci_company_capital">注册资本：</string>
     <string name="eci_company_info_title">补充公司信息</string>
@@ -59,11 +59,24 @@
     <string name="slidemenu_preview">预&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;览</string>
     <string name="slidemenu_recharge">账号充值</string>
     <string name="slidemenu_recommend_friends">推荐好友</string>
-    <string name="slidemenu_switch_account">余额转账</string>
+    <string name="slidemenu_transfer">余额转账</string>
     <string name="slidemenu_coupon">优&#160;&#160;惠&#160;&#160;劵</string>
     <string name="slidemenu_setup">设&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;置</string>
-    <string name="a_week_trend">一周点击走势</string>
-
+  
+   <!-- 主页。home.xml -->
+       <string name="home_top_left">账户余额</string> 
+        <string name="home_top_right">实时扣费</string> 
+        
+         <string name="home_middle_left">点击量</string> 
+          <string name="home_middle_right">展现量</string> 
+           <string name="home_bottom_left">点击率</string> 
+            <string name="home_bottom_right">点击花费</string> 
+      <string name="a_week_trend">一周点击走势</string>
+    
+    
+      
+      
+      
     <!-- nav_finance.xml -->
     <string name="current_balance">当前余额</string>
     <string name="frozen_capital">冻结金额0元</string>
@@ -72,7 +85,15 @@
     <string name="recommended_reward">推荐奖励</string>
     <string name="balance_switch">余额转账</string>
     <string name="ad">广告消费</string>
-
+   <string name="title_bar_title_finance">财务</string>
+   
+   
+   <!-- 导航 预览 -->
+   <string name="title_bar_title_preview">预览</string>
+   
+   <!-- 预览详情 -->
+   <string name="title_bar_title_preview_detailed">预览详情</string>
+   
     <!-- 充值记录，recharge_record.xml -->
 
     <string name="carid">卡号：</string>
@@ -101,6 +122,7 @@
     <string name="submit">提\t\t交</string>
 
     <!-- 设置tab -->
+     <string name="title_bar_title_setup">设置</string>
     <string name="modify_contact_way">修改联系方式</string>
     <string name="modify_password">修改密码</string>
     <string name="suggest">意见反馈</string>
@@ -116,12 +138,12 @@
     <!-- 修改联系方式 -->
     <string name="contact_way_contancter">联系人：</string>
     <string name="contact_way_cellphone">手机号：</string>
-    <string name="contact_way_telephone">固\t话：</string>
-    <string name="contact_way_mail">邮\t箱：</string>
+    <string name="contact_way_telephone">固&#160;&#160;&#160;&#160;话：</string>
+    <string name="contact_way_mail">邮&#160;&#160;&#160;&#160;箱：</string>
 
     <!-- 修改密码界面 -->
     <string name="modify_old_password">现在密码：</string>
-    <string name="modify_new_pasword">密\t\t\t码：</string>
+    <string name="modify_new_pasword">密&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;码：</string>
     <string name="modify_sure_password">确认密码：</string>
    <string name="modify_password_warn">6位以上含字母和数字</string>
     <!-- 意见反馈 -->

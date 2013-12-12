@@ -45,7 +45,7 @@
                     android:paddingRight="1dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="1dp"
@@ -53,7 +53,7 @@
                     android:layout_marginTop="1dp"
                     android:background="@drawable/transfer_card_bg"
                     android:padding="10dp"
-                    android:src="@drawable/transfer_card" />
+                    android:src="@drawable/qr_code" />
             </RelativeLayout>
 
             <EditText

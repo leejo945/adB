@@ -134,7 +134,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">@string/total_recharge</item>
+      
     </style>
 
     <style name="small_color_bar_inner_number_tv">
@@ -166,6 +166,7 @@
 
     <!-- slidemenu 菜单条目 -->
     <style name="slidemenu_item_ll">
+         
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">15dp</item>
@@ -200,10 +201,14 @@
     </style>
 
     <style name="main_tab_ib">
-        <item name="android:onClick">onClick</item>
+         
+           
+            
+        
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
         <item name="android:background">@null</item>
     </style>
 
@@ -237,5 +242,11 @@
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingTop">20dp</item>
     </style>
-
+  <style 
+      name="preview_detailed_buttom"
+      >
+         
+      <item name="android:layout_width">80dp</item>
+         <item name="android:layout_height">80dp</item>
+  </style>
 </resources>
