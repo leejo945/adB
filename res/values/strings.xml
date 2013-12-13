@@ -58,9 +58,9 @@
     <string name="slidemenu_finance">财&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;务</string>
     <string name="slidemenu_preview">预&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;览</string>
     <string name="slidemenu_recharge">账号充值</string>
-    <string name="slidemenu_recommend_friends">推荐好友</string>
+    <string name="slidemenu_friends">推荐好友</string>
     <string name="slidemenu_transfer">余额转账</string>
-    <string name="slidemenu_coupon">优&#160;&#160;惠&#160;&#160;劵</string>
+    <string name="slidemenu_ticket">优&#160;&#160;惠&#160;&#160;劵</string>
     <string name="slidemenu_setup">设&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;置</string>
   
    <!-- 主页。home.xml -->

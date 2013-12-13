@@ -16,7 +16,7 @@
             android:layout_height="match_parent" >
 
             <TextView 
-                android:text="充值记录"
+                android:text="充值记录,广告消费记录  转账记录  都是同一个界面不同的数据"
                  android:layout_width="match_parent"
             android:layout_height="match_parent"
                 

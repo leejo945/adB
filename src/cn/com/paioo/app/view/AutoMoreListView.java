@@ -13,23 +13,23 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
-public class CustomListView extends ListView implements OnScrollListener {
+public class AutoMoreListView extends ListView implements OnScrollListener {
 	String tag = "CustomListView";
 	private Context context;
 	private int currScrollState;
 
-	public CustomListView(Context context, AttributeSet attrs, int defStyle) {
+	public AutoMoreListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomListView(Context context, AttributeSet attrs) {
+	public AutoMoreListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.context = context;
 		setOnScrollListener(this);
 	}
 
-	public CustomListView(Context context) {
+	public AutoMoreListView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}

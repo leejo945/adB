@@ -9,14 +9,18 @@ import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.view.CustomExpandableListView;
 import cn.com.paioo.app.view.PinnedSectionListView;
 import android.os.Bundle;
-
-public class RechargeRecordActivity extends BaseActivity {
+/**
+ * 	 充值记录,广告消费记录  转账记录  都是同一个界面不同的数据
+ * @author lee
+ *
+ */
+public class ThreeInOneRecordActivity extends BaseActivity {
 	private PinnedSectionListView mPSLV; 
 	private RechargeRecordAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.recharge_record);
+		setContentView(R.layout.three_in_one);
 		super.onCreate(savedInstanceState);
 	}
 

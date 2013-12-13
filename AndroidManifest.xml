@@ -27,13 +27,12 @@
         </activity>
         <activity android:name=".ui.SplashActivity" >
         </activity>
-        <activity android:name=".ui.AccountRechargeActivity" >
-        </activity>
+     
         <activity android:name=".ui.AboutUs" >
         </activity>
         <activity android:name=".ui.ModifyContactWayActivity" >
         </activity>
-        <activity android:name=".ui.RechargeRecordActivity" >
+        <activity android:name=".ui.ThreeInOneRecordActivity" >
         </activity>
         <activity android:name=".ui.ModifyPassword" >
         </activity>
@@ -45,14 +44,12 @@
         </activity>
         <activity android:name=".ui.ForgetActivity" >
         </activity>
-        <activity android:name=".ui.TransferAccountActivity" >
-        </activity>
+     
         <activity android:name=".ui.SuggestActivity" >
         </activity>
         <activity android:name=".ui.PreviewActivity" >
         </activity>
-        <activity android:name=".ui.NavRecommendFriendsActivity" >
-        </activity>
+     
         <activity android:name=".ui.ADConsumeRecordActivity" >
         </activity>
         <activity android:name=".ui.RefereeIncomeActivity" >

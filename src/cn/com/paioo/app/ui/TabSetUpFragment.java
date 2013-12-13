@@ -6,19 +6,20 @@ import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public class NavSetUpFragment extends BaseFragment implements OnClickListener {
+public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 	private FragmentActivity fa;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		 Log.e("paioo", "TabSetUpFragment   设置，，，，，创建");
 		return inflater.inflate(R.layout.nav_setup, container, false);
 	}
 
@@ -36,7 +37,15 @@ public class NavSetUpFragment extends BaseFragment implements OnClickListener {
 
 		super.onStart();
 	}
-
+	@Override
+	public void onDestroy() {
+		 Log.e("paioo", "TabSetUpFragment   设置，，，，，销毁");
+		 
+		
+		// TODO Auto-generated method stub
+		super.onDestroy();
+	}
+	
 	@Override
 	public void onClick(View v) {
 

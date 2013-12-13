@@ -12,7 +12,7 @@ import cn.com.paioo.app.ui.MainActivity;
 import cn.com.paioo.app.ui.ModifyContactWayActivity;
 import cn.com.paioo.app.ui.ModifyPassword;
 import cn.com.paioo.app.ui.PreviewDetailedActivity;
-import cn.com.paioo.app.ui.RechargeRecordActivity;
+import cn.com.paioo.app.ui.ThreeInOneRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
 import cn.com.paioo.app.ui.SuggestActivity;
 import android.app.Activity;
@@ -24,6 +24,78 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class TitleUtil {
+	private static TextView titleName;
+	private static ImageButton back;
+	private static ImageButton slidemenu;
+	private static ImageButton record;
+	private static ImageButton share;
+	private static ImageButton logo;
+
+	private static void initTitleView(final Activity activity) {
+		if (titleName == null) {
+			titleName = (TextView) activity
+					.findViewById(R.id.title_bar_title_tv);
+
+		}
+
+		if (back == null) {
+			back = (ImageButton) activity.findViewById(R.id.title_bar_back_ib);
+			back.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					activity.finish();
+				}
+			});
+		}
+
+		if (slidemenu == null) {
+			slidemenu = (ImageButton) activity
+					.findViewById(R.id.title_bar_slidemenu_ib);
+
+			slidemenu.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// 打开侧滑
+					if (activity instanceof SlidingFragmentActivity) {
+						((SlidingFragmentActivity) activity).toggle();
+					}
+				}
+			});
+
+		}
+
+		if (record == null) {
+			record = (ImageButton) activity
+					.findViewById(R.id.title_bar_recharge_record_ib);
+
+			record.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// 充值记录,广告消费记录 转账记录 都是同一个界面不同的数据
+					UIHelper.switcher(activity, ThreeInOneRecordActivity.class);
+
+				}
+			});
+		}
+		if (logo == null) {
+
+			logo = (ImageButton) activity.findViewById(R.id.title_bar_logo);
+		}
+		if (share == null) {
+			share = (ImageButton) activity
+					.findViewById(R.id.title_bar_share_ib);
+			share.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					MyToast.show(activity, "分享");
+				}
+			});
+		}
+	}
 
 	/**
 	 * title显示的工具类
@@ -35,55 +107,8 @@ public class TitleUtil {
 	public static void show(final Activity activity, int mainIndex) {
 		String temp = activity.getLocalClassName();
 		String cur = temp.substring(temp.lastIndexOf(".") + 1);
-		TextView titleName = (TextView) activity
-				.findViewById(R.id.title_bar_title_tv);
-		ImageButton back = (ImageButton) activity
-				.findViewById(R.id.title_bar_back_ib);
-		back.setOnClickListener(new OnClickListener() {
+		initTitleView(activity);
 
-			@Override
-			public void onClick(View v) {
-				activity.finish();
-			}
-		});
-
-		ImageButton slidemenu = (ImageButton) activity
-				.findViewById(R.id.title_bar_slidemenu_ib);
-		slidemenu.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// 打开侧滑
-				if (activity instanceof SlidingFragmentActivity) {
-					((SlidingFragmentActivity) activity).toggle();
-				}
-			}
-		});
-
-		ImageButton rech_record = (ImageButton) activity
-				.findViewById(R.id.title_bar_recharge_record_ib);
-		rech_record.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// 充值记录
-				UIHelper.switcher(activity, RechargeRecordActivity.class);
-
-			}
-		});
-        ImageButton share = (ImageButton) activity.findViewById(R.id.title_bar_share_ib);
-		  
-        share.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				 
-				
-			}
-		});
-		
-		ImageButton logo = (ImageButton) activity
-				.findViewById(R.id.title_bar_logo);
 		if (RegisterActivity.class.getSimpleName().equals(cur)) {// 注册界面
 			titleName.setText(R.string.free_register);
 			back.setVisibility(View.VISIBLE);
@@ -124,13 +149,13 @@ public class TitleUtil {
 			titleName.setText(R.string.title_bar_title_preview_detailed);
 			share.setVisibility(View.VISIBLE);
 		}
-		
-		//广告消费记录
-		if(ADConsumeRecordActivity.class.getSimpleName().equals(cur)){
+
+		// 广告消费记录
+		if (ADConsumeRecordActivity.class.getSimpleName().equals(cur)) {
 			titleName.setText(R.string.title_bar_title_adcosume);
 			back.setVisibility(View.VISIBLE);
 		}
-		if(RechargeRecordActivity.class.getSimpleName().equals(cur)){
+		if (ThreeInOneRecordActivity.class.getSimpleName().equals(cur)) {
 			titleName.setText(R.string.title_bar_title_recharge_rocord);
 			back.setVisibility(View.VISIBLE);
 		}
@@ -138,22 +163,35 @@ public class TitleUtil {
 			slidemenu.setVisibility(View.VISIBLE);
 			if (mainIndex >= 0) {
 				logo.setVisibility(View.GONE);
-				rech_record.setVisibility(View.GONE);
-
+				record.setVisibility(View.GONE);
+				share.setVisibility(View.GONE);
 				switch (mainIndex) {
-				case Constant.MAIN_INDEX_HOME:
+				case 0:// 首页
 					logo.setVisibility(View.VISIBLE);
 					titleName.setText("");
 					break;
-
-				case Constant.MAIN_INDEX_FINANCE:
-					rech_record.setVisibility(View.VISIBLE);
+				case 1:// 财务 ()
+					record.setVisibility(View.VISIBLE);
 					titleName.setText(R.string.title_bar_title_finance);
 					break;
-				case Constant.MAIN_INDEX_PREVIEW:
+				case 2:// 预览
 					titleName.setText(R.string.title_bar_title_preview);
 					break;
-				case Constant.MAIN_INDEX_SETUP:
+				case 3:// 账号充值
+					titleName.setText(R.string.slidemenu_recharge);
+					record.setVisibility(View.VISIBLE);
+					break;
+				case 4:// 推荐好友
+					titleName.setText(R.string.slidemenu_friends);
+					share.setVisibility(View.VISIBLE);
+					break;
+				case 5:// 余额转账
+					titleName.setText(R.string.slidemenu_transfer);
+					record.setVisibility(View.VISIBLE);
+					break;
+				case 6:// 优惠券
+					break;
+				case 7:// 设置
 					titleName.setText(R.string.title_bar_title_setup);
 					break;
 				}

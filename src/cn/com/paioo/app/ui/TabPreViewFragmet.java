@@ -2,6 +2,7 @@ package cn.com.paioo.app.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,15 +11,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.PreviewAdapter;
+import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.UIHelper;
-import cn.com.paioo.app.view.CustomListView;
+import cn.com.paioo.app.view.AutoMoreListView;
 
-public class NavPreViewFragmet extends BaseFragment implements OnItemClickListener   {
-	 private CustomListView mLV;
+public class TabPreViewFragmet extends BaseFragment implements OnItemClickListener   {
+	 private AutoMoreListView mLV;
 	 private FragmentActivity  fa;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		 Log.e("paioo", "TabFinanceFragment   ‘§¿¿£¨£¨£¨£¨£¨¥¥Ω®");
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.nav_preview, container, false);
 	} 
@@ -26,7 +29,7 @@ public class NavPreViewFragmet extends BaseFragment implements OnItemClickListen
 	public void onStart() {
 		fa = getActivity();
 		// TODO Auto-generated method stub
-		mLV = (CustomListView) fa.findViewById(R.id.preview_lv);
+		mLV = (AutoMoreListView) fa.findViewById(R.id.preview_lv);
 		PreviewAdapter adapter = new PreviewAdapter(fa, null);
 		mLV.setAdapter(adapter);
 		mLV.setOnItemClickListener(this);
@@ -38,5 +41,13 @@ public class NavPreViewFragmet extends BaseFragment implements OnItemClickListen
 		 UIHelper.switcher(fa, PreviewDetailedActivity.class);
 	}
     
+	@Override
+	public void onDestroy() {
+		 Log.e("paioo", "TabPreViewFragmet   ‘§¿¿£¨£¨£¨£¨£¨œ˙ªŸ");
 	 
+		
+		// TODO Auto-generated method stub
+		super.onDestroy();
+	}
+	
 }

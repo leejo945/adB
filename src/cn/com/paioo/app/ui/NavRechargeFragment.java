@@ -4,20 +4,41 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.StringUtils;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class AccountRechargeActivity extends BaseActivity {
+public class NavRechargeFragment extends BaseFragment {
 	private TextView mNewMoney;
 	private EditText mCardid,mPwd;
+	private FragmentActivity fa;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.account_recharge);
-		super.onCreate(savedInstanceState);
+	    Log.e("paioo", "NavRechargeFragment   充值界面，，，，，，创建");
+		return  inflater.inflate(R.layout.account_recharge, container, false);
+		 
 	}
-   
+	@Override
+	public void onDestroy() {
+	    Log.e("paioo", "NavRechargeFragment   充值界面，，，，，，销毁");
+		 
+		
+		// TODO Auto-generated method stub
+		super.onDestroy();
+	}
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		fa = getActivity();
+		super.onStart();
+	}
+ 
 //public void init() {
 //	// TODO Auto-generated method stub
 //	   mNewMoney = (TextView) findViewById(R.id.account_recharge_new_money_tv);
