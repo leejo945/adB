@@ -8,6 +8,8 @@ public class RechargeRecord {
 	public final int type;
 	public final String text;
 
+	private boolean isSuccess;//交易成功还是失败
+	
 	public int sectionPosition;
 	public int listPosition;
 

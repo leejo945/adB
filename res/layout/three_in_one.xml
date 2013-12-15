@@ -11,23 +11,10 @@
         android:layout_height="match_parent" >
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView 
-                android:text="充值记录,广告消费记录  转账记录  都是同一个界面不同的数据"
-                 android:layout_width="match_parent"
             android:layout_height="match_parent"
-                
-                />
-            
-            
-            
-            
-            
-            
-            
+            android:orientation="vertical" >
+
             <cn.com.paioo.app.view.PinnedSectionListView
                 android:id="@+id/recharge_record_lv"
                 android:layout_width="match_parent"
@@ -35,8 +22,8 @@
                 android:divider="@null"
                 android:footerDividersEnabled="false"
                 android:headerDividersEnabled="false" >
-         </cn.com.paioo.app.view.PinnedSectionListView>
+            </cn.com.paioo.app.view.PinnedSectionListView>
         </LinearLayout>
-   </cn.com.paioo.app.view.PullToRefreshView>
+    </cn.com.paioo.app.view.PullToRefreshView>
 
 </LinearLayout>

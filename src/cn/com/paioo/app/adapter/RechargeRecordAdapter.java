@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.RechargeRecord;
 import cn.com.paioo.app.view.PinnedSectionListView.PinnedSectionListAdapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+@SuppressLint("ResourceAsColor")
 public class RechargeRecordAdapter extends BaseAdapter implements
 		PinnedSectionListAdapter {
 	Context context;
@@ -23,40 +26,15 @@ public class RechargeRecordAdapter extends BaseAdapter implements
 
 	public RechargeRecordAdapter(Context context) {
 		this.context = context;
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			RechargeRecord section;
-			if(i%10==0){
-				 section = new RechargeRecord(RechargeRecord.SECTION, i+"");
-			}else{
-				 section = new RechargeRecord(RechargeRecord.ITEM, i+"");
+			if (i % 10 == 0) {
+				section = new RechargeRecord(RechargeRecord.SECTION, i + "月");
+			} else {
+				section = new RechargeRecord(RechargeRecord.ITEM, i + "");
 			}
 			list.add(section);
 		}
-
-		//
-		// final int sectionsNumber = 'Z' - 'A' + 1;
-		// int sectionPosition = 0, listPosition = 0;
-		// for (char i = 0; i < sectionsNumber; i++) {
-		// RechargeRecord section = new RechargeRecord(RechargeRecord.SECTION,
-		// String.valueOf((char) ('A' + i)));
-		// section.sectionPosition = sectionPosition;
-		// section.listPosition = listPosition++;
-		// list.add(section);
-		// // add(section);
-		//
-		// final int itemsNumber = (int) Math.abs((Math.cos(2f * Math.PI / 3f
-		// * sectionsNumber / (i + 1f)) * 25f));
-		// for (int j = 0; j < itemsNumber; j++) {
-		// RechargeRecord item = new RechargeRecord(RechargeRecord.ITEM,
-		// section.text.toUpperCase(Locale.ENGLISH) + " - " + j);
-		// item.sectionPosition = sectionPosition;
-		// item.listPosition = listPosition++;
-		// // add(item);
-		// list.add(item);
-		// }
-		// sectionPosition++;
-		// }
-
 	}
 
 	@Override
@@ -79,24 +57,38 @@ public class RechargeRecordAdapter extends BaseAdapter implements
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		TextView view = new TextView(context);
-	
-		view.setTag("" + position);
-		RechargeRecord item = list.get(position);
-		if (item.type == RechargeRecord.SECTION) {
-			// view.setOnClickListener(PinnedSectionListActivity.this);
-			Random r = new Random();
-			view.setTextColor(Color.RED);
-			view.setBackgroundColor(Color.rgb(r.nextInt(255), r.nextInt(255),
-					r.nextInt(255)));
-			view.setText(position + "");
+		ViewHodler holder;
+		if(convertView==null){
+			holder = new ViewHodler();
+			convertView = View.inflate(context, R.layout.three_in_one_item, null);
+			holder.date = (TextView) convertView.findViewById(R.id.three_in_one_item_date_tv);
+			holder.cardid0 = (TextView) convertView.findViewById(R.id.three_in_one_item_cardid0_tv);
+			holder.cardid1 = (TextView) convertView.findViewById(R.id.three_in_one_item_cardid1_tv);
+			holder.money = (TextView) convertView.findViewById(R.id.three_in_one_item_money_tv);
+			holder.status = (TextView) convertView.findViewById(R.id.three_in_one_item_status_tv);
+			convertView.setTag(holder);
 		}else{
-			view.setTextColor(Color.BLUE);
-			view.setText(position + "");
+			holder = (ViewHodler) convertView.getTag();
 		}
-		return view;
+		 RechargeRecord item = list.get(position);
+		if (item.type == RechargeRecord.SECTION) {//头
+			convertView.setBackgroundColor(R.color.app_bg);
+			holder.date.setTextColor(Color.rgb(255, 97, 0));
+			holder.date.getPaint().setFakeBoldText(true);
+			holder.date.setText("本月");
+		} else {
+			  holder.date.setText("11-11");
+			 holder.cardid0.setVisibility(View.VISIBLE);
+		     holder.cardid1.setText("123343");
+		     holder.money.setText("+1000");
+		     holder.status.setText(R.string.business_success);
+		    
+		}
+		return convertView;
 	}
-
+	private static class ViewHodler {
+		TextView date, cardid0,cardid1, money, status;
+	}
 	@Override
 	public int getViewTypeCount() {
 		return 2;
@@ -109,9 +101,10 @@ public class RechargeRecordAdapter extends BaseAdapter implements
 
 	@Override
 	public boolean isItemViewTypePinned(int viewType) {
-
 		return viewType == RechargeRecord.SECTION;
 	}
+
+
 
 }
 

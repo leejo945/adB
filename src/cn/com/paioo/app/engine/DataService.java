@@ -34,13 +34,14 @@ public class DataService {
 			for (ResolveInfo resInfo : resInfos) {
 				ActivityInfo activityInfo = resInfo.activityInfo;
 				String packName = activityInfo.packageName;
-				if (packName.contains("sina") || packName.contains("tencent")||packName.contains("qihoo")) {
+			//	if (packName.contains("sina") || packName.contains("tencent")||packName.contains("qihoo")
+			//			||packName.contains("")) {
 					shareInfo = new ShareInfo();
 					shareInfo.packName = packName;
 					shareInfo.icon = activityInfo.loadIcon(packManager);
 					shareInfo.name = activityInfo.loadLabel(packManager).toString();
 					list.add(shareInfo);
-				}
+			//	}
 			}
 		} else {
 			// 没有社交应用分享,如果本身已经

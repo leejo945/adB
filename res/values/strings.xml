@@ -107,6 +107,7 @@
     <string name="your_re_number">您的专属推荐码：</string>
     <string name="find_friends_install_app1">邀请好友安装APP并注册成功，可获取1元广告充值奖励</string>
     <string name="qrcode_re">扫一扫推荐</string>
+    <string name="copy_link">复制链接</string>
     <!-- 意见反馈 -->
     <string name="telephone_number">020-520520520</string>
 

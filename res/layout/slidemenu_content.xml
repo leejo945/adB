@@ -8,13 +8,7 @@
         android:id="@+id/aa"
         layout="@layout/title_bar" />
 
-    <LinearLayout
-        android:id="@+id/ccc"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/aa"
-        android:orientation="vertical" >
-    </LinearLayout>
+   
     
         <LinearLayout
         android:id="@+id/aaa"
@@ -23,13 +17,7 @@
         android:layout_below="@id/aa"
         android:orientation="vertical" >
     </LinearLayout>
-      <LinearLayout
-        android:id="@+id/bbb"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/aa"
-        android:orientation="vertical" >
-    </LinearLayout>
+      
 
     <include
         

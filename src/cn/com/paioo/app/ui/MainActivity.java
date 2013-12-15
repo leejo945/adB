@@ -243,25 +243,32 @@ public class MainActivity extends SlidingFragmentActivity implements
 	 * 用于判断fragement 是显示还是隐藏等等
 	 */
 	public void fragmentToggle(FragmentTransaction ft, Fragment fragment,int fragmentIndex) {
-//		if(fragment!=null){
+		if(fragment!=null){
+ 			ft.replace(R.id.aaa, fragment).commit();
 //			if (fragment.isHidden()) {
+//				MyToast.show(this, "show");
 //				ft.show(fragment);
+//			}else{
+//				MyToast.show(this, "hide");
+//				ft.hide(fragment);
 //			}
-		 
+//		}else{
+//			
+		}
 		         
-		   switch (fragmentIndex) {
-		case 0:
-			 ft.replace(R.id.aaa, fragment).commit();
-			break;
-
-		case 1:
-			 ft.replace(R.id.bbb, fragment).commit();
-			break;
-		case 2:
-			 ft.replace(R.id.ccc, fragment).commit();
-			break;
-		}	 
-         
+//		   switch (fragmentIndex) {
+//		case 0:
+		//	 ft.replace(R.id.aaa, fragment).commit();
+//			break;
+//
+//		case 1:
+//			 ft.replace(R.id.bbb, fragment).commit();
+//			break;
+//		case 2:
+//			 ft.replace(R.id.ccc, fragment).commit();
+//			break;
+//		}	 
+//         
 			  
 			
 			

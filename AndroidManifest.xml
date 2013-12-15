@@ -9,6 +9,15 @@
         android:targetSdkVersion="8" />
     <!-- 意见反馈界面拨打电话权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 二维码中的权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:name=".App"
@@ -27,7 +36,6 @@
         </activity>
         <activity android:name=".ui.SplashActivity" >
         </activity>
-     
         <activity android:name=".ui.AboutUs" >
         </activity>
         <activity android:name=".ui.ModifyContactWayActivity" >
@@ -44,17 +52,23 @@
         </activity>
         <activity android:name=".ui.ForgetActivity" >
         </activity>
-     
         <activity android:name=".ui.SuggestActivity" >
         </activity>
         <activity android:name=".ui.PreviewActivity" >
         </activity>
-     
         <activity android:name=".ui.ADConsumeRecordActivity" >
         </activity>
         <activity android:name=".ui.RefereeIncomeActivity" >
         </activity>
-        <activity android:name=".ui.PreviewDetailedActivity"></activity>
+        <activity android:name=".ui.PreviewDetailedActivity" >
+        </activity>
+        <activity 
+            android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+			android:windowSoftInputMode="stateAlwaysHidden"
+            
+            android:name=".ui.ZxingActivity" >
+        </activity>
     </application>
 
 </manifest>

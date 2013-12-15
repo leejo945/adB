@@ -26,12 +26,12 @@ public class ThreeInOneRecordActivity extends BaseActivity {
 
 	@Override
 	public void init() {
-//		mPSLV = (PinnedSectionListView) findViewById(R.id.recharge_record_lv);
+ 		mPSLV = (PinnedSectionListView) findViewById(R.id.recharge_record_lv);
 //		
-//	//	ArrayList<User> list = DataService.getRechargeRecordList();
+    //	ArrayList<User> list = DataService.getRechargeRecordList();
 //		
-//		 adapter = new RechargeRecordAdapter(this);
-//	   	mPSLV.setAdapter(adapter);
+ 		 adapter = new RechargeRecordAdapter(this);
+ 	   	mPSLV.setAdapter(adapter);
 //		super.init();
 	}
 }

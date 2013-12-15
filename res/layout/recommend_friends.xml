@@ -1,102 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     android:orientation="vertical" >
 
-    
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content"
+            android:background="@drawable/recommend_number_bg"
+            android:orientation="vertical"
+            android:padding="10dp" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recommend_number_bg"
-                android:orientation="vertical"
-                android:padding="10dp" >
+                android:text="@string/your_re_number" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/your_re_number" />
-
-                <TextView
-                    
-                        style="@style/comm_money_orange"
-                    android:id="@+id/textView1"
-                   
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/find_friends_install_app1"
-                    android:textSize="@dimen/textSize_small" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal" >
-
-                <RadioButton
-                    android:id="@+id/recommend_friends_share_ib"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:button="@null"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/recommend_friends"
-                    android:onClick="onClick"
-                    android:text="推荐好友"
-                    android:textSize="@dimen/textSize_small" />
-
-                <RadioButton
-                    android:id="@+id/recommend_friends_copy_ib"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/recommend_copy_link"
-                    android:onClick="onClick"
-                    android:text="复制链接"
-                    android:textSize="@dimen/textSize_small" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="230dp"
-                android:layout_height="230dp"
+            <TextView
+                android:id="@+id/textView1"
+                style="@style/comm_money_orange"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/recommend_qrcode_bg"
-                android:padding="10dp" >
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_friends_install_app1"
+                android:textSize="@dimen/textSize_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/friends_share_to_friends_ll"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/recommend_qrcode" />
-            </RelativeLayout>
+                    android:src="@drawable/recommend_friends" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                   android:layout_gravity="center_horizontal"
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/textSize_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slidemenu_friends" />
+            </LinearLayout>
+
+            <LinearLayout
+                  android:id="@+id/friends_copy_link_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/qrcode_re" />
-        </LinearLayout>
-    </ScrollView>
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
 
-</LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/recommend_copy_link" />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                      android:textSize="@dimen/textSize_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/copy_link" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/recommend_qrcode_bg"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/recommend_qrcode" />
+        </RelativeLayout>
+
+        <TextView
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/qrcode_re" />
+    </LinearLayout>
+
+</ScrollView>
