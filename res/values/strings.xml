@@ -90,6 +90,9 @@
    
    <!-- 导航 预览 -->
    <string name="title_bar_title_preview">预览</string>
+    <string name="desktop_ad">桌面广告</string>
+   <string name="push_ad">推送广告</string>
+   
    
    <!-- 预览详情 -->
    <string name="title_bar_title_preview_detailed">预览详情</string>
@@ -180,4 +183,8 @@
     <string name="warn_toast_capital_isempty">注册资本为空</string>
      <string name="warn_toast_unagree">你还没有同意协议哦</string>
     <string name="warn_toast_suggest_isempty">真的不说点...</string>
+      <string name="warn_toast_again_click_exit">再点一次退出</string>
+    
+    
+    
 </resources>

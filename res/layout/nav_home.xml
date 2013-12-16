@@ -1,113 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EEEEEE"
-    android:orientation="vertical" >
-
-  
-    <LinearLayout style="@style/small_color_bar_outside" >
-
+ 
         <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp"
-            android:background="@color/home_orange" >
-
-            <TextView 
-                android:text="@string/home_top_left"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:background="@color/powder_blue1" >
-
-            <TextView 
-                  android:text="@string/home_top_right"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout style="@style/small_color_bar_outside" >
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp"
-            android:background="@color/pistac" >
-
-            <TextView 
-                  android:text="@string/home_middle_left"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:background="@color/powder_blue2" >
-
-            <TextView 
-                  android:text="@string/home_middle_right"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout style="@style/small_color_bar_outside" >
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:layout_marginRight="5dp"
-            android:background="@color/peach" >
-
-            <TextView 
-                
-                  android:text="@string/home_bottom_left"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/small_color_bar_inner"
-            android:background="@color/orchid" >
-
-            <TextView 
-                  android:text="@string/home_bottom_right"
-                style="@style/small_color_bar_inner_text_tv" />
-
-            <TextView style="@style/small_color_bar_inner_number_tv" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-      
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="35dp" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/a_week_trend"
-            android:textSize="@dimen/textSize_large" />
-
-        <cn.com.paioo.app.view.TrendView
-              android:visibility="gone"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-        </cn.com.paioo.app.view.TrendView>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-</LinearLayout>
+            <LinearLayout style="@style/small_color_bar_outside" >
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/home_orange" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_top_left" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:background="@color/powder_blue1" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_top_right" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/small_color_bar_outside" >
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/pistac" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_middle_left" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:background="@color/powder_blue2" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_middle_right" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/small_color_bar_outside" >
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/peach" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_bottom_left" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/small_color_bar_inner"
+                    android:background="@color/orchid" >
+
+                    <TextView
+                        style="@style/small_color_bar_inner_text_tv"
+                        android:text="@string/home_bottom_right" />
+
+                    <TextView style="@style/small_color_bar_inner_number_tv" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="35dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/a_week_trend"
+                    android:textSize="@dimen/textSize_large" />
+
+                <cn.com.paioo.app.view.TrendView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                </cn.com.paioo.app.view.TrendView>
+            </LinearLayout>
+        </LinearLayout>
+    
+ 

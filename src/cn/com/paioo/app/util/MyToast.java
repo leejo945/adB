@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class MyToast {
-
+    
 	public static void show(Context context,Object text) {
        show(context, text, 0);
 	}

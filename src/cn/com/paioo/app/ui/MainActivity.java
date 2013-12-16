@@ -21,6 +21,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -57,7 +58,8 @@ import android.widget.TextView;
 
 @SuppressLint("ResourceAsColor")
 public class MainActivity extends SlidingFragmentActivity implements
-		OnClickListener, OnItemClickListener {
+		  OnItemClickListener, OnCheckedChangeListener {
+	String tag = "MainActivity";
 	// 导航tab对应的Fragment
 	private static Fragment mFragmentHome, mFragmentFinance, mFragmentPreView,
 			mFragmentRecharege, mFragmentFriends, mFragmentTransfer,
@@ -70,19 +72,18 @@ public class MainActivity extends SlidingFragmentActivity implements
 	// mSlideMenuItemSetup;
 
 	// main。。tab
-	// private RadioButton mTabHome, mTabFinance, mTabPreview, mTabSetup;
+	private RadioGroup mTabRG;
+	private RadioButton mTabHome, mTabFinance, mTabPreview, mTabSetup;
 
 	private FragmentManager fm;
 
 	private static int mainIndex = Constant.SLIDEMENU_INDEX_HOME;
 	// 侧滑菜单的最上面的条目
 	private LinearLayout slidemenuItemRoot;
-
-	private RadioGroup mTabRG;
-
-	// 侧滑菜单当前的选项 ,默认为首页
-	// private static int slidemenuCurSel = R.id.slidemenu_item_home_ll;
-	// private Map<Integer, View> slidemenuItems = new HashMap<Integer, View>();
+	// 为了个点击条目产生一个选择效果
+	private static View frontClickView;
+	 
+	 
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -157,43 +158,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 		slv.setOnItemClickListener(this);
 
-		//
-		//
-		// mSlideMenuItemHome = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_home_ll);
-		// mSlideMenuItemFinance = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_finac_ll);
-		// mSlideMenuItemPreview = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_preview_ll);
-		// mSlideMenuItemRecharge = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_recharge_ll);
-		// mSlideMenuItemFriend = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_friends_ll);
-		// mSlideMenuItemTransfer = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_transfer_ll);
-		// mSlideMenuItemTicket = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_ticket_ll);
-		// mSlideMenuItemSetup = (LinearLayout)
-		// findViewById(R.id.slidemenu_item_setup_ll);
-
-		// slidemenuItems.put(R.id.slidemenu_item_home_ll, mSlideMenuItemHome);
-		// slidemenuItems.put(R.id.slidemenu_item_finac_ll,
-		// mSlideMenuItemFinance);
-		// slidemenuItems.put(R.id.slidemenu_item_preview_ll,
-		// mSlideMenuItemPreview);
-		// slidemenuItems.put(R.id.slidemenu_item_recharge_ll,
-		// mSlideMenuItemRecharge);
-		// slidemenuItems.put(R.id.slidemenu_item_friends_ll,
-		// mSlideMenuItemFriend);
-		// slidemenuItems.put(R.id.slidemenu_item_transfer_ll,
-		// mSlideMenuItemTransfer);
-		// slidemenuItems.put(R.id.slidemenu_item_ticket_ll,
-		// mSlideMenuItemTicket);
-		// slidemenuItems.put(R.id.slidemenu_item_setup_ll,
-		// mSlideMenuItemSetup);
-
-		// 初始选中的菜单
-		// slidemenuItems.get(slidemenuCurSel).setBackgroundResource(R.drawable.slidemenu_item_bg_pre_sel);
+	 
 	}
 
 	private void initMainTab() {
@@ -206,110 +171,47 @@ public class MainActivity extends SlidingFragmentActivity implements
 		mFragmentTransfer = new NavTransferAccountFragment();
 		mFragmentSetup = new TabSetUpFragment();
 
-		
-		
-		
-		
-		
 		// 进入的时候默认显示界面
 		fm.beginTransaction().replace(R.id.aaa, mFragmentHome).commit();
 
 		mTabRG = (RadioGroup) findViewById(R.id.main_tab_root_rg);
 
-		//
-		// mTabHome = (RadioButton) findViewById(R.id.main_tab_home_rb);
-		// mTabFinance = (RadioButton) findViewById(R.id.main_tab_finance_rb);
-		// mTabPreview = (RadioButton) findViewById(R.id.main_tab_preview_rb);
-		// mTabSetup = (RadioButton) findViewById(R.id.main_tab_setup_rb);
-
+		 
+		 mTabHome = (RadioButton) findViewById(R.id.main_tab_home_rb);
+		 mTabFinance = (RadioButton) findViewById(R.id.main_tab_finance_rb);
+		 mTabPreview = (RadioButton) findViewById(R.id.main_tab_preview_rb);
+		 mTabSetup = (RadioButton) findViewById(R.id.main_tab_setup_rb);
+		 mTabRG.setOnCheckedChangeListener(this);
 	}
 
-	private void setListener() {
-		// mSlideMenuItemHome.setOnClickListener(this);
-		// mSlideMenuItemFinance.setOnClickListener(this);
-		// mSlideMenuItemPreview.setOnClickListener(this);
-		// mSlideMenuItemRecharge.setOnClickListener(this);
-		// mSlideMenuItemFriend.setOnClickListener(this);
-		// mSlideMenuItemTransfer.setOnClickListener(this);
-		// mSlideMenuItemTicket.setOnClickListener(this);
-		// mSlideMenuItemSetup.setOnClickListener(this);
-		// mTabHome.setOnClickListener(this);
-		// mTabFinance.setOnClickListener(this);
-		// mTabPreview.setOnClickListener(this);
-		// mTabSetup.setOnClickListener(this);
-	}
+ 
 
 	/**
 	 * 用于判断fragement 是显示还是隐藏等等
 	 */
-	public void fragmentToggle(FragmentTransaction ft, Fragment fragment,int fragmentIndex) {
-		if(fragment!=null){
- 			ft.replace(R.id.aaa, fragment).commit();
-//			if (fragment.isHidden()) {
-//				MyToast.show(this, "show");
-//				ft.show(fragment);
-//			}else{
-//				MyToast.show(this, "hide");
-//				ft.hide(fragment);
-//			}
-//		}else{
-//			
+	public void fragmentToggle(FragmentTransaction ft, Fragment fragment,
+			int fragmentIndex) {
+		if (fragment != null) {
+			ft.replace(R.id.aaa, fragment).commit();
 		}
-		         
-//		   switch (fragmentIndex) {
-//		case 0:
-		//	 ft.replace(R.id.aaa, fragment).commit();
-//			break;
-//
-//		case 1:
-//			 ft.replace(R.id.bbb, fragment).commit();
-//			break;
-//		case 2:
-//			 ft.replace(R.id.ccc, fragment).commit();
-//			break;
-//		}	 
-//         
-			  
-			
-			
-//		} 
-			
-			
-//			switch (fragmentIndex) {
-////			mFragmentHome = new TabHomeFragment();
-////			mFragmentFinance = new TabFinanceFragment();
-////			mFragmentPreView = new TabPreViewFragmet();
-////			mFragmentRecharege = new NavRechargeFragment();
-////			mFragmentFriends = new NavRecommendFriendsFragment();
-////			mFragmentTransfer = new NavTransferAccountFragment();
-////			mFragmentSetup = new TabSetUpFragment();
-//			
-////			
-////			 
-////			case 0:
-////				mFragmentHome = new TabHomeFragment();
-// 				ft.replace(R.id.aaa, fragment);
-////				break;
-////
-////			case 1:
-////				mFragmentFinance = new TabFinanceFragment();
-////				ft.replace(R.id.aaa, mFragmentFinance);
-////				break;
-////			case 2:
-////				mFragmentPreView = new TabPreViewFragmet();
-////				ft.replace(R.id.aaa, mFragmentPreView);
-////				break;
-//				
-//			}
-//		}
-		
+
+		 
+
 	}
+	
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// 这个是为了监听侧滑菜单是打开还是关闭。自动判断是打开是还是关闭
 		toggle();
+
+		// 为了个点击条目产生一个选择效果
+		if (frontClickView != null) {
+			frontClickView.setBackgroundColor(Color.rgb(51, 51, 49));
+		}
+		view.setBackgroundColor(R.color.title_bar_bg);
+		frontClickView = view;
 
 		if (slidemenuItemRoot != null) {
 			if (position != 0) {// 只要不是点击的第一个条目，那么就设置第一个条目的背景
@@ -319,149 +221,107 @@ public class MainActivity extends SlidingFragmentActivity implements
 			}
 		}
 		boolean isTab = false;
+		 
 		FragmentTransaction ft = fm.beginTransaction();
-        switch (position) {
+		switch (position) {
 		case 0: {// 首页
 			isTab = true;
-			//ft.replace(R.id.aaa,new TabHomeFragment()).commit();
-			 fragmentToggle(ft, mFragmentHome,position);
+			mTabHome.setChecked(true);
+			fragmentToggle(ft, mFragmentHome, position);
 			break;
 		}
 		case 1: {// 财务
 			isTab = true;
-		//	ft.replace(R.id.aaa,new TabFinanceFragment()).commit();
-		 fragmentToggle(ft, mFragmentFinance,position);
+			mTabFinance.setChecked(true);
+			fragmentToggle(ft, mFragmentFinance, position);
 			break;
 		}
 		case 2: {// 预览
 			isTab = true;
-			//ft.replace(R.id.aaa,new TabPreViewFragmet()).commit();
-			fragmentToggle(ft, mFragmentPreView,position);
+			mTabPreview.setChecked(true);
+			fragmentToggle(ft, mFragmentPreView, position);
 			break;
 		}
 
-		case 3:// 账号充值
-			fragmentToggle(ft, mFragmentRecharege,position);
+		case 3: {// 账号充值
+			fragmentToggle(ft, mFragmentRecharege, position);
 			break;
-		case 4:// 推荐好友
-			fragmentToggle(ft, mFragmentFriends,position);
+		}
+		case 4: {// 推荐好友
+			fragmentToggle(ft, mFragmentFriends, position);
 
 			break;
-		case 5:// 余额转账
-			fragmentToggle(ft, mFragmentTransfer,position);
+		}
+		case 5: {// 余额转账
+			fragmentToggle(ft, mFragmentTransfer, position);
 			break;
-		case 6:// 优惠券
+		}
+		case 6: {// 优惠券
 			break;
+		}
 		case 7: {// 设置
 			isTab = true;
-			fragmentToggle(ft, mFragmentSetup,position);
+			mTabSetup.setChecked(true);
+			fragmentToggle(ft, mFragmentSetup, position);
 
 			break;
 		}
 
 		}
-	 
+
 		if (!isTab) {// 如果不是tab,隐藏tabbar
 			mTabRG.setVisibility(View.GONE);
 		} else {// 如果是tab，显示
 			mTabRG.setVisibility(View.VISIBLE);
-		}
+       }
 
 		// 点击title部分需要变化
 		TitleUtil.show(this, position);
 
 	}
 
-	public void onClick(View v) {
-		// // 标记是不是点击得tab，如果是tab就不用执行 toggle
-		// boolean isTab = false;
-		// int id = v.getId();
-		//
-		//
-		// switch (id) {
-		// // tab+slidemenu 首页 (无论点击tab还是menu。二者都要同时变化)
-		// case R.id.main_tab_home_rb:
-		// isTab = true;
-		// case R.id.slidemenu_item_home_ll:
-		// mainIndex = Constant.MAIN_INDEX_HOME;
-		// fm.beginTransaction().replace(R.id.ccc, new NavHomeFragment())
-		// .commit();
-		// break;
-		//
-		// // tab+slidemenu 财务
-		// case R.id.main_tab_finance_rb:
-		// isTab = true;
-		// case R.id.slidemenu_item_finac_ll:
-		// mainIndex = Constant.MAIN_INDEX_FINANCE;
-		// fm.beginTransaction().replace(R.id.ccc, new NavFinanceFragment())
-		// .commit();
-		// break;
-		//
-		// // tab+slidemenu 预览
-		// case R.id.main_tab_preview_rb:
-		// isTab = true;
-		// case R.id.slidemenu_item_preview_ll:
-		// mainIndex = Constant.MAIN_INDEX_PREVIEW;
-		// fm.beginTransaction().replace(R.id.ccc, new NavPreViewFragmet())
-		// .commit();
-		//
-		// break;
-		//
-		// // tab+slidemenu 设置
-		// case R.id.main_tab_setup_rb:
-		// isTab = true;
-		// case R.id.slidemenu_item_setup_ll:
-		// mainIndex = Constant.MAIN_INDEX_SETUP;
-		// fm.beginTransaction().replace(R.id.ccc, new NavSetUpFragment())
-		// .commit();
-		//
-		// break;
-		// // 侧滑菜单的点击事件
-		//
-		// // 账号充值
-		// case R.id.slidemenu_item_recharge_ll: {
-		// UIHelper.switcher(this, AccountRechargeActivity.class);
-		// break;
-		// }
-		// // 推荐好友
-		// case R.id.slidemenu_item_friends_ll: {
-		// UIHelper.switcher(this, NavRecommendFriendsActivity.class);
-		// break;
-		// }
-		// // 余额转账
-		// case R.id.slidemenu_item_transfer_ll: {
-		// UIHelper.switcher(this, TransferAccountActivity.class);
-		// break;
-		// }
-		// // 优惠券
-		// case R.id.slidemenu_item_ticket_ll: {
-		// break;
-		// }
-		//
-		// }
-		//
-		//
-		// if(!isTab&&id!=slidemenuCurSel){//如果当前选中的条目和当前点击的条目是一样的。就不会做处理了。
-		// MyToast.show(this, "aaaa");
-		// //将原来的item背景还原
-		// View item = slidemenuItems.get(slidemenuCurSel);
-		// if(item!=null){
-		// item.setBackgroundResource(R.drawable.slidemenu_item_bg_nor);
-		// //新点击条目改变背景
-		// slidemenuItems.get(id).setBackgroundResource(R.drawable.slidemenu_item_bg_pre_sel);
-		// slidemenuCurSel = id;
-		// }
-		//
-		// }
-		//
-		//
-		//
-		//
-		// TitleUtil.show(this, mainIndex);
-		// // 是侧滑菜单才执行
-		// if (!isTab) {
-		// toggle();
-		// }
-
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		FragmentTransaction ft = fm.beginTransaction();
+		 switch (checkedId) {
+		case R.id.main_tab_home_rb:
+			fragmentToggle(ft, mFragmentHome, checkedId);
+			break;
+		case  R.id.main_tab_finance_rb:
+			fragmentToggle(ft, mFragmentFinance, checkedId);
+			break;
+		case  R.id.main_tab_preview_rb:
+			fragmentToggle(ft, mFragmentPreView, checkedId);
+			break;
+		case  R.id.main_tab_setup_rb:
+			fragmentToggle(ft, mFragmentSetup, checkedId);
+			break;
+		}
+		
 	}
+
+	 private static long fristBack;
+	 private static final int BACKSPACTIEM = 5000;
+//	@Override
+//	public void onBackPressed() {
+//		if(fristBack==0){
+//			 MyToast.show(this, R.string.warn_toast_again_click_exit);
+//			 fristBack = System.currentTimeMillis();
+//			 handler.sendEmptyMessageDelayed(0, BACKSPACTIEM);
+//		}else{
+//			Log.e(tag, System.currentTimeMillis()-fristBack+"");
+//            if(System.currentTimeMillis()-fristBack<BACKSPACTIEM){
+//            	fristBack  = 0;
+//           }			
+//		}
+//	   
+//		 
+//	}
+	private Handler handler = new Handler(){
+		 public void handleMessage(android.os.Message msg) {
+			  fristBack = 0;
+		 };
+	};
+	
+	 
 }

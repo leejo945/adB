@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 public class TabFinanceFragment extends BaseFragment implements OnClickListener {
      private LinearLayout mAD;
-     private FragmentActivity  fa;
+    
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -27,10 +27,10 @@ public class TabFinanceFragment extends BaseFragment implements OnClickListener 
 	@Override
 	public void onStart() {
 		// TODO Auto-generated method stub
-		fa = getActivity();
-		mAD  = (LinearLayout) fa.findViewById(R.id.finance_adconsume_ll);
+		 
+	//	mAD  = (LinearLayout) fa.findViewById(R.id.finance_adconsume_ll);
 		
-		mAD.setOnClickListener(this);
+	 
 		
 		
 		super.onStart();
@@ -40,7 +40,7 @@ public class TabFinanceFragment extends BaseFragment implements OnClickListener 
 	public void onClick(View v) {
 		 switch (v.getId()) {
 		case R.id.finance_adconsume_ll:
-			UIHelper.switcher(fa, ADConsumeRecordActivity.class);
+			 
 			break;
 
 		 
@@ -50,10 +50,6 @@ public class TabFinanceFragment extends BaseFragment implements OnClickListener 
 	@Override
 	public void onDestroy() {
 		 Log.e("paioo", "TabFinanceFragment   ²ÆÎñ£¬£¬£¬£¬£¬Ïú»Ù");
-			
-		 
-		
-		// TODO Auto-generated method stub
 		super.onDestroy();
 	}
 	

@@ -1,10 +1,10 @@
- 
 package cn.com.paioo.app.adapter;
 
 import java.util.ArrayList;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
+import cn.com.paioo.app.ui.TabPreViewFragmet;
 
 import android.content.Context;
 import android.view.View;
@@ -14,13 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PreviewAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<Product> list;
-    public PreviewAdapter(Context context, ArrayList<Product> list){
-    	this.context = context;
-    	this.list = list;
-    	
-    }
+	private Context context;
+	private ArrayList<Product> list;
+	private int type;
+	private static final int AD_TYPE_PUSH = 0;
+	private static final int AD_TYPE_DESK = 1;
+
+	public PreviewAdapter(Context context, ArrayList<Product> list, int type) {
+		this.context = context;
+		this.list = list;
+		this.type = type;
+	}
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -42,18 +47,21 @@ public class PreviewAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
-		if(convertView==null){
+		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = View.inflate(context, R.layout.preview_lv_item, null);
+			convertView = View.inflate(context,
+					R.layout.preview_push_or_desk_item, null);
+
 			convertView.setTag(holder);
-		}else{
+		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		return convertView;
 	}
-   private static class ViewHolder{
-	   ImageView iv;
-	   TextView tv;
-   }
+
+	private static class ViewHolder {
+		ImageView iv;
+		TextView tv;
+	}
 }

@@ -34,7 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SplashActivity" >
+        <activity android:name=".ui." >
         </activity>
         <activity android:name=".ui.AboutUs" >
         </activity>

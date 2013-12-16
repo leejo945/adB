@@ -4,21 +4,72 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <cn.com.paioo.app.view.PullToRefreshView
+    <RadioGroup
+        android:id="@+id/preview_rg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:checked="true"
+             android:id="@+id/preview_push_ad_rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_preview_top_tab_bg"
+            android:button="@null"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/push_ad" >
+        </RadioButton>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/preview_top_tab_diver_line" >
+        </ImageView>
+
+        <RadioButton
+             android:id="@+id/preview_desktop_ad_rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_preview_top_tab_bg"
+            android:button="@null"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/desktop_ad" >
+        </RadioButton>
+    </RadioGroup>
+
+    
+    
+      <cn.com.paioo.app.view.PullToRefreshView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-
-            <cn.com.paioo.app.view.AutoMoreListView
-                android:id="@+id/preview_lv"
+ 
+            <GridView 
+               
+                 
+                android:id="@+id/preview_desk_or_push_gv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-       </cn.com.paioo.app.view.AutoMoreListView>
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                 
+                android:listSelector="#00000000" 
+                ></GridView>
+            
+            
         </LinearLayout>
     </cn.com.paioo.app.view.PullToRefreshView>
-
+    
+    
+    
+    
+    
 </LinearLayout>

@@ -18,8 +18,7 @@ import android.widget.ArrayAdapter;
 
 public class TabHomeFragment extends BaseFragment  {
 	String tag = "NavHomeActivity";
-	FragmentActivity fa;
-	
+	 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -28,9 +27,9 @@ public class TabHomeFragment extends BaseFragment  {
 	}
 	@Override
 	public void onStart() {
-		// TODO Auto-generated method stub
+		 
 	
-		 fa = getActivity();
+		 
 		super.onStart();
 	}
 	

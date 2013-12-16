@@ -17,6 +17,7 @@ import android.os.Bundle;
 public class ThreeInOneRecordActivity extends BaseActivity {
 	private PinnedSectionListView mPSLV; 
 	private RechargeRecordAdapter adapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

@@ -4,7 +4,6 @@ import com.slidingmenu.lib.app.SlidingActivity;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.ui.ADConsumeRecordActivity;
 import cn.com.paioo.app.ui.AboutUs;
 import cn.com.paioo.app.ui.ExtraCompanyInfoActivity;
 import cn.com.paioo.app.ui.ForgetActivity;
@@ -150,15 +149,12 @@ public class TitleUtil {
 			share.setVisibility(View.VISIBLE);
 		}
 
-		// 广告消费记录
-		if (ADConsumeRecordActivity.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.title_bar_title_adcosume);
-			back.setVisibility(View.VISIBLE);
-		}
-		if (ThreeInOneRecordActivity.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.title_bar_title_recharge_rocord);
-			back.setVisibility(View.VISIBLE);
-		}
+		 
+//		if (ThreeInOneRecordActivity.class.getSimpleName().equals(cur)) {
+//			titleName.setText(R.string.title_bar_title_recharge_rocord);
+//			slidemenu.setVisibility(View.GONE);
+//			back.setVisibility(View.VISIBLE);
+//		}
 		if (MainActivity.class.getSimpleName().equals(cur)) {
 			slidemenu.setVisibility(View.VISIBLE);
 			if (mainIndex >= 0) {
