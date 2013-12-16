@@ -148,10 +148,10 @@ public class MainActivity extends SlidingFragmentActivity implements
 		int[] icons = { R.drawable.slidemenu_financial,
 				R.drawable.slidemenu_preview, R.drawable.slidemenu_recharge,
 				R.drawable.slidemenu_friends, R.drawable.slidemenu_transfer,
-				R.drawable.slidemenu_ticket, R.drawable.slidemenu_setup };
+				 R.drawable.slidemenu_setup };
 		int[] names = { R.string.slidemenu_finance, R.string.slidemenu_preview,
 				R.string.slidemenu_recharge, R.string.slidemenu_friends,
-				R.string.slidemenu_transfer, R.string.slidemenu_ticket,
+				R.string.slidemenu_transfer,
 				R.string.slidemenu_setup };
 
 		slv.setAdapter(new SlideMenuAdapter(this, icons, names));
@@ -256,10 +256,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			fragmentToggle(ft, mFragmentTransfer, position);
 			break;
 		}
-		case 6: {// ”≈ª›»Ø
-			break;
-		}
-		case 7: {// …Ë÷√
+		case 6: {// …Ë÷√
 			isTab = true;
 			mTabSetup.setChecked(true);
 			fragmentToggle(ft, mFragmentSetup, position);
