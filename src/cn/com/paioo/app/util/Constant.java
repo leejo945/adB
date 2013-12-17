@@ -13,4 +13,14 @@ public class Constant {
 	public static final int SLIDEMENU_INDEX_TRANSFER = 5;
 	public static final int SLIDEMENU_INDEX_TICKET = 6;
 	public static final int SLIDEMENU_INDEX_SETUP = 7;
+	
+	
+	
+	
+	
+	
+	//网络连接请求超时时间
+	public static final int REQUSE_TTIMEOUT = 3000;
+	//网络连接响应超时时间
+	public static final int RESPONSE_TIMEOUT = 3000;
 }

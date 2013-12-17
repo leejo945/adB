@@ -1,5 +1,8 @@
 package cn.com.paioo.app.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.slidingmenu.lib.app.SlidingActivity;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -15,11 +18,13 @@ import cn.com.paioo.app.ui.ThreeInOneRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
 import cn.com.paioo.app.ui.SuggestActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.provider.Contacts.Intents.UI;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TitleUtil {
@@ -29,6 +34,83 @@ public class TitleUtil {
 	private static ImageButton record;
 	private static ImageButton share;
 	private static ImageButton logo;
+
+	public static final int BACK = 0;
+	public static final int SHARE = 1;
+
+	
+	private static  int recordRes;
+	
+	/**
+	 * 非fragment界面的title设置
+	 * 
+	 * @param activity
+	 */
+	public static void show(final Activity activity, int[] flags, int title) {
+		if (title != 0) {
+			TextView tv = (TextView) activity
+					.findViewById(R.id.title_bar_title_tv);
+			tv.setText(title);
+		}
+		for (int flag : flags) {
+			switch (flag) {
+			case BACK: {
+				ImageButton iv = (ImageButton) activity
+						.findViewById(R.id.title_bar_back_ib);
+				iv.setVisibility(View.VISIBLE);
+				iv.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						activity.finish();
+					}
+				});
+				break;
+			}
+			case SHARE: {
+				ImageButton iv = (ImageButton) activity
+						.findViewById(R.id.title_bar_share_ib);
+
+				iv.setVisibility(View.VISIBLE);
+
+				break;
+			}
+
+			// case HOME: {
+			// ImageView iv = (ImageView) activity
+			// .findViewById(R.id.title_right_home_iv);
+			//
+			// iv.setVisibility(View.VISIBLE);
+			// iv.setOnClickListener(new OnClickListener() {
+			//
+			// @Override
+			// public void onClick(View v) {
+			// Intent i = new Intent(activity, MainMenuActivity.class);
+			// i.putExtra("tag", 0);
+			// activity.startActivity(i);
+			// activity.finish();
+			// }
+			// });
+			// break;
+			// }
+			// case BACK_ARROW: {
+			// ImageView iv = (ImageView) activity
+			// .findViewById(R.id.title_left_back_arrow_iv);
+			// iv.setVisibility(View.VISIBLE);
+			// iv.setOnClickListener(new OnClickListener() {
+			//
+			// @Override
+			// public void onClick(View v) {
+			// activity.finish();
+			// }
+			// });
+			// break;
+			// }
+
+			}
+		}
+
+	}
 
 	private static void initTitleView(final Activity activity) {
 		if (titleName == null) {
@@ -74,7 +156,9 @@ public class TitleUtil {
 				@Override
 				public void onClick(View v) {
 					// 充值记录,广告消费记录 转账记录 都是同一个界面不同的数据
-					UIHelper.switcher(activity, ThreeInOneRecordActivity.class);
+					Map<String,Object> extras = new HashMap<String, Object>();
+					extras.put("title",recordRes);
+					UIHelper.switcher(activity, ThreeInOneRecordActivity.class,extras);
 
 				}
 			});
@@ -122,39 +206,7 @@ public class TitleUtil {
 			titleName.setText(R.string.find_pwd);
 			back.setVisibility(View.VISIBLE);
 		}
-		// 修改联系方式
-		if (ModifyContactWayActivity.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.modify_contact_way);
-			back.setVisibility(View.VISIBLE);
-		}
-		// 修改密码
-
-		if (ModifyPassword.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.modify_password);
-			back.setVisibility(View.VISIBLE);
-		}
-		// 意见反馈
-		if (SuggestActivity.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.suggest);
-			back.setVisibility(View.VISIBLE);
-		}
-		// 关于我们
-		if (AboutUs.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.about_us);
-			back.setVisibility(View.VISIBLE);
-		}
-		// 预览详情
-		if (PreviewDetailedActivity.class.getSimpleName().equals(cur)) {
-			titleName.setText(R.string.title_bar_title_preview_detailed);
-			share.setVisibility(View.VISIBLE);
-		}
-
 		 
-//		if (ThreeInOneRecordActivity.class.getSimpleName().equals(cur)) {
-//			titleName.setText(R.string.title_bar_title_recharge_rocord);
-//			slidemenu.setVisibility(View.GONE);
-//			back.setVisibility(View.VISIBLE);
-//		}
 		if (MainActivity.class.getSimpleName().equals(cur)) {
 			slidemenu.setVisibility(View.VISIBLE);
 			if (mainIndex >= 0) {
@@ -167,6 +219,8 @@ public class TitleUtil {
 					titleName.setText("");
 					break;
 				case 1:// 财务 ()
+					//财务对应广告消费记录
+					recordRes  = R.string.title_bar_title_adcosume;
 					record.setVisibility(View.VISIBLE);
 					titleName.setText(R.string.title_bar_title_finance);
 					break;
@@ -174,6 +228,7 @@ public class TitleUtil {
 					titleName.setText(R.string.title_bar_title_preview);
 					break;
 				case 3:// 账号充值
+					recordRes  = R.string.title_bar_title_recharge_rocord;
 					titleName.setText(R.string.slidemenu_recharge);
 					record.setVisibility(View.VISIBLE);
 					break;
@@ -182,12 +237,11 @@ public class TitleUtil {
 					share.setVisibility(View.VISIBLE);
 					break;
 				case 5:// 余额转账
+					recordRes  = R.string.title_bar_title_transfer;
 					titleName.setText(R.string.slidemenu_transfer);
 					record.setVisibility(View.VISIBLE);
 					break;
-				case 6:// 优惠券
-					break;
-				case 7:// 设置
+				case 6:// 设置
 					titleName.setText(R.string.title_bar_title_setup);
 					break;
 				}

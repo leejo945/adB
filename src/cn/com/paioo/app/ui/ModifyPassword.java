@@ -3,6 +3,7 @@ package cn.com.paioo.app.ui;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class ModifyPassword extends BaseActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.modify_password);
 		super.onCreate(savedInstanceState);
+		TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.modify_password);
 	}
 
 	@Override

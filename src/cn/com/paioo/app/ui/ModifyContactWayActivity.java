@@ -3,6 +3,7 @@ package cn.com.paioo.app.ui;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.TitleUtil;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ public class ModifyContactWayActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.modify_contact_way);
 		super.onCreate(savedInstanceState);
+		TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.modify_contact_way);
 	}
 
 	@Override

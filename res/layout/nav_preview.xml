@@ -5,14 +5,14 @@
     android:orientation="vertical" >
 
     <RadioGroup
+        
         android:id="@+id/preview_rg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal" >
 
         <RadioButton
-            android:checked="true"
-             android:id="@+id/preview_push_ad_rb"
+            android:id="@+id/preview_push_ad_rb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,7 +30,7 @@
         </ImageView>
 
         <RadioButton
-             android:id="@+id/preview_desktop_ad_rb"
+            android:id="@+id/preview_desk_ad_rb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,35 +41,29 @@
         </RadioButton>
     </RadioGroup>
 
-    
-    
-      <cn.com.paioo.app.view.PullToRefreshView
+    <cn.com.paioo.app.view.PullToRefreshView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-   >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
- 
-            <GridView 
-               
-                 
-                android:id="@+id/preview_desk_or_push_gv"
+                    
+            <LinearLayout
+                    android:orientation="vertical" 
+                android:id="@+id/preview_push_ad_ll"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:cacheColorHint="#00000000"
-                 
-                android:listSelector="#00000000" 
-                ></GridView>
-            
+                android:layout_height="match_parent" >
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical" 
+                android:id="@+id/preview_desk_ad_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </LinearLayout>
             
         </LinearLayout>
     </cn.com.paioo.app.view.PullToRefreshView>
-    
-    
-    
-    
-    
+
 </LinearLayout>

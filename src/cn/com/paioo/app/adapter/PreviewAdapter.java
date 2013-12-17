@@ -17,13 +17,11 @@ public class PreviewAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<Product> list;
 	private int type;
-	private static final int AD_TYPE_PUSH = 0;
-	private static final int AD_TYPE_DESK = 1;
 
-	public PreviewAdapter(Context context, ArrayList<Product> list, int type) {
+	public PreviewAdapter(Context context, ArrayList<Product> list,int type) {
 		this.context = context;
 		this.list = list;
-		this.type = type;
+		 this.type = type;
 	}
 
 	@Override
@@ -49,8 +47,14 @@ public class PreviewAdapter extends BaseAdapter {
 		ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = View.inflate(context,
-					R.layout.preview_push_or_desk_item, null);
+			if(type==0){//推送广告
+				convertView = View.inflate(context,
+						R.layout.preview_push_item, null);
+			}else{//桌面广告
+				convertView = View.inflate(context,
+						R.layout.preview_desk_item, null);
+			}
+			
 
 			convertView.setTag(holder);
 		} else {

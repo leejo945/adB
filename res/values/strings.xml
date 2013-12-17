@@ -118,7 +118,8 @@
     <string name="at_most_account">至多可转账</string>
     <string name="paioo_usernumber">收款人芝麻账号</string>
     <string name="how_much_account">转账金额</string>
-
+ <string name="title_bar_title_transfer">转账记录</string>
+    
     <!-- 账号充值 -->
     <string name="recharge_cardid">充值卡卡号</string>
     <string name="recharge_pwd">充值卡密码</string>
@@ -184,7 +185,8 @@
      <string name="warn_toast_unagree">你还没有同意协议哦</string>
     <string name="warn_toast_suggest_isempty">真的不说点...</string>
       <string name="warn_toast_again_click_exit">再点一次退出</string>
-    
-    
+      <string name="warn_dialog_update">升级提醒</string>
+      <string name="warn_dialog_sureupdate">确定更新</string>
+      <string name="warn_dialog_cancle">取消</string>
     
 </resources>
