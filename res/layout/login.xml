@@ -1,93 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg"
-    android:orientation="vertical" >
-
-    <ImageView 
-     
-        style="@style/logo" />
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="101dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/login_mail_pwd_bg"
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp" >
-
-            <ImageView
-                style="@style/login_mail_pwd_iv"
-                android:src="@drawable/login_mail_icon" />
-
-            <AutoCompleteTextView
-                android:inputType="textEmailAddress"
-                android:id="@+id/login_mail_et"
-                style="@style/login_mail_pwd_et"
-                android:hint="@string/email" />
-        </LinearLayout>
-
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/divider_land" />
+            style="@style/logo"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="70dp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp" >
+            android:layout_height="101dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/login_mail_pwd_bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    style="@style/login_mail_pwd_iv"
+                    android:src="@drawable/login_mail_icon" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/login_mail_et"
+                    style="@style/login_mail_pwd_et"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
 
             <ImageView
-                style="@style/login_mail_pwd_iv"
-                android:src="@drawable/login_lock_icon" />
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/divider_land" />
 
-            <EditText
-                android:inputType="textPassword"
-                android:id="@+id/login_pwd_et"
-                style="@style/login_mail_pwd_et"
-                android:hint="@string/pwd" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    style="@style/login_mail_pwd_iv"
+                    android:src="@drawable/login_lock_icon" />
+
+                <EditText
+                    android:id="@+id/login_pwd_et"
+                    style="@style/login_mail_pwd_et"
+                    android:hint="@string/pwd"
+                    android:inputType="textPassword" />
+            </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/login_login_bt"
+            style="@style/login_login_register_bt"
+            android:background="@drawable/selector_bt_orange"
+            android:text="@string/login2" />
+
+        <Button
+            android:id="@+id/login_register_bt"
+            style="@style/login_login_register_bt"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/selector_bt_white"
+            android:text="@string/free_register"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/login_forget_pwd_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:text="@string/forget_pwd"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/login_login_bt"
-        style="@style/login_login_register_bt"
-        android:background="@drawable/selector_bt_orange"
-        android:text="@string/login2" />
-
-    <Button
-        android:id="@+id/login_register_bt"
-        style="@style/login_login_register_bt"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/selector_bt_white"
-        android:text="@string/free_register"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/login_forget_pwd_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:text="@string/forget_pwd"
-        android:textColor="@android:color/white" />
-
-</LinearLayout>
+</ScrollView>

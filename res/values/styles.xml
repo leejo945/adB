@@ -77,9 +77,12 @@
     </style>
 
     <style name="MyDialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@color/app_bg</item>
+       
         <item name="android:windowNoTitle">true</item>
     </style>
+    
+          
+    
 
     <!-- login.xml 登录界面 -->
     <style name="login_mail_pwd_iv">
@@ -112,6 +115,8 @@
 
     <!-- 财务页 nav_finance.xml，首页nav_home,小彩条相关 -->
     <style name="small_color_bar_outside">
+           
+      
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_marginLeft">5dp</item>
@@ -141,7 +146,6 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">￥12000.00</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">5sp</item>
         <item name="android:textSize">25sp</item>
@@ -226,7 +230,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="android:text">1000.00</item>
         <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">50sp</item>
         <item name="android:textStyle">bold</item>
@@ -243,8 +246,8 @@
   <style 
       name="preview_detailed_buttom"
       >
-         
-      <item name="android:layout_width">80dp</item>
-         <item name="android:layout_height">80dp</item>
+       
+      <item name="android:layout_width">match_parent</item>
+         <item name="android:layout_height">wrap_content</item>
   </style>
 </resources>

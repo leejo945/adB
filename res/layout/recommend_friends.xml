@@ -2,21 +2,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp" >
+        android:padding="10dp"
+       
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/recommend_number_bg"
+            android:background="@drawable/recommend_income_bg"
             android:orientation="vertical"
             android:padding="10dp" >
 
@@ -26,7 +26,7 @@
                 android:text="@string/your_re_number" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/friends_recommed_code_tv"
                 style="@style/comm_money_orange"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
@@ -39,56 +39,22 @@
                 android:textSize="@dimen/textSize_small" />
         </LinearLayout>
 
-        <LinearLayout
+        <cn.com.paioo.app.view.ScrGridView
+           android:horizontalSpacing="20dp"
+           android:verticalSpacing="20dp"
+             android:layout_marginTop="15dp"
+            android:cacheColorHint="#00000000"
+            android:listSelector="#00000000"  
+            android:numColumns="4"
+            android:id="@+id/recommend_friends_gv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content" >
+     </cn.com.paioo.app.view.ScrGridView>
 
-            <LinearLayout
-                android:id="@+id/friends_share_to_friends_ll"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/recommend_friends" />
-
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:textSize="@dimen/textSize_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/slidemenu_friends" />
-            </LinearLayout>
-
-            <LinearLayout
-                  android:id="@+id/friends_copy_link_ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/recommend_copy_link" />
-
-                <TextView
-                    android:layout_marginTop="5dp"
-                      android:textSize="@dimen/textSize_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/copy_link" />
-            </LinearLayout>
-        </LinearLayout>
+        
 
         <RelativeLayout
+             
             android:layout_width="230dp"
             android:layout_height="230dp"
             android:layout_gravity="center_horizontal"
@@ -104,12 +70,13 @@
         </RelativeLayout>
 
         <TextView
-            android:textColor="@android:color/darker_gray"
+              
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="@string/qrcode_re" />
+            android:text="@string/qrcode_re"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 
 </ScrollView>

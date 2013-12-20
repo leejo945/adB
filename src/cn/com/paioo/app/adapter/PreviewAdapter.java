@@ -23,11 +23,15 @@ public class PreviewAdapter extends BaseAdapter {
 		this.list = list;
 		 this.type = type;
 	}
-
+    public void setData(ArrayList<Product> list){
+    	this.list.addAll(list);
+    }
+	
+	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 100;
+		return list.size();
 	}
 
 	@Override

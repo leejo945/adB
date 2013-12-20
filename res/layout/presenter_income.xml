@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <cn.com.paioo.app.view.PullToRefreshView
+        android:id="@+id/presenter_income_pullrefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            
+          
+            android:orientation="vertical" >
+
+            <cn.com.paioo.app.view.AutoMoreListView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scrollbars="none"
+                android:listSelector="#00000000"
+                android:cacheColorHint="#00000000"
+                android:background="@drawable/recommend_income_bg"
+                android:id="@+id/presenter_income_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" > 
+           </cn.com.paioo.app.view.AutoMoreListView>
+        </LinearLayout>
+    </cn.com.paioo.app.view.PullToRefreshView>
+
+</LinearLayout>

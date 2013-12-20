@@ -2,96 +2,105 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    >
+    android:scrollbars="none" >
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+        <LinearLayout style="@style/account_recharge_out" >
 
-            <LinearLayout style="@style/account_recharge_out" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_balance"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/textSize_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/recharege_now_money_tv"
+                    style="@style/comm_money_orange"
+                   />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/current_balance"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="@dimen/textSize_large" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    style="@style/comm_money_orange" />
+                    android:layout_marginLeft="5dp"
+                    android:text="元"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/textSize__large" />
             </LinearLayout>
+        </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-               
-                android:background="@drawable/selector_et_bg"
-                android:paddingLeft="8dp" >
-
-                <EditText
-                    android:layout_marginRight="70dp"
-                
-                    android:id="@+id/recharge_cardid_et"
-                    style="@style/fr_et"
-                    android:hint="@string/recharge_cardid"
-                    android:paddingRight="1dp" />
-
-                <ImageView
-                    android:id="@+id/recharge_barcode_iv"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="1dp"
-                    android:layout_marginRight="0.5dp"
-                    android:layout_marginTop="1dp"
-                    android:background="@drawable/transfer_card_bg"
-                    android:padding="10dp"
-                    android:src="@drawable/qr_code" />
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_et_bg"
+            android:paddingLeft="8dp" >
 
             <EditText
-                  android:id="@+id/recharge_pwd_et"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/selector_et_bg"
-                android:hint="@string/recharge_pwd"
-                android:padding="8dp"
-                android:singleLine="true" />
+                android:id="@+id/recharge_cardid_et"
+                style="@style/fr_et"
+                android:layout_marginRight="70dp"
+                android:hint="@string/recharge_cardid"
+                android:paddingRight="1dp" />
 
-            <Button
-                android:id="@+id/recharge_recharge_bt"
-                style="@style/bt_orange"
-                android:text="@string/recharge" />
+            <ImageView
+                android:id="@+id/recharge_barcode_iv"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/transfer_card_bg"
+                android:padding="10dp"
+                android:src="@drawable/qr_code" />
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/recharge_explain"
-                android:textStyle="bold" />
+        <EditText
+            android:id="@+id/recharge_pwd_et"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_et_bg"
+            android:hint="@string/recharge_pwd"
+            android:padding="8dp"
+            android:singleLine="true" />
 
-            <TextView
-                android:textColor="@android:color/darker_gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="11111111111111111111111.fdgasdlfs你就死定了看风景垃圾啊斯蒂芬考虑房价卡雷拉斯地方卡积分考虑杀死的经费刻录机路sd卡几分快乐加深对垃圾分类会计sd卡路附近刻录机带卡洛斯" />
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/recharge_recharge_bt"
+            style="@style/bt_orange"
+            android:text="@string/recharge" />
 
- 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/recharge_explain"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="11111111111111111111111.fdgasdlfs你就死定了看风景垃圾啊斯蒂芬考虑房价卡雷拉斯地方卡积分考虑杀死的经费刻录机路sd卡几分快乐加深对垃圾分类会计sd卡路附近刻录机带卡洛斯"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+
+</ScrollView>

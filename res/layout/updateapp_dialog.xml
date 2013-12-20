@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#ff0000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
+     android:background="@color/app_bg"
+     
+        android:padding="10dp" >
 
     <TextView
-        android:textSize="@dimen/textSize_large"
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="升级提醒" />
+        android:text="@string/warn_dialog_update"
+        android:textSize="@dimen/textSize_large" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+    <LinearLayout
         android:layout_marginTop="5dp"
-        android:src="@drawable/main_tab_line" />
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/orange" >
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+            android:textColor="@android:color/black"
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1.内容  \n2.内容 \n3.内容 \n4.内容" />
+       />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
+         >
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginRight="10dp"
             android:layout_weight="1"
+            
+          android:id="@+id/dialog_sure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           android:layout_marginRight="10dp"
             android:background="@drawable/selector_bt_orange"
-            android:text="Button" />
+            android:text="@string/warn_dialog_sureupdate" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
             android:layout_weight="1"
+            
+            android:id="@+id/dialog_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/selector_bt_white"
-            android:text="Button" />
-    </LinearLayout>
+            android:text="@string/warn_dialog_cancle" />
+</LinearLayout>
 
 </LinearLayout>

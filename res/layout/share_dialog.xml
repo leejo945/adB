@@ -3,7 +3,7 @@
         android:id="@+id/share_dialog_gv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-      
+      android:background="@color/app_bg"
         android:numColumns="4"
         android:scrollbars="none"
         android:verticalSpacing="10dp" >

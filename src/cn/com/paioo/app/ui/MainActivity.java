@@ -19,7 +19,6 @@ import cn.com.paioo.app.util.Constant;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
-import cn.com.paioo.app.view.ScrollListView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -42,6 +41,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,9 +72,6 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 	// 导航tab对应的Fragment
 	private Map<Integer, Fragment> frMap = new HashMap<Integer, Fragment>();
-	// private Fragment mFragmentHome, mFragmentFinance, mFragmentPreView,
-	// mFragmentRecharege, mFragmentFriends, mFragmentTransfer,
-	// mFragmentSetup;
 
 	// main。。tab
 	private RadioGroup mTabRG;
@@ -88,11 +85,13 @@ public class MainActivity extends SlidingFragmentActivity implements
 	private static int mainIndex = Constant.SLIDEMENU_INDEX_HOME;
 	// 侧滑菜单的最上面的条目
 	private LinearLayout slidemenuItemRoot;
+
+	private static boolean isTab;
 	// 为了个点击条目产生一个选择效果
 	private static View frontClickView;
 
 	private static final int APPUPDATE = 0;
-
+    private static final int DESTORYFRISTBACK =1;
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -102,7 +101,8 @@ public class MainActivity extends SlidingFragmentActivity implements
 				App.appUpdateInfo = appInfo;
 				break;
 
-			default:
+			case DESTORYFRISTBACK:
+				 fristBack = 0;
 				break;
 			}
 		};
@@ -110,6 +110,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		App.addActivity(this);
 		super.onCreate(savedInstanceState);
 		// 设置我们正文的显示布局，这和我们正常的Activity是一样的。
 		setContentView(R.layout.slidemenu_content);
@@ -121,9 +122,9 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 		// 检查是否要升级。。。
 
-		if (App.appUpdateInfo == null) {
-			updateApp();
-		}
+		// if (App.appUpdateInfo == null) {
+		// updateApp();
+		// }
 
 	}
 
@@ -144,36 +145,31 @@ public class MainActivity extends SlidingFragmentActivity implements
 	}
 
 	private void showUpdateDialog(final AppUpdateInfo updateInfo) {
-		// Dialog dialog = new Dialog(this, R.style.MyDialog);
-		// View view = View.inflate(this, R.layout.updateapp_dialog, null);
-		// dialog.setContentView(view);
-		// dialog.show();
+		final Dialog dialog = new Dialog(this, R.style.MyDialog);
+		dialog.setContentView(R.layout.updateapp_dialog);
+		TextView content = (TextView) dialog.findViewById(R.id.dialog_content);
+		content.setText(updateInfo.description);
 
-		AlertDialog.Builder builder = new Builder(this);
-		builder.setTitle(R.string.warn_dialog_update);
-		builder.setMessage(updateInfo.description);
-		builder.setPositiveButton(R.string.warn_dialog_sureupdate,
-				new DialogInterface.OnClickListener() {
+		dialog.findViewById(R.id.dialog_sure).setOnClickListener(
+				new OnClickListener() {
 
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
+					public void onClick(View v) {
 						// 点击确定马上升级
-						DataService.updateAPK(MainActivity.this,
-								updateInfo.apkurl, handler);
-
+						DataService.updateAPK(updateInfo.apkurl,
+								MainActivity.this);
+						dialog.dismiss();
 					}
 				});
-		builder.setNegativeButton(R.string.warn_dialog_cancle,
-				new DialogInterface.OnClickListener() {
+		dialog.findViewById(R.id.dialog_cancle).setOnClickListener(
+				new OnClickListener() {
 
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-                        
+					public void onClick(View v) {
+						dialog.dismiss();
 					}
 				});
-		builder.create().show();
-
+		dialog.show();
 	}
 
 	private void init() {
@@ -271,6 +267,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 		mTabPreview = (RadioButton) findViewById(R.id.main_tab_preview_rb);
 		mTabSetup = (RadioButton) findViewById(R.id.main_tab_setup_rb);
 		mTabRG.setOnCheckedChangeListener(this);
+
 	}
 
 	private void hiddenView(int conId) {
@@ -289,12 +286,12 @@ public class MainActivity extends SlidingFragmentActivity implements
 	/**
 	 * 用于判断fragement 是显示还是隐藏等等
 	 */
-	public void fragmentToggle(FragmentTransaction ft, int conId) {
+	public void fragmentToggle(int conId) {
 		hiddenView(conId);
 		Fragment fragment = frMap.get(conId);
 		if (fragment != null) {
 			if (!fragment.isAdded()) {// 如果整个fragment是add。
-				ft.replace(conId, fragment).commit();
+				fm.beginTransaction().replace(conId, fragment).commit();
 			} else {
 				Log.e("paioo", "该项目已经添加");
 			}
@@ -321,47 +318,46 @@ public class MainActivity extends SlidingFragmentActivity implements
 				slidemenuItemRoot.setBackgroundColor(R.color.title_bar_bg);
 			}
 		}
-		boolean isTab = false;
 
-		FragmentTransaction ft = fm.beginTransaction();
+		isTab = false;
+
 		switch (position) {
 		case 0: {// 首页
 			isTab = true;
 			mTabHome.setChecked(true);
-			fragmentToggle(ft, R.id.content_home);
+			fragmentToggle(R.id.content_home);
 			break;
 		}
 		case 1: {// 财务
 			isTab = true;
 			mTabFinance.setChecked(true);
-			fragmentToggle(ft, R.id.content_finance);
+			fragmentToggle(R.id.content_finance);
 			break;
 		}
 		case 2: {// 预览
 			isTab = true;
 			mTabPreview.setChecked(true);
-			fragmentToggle(ft, R.id.content_preview);
+			fragmentToggle(R.id.content_preview);
 			break;
 		}
 
 		case 3: {// 账号充值
-			fragmentToggle(ft, R.id.content_recharge);
+			fragmentToggle(R.id.content_recharge);
 			break;
 		}
 		case 4: {// 推荐好友
-			fragmentToggle(ft, R.id.content_friends);
+			fragmentToggle(R.id.content_friends);
 
 			break;
 		}
 		case 5: {// 余额转账
-			fragmentToggle(ft, R.id.content_transfer);
+			fragmentToggle(R.id.content_transfer);
 			break;
 		}
 		case 6: {// 设置
 			isTab = true;
 			mTabSetup.setChecked(true);
-			fragmentToggle(ft, R.id.content_setup);
-
+			fragmentToggle(R.id.content_setup);
 			break;
 		}
 
@@ -380,50 +376,52 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		FragmentTransaction ft = fm.beginTransaction();
+		// if(isTab){//点击侧滑菜单的时候，tab部分check也会做相应的变化。从而触发这个方法的执行。所以执行了。两次。这里阻止其重复执行
+		// return;
+		// }
+
 		int position = 0;
 		switch (checkedId) {
 		case R.id.main_tab_home_rb:
 			position = 0;
-			fragmentToggle(ft, R.id.content_home);
+			fragmentToggle(R.id.content_home);
 			break;
 		case R.id.main_tab_finance_rb:
 			position = 1;
-			fragmentToggle(ft, R.id.content_finance);
+			fragmentToggle(R.id.content_finance);
 			break;
 		case R.id.main_tab_preview_rb:
 			position = 2;
-			fragmentToggle(ft, R.id.content_preview);
+			fragmentToggle(R.id.content_preview);
 			break;
 		case R.id.main_tab_setup_rb:
 			position = 6;
-			fragmentToggle(ft, R.id.content_setup);
+			fragmentToggle(R.id.content_setup);
 			break;
 		}
+
 		TitleUtil.show(this, position);
 	}
 
 	private static long fristBack;
-	private static final int BACKSPACTIEM = 5000;
-	// @Override
-	// public void onBackPressed() {
-	// if(fristBack==0){
-	// MyToast.show(this, R.string.warn_toast_again_click_exit);
-	// fristBack = System.currentTimeMillis();
-	// handler.sendEmptyMessageDelayed(0, BACKSPACTIEM);
-	// }else{
-	// Log.e(tag, System.currentTimeMillis()-fristBack+"");
-	// if(System.currentTimeMillis()-fristBack<BACKSPACTIEM){
-	// fristBack = 0;
-	// }
-	// }
-	//
-	//
-	// }
-	// private Handler handler = new Handler() {
-	// public void handleMessage(android.os.Message msg) {
-	// fristBack = 0;
-	// };
-	// };
+	private static final int BACKSPACTIEM = 4000;
+
+	@Override
+	public void onBackPressed() {
+		if (fristBack == 0) {
+			MyToast.show(this, R.string.warn_toast_again_click_exit);
+			fristBack = System.currentTimeMillis();
+			handler.sendEmptyMessageDelayed(DESTORYFRISTBACK, BACKSPACTIEM);
+		} else {
+			Log.e(tag, System.currentTimeMillis() - fristBack + "");
+			if (System.currentTimeMillis() - fristBack <=BACKSPACTIEM) {
+				//退出app
+				App.exit();
+				fristBack = 0;
+			}
+		}
+
+	}
+	 
 
 }

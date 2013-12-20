@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    >
+    android:orientation="vertical" >
 
     <include layout="@layout/title_bar" />
 
@@ -18,60 +17,76 @@
             android:orientation="vertical"
             android:padding="10dp" >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@drawable/preview_detailed_temp_img"
-                />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal" >
+                android:layout_height="match_parent"
+                android:background="@drawable/preview_detailed_bg"
+                android:orientation="vertical"
+                >
 
-                <ImageView
+                <Gallery
+                    android:id="@+id/preview_detailed_product_imgs_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <RadioGroup
+                    android:id="@+id/preview_detailed_point_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:clickable="false"
+                        android:id="@+id/preview_detailed_point0_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:button="@drawable/selector_preview_point" />
+
+                    <RadioButton
+                          android:clickable="false"
+                        android:id="@+id/preview_detailed_point1_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:button="@drawable/selector_preview_point" />
+
+                    <RadioButton
+                          android:clickable="false"
+                        android:id="@+id/preview_detailed_point2_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/selector_preview_point" />
+                </RadioGroup>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_preview_point" />
+                    android:ellipsize="end"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="2013什么乱七八糟的春晓秋冬装"
+                    android:textSize="@dimen/textSize_large_"
+                    android:textStyle="bold" />
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/selector_preview_point" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/selector_preview_point" />
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="2013什么乱七八糟的春晓秋  3什么晓秋冬装2013什么乱七八糟的春晓秋冬装2013什么乱七八糟的春晓秋冬装"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
-
-            <TextView
-                android:padding="5dp"
-                android:textSize="@dimen/textSize_large_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2013什么乱七八糟的春晓秋冬装"
-                android:textStyle="bold" />
-
-            <TextView
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 
-                android:text="2013什么乱七八糟的春晓秋  3什么晓秋冬装2013什么乱七八糟的春晓秋冬装2013什么乱七八糟的春晓秋冬装" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="#ff0000"
+                android:background="@drawable/preview_detailed_bg"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
@@ -92,34 +107,102 @@
                     android:text="天河什么区什么县什么玩意" />
 
                 <LinearLayout
-                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
                     android:orientation="horizontal" >
 
-                    <ImageView
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
                         
-                        android:id="@+id/imageView2"
-                        style="@style/preview_detailed_buttom"
-                        android:src="@drawable/preview_detailed_cbd" />
+                        >
 
-                    <ImageView 
-                          
-                        android:id="@+id/imageView1"
-                      style="@style/preview_detailed_buttom"
-                        android:src="@drawable/preview_detailed_bus" />
+                        <ImageView
+                            android:onClick="onClick"
+                            android:id="@+id/preview_detailed_bus"
+                            style="@style/wh_match_wrap"
+                            android:src="@drawable/preview_detailed_bus" />
+                        <TextView 
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/preview_detailed_bus"
+                            android:text="@string/preview_detailed_bus"
+                             style="@style/wh_wrap_wrap"
+                            />
+                        
+                   </RelativeLayout>
+                   
+                    
+                    
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        
+                        >
 
-                    <ImageView
-                          
-                        android:id="@+id/imageView3"
-                          style="@style/preview_detailed_buttom"
-                        android:src="@drawable/preview_detailed_business_home" />
+                        <ImageView
+                             android:onClick="onClick"
+                            android:id="@+id/preview_detailed_cbd"
+                            style="@style/wh_match_wrap"
+                            android:src="@drawable/preview_detailed_cbd" />
+                        <TextView 
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/preview_detailed_cbd"
+                            android:text="@string/preview_detailed_cbd"
+                             style="@style/wh_wrap_wrap"
+                            />
+                        
+                   </RelativeLayout>
+                   
+                    
+                    
+                    
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        
+                        >
 
-                    <ImageView
-                           
-                        android:id="@+id/imageView4"
-                    style="@style/preview_detailed_buttom"
-                        android:src="@drawable/preview_detailed_time" />
+                        <ImageView
+                             android:onClick="onClick"
+                            android:id="@+id/preview_detailed_business"
+                            style="@style/wh_match_wrap"
+                            android:src="@drawable/preview_detailed_business_home" />
+                        <TextView 
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/preview_detailed_business"
+                            android:text="@string/preview_detailed_business"
+                             style="@style/wh_wrap_wrap"
+                            />
+                        
+                   </RelativeLayout>
+                   
+                    
+                    
+                    
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        
+                        >
+
+                        <ImageView
+                             android:onClick="onClick"
+                            android:id="@+id/preview_detailed_time"
+                            style="@style/wh_match_wrap"
+                            android:src="@drawable/preview_detailed_time" />
+                        <TextView 
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/preview_detailed_time"
+                            android:text="@string/preview_detailed_time"
+                             style="@style/wh_wrap_wrap"
+                            />
+                        
+                   </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

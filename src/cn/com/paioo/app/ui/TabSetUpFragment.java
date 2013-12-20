@@ -22,21 +22,24 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 		 Log.e("paioo", "TabSetUpFragment   设置，，，，，创建");
 		return inflater.inflate(R.layout.nav_setup, container, false);
 	}
+     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+    	 Log.e("paioo", "TabSetUpFragment   设置，，，，，onActivityCreated");
+    		fa = getActivity();
+    		fa.findViewById(R.id.setup_modify_contact_way_rl).setOnClickListener(
+    				this);
+    		fa.findViewById(R.id.setup_modify_password_rl).setOnClickListener(this);
+    		fa.findViewById(R.id.setup_suggest_rl).setOnClickListener(this);
+    		fa.findViewById(R.id.setup_about_us_rl).setOnClickListener(this);
 
-	@Override
-	public void onStart() {
-		fa = getActivity();
-		fa.findViewById(R.id.setup_modify_contact_way_rl).setOnClickListener(
-				this);
-		fa.findViewById(R.id.setup_modify_password_rl).setOnClickListener(this);
-		fa.findViewById(R.id.setup_suggest_rl).setOnClickListener(this);
-		fa.findViewById(R.id.setup_about_us_rl).setOnClickListener(this);
-
-		fa.findViewById(R.id.setup_check_update_rl).setOnClickListener(this);
-		fa.findViewById(R.id.setup_safe_exit_bt).setOnClickListener(this);
-
-		super.onStart();
-	}
+    		fa.findViewById(R.id.setup_check_update_rl).setOnClickListener(this);
+    		fa.findViewById(R.id.setup_safe_exit_bt).setOnClickListener(this);
+    	super.onActivityCreated(savedInstanceState);
+    }
+	
+	
+	
+	 
 	@Override
 	public void onDestroy() {
 		 Log.e("paioo", "TabSetUpFragment   设置，，，，，销毁");

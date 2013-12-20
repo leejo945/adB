@@ -6,13 +6,24 @@
 
     <include layout="@layout/title_bar" />
 
-    <cn.com.paioo.app.view.PinnedSectionListView
-        android:id="@+id/recharge_record_lv"
+    <cn.com.paioo.app.view.PullToRefreshView
+        android:id="@+id/three_in_one_pullrefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false" >
-    </cn.com.paioo.app.view.PinnedSectionListView>
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <cn.com.paioo.app.view.AutoLoadMoreExpandableListView
+                android:id="@+id/recharge_record_elv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:groupIndicator="@null" >
+           </cn.com.paioo.app.view.AutoLoadMoreExpandableListView>
+        </LinearLayout>
+    </cn.com.paioo.app.view.PullToRefreshView>
 
 </LinearLayout>

@@ -18,12 +18,14 @@ public class NavTransferAccountFragment extends BaseFragment {
 		Log.e("paioo", "NavTransferAccountFragment   ×ªÕË£¬£¬£¬£¬£¬´´½¨");
 		return inflater.inflate(R.layout.transfer_accounts, container, false);
 	}
-  @Override
-public void onStart() {
-	  fa = getActivity();
-	  // TODO Auto-generated method stub
-	super.onStart();
-}
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		 fa = getActivity();
+		super.onActivityCreated(savedInstanceState);
+	}
+	
+	
+ 
 	
 	 @Override
 		public void onDestroy() {

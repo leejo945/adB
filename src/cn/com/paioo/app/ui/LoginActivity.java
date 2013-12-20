@@ -1,5 +1,6 @@
 package cn.com.paioo.app.ui;
 
+import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.StringUtils;
@@ -18,6 +19,7 @@ public class LoginActivity extends Activity// BaseActivity
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		App.addActivity(this);
 		// TODO Auto-generated method stub
 		setContentView(R.layout.login);
 		super.onCreate(savedInstanceState);

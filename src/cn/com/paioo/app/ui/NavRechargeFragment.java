@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class NavRechargeFragment extends BaseFragment implements OnClickListener {
+public class NavRechargeFragment extends BaseFragment implements
+		OnClickListener {
 	private TextView mNewMoney;
 	private EditText mCardid, mPwd;
 	private FragmentActivity fa;
@@ -28,32 +29,34 @@ public class NavRechargeFragment extends BaseFragment implements OnClickListener
 		return inflater.inflate(R.layout.account_recharge, container, false);
 
 	}
+ 
 	@Override
-	public void onStart() {
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		fa = getActivity();
 		fa.findViewById(R.id.recharge_barcode_iv).setOnClickListener(this);
 		fa.findViewById(R.id.recharge_recharge_bt).setOnClickListener(this);
- 		mCardid = (EditText)fa.findViewById(R.id.recharge_cardid_et);
- 		mPwd = (EditText) fa.findViewById(R.id.recharge_pwd_et);
-		
-		
-		super.onStart();
+		mCardid = (EditText) fa.findViewById(R.id.recharge_cardid_et);
+		mPwd = (EditText) fa.findViewById(R.id.recharge_pwd_et);
+		mNewMoney = (TextView) fa.findViewById(R.id.recharege_now_money_tv);
+		mNewMoney.setText("2350");
+		super.onActivityCreated(savedInstanceState);
 	}
 
 	@Override
 	public void onDestroy() {
 		Log.e("paioo", "NavRechargeFragment   充值界面，，，，，，销毁");
 
-		 
 		super.onDestroy();
 	}
+
 	@Override
 	public void onClick(View v) {
-		 switch (v.getId()) {
+		switch (v.getId()) {
 		case R.id.recharge_barcode_iv:
-			//二维码界面
-			//UIHelper.switcher(fa,ZxingActivity.class);
-			Intent i = new Intent(fa,ZxingActivity.class);
+			// 二维码界面
+			// UIHelper.switcher(fa,ZxingActivity.class);
+			Intent i = new Intent(fa, ZxingActivity.class);
 			startActivityForResult(i, 1);
 			break;
 
@@ -76,21 +79,19 @@ public class NavRechargeFragment extends BaseFragment implements OnClickListener
 				MyToast.show(fa, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
-			 
+
 			break;
 		}
-		
+
 	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-	 
+
 		mCardid.setText(data.getStringExtra("result"));
-		
+
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
 
-	
- 
 }

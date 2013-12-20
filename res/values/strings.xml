@@ -14,7 +14,8 @@
 
 
     <!-- lv滚动到底部加载 -->
-    <string name="lv_footer_more">更多 </string>
+    <string name="lv_footer_more">更多载入中...</string>
+      <string name="lv_footer_load_fail">加载失败，点击重新加载</string>
     <string name="lv_footer_loading">加载中...</string>
     <!-- lv滚动到底部加载 -->
 
@@ -96,7 +97,10 @@
    
    <!-- 预览详情 -->
    <string name="title_bar_title_preview_detailed">预览详情</string>
-   
+    <string name="preview_detailed_bus">公交信息</string>
+     <string name="preview_detailed_cbd">商务中心</string>
+      <string name="preview_detailed_business">商家简介</string>
+       <string name="preview_detailed_time">营业时间</string>
     <!-- 充值记录，recharge_record.xml -->
 
     <string name="carid">卡号：</string>
@@ -111,6 +115,8 @@
     <string name="find_friends_install_app1">邀请好友安装APP并注册成功，可获取1元广告充值奖励</string>
     <string name="qrcode_re">扫一扫推荐</string>
     <string name="copy_link">复制链接</string>
+    <!-- 推荐人收入 -->
+    <string name="title_bar_title_referee_money">推荐人收入</string>
     <!-- 意见反馈 -->
     <string name="telephone_number">020-520520520</string>
 
@@ -185,8 +191,10 @@
      <string name="warn_toast_unagree">你还没有同意协议哦</string>
     <string name="warn_toast_suggest_isempty">真的不说点...</string>
       <string name="warn_toast_again_click_exit">再点一次退出</string>
+          <string name="warn_toast_updateapp_exception">更新App异常</string>
+       <string name="warn_toast_already">链接已复制</string>
       <string name="warn_dialog_update">升级提醒</string>
       <string name="warn_dialog_sureupdate">确定更新</string>
       <string name="warn_dialog_cancle">取消</string>
-    
+     <string name="warn_toast_app_uninstall">Sorry,你的应用没安装！</string>
 </resources>

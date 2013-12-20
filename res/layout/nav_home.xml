@@ -1,111 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
- 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none" >
 
-            <LinearLayout style="@style/small_color_bar_outside" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/home_orange" >
+        <LinearLayout 
+         
+            style="@style/small_color_bar_outside" >
 
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_top_left" />
+            <LinearLayout
+                style="@style/small_color_bar_inner"
+                android:layout_marginRight="5dp"
+                android:background="@color/home_orange" >
 
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
+                <TextView
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_top_left" />
 
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:background="@color/powder_blue1" >
-
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_top_right" />
-
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout style="@style/small_color_bar_outside" >
-
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/pistac" >
-
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_middle_left" />
-
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:background="@color/powder_blue2" >
-
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_middle_right" />
-
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout style="@style/small_color_bar_outside" >
-
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/peach" >
-
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_bottom_left" />
-
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/small_color_bar_inner"
-                    android:background="@color/orchid" >
-
-                    <TextView
-                        style="@style/small_color_bar_inner_text_tv"
-                        android:text="@string/home_bottom_right" />
-
-                    <TextView style="@style/small_color_bar_inner_number_tv" />
-                </LinearLayout>
+                <TextView 
+                    android:id="@+id/nav_home_top_left_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/white"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="35dp" >
+                style="@style/small_color_bar_inner"
+                android:background="@color/powder_blue1" >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/a_week_trend"
-                    android:textSize="@dimen/textSize_large" />
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_top_right" />
 
-                <cn.com.paioo.app.view.TrendView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                </cn.com.paioo.app.view.TrendView>
+                <TextView
+                      android:id="@+id/nav_home_top_right_tv"
+                     style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
         </LinearLayout>
-    
- 
+
+        <LinearLayout style="@style/small_color_bar_outside" >
+
+            <LinearLayout
+                style="@style/small_color_bar_inner"
+                android:layout_marginRight="5dp"
+                android:background="@color/pistac" >
+
+                <TextView
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_middle_left" />
+
+                <TextView
+                      android:id="@+id/nav_home_middle_left_tv"
+                     style="@style/small_color_bar_inner_number_tv" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/small_color_bar_inner"
+                android:background="@color/powder_blue2" >
+
+                <TextView
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_middle_right" />
+
+                <TextView
+                      android:id="@+id/nav_home_middle_right_tv"
+                     style="@style/small_color_bar_inner_number_tv" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/small_color_bar_outside" >
+
+            <LinearLayout
+                style="@style/small_color_bar_inner"
+                android:layout_marginRight="5dp"
+                android:background="@color/peach" >
+
+                <TextView
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_bottom_left" />
+
+                <TextView 
+                      android:id="@+id/nav_home_bottom_left_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/small_color_bar_inner"
+                android:background="@color/orchid" >
+
+                <TextView
+                    style="@style/small_color_bar_inner_text_tv"
+                    android:text="@string/home_bottom_right" />
+
+                <TextView
+                      android:id="@+id/nav_home_bottom_right_tv"
+                      style="@style/small_color_bar_inner_number_tv" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="35dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/a_week_trend"
+                android:textSize="@dimen/textSize_large" />
+
+            <cn.com.paioo.app.view.ChartView
+                android:id="@+id/nav_home_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+          </cn.com.paioo.app.view.ChartView>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

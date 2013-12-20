@@ -28,7 +28,7 @@ import cn.com.paioo.app.adapter.PreviewAdapter;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.UIHelper;
 import cn.com.paioo.app.view.AutoMoreListView;
-import cn.com.paioo.app.view.PullToRefreshGridView;
+ 
 
 @SuppressLint("ResourceAsColor")
 public class TabPreViewFragmet extends BaseFragment implements  OnTouchListener, OnCheckedChangeListener  {
@@ -52,22 +52,26 @@ public class TabPreViewFragmet extends BaseFragment implements  OnTouchListener,
 		return inflater.inflate(R.layout.nav_preview, container, false);
 	} 
 	@Override
-	public void onStart() {
- 		fa = getActivity();
-		fm = getFragmentManager();
-		push = new PreviewPushADFragment();
-		desk = new PreviewDeskADFragment();
-		mPushLL = (LinearLayout) fa.findViewById(R.id.preview_push_ad_ll);
-		mDeskLL = (LinearLayout) fa.findViewById(R.id.preview_desk_ad_ll);
-		fm.beginTransaction().replace(R.id.preview_push_ad_ll, push).commit();
- 		mRG = (RadioGroup) fa.findViewById(R.id.preview_rg);
- 		mPushRB = (RadioButton) fa.findViewById(R.id.preview_push_ad_rb);
- 		mDeskRB = (RadioButton) fa.findViewById(R.id.preview_desk_ad_rb);
- 		mPushRB.setChecked(true);
- 		mPushRB.setTextColor(Color.rgb(255, 97, 0));
- 		mRG.setOnCheckedChangeListener(this);
-		super.onStart();
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		   Log.e("paioo", "TabFinanceFragment   ‘§¿¿£¨£¨£¨£¨£¨onActivityCreated ");
+			fa = getActivity();
+			fm = getFragmentManager();
+			push = new PreviewPushADFragment();
+			desk = new PreviewDeskADFragment();
+			mPushLL = (LinearLayout) fa.findViewById(R.id.preview_push_ad_ll);
+			mDeskLL = (LinearLayout) fa.findViewById(R.id.preview_desk_ad_ll);
+			fm.beginTransaction().replace(R.id.preview_push_ad_ll, push).commit();
+	 		mRG = (RadioGroup) fa.findViewById(R.id.preview_rg);
+	 		mPushRB = (RadioButton) fa.findViewById(R.id.preview_push_ad_rb);
+	 		mDeskRB = (RadioButton) fa.findViewById(R.id.preview_desk_ad_rb);
+	 		mPushRB.setChecked(true);
+	 		mPushRB.setTextColor(Color.rgb(255, 97, 0));
+	 		mRG.setOnCheckedChangeListener(this);
+		   super.onActivityCreated(savedInstanceState);
 	}
+	
+	
  
  
     

@@ -4,11 +4,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:paddingBottom="20dp" >
+ 
 
-    <ImageView
-        style="@style/logo"
-        android:layout_marginTop="70dp" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/splash_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp" >
+        </android.support.v4.view.ViewPager>
 
+    
     <LinearLayout
         android:id="@+id/splash_login_register_ll"
         android:layout_width="match_parent"
@@ -41,4 +46,55 @@
             android:textSize="@dimen/textSize_large" />
     </LinearLayout>
 
+    
+    
+    
+        <RadioGroup
+              
+           android:layout_above="@id/splash_login_register_ll"
+            android:id="@+id/splash_point_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+           android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/splash_point0_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:button="@drawable/selector_splash_point"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/splash_point1_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:button="@drawable/selector_splash_point"
+                android:clickable="false" />
+
+            <RadioButton
+                   android:layout_marginRight="5dp"
+                android:id="@+id/splash_point2_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_splash_point"
+                android:clickable="false" />
+            
+             <RadioButton
+                android:id="@+id/splash_point3_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_splash_point"
+                android:clickable="false" />
+        </RadioGroup>
+    
+    
+    
+    
+    
+    
 </RelativeLayout>

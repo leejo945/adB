@@ -58,8 +58,8 @@ public class ShareAdapter extends BaseAdapter {
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}
-		final ShareInfo info = list.get(position);
-		 holder.icon.setImageDrawable(info.icon);
+		 final ShareInfo info = list.get(position);
+		 holder.icon.setImageResource(info.icon0);
 		 holder.name.setText(info.name);
 		return convertView;
 	}

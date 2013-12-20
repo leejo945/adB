@@ -54,8 +54,27 @@
     <!-- 财务,推荐好友，余额转账右边的icon -->
     <ImageButton
          
-        android:id="@+id/title_bar_recharge_record_ib"
+        android:id="@+id/title_bar_record_ib"
         style="@style/title_iv_right"
         android:background="@drawable/selector_title_bar_recharge_record" />
+    
+    
+    
+    
+    
+      <ProgressBar
+          android:visibility="gone"
+          android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+       android:layout_alignParentRight="true"
+          android:id="@+id/title_bar_load_pb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+         />
+    
+    
+    
+    
+    
 
 </RelativeLayout>
