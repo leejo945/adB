@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.adapter.SplashAdapter;
+import cn.com.paioo.app.adapter.ViewPagerAdapter;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.NetUtil;
@@ -17,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -69,11 +70,19 @@ public class SplashActivity extends Activity// BaseActivity
 		points.add((RadioButton) findViewById(R.id.splash_point3_rb));
 
 		ArrayList<View> vs = new ArrayList<View>();
-		vs.add(View.inflate(this, R.layout.splash_vp0, null));
-		vs.add(View.inflate(this, R.layout.splash_vp1, null));
-		vs.add(View.inflate(this, R.layout.splash_vp2, null));
-		vs.add(View.inflate(this, R.layout.splash_vp3, null));
-		SplashAdapter adapter = new SplashAdapter(vs);
+		View item0 = View.inflate(this, R.layout.splash_vp_item, null);
+		View item1 = View.inflate(this, R.layout.splash_vp_item, null);
+		View item2 = View.inflate(this, R.layout.splash_vp_item, null);
+		View item3 = View.inflate(this, R.layout.splash_vp_item, null);
+		 ((ImageView)item0.findViewById(R.id.splash_vp_item_iv)).setImageResource(R.drawable.logo);
+		 ((ImageView)item1.findViewById(R.id.splash_vp_item_iv)).setImageResource(R.drawable.splash_vp1);
+		 ((ImageView)item2.findViewById(R.id.splash_vp_item_iv)).setImageResource(R.drawable.splash_vp2);
+		 ((ImageView)item3.findViewById(R.id.splash_vp_item_iv)).setImageResource(R.drawable.splash_vp3);
+		vs.add(item0);
+		vs.add(item1);
+		vs.add(item2);
+		vs.add(item3);
+		ViewPagerAdapter adapter = new ViewPagerAdapter(vs);
 		vp.setAdapter(adapter);
 		vp.setOnPageChangeListener(this);
 	}

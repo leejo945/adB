@@ -9,11 +9,14 @@ import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.StringUtils;
 import cn.com.paioo.app.util.TitleUtil;
 import cn.com.paioo.app.util.UIHelper;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -110,12 +113,28 @@ public class PreviewDetailedActivity extends BaseActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		
+		
+		
+		
 		if(parent instanceof GridView){
 
+			if (position == list.size()-1) {
+				ClipboardManager cmb = (ClipboardManager)  getSystemService(Context.CLIPBOARD_SERVICE);
+				cmb.setText("http://www.gooogle.com");
+				MyToast.show(this, R.string.warn_toast_already);
+				return;
+			}
+
+			String packName = list.get(position).packName;
+			if (StringUtils.isEmpty(packName)) {
+				MyToast.show(this, R.string.warn_toast_app_uninstall);
+				return;
+			}
 			Intent it = new Intent(Intent.ACTION_SEND);
-			it.setPackage(list.get(position).packName);
+			it.setPackage(packName);
 			it.setType("text/plain");
-			it.putExtra(Intent.EXTRA_TEXT, "分享的文本内容");
+			it.putExtra(Intent.EXTRA_TEXT, "这是分享中，测试的文本内容");
 			it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(Intent.createChooser(it, "分享到**"));
 			dialog.cancel();

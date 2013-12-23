@@ -23,8 +23,8 @@ import android.widget.TextView;
 
 public class TabHomeFragment extends BaseFragment {
 	String tag = "NavHomeActivity";
-	private TextView mTOPLeft, mTOPRight, mMiddleLeft, mMiddleRight,
-			mBottomLeft, mBottomRight;
+	 private TextView mTOPLeft, mTOPRight, mMiddleLeft, mMiddleRight,
+	 		mBottomLeft, mBottomRight;
 	private FragmentActivity fa;
 	private ChartView mChart;
 
@@ -49,18 +49,25 @@ public class TabHomeFragment extends BaseFragment {
 		mBottomRight = (TextView) fa
 				.findViewById(R.id.nav_home_bottom_right_tv);
 		mChart = (ChartView) fa.findViewById(R.id.nav_home_chart);
-//		addData();
-//		mChart.setData(charts);
+ 	
+ 	
+		init();
+		super.onActivityCreated(savedInstanceState);
+	}
+    private void init(){
 		mTOPLeft.setText("гд3658.05");
 		mTOPRight.setText("гд7.05");
 		mMiddleLeft.setText("247");
 		mMiddleRight.setText("3,830");
 		mBottomLeft.setText("6.44%");
 		mBottomRight.setText("гд0.30");
-		super.onActivityCreated(savedInstanceState);
-	}
-
-	private void addData() {
+		
+		
+		initChart();
+ 		mChart.setData(charts);
+		
+    }
+	private void initChart() {
 
 		charts.add(new ChartBean(0, 0));
 

@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:scrollbars="none" >
 
     <LinearLayout
@@ -10,9 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <LinearLayout 
-         
-            style="@style/small_color_bar_outside" >
+        <LinearLayout style="@style/small_color_bar_outside" >
 
             <LinearLayout
                 style="@style/small_color_bar_inner"
@@ -23,7 +20,7 @@
                     style="@style/small_color_bar_inner_text_tv"
                     android:text="@string/home_top_left" />
 
-                <TextView 
+                <TextView
                     android:id="@+id/nav_home_top_left_tv"
                     style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
@@ -37,8 +34,8 @@
                     android:text="@string/home_top_right" />
 
                 <TextView
-                      android:id="@+id/nav_home_top_right_tv"
-                     style="@style/small_color_bar_inner_number_tv" />
+                    android:id="@+id/nav_home_top_right_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
         </LinearLayout>
 
@@ -54,8 +51,8 @@
                     android:text="@string/home_middle_left" />
 
                 <TextView
-                      android:id="@+id/nav_home_middle_left_tv"
-                     style="@style/small_color_bar_inner_number_tv" />
+                    android:id="@+id/nav_home_middle_left_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
 
             <LinearLayout
@@ -67,8 +64,8 @@
                     android:text="@string/home_middle_right" />
 
                 <TextView
-                      android:id="@+id/nav_home_middle_right_tv"
-                     style="@style/small_color_bar_inner_number_tv" />
+                    android:id="@+id/nav_home_middle_right_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
         </LinearLayout>
 
@@ -83,8 +80,8 @@
                     style="@style/small_color_bar_inner_text_tv"
                     android:text="@string/home_bottom_left" />
 
-                <TextView 
-                      android:id="@+id/nav_home_bottom_left_tv"
+                <TextView
+                    android:id="@+id/nav_home_bottom_left_tv"
                     style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
 
@@ -97,34 +94,28 @@
                     android:text="@string/home_bottom_right" />
 
                 <TextView
-                      android:id="@+id/nav_home_bottom_right_tv"
-                      style="@style/small_color_bar_inner_number_tv" />
+                    android:id="@+id/nav_home_bottom_right_tv"
+                    style="@style/small_color_bar_inner_number_tv" />
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:textColor="#666666"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@android:color/white"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="35dp" >
+            android:gravity="center_horizontal"
+            android:paddingTop="25dp"
+            android:text="@string/a_week_trend"
+            android:textSize="@dimen/textSize_large" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/a_week_trend"
-                android:textSize="@dimen/textSize_large" />
-
-            <cn.com.paioo.app.view.ChartView
-                android:id="@+id/nav_home_chart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-          </cn.com.paioo.app.view.ChartView>
-        </LinearLayout>
+        <cn.com.paioo.app.view.ChartView
+            android:id="@+id/nav_home_chart"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@android:color/white" >
+        </cn.com.paioo.app.view.ChartView>
     </LinearLayout>
 
 </ScrollView>

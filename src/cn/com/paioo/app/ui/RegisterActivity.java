@@ -35,58 +35,58 @@ public class RegisterActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.free_register_submit_bt:
-//			String account = StringUtils.getStringByET(mAccount);
-//			String pwd = StringUtils.getStringByET(mPwd);
-//			String surePwd = StringUtils.getStringByET(mSurePwd);
-//			String contacts = StringUtils.getStringByET(mContacts);
-//			String cellPhone = StringUtils.getStringByET(mCellPhone);
-//			String mail = StringUtils.getStringByET(mMail);
-//
-//			// //账号
-//			if (StringUtils.isEmpty(account)) {
-//				MyToast.show(this, R.string.warn_toast_account_isempty);
-//				return;
-//			}
-//			// 密码
-//			if (StringUtils.isEmpty(pwd)) {
-//				MyToast.show(this, R.string.warn_toast_pwd_isempty);
-//				return;
-//			}
-//			if (!StringUtils.isStandardPwd(pwd)) {
-//				MyToast.show(this, R.string.warn_toast_pwd_unstandard);
-//				return;
-//			}
-//			
-//			
-//			if (!StringUtils.isSamePwd(pwd, surePwd)) {
-//				MyToast.show(this, R.string.warn_toast_twice_pwd_difference);
-//				return;
-//			}
-//			// 联系人判空
-//			if (StringUtils.isEmpty(contacts)) {
-//				MyToast.show(this, R.string.warn_toast_contacts_isempty);
-//				return;
-//			}
-//			// 手机号码判空
-//			if (StringUtils.isEmpty(cellPhone)) {
-//				MyToast.show(this, R.string.warn_toast_cellphone_isempty);
-//				return;
-//			}
-//			// 手机号码格式不对 不到11 位
-//			if (!StringUtils.isStandardCellphoneNumber(cellPhone)) {
-//				MyToast.show(this, R.string.warn_toast_cellphone_unstandard);
-//				return;
-//			}
-//
-//			// 邮箱
-//			if (StringUtils.isEmpty(mail)) {
-//				MyToast.show(this, R.string.warn_toast_mail_isempty);
-//				return;
-//			}
-//			if (!StringUtils.isEmail(mail)) {
-//				MyToast.show(this, R.string.warn_toast_mail_unstandard);
-//				return;
-//			}
+			String account = StringUtils.getStringByET(mAccount);
+			String pwd = StringUtils.getStringByET(mPwd);
+			String surePwd = StringUtils.getStringByET(mSurePwd);
+			String contacts = StringUtils.getStringByET(mContacts);
+			String cellPhone = StringUtils.getStringByET(mCellPhone);
+			String mail = StringUtils.getStringByET(mMail);
+
+			// //账号
+			if (StringUtils.isEmpty(account)) {
+				MyToast.show(this, R.string.warn_toast_account_isempty);
+				return;
+			}
+			// 密码
+			if (StringUtils.isEmpty(pwd)) {
+				MyToast.show(this, R.string.warn_toast_pwd_isempty);
+				return;
+			}
+			if (!StringUtils.isStandardPwd(pwd)) {
+				MyToast.show(this, R.string.warn_toast_pwd_unstandard);
+				return;
+			}
+			
+			
+			if (!StringUtils.isSamePwd(pwd, surePwd)) {
+				MyToast.show(this, R.string.warn_toast_twice_pwd_difference);
+				return;
+			}
+			// 联系人判空
+			if (StringUtils.isEmpty(contacts)) {
+				MyToast.show(this, R.string.warn_toast_contacts_isempty);
+				return;
+			}
+			// 手机号码判空
+			if (StringUtils.isEmpty(cellPhone)) {
+				MyToast.show(this, R.string.warn_toast_cellphone_isempty);
+				return;
+			}
+			// 手机号码格式不对 不到11 位
+			if (!StringUtils.isStandardCellphoneNumber(cellPhone)) {
+				MyToast.show(this, R.string.warn_toast_cellphone_unstandard);
+				return;
+			}
+
+			// 邮箱
+			if (StringUtils.isEmpty(mail)) {
+				MyToast.show(this, R.string.warn_toast_mail_isempty);
+				return;
+			}
+			if (!StringUtils.isEmail(mail)) {
+				MyToast.show(this, R.string.warn_toast_mail_unstandard);
+				return;
+			}
 			// 提交.......
 
 			UIHelper.switcher(this, ExtraCompanyInfoActivity.class);

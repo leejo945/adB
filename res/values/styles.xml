@@ -110,13 +110,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">60dp</item>
         <item name="android:layout_marginRight">60dp</item>
-        <item name="android:src">@drawable/logo</item>
+        
     </style>
 
     <!-- 财务页 nav_finance.xml，首页nav_home,小彩条相关 -->
     <style name="small_color_bar_outside">
-           
-      
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_marginLeft">5dp</item>
@@ -126,6 +124,7 @@
     </style>
 
     <style name="small_color_bar_inner">
+        
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
