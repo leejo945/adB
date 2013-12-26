@@ -33,13 +33,13 @@ import cn.com.paioo.app.view.AutoMoreListView;
 @SuppressLint("ResourceAsColor")
 public class TabPreViewFragmet extends BaseFragment implements  OnTouchListener, OnCheckedChangeListener  {
 	String tag = "TabPreViewFragmet";
-	 private FragmentActivity  fa;
+ 
 	 
 	 private PreviewPushADFragment push;
 	 private PreviewDeskADFragment desk;
 	 private RadioGroup mRG;
 	 private RadioButton mPushRB,mDeskRB;
-	 private FragmentManager fm;
+	 
 	 private LinearLayout mPushLL,mDeskLL;
 	 
 	 
@@ -55,8 +55,8 @@ public class TabPreViewFragmet extends BaseFragment implements  OnTouchListener,
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		   Log.e("paioo", "TabFinanceFragment   ‘§¿¿£¨£¨£¨£¨£¨onActivityCreated ");
-			fa = getActivity();
-			fm = getFragmentManager();
+			 
+			 
 			push = new PreviewPushADFragment();
 			desk = new PreviewDeskADFragment();
 			mPushLL = (LinearLayout) fa.findViewById(R.id.preview_push_ad_ll);

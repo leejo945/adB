@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class TabSetUpFragment extends BaseFragment implements OnClickListener {
-	private FragmentActivity fa;
+	 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,7 +25,7 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
      @Override
     public void onActivityCreated(Bundle savedInstanceState) {
     	 Log.e("paioo", "TabSetUpFragment   …Ë÷√£¨£¨£¨£¨£¨onActivityCreated");
-    		fa = getActivity();
+    	 
     		fa.findViewById(R.id.setup_modify_contact_way_rl).setOnClickListener(
     				this);
     		fa.findViewById(R.id.setup_modify_password_rl).setOnClickListener(this);

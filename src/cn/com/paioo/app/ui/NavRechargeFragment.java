@@ -19,7 +19,7 @@ public class NavRechargeFragment extends BaseFragment implements
 		OnClickListener {
 	private TextView mNewMoney;
 	private EditText mCardid, mPwd;
-	private FragmentActivity fa;
+	 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,7 +33,7 @@ public class NavRechargeFragment extends BaseFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		fa = getActivity();
+		 
 		fa.findViewById(R.id.recharge_barcode_iv).setOnClickListener(this);
 		fa.findViewById(R.id.recharge_recharge_bt).setOnClickListener(this);
 		mCardid = (EditText) fa.findViewById(R.id.recharge_cardid_et);

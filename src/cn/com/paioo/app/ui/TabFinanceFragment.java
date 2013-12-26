@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class TabFinanceFragment extends BaseFragment {
     private TextView mFreeze,mNowTotal,mAllTotal,mAward,mTransfer,mComsume;
-    private FragmentActivity fa;
+    
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -26,7 +26,6 @@ public class TabFinanceFragment extends BaseFragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		fa = getActivity();
 		mFreeze = (TextView) fa.findViewById(R.id.nav_finance_freeze_total_tv);
 		mNowTotal = (TextView) fa.findViewById(R.id.nav_finance_now_total_tv);
 		mAllTotal = (TextView) fa.findViewById(R.id.nav_finance_all_total_tv);

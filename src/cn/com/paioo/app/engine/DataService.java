@@ -42,7 +42,14 @@ import cn.com.paioo.app.util.Constant;
 import cn.com.paioo.app.util.MyToast;
 
 public class DataService {
-	
+	public static User login(String mail,String pwd){
+		 User user = null;
+		 user = new User();
+		 return user;
+	}
+	public static void logout(){
+		
+	}
 	
 	
 	

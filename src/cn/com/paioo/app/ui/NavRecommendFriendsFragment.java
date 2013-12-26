@@ -36,7 +36,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 	// 静态主要是优化多次点击分享，重复产生对象.并且又要多处使用
 	private ArrayList<ShareInfo> list;
 
-	private FragmentActivity fa;
+	 
 	private TextView mRecommedCode;
 	private ScrGridView mReGV;
 
@@ -51,7 +51,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		fa = getActivity();
+		 
 		mRecommedCode = (TextView) fa
 				.findViewById(R.id.friends_recommed_code_tv);
 

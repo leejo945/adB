@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class NavTransferAccountFragment extends BaseFragment {
-    private FragmentActivity fa;
+    
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class NavTransferAccountFragment extends BaseFragment {
 	}
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		 fa = getActivity();
+		 
 		super.onActivityCreated(savedInstanceState);
 	}
 	
@@ -31,8 +31,7 @@ public class NavTransferAccountFragment extends BaseFragment {
 		public void onDestroy() {
 		  
 		 Log.e("paioo", "NavTransferAccountFragment   ×ªÕË£¬£¬£¬£¬£¬Ïú»Ù");
-			
-			// TODO Auto-generated method stub
+		 
 			super.onDestroy();
 		} 
 	

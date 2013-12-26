@@ -11,10 +11,10 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:src="@drawable/logo"
             style="@style/logo"
             android:layout_marginBottom="70dp"
-            android:layout_marginTop="70dp" />
+            android:layout_marginTop="70dp"
+            android:src="@drawable/logo" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -78,10 +78,17 @@
             android:background="@drawable/selector_bt_orange"
             android:text="@string/login2" />
 
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/login_pb"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="5dp" />
+
         <Button
             android:id="@+id/login_register_bt"
             style="@style/login_login_register_bt"
-            android:layout_marginTop="30dp"
             android:background="@drawable/selector_bt_white"
             android:text="@string/free_register"
             android:textColor="@android:color/black" />

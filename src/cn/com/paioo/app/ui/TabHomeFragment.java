@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.google.zxing.oned.rss.FinderPattern;
 
+import cn.com.paioo.app.App;
 import cn.com.paioo.app.LoadData;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.ChartBean;
@@ -19,13 +20,14 @@ import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class TabHomeFragment extends BaseFragment {
 	String tag = "NavHomeActivity";
-	 private TextView mTOPLeft, mTOPRight, mMiddleLeft, mMiddleRight,
-	 		mBottomLeft, mBottomRight;
-	private FragmentActivity fa;
+	private TextView mTOPLeft, mTOPRight, mMiddleLeft, mMiddleRight,
+			mBottomLeft, mBottomRight;
+  
 	private ChartView mChart;
 
 	private ArrayList<ChartBean> charts = new ArrayList<ChartBean>();
@@ -39,7 +41,7 @@ public class TabHomeFragment extends BaseFragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		fa = getActivity();
+        
 		mTOPLeft = (TextView) fa.findViewById(R.id.nav_home_top_left_tv);
 		mTOPRight = (TextView) fa.findViewById(R.id.nav_home_top_right_tv);
 		mMiddleLeft = (TextView) fa.findViewById(R.id.nav_home_middle_left_tv);
@@ -49,24 +51,24 @@ public class TabHomeFragment extends BaseFragment {
 		mBottomRight = (TextView) fa
 				.findViewById(R.id.nav_home_bottom_right_tv);
 		mChart = (ChartView) fa.findViewById(R.id.nav_home_chart);
- 	
- 	
+
 		init();
 		super.onActivityCreated(savedInstanceState);
 	}
-    private void init(){
-		mTOPLeft.setText("гд3658.05");
+
+	private void init() {
+	    mTOPLeft.setText("гд3658.05");
 		mTOPRight.setText("гд7.05");
 		mMiddleLeft.setText("247");
 		mMiddleRight.setText("3,830");
 		mBottomLeft.setText("6.44%");
 		mBottomRight.setText("гд0.30");
-		
-		
+
 		initChart();
- 		mChart.setData(charts);
-		
-    }
+		mChart.setData(charts);
+
+	}
+
 	private void initChart() {
 
 		charts.add(new ChartBean(0, 0));
@@ -79,7 +81,7 @@ public class TabHomeFragment extends BaseFragment {
 
 		charts.add(new ChartBean(250, 124.20));
 
-		charts.add(new ChartBean(70, 30.00));
+		charts.add(new ChartBean(770, 30.00));
 
 	}
 
