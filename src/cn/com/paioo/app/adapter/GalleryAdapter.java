@@ -1,9 +1,13 @@
  
 package cn.com.paioo.app.adapter;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
+import cn.com.paioo.app.util.ImageUtil;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,13 +15,11 @@ import android.widget.ImageView;
 
 public class GalleryAdapter extends BaseAdapter {
     private Context context;
-    private int[] urls = new int[3];
+    private String[] urls ;
     public GalleryAdapter(Context context,Product product){
     	this.context = context;
-    	//this.urls = product.urls;
-    	urls[0] = R.drawable.temp3;
-    	urls[1] = R.drawable.temp1;
-    	urls[2] = R.drawable.temp2;
+    	this.urls = product.urls;
+ 
     }
 	@Override
 	public int getCount() {
@@ -47,8 +49,10 @@ public class GalleryAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();	
-		}
-		holder.iv.setImageResource(urls[position]);
+		}  
+		
+		Log.e("paioo", "------"+urls[position]);
+		ImageUtil.getInstance().displayImage(urls[position], holder.iv,ImageUtil.getImageOptions());
 		return convertView;
 	}
      private static class ViewHolder{

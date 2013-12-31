@@ -31,8 +31,12 @@ public class UIHelper {
         		Object obj = extras.get(name);
         		if(obj instanceof String){
         			i.putExtra(name, (String)obj);
-        		}else if(obj instanceof Integer){
+        		}
+        		if(obj instanceof Integer){
         			i.putExtra(name, (Integer)obj);
+        		}
+        		if(obj instanceof String[]){
+        			i.putExtra(name, (String[])obj);
         		}
         		
         	}

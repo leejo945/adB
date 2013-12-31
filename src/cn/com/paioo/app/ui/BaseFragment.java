@@ -16,4 +16,18 @@ public class BaseFragment extends Fragment {
     	  fm = getFragmentManager();
     	super.onAttach(activity);
     }
+     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+    	// TODO Auto-generated method stub
+    	super.onActivityCreated(savedInstanceState);
+    	
+    	findViews();
+    	init();
+    	setListener();
+    	
+    }
+     public void findViews(){};
+     public void init(){}
+     public void setListener(){}
+      
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.ui.TabPreViewFragmet;
+import cn.com.paioo.app.util.ImageUtil;
 
 import android.content.Context;
 import android.view.View;
@@ -54,9 +55,11 @@ public class PreviewAdapter extends BaseAdapter {
 			if(type==0){//推送广告
 				convertView = View.inflate(context,
 						R.layout.preview_push_item, null);
+				holder.iv =  (ImageView) convertView.findViewById(R.id.previes_push_item_iv);
 			}else{//桌面广告
 				convertView = View.inflate(context,
 						R.layout.preview_desk_item, null);
+				holder.iv =  (ImageView) convertView.findViewById(R.id.previes_desk_item_iv);
 			}
 			
 
@@ -64,7 +67,7 @@ public class PreviewAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
+        ImageUtil.getInstance().displayImage("http://t2.baidu.com/it/u=2,1202394151&fm=19&gp=0.jpg", holder.iv);
 		return convertView;
 	}
 

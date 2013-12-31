@@ -32,7 +32,7 @@ import android.widget.ProgressBar;
 public class PreviewPushADFragment extends PreViewBaseFragment implements
 		OnItemClickListener, OnContainerRefreshListener {
 	private static int pageNum;
-	public FragmentActivity fa;
+	
 	public PullToRefreshView mPullRefresh;
 	public ProgressBar mTitleBarPB;
 	private PreviewAdapter adAdapter;
@@ -70,7 +70,6 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
      @Override
     public void onActivityCreated(Bundle savedInstanceState) {
     	  super.onActivityCreated(savedInstanceState);
-    		fa = getActivity();
     		mAdGV = (AutoLoadMoreGridView) fa.findViewById(R.id.push_ad_lv);
     		mAdGV.setContext(this);
     		mTitleBarPB = (ProgressBar) fa.findViewById(R.id.title_bar_load_pb);

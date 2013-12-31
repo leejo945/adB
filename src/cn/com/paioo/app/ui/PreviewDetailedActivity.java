@@ -1,6 +1,8 @@
 package cn.com.paioo.app.ui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.GalleryAdapter;
@@ -34,7 +36,7 @@ public class PreviewDetailedActivity extends BaseActivity implements
 	private static ArrayList<ShareInfo> list;
 	private static Dialog dialog;
 	private RadioButton[] mPointsRB = new RadioButton[3];
-
+    private Product product;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -47,24 +49,23 @@ public class PreviewDetailedActivity extends BaseActivity implements
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		TextView title = (TextView) findViewById(R.id.title_bar_title_tv);
-		
+		((TextView) findViewById(R.id.title_bar_title_tv))
+				.setText(R.string.title_bar_title_preview_detailed);
 		ImageButton mTitleShare = (ImageButton) findViewById(R.id.title_bar_share_ib);
 		Gallery mGallery = (Gallery) findViewById(R.id.preview_detailed_product_imgs_gallery);
 		mPointsRB[0] = (RadioButton) findViewById(R.id.preview_detailed_point0_rb);
 		mPointsRB[1] = (RadioButton) findViewById(R.id.preview_detailed_point1_rb);
 		mPointsRB[2] = (RadioButton) findViewById(R.id.preview_detailed_point2_rb);
-		 
-		
-		
-		
-		
-		title.setText(R.string.title_bar_title_preview_detailed);
-		mGallery.setOnItemClickListener(this);
-		Product product = new Product();
+
+		 product = new Product();
+		product.urls = new String[3];
+		product.urls[0] = "http://img3.douban.com/view/photo/photo/public/p2162812246.jpg";
+	 	product.urls[1] = "http://img5.douban.com/view/photo/photo/public/p2162812219.jpg";
+	 	product.urls[2] = "http://img5.douban.com/view/photo/photo/public/p2162812167.jpg";
 		mGallery.setAdapter(new GalleryAdapter(this, product));
 		mTitleShare.setVisibility(View.VISIBLE);
 		mTitleShare.setOnClickListener(this);
+		mGallery.setOnItemClickListener(this);
 		mGallery.setOnItemSelectedListener(this);
 
 		super.init();
@@ -91,19 +92,19 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			}
 			break;
 		}
-		case R.id.preview_detailed_bus:{
+		case R.id.preview_detailed_bus: {
 			MyToast.show(this, "公交信息");
 			break;
 		}
-		case R.id.preview_detailed_cbd:{
+		case R.id.preview_detailed_cbd: {
 			MyToast.show(this, "商业中心");
 			break;
 		}
-		case R.id.preview_detailed_business:{
+		case R.id.preview_detailed_business: {
 			MyToast.show(this, "用户信息");
 			break;
 		}
-		case R.id.preview_detailed_time:{
+		case R.id.preview_detailed_time: {
 			MyToast.show(this, "时间。。。");
 			break;
 		}
@@ -113,14 +114,11 @@ public class PreviewDetailedActivity extends BaseActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		
-		
-		
-		
-		if(parent instanceof GridView){
 
-			if (position == list.size()-1) {
-				ClipboardManager cmb = (ClipboardManager)  getSystemService(Context.CLIPBOARD_SERVICE);
+		if (parent instanceof GridView) {
+
+			if (position == list.size() - 1) {
+				ClipboardManager cmb = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 				cmb.setText("http://www.gooogle.com");
 				MyToast.show(this, R.string.warn_toast_already);
 				return;
@@ -138,11 +136,13 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(Intent.createChooser(it, "分享到**"));
 			dialog.cancel();
-		}else{
-			UIHelper.switcher(this, ChangePicsActivity.class);
+		} else {
+			// gallery 条目点击事件
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("position", position);
+			map.put("urls", product.urls);
+			UIHelper.switcher(this, ChangePicsActivity.class,map);
 		}
-		
-		
 
 	}
 

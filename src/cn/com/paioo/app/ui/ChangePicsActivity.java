@@ -6,6 +6,7 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.ViewPagerAdapter;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -31,7 +32,9 @@ public class ChangePicsActivity extends Activity implements
 		// TODO Auto-generated method stub
 		setContentView(R.layout.change_pic);
 		super.onCreate(savedInstanceState);
-
+		Intent i = getIntent();
+		int position = i.getIntExtra("position", -1);
+		String[] urls = i.getStringArrayExtra("urls");
 		mVP = (ViewPager) findViewById(R.id.change_pic_vp);
 		mNum = (TextView) findViewById(R.id.change_pic_tv);
 		ArrayList<View> vs = new ArrayList<View>();
@@ -39,6 +42,7 @@ public class ChangePicsActivity extends Activity implements
 		View item0 = View.inflate(this, R.layout.change_vp_item, null);
 		View item1 = View.inflate(this, R.layout.change_vp_item, null);
 		View item2 = View.inflate(this, R.layout.change_vp_item, null);
+		
 		((ImageView) item0.findViewById(R.id.change_pic_iv))
 				.setImageResource(R.drawable.temp1);
 		((ImageView) item1.findViewById(R.id.change_pic_iv))
