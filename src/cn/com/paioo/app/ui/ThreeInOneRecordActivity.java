@@ -12,8 +12,7 @@ import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.Record;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.TitleUtil;
-import cn.com.paioo.app.view.PinnedSectionListView;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
 import android.app.ExpandableListActivity;
@@ -44,7 +43,7 @@ public class ThreeInOneRecordActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		setContentView(R.layout.three_in_one);
 		titleResId = getIntent().getIntExtra("title", 0);
-		TitleUtil.show(this, new int[] { TitleUtil.BACK }, titleResId);
+		TitleManager.show(this, new int[] { TitleManager.BACK }, titleResId);
 
 		super.onCreate(savedInstanceState);
 

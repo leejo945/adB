@@ -19,7 +19,7 @@ import cn.com.paioo.app.App;
  
  
 
-public class NetUtil {
+public class NetManager {
 	
 	/**
 	 * ºÏ≤‚Õ¯¬Á «∑Òø…”√
@@ -51,7 +51,7 @@ public class NetUtil {
 		int nType = networkInfo.getType();
 		if (nType == ConnectivityManager.TYPE_MOBILE) {
 			String extraInfo = networkInfo.getExtraInfo();
-			if (!StringUtils.isEmpty(extraInfo)) {
+			if (!StringManager.isEmpty(extraInfo)) {
 				if (extraInfo.toLowerCase().equals("cmnet")) {
 					netType = NETTYPE_MOBILE_CMNET;
 				} else {

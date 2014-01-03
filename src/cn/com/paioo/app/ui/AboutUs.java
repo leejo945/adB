@@ -3,7 +3,7 @@ package cn.com.paioo.app.ui;
 
 import android.os.Bundle;
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.TitleManager;
 
 public class AboutUs extends BaseActivity {
 	@Override
@@ -11,6 +11,6 @@ public class AboutUs extends BaseActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.about_us);
 		super.onCreate(savedInstanceState);
-		TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.about_us);
+		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.about_us);
 	}
 }

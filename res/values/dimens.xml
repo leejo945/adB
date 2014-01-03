@@ -16,4 +16,6 @@
     <dimen name="textSize___large">30sp</dimen>
     <dimen name="bt_height">45dp</dimen>
        <dimen name="splash_bt_height">45dp</dimen>
+       
+       <dimen name="point">10dp</dimen>
 </resources>

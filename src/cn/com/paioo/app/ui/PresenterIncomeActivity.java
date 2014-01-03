@@ -10,7 +10,7 @@ import cn.com.paioo.app.adapter.PresenterIncomeAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.PresenterIncome;
 import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.view.AutoLoadMoreGridView;
 import cn.com.paioo.app.view.AutoMoreListView;
 import cn.com.paioo.app.view.PullToRefreshView;
@@ -33,7 +33,7 @@ public class PresenterIncomeActivity extends BaseActivity implements OnContainer
     	// TODO Auto-generated method stub
     	setContentView(R.layout.presenter_income);
     	super.onCreate(savedInstanceState);
-    	TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.title_bar_title_referee_money);
+    	TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.title_bar_title_referee_money);
     }
     @Override
     public void init() {

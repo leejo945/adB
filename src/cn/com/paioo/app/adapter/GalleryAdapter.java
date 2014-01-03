@@ -5,7 +5,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
-import cn.com.paioo.app.util.ImageUtil;
+import cn.com.paioo.app.util.ImageManager;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -52,7 +52,7 @@ public class GalleryAdapter extends BaseAdapter {
 		}  
 		
 		Log.e("paioo", "------"+urls[position]);
-		ImageUtil.getInstance().displayImage(urls[position], holder.iv,ImageUtil.getImageOptions());
+		ImageManager.getInstance().displayImage(urls[position], holder.iv,ImageManager.getImageOptions());
 		return convertView;
 	}
      private static class ViewHolder{

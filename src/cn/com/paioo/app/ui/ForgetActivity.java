@@ -2,8 +2,8 @@ package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +16,7 @@ public class ForgetActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.forget_pwd);
 		super.onCreate(savedInstanceState);
-		TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.find_pwd);
+		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.find_pwd);
 
 	}
 	@Override
@@ -29,8 +29,8 @@ public class ForgetActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.forget_pwd_submit:
-			String userName  = StringUtils.getStringByET(mUserName);
-			if(StringUtils.isEmpty(userName)){
+			String userName  = StringManager.getStringByET(mUserName);
+			if(StringManager.isEmpty(userName)){
 				MyToast.show(this, "fuck ,这是用户名和邮箱一样的吗");
 				return;
 			}

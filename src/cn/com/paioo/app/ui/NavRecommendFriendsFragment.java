@@ -6,7 +6,7 @@ import cn.com.paioo.app.adapter.ShareAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.UIHelper;
 import cn.com.paioo.app.view.ScrGridView;
 
@@ -82,7 +82,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 		}
 
 		String packName = list.get(position).packName;
-		if (StringUtils.isEmpty(packName)) {
+		if (StringManager.isEmpty(packName)) {
 			MyToast.show(fa, R.string.warn_toast_app_uninstall);
 			return;
 		}

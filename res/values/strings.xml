@@ -165,7 +165,7 @@
     <string name="ask_phone_number">咨询服务热线</string>
 
     <!-- toash 提示 -->
-    <string name="warn_toast_account_isempty">hi,账号不能为空哦！</string>
+    <string name="warn_toast_account_isempty">hi,账号没有填写</string>
     <string name="warn_toast_pwd_isempty">hi,你的密码真的没填！</string>
     <string name="warn_toast_contacts_isempty">联系人为空</string>
     <string name="warn_toast_cellphone_isempty">手机号码为空</string>

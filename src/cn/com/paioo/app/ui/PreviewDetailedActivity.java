@@ -11,8 +11,8 @@ import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.app.Dialog;
 import android.content.Context;
@@ -43,7 +43,7 @@ public class PreviewDetailedActivity extends BaseActivity implements
 		setContentView(R.layout.preview_detailed);
 		super.onCreate(savedInstanceState);
 		int titleResId = getIntent().getIntExtra("title", 0);
-		TitleUtil.show(this, new int[] { TitleUtil.BACK }, titleResId);
+		TitleManager.show(this, new int[] { TitleManager.BACK }, titleResId);
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			}
 
 			String packName = list.get(position).packName;
-			if (StringUtils.isEmpty(packName)) {
+			if (StringManager.isEmpty(packName)) {
 				MyToast.show(this, R.string.warn_toast_app_uninstall);
 				return;
 			}

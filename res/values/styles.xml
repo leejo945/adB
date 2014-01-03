@@ -1,5 +1,17 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
+   <style name="splash_point"  >
+       
+         <item name="android:layout_width">@dimen/point</item>
+         <item name="android:layout_height">@dimen/point</item>
+         <item name="android:button">@drawable/selector_splash_point</item>
+   </style>
+     <style name="preview_detailed_point"  >
+       
+         <item name="android:layout_width">@dimen/point</item>
+         <item name="android:layout_height">@dimen/point</item>
+         <item name="android:button">@drawable/selector_preview_point</item>
+   </style>
+   
     <!-- 免费注册， -->
     <style name="fr_ll">
         <item name="android:background">@drawable/selector_et_bg</item>
@@ -87,11 +99,13 @@
     <!-- login.xml 登录界面 -->
     <style name="login_mail_pwd_iv">
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
     </style>
 
     <style name="login_mail_pwd_et">
+       
+        <item name="android:textSize"> @dimen/textSize_large</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_width">match_parent</item>

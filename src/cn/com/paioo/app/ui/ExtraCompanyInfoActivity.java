@@ -2,8 +2,8 @@ package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +20,7 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
     	// TODO Auto-generated method stub
     	setContentView(R.layout.extra_company_info);
     	super.onCreate(savedInstanceState);
-    	TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.eci_company_info_title);
+    	TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.eci_company_info_title);
     }
     @Override
     public void init() {
@@ -36,28 +36,28 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
     public void onClick(View v){
     	switch (v.getId()) {
 		case R.id.eci_company_submit_bt:
-			String companyName = StringUtils.getStringByET(mCompanyName);
-			String location = StringUtils.getStringByET(mLocation);
- 			String address = StringUtils.getStringByET(mAddress);
-			String property = StringUtils.getStringByET(mProperty);
-			String capital = StringUtils.getStringByET(mCapital);
-			if(StringUtils.isEmpty(companyName)){
+			String companyName = StringManager.getStringByET(mCompanyName);
+			String location = StringManager.getStringByET(mLocation);
+ 			String address = StringManager.getStringByET(mAddress);
+			String property = StringManager.getStringByET(mProperty);
+			String capital = StringManager.getStringByET(mCapital);
+			if(StringManager.isEmpty(companyName)){
             	MyToast.show(this, R.string.warn_toast_company_name_isempty);
             	return;
             }
-			if(StringUtils.isEmpty(location)){
+			if(StringManager.isEmpty(location)){
             	MyToast.show(this, R.string.warn_toast_location_isempty);
             	return;
             }
-			if(StringUtils.isEmpty(address)){
+			if(StringManager.isEmpty(address)){
             	MyToast.show(this, R.string.warn_toast_address_isempty);
             	return;
             }
-			if(StringUtils.isEmpty(property)){
+			if(StringManager.isEmpty(property)){
             	MyToast.show(this, R.string.warn_toast_property_isempty);
             	return;
             }
-			if(StringUtils.isEmpty(capital)){
+			if(StringManager.isEmpty(capital)){
             	MyToast.show(this, R.string.warn_toast_capital_isempty);
             	return;
             }

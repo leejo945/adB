@@ -41,25 +41,21 @@
                     <RadioButton
                         android:clickable="false"
                         android:id="@+id/preview_detailed_point0_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                     style="@style/preview_detailed_point"
                         android:layout_marginRight="5dp"
-                        android:button="@drawable/selector_preview_point" />
+                      />
 
                     <RadioButton
                           android:clickable="false"
                         android:id="@+id/preview_detailed_point1_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                         style="@style/preview_detailed_point"
                         android:layout_marginRight="5dp"
-                        android:button="@drawable/selector_preview_point" />
+                         />
 
                     <RadioButton
                           android:clickable="false"
                         android:id="@+id/preview_detailed_point2_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/selector_preview_point" />
+                        style="@style/preview_detailed_point" />
                 </RadioGroup>
 
                 <TextView

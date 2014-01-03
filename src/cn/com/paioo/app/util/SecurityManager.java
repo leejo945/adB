@@ -3,7 +3,7 @@ package cn.com.paioo.app.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SecurityUtil {
+public class SecurityManager {
 
 	/**
 	 * 得到一个MD5的加密码串

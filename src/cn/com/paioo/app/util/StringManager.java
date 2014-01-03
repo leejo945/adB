@@ -11,7 +11,7 @@ import android.widget.EditText;
 /**
  * 字符串操作工具包
  */
-public class StringUtils {
+public class StringManager {
 	private final static Pattern emailer = Pattern
 			.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
 

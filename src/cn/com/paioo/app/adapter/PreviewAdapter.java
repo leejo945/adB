@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.ui.TabPreViewFragmet;
-import cn.com.paioo.app.util.ImageUtil;
+import cn.com.paioo.app.util.ImageManager;
 
 import android.content.Context;
 import android.view.View;
@@ -67,7 +67,7 @@ public class PreviewAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-        ImageUtil.getInstance().displayImage("http://t2.baidu.com/it/u=2,1202394151&fm=19&gp=0.jpg", holder.iv);
+        ImageManager.getInstance().displayImage("http://t2.baidu.com/it/u=2,1202394151&fm=19&gp=0.jpg", holder.iv);
 		return convertView;
 	}
 

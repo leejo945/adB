@@ -6,8 +6,8 @@ import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.Constant;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.SecurityUtil;
-import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.SecurityManager;
+import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.app.Activity;
 import android.os.Bundle;
@@ -60,21 +60,21 @@ public class LoginActivity extends Activity// BaseActivity
 		switch (v.getId()) {
 		case R.id.login_login_bt:
              //登录成功。去首页
-			final String mail = StringUtils.getStringByET(mMail);
-			final String pwd = StringUtils.getStringByET(mPwd);
-			if (StringUtils.isEmpty(mail)) {
+			final String mail = StringManager.getStringByET(mMail);
+			final String pwd = StringManager.getStringByET(mPwd);
+			if (StringManager.isEmpty(mail)) {
 				MyToast.show(this, R.string.warn_toast_mail_isempty);
 				return;
 			} 
-			if(!StringUtils.isEmail(mail)){
+			if(!StringManager.isEmail(mail)){
 				MyToast.show(this, R.string.warn_toast_mail_unstandard);
 				return;
 			}
-			if (StringUtils.isEmpty(pwd)) {
+			if (StringManager.isEmpty(pwd)) {
 				MyToast.show(this, R.string.warn_toast_pwd_isempty);
 				return;
 			}
-			if (!StringUtils.isStandardPwd(pwd)) {
+			if (!StringManager.isStandardPwd(pwd)) {
 				MyToast.show(this, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
@@ -89,7 +89,7 @@ public class LoginActivity extends Activity// BaseActivity
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					User user =  DataService.login(mail,SecurityUtil.getMD5HashText(pwd));
+					User user =  DataService.login(mail,SecurityManager.getMD5HashText(pwd));
 					Message msg;
 					if(user!=null){
  						  msg = handler.obtainMessage(Constant.FILL_DATA_SUCCESS);

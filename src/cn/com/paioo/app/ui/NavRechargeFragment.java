@@ -2,7 +2,7 @@ package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
+import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,21 +61,21 @@ public class NavRechargeFragment extends BaseFragment implements
 			break;
 
 		case R.id.recharge_recharge_bt:
-			String cardid = StringUtils.getStringByET(mCardid);
-			String pwd = StringUtils.getStringByET(mPwd);
-			if (StringUtils.isEmpty(cardid)) {
+			String cardid = StringManager.getStringByET(mCardid);
+			String pwd = StringManager.getStringByET(mPwd);
+			if (StringManager.isEmpty(cardid)) {
 				MyToast.show(fa, R.string.warn_toast_cardid_isempty);
 				return;
 			}
-			if (!StringUtils.isStandradCardid(cardid)) {
+			if (!StringManager.isStandradCardid(cardid)) {
 				MyToast.show(fa, R.string.warn_toast_cardid_unstandard);
 				return;
 			}
-			if (StringUtils.isEmpty(pwd)) {
+			if (StringManager.isEmpty(pwd)) {
 				MyToast.show(fa, R.string.warn_toast_pwd_isempty);
 				return;
 			}
-			if (!StringUtils.isStandardPwd(pwd)) {
+			if (!StringManager.isStandardPwd(pwd)) {
 				MyToast.show(fa, R.string.warn_toast_pwd_unstandard);
 				return;
 			}

@@ -9,6 +9,8 @@ import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.ThreadPool;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.util.DisplayMetrics;
  
 
 public class App extends Application {
@@ -26,6 +28,15 @@ public class App extends Application {
 		activitys = new ArrayList<Activity>();
 		initImageLoader();
 		super.onCreate();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	//初始化全局的图片加载器

@@ -2,8 +2,8 @@ package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.StringUtils;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +18,7 @@ public class SuggestActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.suggest);
 		super.onCreate(savedInstanceState);
-		TitleUtil.show(this, new int[]{TitleUtil.BACK}, R.string.suggest);
+		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.suggest);
 	}
 	@Override
 	public void init() {
@@ -38,8 +38,8 @@ public class SuggestActivity extends BaseActivity {
 
 		case R.id.suggest_submit_bt:
 			//Ã·Ωª
-			String content =  StringUtils.getStringByET(mContent);
-			if(StringUtils.isEmpty(content)){
+			String content =  StringManager.getStringByET(mContent);
+			if(StringManager.isEmpty(content)){
 				MyToast.show(this, R.string.warn_toast_suggest_isempty);
 				return;
 			}

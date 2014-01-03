@@ -17,7 +17,7 @@ import cn.com.paioo.app.entity.AppUpdateInfo;
 
 import cn.com.paioo.app.util.Constant;
 import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.TitleUtil;
+import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
 
 import android.annotation.SuppressLint;
@@ -173,7 +173,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 	}
 
 	private void init() {
-		TitleUtil.show(this, mainIndex);
+		TitleManager.show(this, mainIndex);
 		initSlideMenu();
 		initMainTab();
 	}
@@ -370,7 +370,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 		}
 
 		// 点击title部分需要变化
-		TitleUtil.show(this, position);
+		TitleManager.show(this, position);
 
 	}
 
@@ -400,7 +400,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			break;
 		}
 
-		TitleUtil.show(this, position);
+		TitleManager.show(this, position);
 	}
 
 	private static long fristBack;

@@ -12,7 +12,7 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
  
  
 
-public class ImageUtil {
+public class ImageManager {
 	private static DisplayImageOptions imageOptions;
 	/**
 	 * ªÒ»°Õº∆¨º”‘ÿ

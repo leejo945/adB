@@ -7,7 +7,6 @@ import java.util.Random;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Record;
-import cn.com.paioo.app.view.PinnedSectionListView.PinnedSectionListAdapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

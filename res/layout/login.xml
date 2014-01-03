@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="101dp"
+            android:layout_height="91dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/login_mail_pwd_bg"
@@ -29,28 +29,27 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp" >
+                android:padding="10dp"
+               >
 
                 <ImageView
                     style="@style/login_mail_pwd_iv"
                     android:src="@drawable/login_mail_icon" />
 
                 <AutoCompleteTextView
+                     
                     android:id="@+id/login_mail_et"
                     style="@style/login_mail_pwd_et"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider_land" />
+              <include 
+                  layout="@layout/divider_horizontal"
+                  />
 
             <LinearLayout
+                
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -97,7 +96,7 @@
             android:id="@+id/login_forget_pwd_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:clickable="true"
             android:onClick="onClick"

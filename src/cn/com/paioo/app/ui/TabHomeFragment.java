@@ -3,32 +3,22 @@ package cn.com.paioo.app.ui;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.google.zxing.oned.rss.FinderPattern;
-
-import cn.com.paioo.app.App;
-import cn.com.paioo.app.LoadData;
+ 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.ChartBean;
-import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.view.ChartView;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class TabHomeFragment extends BaseFragment implements
@@ -72,9 +62,11 @@ public class TabHomeFragment extends BaseFragment implements
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
 		int screenH = dm.heightPixels;
-		mChart.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-				screenH / 2));
-		((LinearLayout) fa.findViewById(R.id.home_sc_inside_ll))
+		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,
+				screenH / 2-50);
+		 
+		mChart.setLayoutParams(lp);
+	 ((LinearLayout) fa.findViewById(R.id.home_sc_inside_ll))
 				.addView(mChart);
 
 		super.findViews();
