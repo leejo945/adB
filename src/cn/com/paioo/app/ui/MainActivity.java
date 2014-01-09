@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.app.SlidingActivity;
-import com.slidingmenu.lib.app.SlidingFragmentActivity;
+ 
 
 import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
@@ -19,6 +17,7 @@ import cn.com.paioo.app.util.Constant;
 import cn.com.paioo.app.util.MyToast;
 import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIHelper;
+ 
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -52,6 +51,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.slidingmenu.lib.SlidingMenu;
+import com.slidingmenu.lib.app.SlidingFragmentActivity;
 /**
  * 
  * 整个导航界面的设计原则： 侧滑菜单+fragment

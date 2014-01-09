@@ -553,11 +553,11 @@ int string your_re_number 0x7f080046
 int style AppBaseTheme 0x7f090008
 int style AppTheme 0x7f090009
 int style MyDialog 0x7f09000e
-int style account_recharge_out 0x7f090020
+int style account_recharge_out 0x7f09001f
 int style bt_orange 0x7f090006
 int style bt_style 0x7f090005
 int style bt_white 0x7f090007
-int style comm_money_orange 0x7f09001f
+int style comm_money_orange 0x7f09001e
 int style fr_et 0x7f090003
 int style fr_ll 0x7f090002
 int style fr_tv 0x7f090004
@@ -565,8 +565,8 @@ int style login_login_register_bt 0x7f090011
 int style login_mail_pwd_et 0x7f090010
 int style login_mail_pwd_iv 0x7f09000f
 int style logo 0x7f090012
-int style main_tab_rb 0x7f09001d
-int style preview_detailed_buttom 0x7f090021
+int style main_tab_rb 0x7f09001c
+int style preview_detailed_buttom 0x7f090020
 int style preview_detailed_point 0x7f090001
 int style setup_item_rl 0x7f090017
 int style setup_item_tv 0x7f090018
@@ -578,8 +578,7 @@ int style small_color_bar_inner_number_tv 0x7f090016
 int style small_color_bar_inner_text_tv 0x7f090015
 int style small_color_bar_outside 0x7f090013
 int style splash_point 0x7f090000
-int style title_iv_left 0x7f09001c
-int style title_iv_right 0x7f09001e
+int style title_iv_right 0x7f09001d
 int style wh_match_match 0x7f09000a
 int style wh_match_wrap 0x7f09000b
 int style wh_wrap_match 0x7f09000c

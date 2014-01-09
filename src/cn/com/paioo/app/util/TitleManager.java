@@ -3,8 +3,9 @@ package cn.com.paioo.app.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.slidingmenu.lib.app.SlidingActivity;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
+
+ 
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.ui.AboutUs;
@@ -18,6 +19,7 @@ import cn.com.paioo.app.ui.PreviewDetailedActivity;
 import cn.com.paioo.app.ui.ThreeInOneRecordActivity;
 import cn.com.paioo.app.ui.RegisterActivity;
 import cn.com.paioo.app.ui.SuggestActivity;
+ 
 import android.app.Activity;
 import android.content.Intent;
 import android.provider.Contacts.Intents.UI;

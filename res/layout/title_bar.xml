@@ -6,7 +6,7 @@
     android:background="@color/title_bar_bg" >
 
     <!-- 所有界面的返回按钮 -->
-    
+
     <ImageButton
         android:id="@+id/title_bar_back_ib"
         android:layout_width="20dp"
@@ -16,12 +16,15 @@
         android:background="@drawable/selector_title_bar_back"
         android:visibility="gone" />
 
-    
     <!-- 侧滑菜单按钮 -->
+
     <ImageButton
-        
+        android:visibility="gone"
         android:id="@+id/title_bar_slidemenu_ib"
-        style="@style/title_iv_left"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
         android:background="@drawable/selector_title_bar_slidemenu" />
 
     <TextView
@@ -32,49 +35,38 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/textSize_large" />
 
-      <!-- 主页中间的logo -->
-   <ImageButton 
-       android:visibility="gone"
-              android:layout_centerInParent="true"
-               android:id="@+id/title_bar_logo"
-              android:background="@drawable/title_bar_logo"
-           android:layout_width="wrap_content"
-        android:layout_height="30dp"
-       />
-    
-   
-   <!-- 预览详情右边的分享 -->
-        <ImageButton
-         android:layout_height="30dp"
-     android:id="@+id/title_bar_share_ib"
-        style="@style/title_iv_right"
-        android:background="@drawable/title_bar_share" />
-    
-    
-    <!-- 财务,推荐好友，余额转账右边的icon -->
+    <!-- 主页中间的logo -->
+
     <ImageButton
-         
+        android:id="@+id/title_bar_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/title_bar_logo"
+        android:visibility="gone" />
+
+    <!-- 预览详情右边的分享 -->
+
+    <ImageButton
+        android:id="@+id/title_bar_share_ib"
+        style="@style/title_iv_right"
+        android:layout_height="30dp"
+        android:background="@drawable/title_bar_share" />
+
+    <!-- 财务,推荐好友，余额转账右边的icon -->
+
+    <ImageButton
         android:id="@+id/title_bar_record_ib"
         style="@style/title_iv_right"
         android:background="@drawable/selector_title_bar_recharge_record" />
-    
-    
-    
-    
-    
-      <ProgressBar
-          android:visibility="gone"
-          android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-       android:layout_alignParentRight="true"
-          android:id="@+id/title_bar_load_pb"
+
+    <ProgressBar
+        android:id="@+id/title_bar_load_pb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-         />
-    
-    
-    
-    
-    
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:visibility="gone" />
 
 </RelativeLayout>

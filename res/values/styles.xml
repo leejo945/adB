@@ -210,13 +210,7 @@
     </style>
 
     <!-- title  部分 -->
-    <style name="title_iv_left">
-        <item name="android:visibility">gone</item>
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">25dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_centerVertical">true</item>
-    </style>
+   
 
     <style name="main_tab_rb">
             
