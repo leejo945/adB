@@ -25,7 +25,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

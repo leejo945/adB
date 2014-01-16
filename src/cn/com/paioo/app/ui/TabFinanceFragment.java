@@ -9,7 +9,7 @@ import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,14 +27,14 @@ public class TabFinanceFragment extends BaseFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.e("paioo", "TabFinanceFragment   财务，，，，，创建");
+		LogManager.e("paioo", "TabFinanceFragment   财务，，，，，创建");
 		return inflater.inflate(R.layout.nav_finance, container, false);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 
-		Log.e("paioo", "TabFinanceFragment   财务，，，，onActivityCreated");
+		LogManager.e("paioo", "TabFinanceFragment   财务，，，，onActivityCreated");
 		super.onActivityCreated(savedInstanceState);
 	}
 
@@ -76,7 +76,7 @@ public class TabFinanceFragment extends BaseFragment implements
 
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "TabFinanceFragment   财务，，，，，销毁");
+		LogManager.e("paioo", "TabFinanceFragment   财务，，，，，销毁");
 		super.onDestroy();
 	}
 

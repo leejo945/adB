@@ -5,7 +5,7 @@ import cn.com.paioo.app.ui.PreViewBaseFragment;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.AbsListView.OnScrollListener;

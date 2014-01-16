@@ -1,13 +1,14 @@
  
 package cn.com.paioo.app.adapter;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+ 
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.util.ImageManager;
+import cn.com.paioo.app.util.LogManager;
 import android.content.Context;
-import android.util.Log;
+ 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -51,7 +52,7 @@ public class GalleryAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();	
 		}  
 		
-		Log.e("paioo", "------"+urls[position]);
+		LogManager.e("paioo", "------"+urls[position]);
 		ImageManager.getInstance().displayImage(urls[position], holder.iv,ImageManager.getImageOptions());
 		return convertView;
 	}

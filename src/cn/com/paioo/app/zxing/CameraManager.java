@@ -25,7 +25,7 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.SurfaceHolder;
 
 
@@ -239,7 +239,6 @@ public final class CameraManager {
       int leftOffset = (screenResolution.x - width) / 2;
       int topOffset = (screenResolution.y - height) / 2;
       framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
-      Log.d(TAG, "Calculated framing rect: " + framingRect);
     }
     return framingRect;
   }

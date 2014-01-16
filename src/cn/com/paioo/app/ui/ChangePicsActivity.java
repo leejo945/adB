@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;

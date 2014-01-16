@@ -19,7 +19,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.ClipboardManager;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,7 +43,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.e("paioo", "NavRecommendFriendsFragment  推荐好友，，，，，创建");
+		LogManager.e("paioo", "NavRecommendFriendsFragment  推荐好友，，，，，创建");
 
 		return inflater.inflate(R.layout.recommend_friends, container, false);
 	}
@@ -67,7 +67,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "NavRecommendFriendsFragment  推荐好友，，，，，，销毁");
+		LogManager.e("paioo", "NavRecommendFriendsFragment  推荐好友，，，，，，销毁");
 		super.onDestroy();
 	}
 

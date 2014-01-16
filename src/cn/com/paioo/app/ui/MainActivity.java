@@ -32,7 +32,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -294,7 +294,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			if (!fragment.isAdded()) {// 如果整个fragment是add。
 				fm.beginTransaction().replace(conId, fragment).commit();
 			} else {
-				Log.e("paioo", "该项目已经添加");
+				LogManager.e("paioo", "该项目已经添加");
 			}
 		}
 	}
@@ -414,7 +414,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			fristBack = System.currentTimeMillis();
 			handler.sendEmptyMessageDelayed(DESTORYFRISTBACK, BACKSPACTIEM);
 		} else {
-			Log.e(tag, System.currentTimeMillis() - fristBack + "");
+			LogManager.e(tag, System.currentTimeMillis() - fristBack + "");
 			if (System.currentTimeMillis() - fristBack <=BACKSPACTIEM) {
 				//退出app
 				App.exit();

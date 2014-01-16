@@ -29,7 +29,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 
 import java.util.Vector;
 
@@ -77,11 +77,9 @@ public final class CaptureActivityHandler extends Handler {
         }
         break;
       case R.id.restart_preview:
-        Log.d(TAG, "Got restart preview message");
         restartPreviewAndDecode();
         break;
       case R.id.decode_succeeded:
-        Log.d(TAG, "Got decode succeeded message");
         state = State.SUCCESS;
         Bundle bundle = message.getData();
         Bitmap barcode = bundle == null ? null :
@@ -94,12 +92,10 @@ public final class CaptureActivityHandler extends Handler {
         CameraManager.get().requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
         break;
       case R.id.return_scan_result:
-        Log.d(TAG, "Got return scan result message");
         activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
         activity.finish();
         break;
       case R.id.launch_product_query:
-        Log.d(TAG, "Got product query message");
         String url = (String) message.obj;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);

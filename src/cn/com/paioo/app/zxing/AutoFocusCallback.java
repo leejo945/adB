@@ -19,7 +19,7 @@ package cn.com.paioo.app.zxing;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 
 final class AutoFocusCallback implements Camera.AutoFocusCallback {
 
@@ -44,7 +44,7 @@ final class AutoFocusCallback implements Camera.AutoFocusCallback {
       autoFocusHandler.sendMessageDelayed(message, AUTOFOCUS_INTERVAL_MS);
       autoFocusHandler = null;
     } else {
-      Log.d(TAG, "Got auto-focus callback, but no handler for it");
+      LogManager.d(TAG, "Got auto-focus callback, but no handler for it");
     }
   }
 

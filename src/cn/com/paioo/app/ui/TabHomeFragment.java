@@ -12,7 +12,7 @@ import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +33,7 @@ public class TabHomeFragment extends BaseFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.e("paioo", "TabFinanceFragment   主页，，，，创建");
+		LogManager.e("paioo", "TabFinanceFragment   主页，，，，创建");
 		return inflater.inflate(R.layout.nav_home, container, false);
 	}
 
@@ -116,7 +116,7 @@ public class TabHomeFragment extends BaseFragment implements
 	@Override
 	public void onDestroy() {
 
-		Log.e("paioo", "TabHomeFragment 主界面，，，，，销毁");
+		LogManager.e("paioo", "TabHomeFragment 主界面，，，，，销毁");
 		// TODO Auto-generated method stub
 		super.onDestroy();
 	}

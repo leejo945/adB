@@ -6,7 +6,7 @@ import cn.com.paioo.app.util.UIHelper;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,12 +19,12 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		 Log.e("paioo", "TabSetUpFragment   设置，，，，，创建");
+		 LogManager.e("paioo", "TabSetUpFragment   设置，，，，，创建");
 		return inflater.inflate(R.layout.nav_setup, container, false);
 	}
      @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-    	 Log.e("paioo", "TabSetUpFragment   设置，，，，，onActivityCreated");
+    	 LogManager.e("paioo", "TabSetUpFragment   设置，，，，，onActivityCreated");
     	 
     		fa.findViewById(R.id.setup_modify_contact_way_rl).setOnClickListener(
     				this);
@@ -42,7 +42,7 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 	 
 	@Override
 	public void onDestroy() {
-		 Log.e("paioo", "TabSetUpFragment   设置，，，，，销毁");
+		 LogManager.e("paioo", "TabSetUpFragment   设置，，，，，销毁");
 		 
 		
 		// TODO Auto-generated method stub

@@ -18,7 +18,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +64,7 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.e("paioo", "创建        推送广告Fragment");
+		LogManager.e("paioo", "创建        推送广告Fragment");
 		return inflater.inflate(R.layout.preview_ad_push, container, false);
 	}
      @Override
@@ -92,7 +92,7 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 				 
 				ArrayList<Product> list = DataService
 						.getPushOrDeskAdList(++pageNum);
-				Log.e("paioo", "pageNum--------"+pageNum);
+				LogManager.e("paioo", "pageNum--------"+pageNum);
 				if (list.size() > 0) {
 					Message msg = handler.obtainMessage(
 							Constant.PUSH_FILL_DATA_SUCCESS, list);
@@ -121,7 +121,7 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 	
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "销毁push广告");
+		LogManager.e("paioo", "销毁push广告");
 		super.onDestroy();
 	}
 }

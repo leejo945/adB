@@ -23,7 +23,7 @@ import cn.com.paioo.app.ui.SuggestActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.provider.Contacts.Intents.UI;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;

@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
  
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,7 +33,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.e("paioo", "TabFinanceFragment   预览，，，，，创建");
+		LogManager.e("paioo", "TabFinanceFragment   预览，，，，，创建");
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.nav_preview, container, false);
 	}
@@ -41,7 +41,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.e("paioo", "TabFinanceFragment   预览，，，，，onActivityCreated ");
+		LogManager.e("paioo", "TabFinanceFragment   预览，，，，，onActivityCreated ");
 
 		super.onActivityCreated(savedInstanceState);
 	}
@@ -75,7 +75,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "TabPreViewFragmet   预览，，，，，销毁");
+		LogManager.e("paioo", "TabPreViewFragmet   预览，，，，，销毁");
 
 		super.onDestroy();
 	}
@@ -90,7 +90,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 		float x = event.getX();
 		float y = event.getY();
 
-		Log.e(tag, event.getX() + "-------" + event.getY());
+		LogManager.e(tag, event.getX() + "-------" + event.getY());
 		return false;
 	}
 
@@ -115,7 +115,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 			if (!push.isAdded()) {
 				ft.replace(R.id.preview_push_ad_ll, push).commit();
 			} else {
-				Log.e("paioo", "该项目已经添加");
+				LogManager.e("paioo", "该项目已经添加");
 			}
 			break;
 
@@ -125,7 +125,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 			if (!desk.isAdded()) {
 				ft.replace(R.id.preview_desk_ad_ll, desk).commit();
 			} else {
-				Log.e("paioo", "该项目已经添加");
+				LogManager.e("paioo", "该项目已经添加");
 			}
 			break;
 		}

@@ -18,7 +18,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +42,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 			mPullRefresh.onComplete(new Date().toLocaleString());
 			switch (msg.what) {
 			case Constant.DESK_FILL_DATA_SUCCESS: {
-				Log.e("paioo", "DESK_FILL_DATA_SUCCESS");
+				LogManager.e("paioo", "DESK_FILL_DATA_SUCCESS");
 				if (adAdapter == null) {
 					adAdapter = new PreviewAdapter(fa,
 							(ArrayList<Product>) msg.obj, 0);
@@ -64,7 +64,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.e("paioo", "创建桌面广告");
+		LogManager.e("paioo", "创建桌面广告");
 		return inflater.inflate(R.layout.preview_ad_desk, container, false);
 	}
 	
@@ -127,7 +127,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 	}
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "销毁桌面广告");
+		LogManager.e("paioo", "销毁桌面广告");
 		super.onDestroy();
 	}
 }

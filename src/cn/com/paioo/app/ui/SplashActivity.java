@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -74,10 +74,10 @@ public class SplashActivity extends Activity// BaseActivity
 			float xdpi = metrics.xdpi;             
 			float ydpi = metrics.ydpi;  
 			  
-			Log.e(tag  , "xdpi=" + xdpi + "; ydpi=" + ydpi);  
-			Log.e(tag , "density=" + density + "; densityDPI=" + densityDPI);  
-			Log.e(tag , "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);  
-			Log.e(tag ,metrics.toString() );  
+			LogManager.e(tag  , "xdpi=" + xdpi + "; ydpi=" + ydpi);  
+			LogManager.e(tag , "density=" + density + "; densityDPI=" + densityDPI);  
+			LogManager.e(tag , "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);  
+			LogManager.e(tag ,metrics.toString() );  
 		
 	}
 

@@ -8,7 +8,7 @@ import cn.com.paioo.app.ui.PresenterIncomeActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;

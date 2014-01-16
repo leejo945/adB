@@ -11,7 +11,7 @@ import cn.com.paioo.app.entity.Record;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;

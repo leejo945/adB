@@ -7,7 +7,7 @@ import cn.com.paioo.app.util.UIHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +25,7 @@ public class NavRechargeFragment extends BaseFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.e("paioo", "NavRechargeFragment   充值界面，，，，，，创建");
+		LogManager.e("paioo", "NavRechargeFragment   充值界面，，，，，，创建");
 		return inflater.inflate(R.layout.account_recharge, container, false);
 
 	}
@@ -45,7 +45,7 @@ public class NavRechargeFragment extends BaseFragment implements
 
 	@Override
 	public void onDestroy() {
-		Log.e("paioo", "NavRechargeFragment   充值界面，，，，，，销毁");
+		LogManager.e("paioo", "NavRechargeFragment   充值界面，，，，，，销毁");
 
 		super.onDestroy();
 	}

@@ -27,7 +27,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.widget.Toast;
 
 import cn.com.paioo.app.App;
@@ -172,7 +172,7 @@ public class DataService {
 					int len = 0;
 					while ((len = is.read(buffer)) != -1) {
 						fos.write(buffer, 0, len);
-						Log.e("paioo", len + "");
+						LogManager.e("paioo", len + "");
 					}
 				} else {
 					// 没有sd卡
@@ -242,7 +242,7 @@ public class DataService {
 				ActivityInfo activityInfo = resInfo.activityInfo;
 				String packName = activityInfo.packageName;
 
-				Log.e("paioo", activityInfo.loadLabel(packManager) + "----"
+				LogManager.e("paioo", activityInfo.loadLabel(packManager) + "----"
 						+ activityInfo.name + "-------" + packName);
 
 				if (packName.contains("sina")) {// 如果在手机中有该app，那么就将该包加入，如果没有点击的时候会给一个提示。请求安装

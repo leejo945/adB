@@ -7,7 +7,7 @@ import cn.com.paioo.app.ui.ThreeInOneRecordActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
+import cn.com.paioo.app.util.LogManager;
 import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.AbsListView.OnScrollListener;
