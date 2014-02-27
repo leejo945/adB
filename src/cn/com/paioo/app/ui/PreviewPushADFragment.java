@@ -8,8 +8,8 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.PreviewAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
-import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.UIManager;
 import cn.com.paioo.app.view.AutoLoadMoreGridView;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
@@ -42,7 +42,7 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 			mTitleBarPB.setVisibility(View.GONE);
 			mPullRefresh.onComplete(new Date().toLocaleString());
 			switch (msg.what) {
-			case Constant.PUSH_FILL_DATA_SUCCESS: {
+			case ConstantManager.PUSH_FILL_DATA_SUCCESS: {
 				if (adAdapter == null) {
 					adAdapter = new PreviewAdapter(fa,
 							(ArrayList<Product>) msg.obj, 0);
@@ -54,7 +54,7 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 
 				break;
 			}
-			case Constant.PUSH_FILL_DATA_FAIL:
+			case ConstantManager.PUSH_FILL_DATA_FAIL:
 				break;
 			}
 		};
@@ -86,28 +86,28 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 	 */
 	public void pageLoad() {
 		mTitleBarPB.setVisibility(View.VISIBLE);
-		App.pool.addTask(new Thread() {
-			@Override
-			public void run() {
-				 
-				ArrayList<Product> list = DataService
-						.getPushOrDeskAdList(++pageNum);
-				LogManager.e("paioo", "pageNum--------"+pageNum);
-				if (list.size() > 0) {
-					Message msg = handler.obtainMessage(
-							Constant.PUSH_FILL_DATA_SUCCESS, list);
-					handler.sendMessage(msg);
-				} else {
-					handler.sendEmptyMessage(Constant.PUSH_FILL_DATA_FAIL);
-				}
-			}
-		});
+//		App.pool.addTask(new Thread() {
+//			@Override
+//			public void run() {
+//				 
+//				ArrayList<Product> list = DataService
+//						.getPushOrDeskAdList(++pageNum);
+//				LogManager.e("paioo", "pageNum--------"+pageNum);
+//				if (list.size() > 0) {
+//					Message msg = handler.obtainMessage(
+//							Constant.PUSH_FILL_DATA_SUCCESS, list);
+//					handler.sendMessage(msg);
+//				} else {
+//					handler.sendEmptyMessage(Constant.PUSH_FILL_DATA_FAIL);
+//				}
+//			}
+//		});
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		UIHelper.switcher(fa, PreviewDetailedActivity.class);
+		UIManager.switcher(fa, PreviewDetailedActivity.class);
 
 	}
 

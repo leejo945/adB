@@ -1,10 +1,10 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,30 +42,30 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
 			String property = StringManager.getStringByET(mProperty);
 			String capital = StringManager.getStringByET(mCapital);
 			if(StringManager.isEmpty(companyName)){
-            	MyToast.show(this, R.string.warn_toast_company_name_isempty);
+            	ToastManager.show(this, R.string.warn_toast_company_name_isempty);
             	return;
             }
 			if(StringManager.isEmpty(location)){
-            	MyToast.show(this, R.string.warn_toast_location_isempty);
+            	ToastManager.show(this, R.string.warn_toast_location_isempty);
             	return;
             }
 			if(StringManager.isEmpty(address)){
-            	MyToast.show(this, R.string.warn_toast_address_isempty);
+            	ToastManager.show(this, R.string.warn_toast_address_isempty);
             	return;
             }
 			if(StringManager.isEmpty(property)){
-            	MyToast.show(this, R.string.warn_toast_property_isempty);
+            	ToastManager.show(this, R.string.warn_toast_property_isempty);
             	return;
             }
 			if(StringManager.isEmpty(capital)){
-            	MyToast.show(this, R.string.warn_toast_capital_isempty);
+            	ToastManager.show(this, R.string.warn_toast_capital_isempty);
             	return;
             }
 			if(!flag){
-				MyToast.show(this, R.string.warn_toast_unagree);
+				ToastManager.show(this, R.string.warn_toast_unagree);
             	return;
 			}
-			UIHelper.switcher(this, MainActivity.class);
+			UIManager.switcher(this, MainActivity.class);
 			break;
 			
 		case R.id.eci_company_right_iv2:

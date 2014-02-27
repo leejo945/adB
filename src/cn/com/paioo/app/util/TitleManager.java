@@ -110,10 +110,10 @@ public class TitleManager {
 				if (recordRes != R.string.title_bar_title_referee_money) {
 					Map<String, Object> extras = new HashMap<String, Object>();
 					extras.put("title", recordRes);
-					UIHelper.switcher(activity,
+					UIManager.switcher(activity,
 							ThreeInOneRecordActivity.class, extras);
 				} else {
-					UIHelper.switcher(activity,
+					UIManager.switcher(activity,
 							PresenterIncomeActivity.class, null);
 				}
 

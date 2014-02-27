@@ -9,7 +9,7 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.PresenterIncomeAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.PresenterIncome;
-import cn.com.paioo.app.util.Constant;
+import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.view.AutoLoadMoreGridView;
 import cn.com.paioo.app.view.AutoMoreListView;
@@ -50,32 +50,32 @@ public class PresenterIncomeActivity extends BaseActivity implements OnContainer
     
     public void pageLoad(){
     	mTitlePB.setVisibility(View.VISIBLE);
-    	App.pool.addTask(new Thread(){
-    		@Override
-    		public void run() {
-    			try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-    			 ArrayList<PresenterIncome> list = DataService.getPresenterIncomeList(++pageNum); 
-    			 if(list.size()>0){
-    				 Message msg = handler.obtainMessage(Constant.FILL_DATA_SUCCESS,list);
-        			 handler.sendMessage(msg);
-    			 }else{
-    				 handler.sendEmptyMessage(Constant.FILL_DATA_FAIL);
-    			 }
-    			
-    		}
-    	});
+//    	App.pool.addTask(new Thread(){
+//    		@Override
+//    		public void run() {
+//    			try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//    			 ArrayList<PresenterIncome> list = DataService.getPresenterIncomeList(++pageNum); 
+//    			 if(list.size()>0){
+//    				 Message msg = handler.obtainMessage(Constant.FILL_DATA_SUCCESS,list);
+//        			 handler.sendMessage(msg);
+//    			 }else{
+//    				 handler.sendEmptyMessage(Constant.FILL_DATA_FAIL);
+//    			 }
+//    			
+//    		}
+//    	});
     }
     private Handler handler = new Handler(){
     	 public void handleMessage(android.os.Message msg) {
     			mTitlePB.setVisibility(View.GONE);
     			mPullRefresh.onComplete(new Date().toLocaleString());
     		 switch (msg.what) {
-			case Constant.FILL_DATA_SUCCESS:
+			case ConstantManager.FILL_DATA_SUCCESS:
 				if(adapter==null){
 					adapter = new PresenterIncomeAdapter(PresenterIncomeActivity.this,( ArrayList<PresenterIncome>)msg.obj);
 			    	 lv.setAdapter(adapter);
@@ -86,7 +86,7 @@ public class PresenterIncomeActivity extends BaseActivity implements OnContainer
 				
 				break;
 
-			case Constant.FILL_DATA_FAIL:
+			case ConstantManager.FILL_DATA_FAIL:
 				break;
 			}
     	 };

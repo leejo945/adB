@@ -8,8 +8,8 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.PreviewAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
-import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.UIManager;
 import cn.com.paioo.app.view.AutoLoadMoreGridView;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
@@ -41,7 +41,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 			mTitleBarPB.setVisibility(View.GONE);
 			mPullRefresh.onComplete(new Date().toLocaleString());
 			switch (msg.what) {
-			case Constant.DESK_FILL_DATA_SUCCESS: {
+			case ConstantManager.DESK_FILL_DATA_SUCCESS: {
 				LogManager.e("paioo", "DESK_FILL_DATA_SUCCESS");
 				if (adAdapter == null) {
 					adAdapter = new PreviewAdapter(fa,
@@ -54,7 +54,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 
 				break;
 			}
-			case Constant.DESK_FILL_DATA_FAIL:
+			case ConstantManager.DESK_FILL_DATA_FAIL:
 				break;
 			}
 		};
@@ -87,7 +87,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		UIHelper.switcher(fa, PreviewDetailedActivity.class);
+		UIManager.switcher(fa, PreviewDetailedActivity.class);
 
 	}
 
@@ -96,26 +96,26 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 	 */
 	public void pageLoad() {
 		mTitleBarPB.setVisibility(View.VISIBLE);
-		App.pool.addTask(new Thread() {
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				ArrayList<Product> list = DataService
-						.getPushOrDeskAdList(++pageNum);
-				if (list.size() > 0) {
-					Message msg = handler.obtainMessage(
-							Constant.DESK_FILL_DATA_SUCCESS, list);
-					handler.sendMessage(msg);
-				} else {
-					handler.sendEmptyMessage(Constant.DESK_FILL_DATA_FAIL);
-				}
-			}
-		});
+//		App.pool.addTask(new Thread() {
+//			@Override
+//			public void run() {
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				ArrayList<Product> list = DataService
+//						.getPushOrDeskAdList(++pageNum);
+//				if (list.size() > 0) {
+//					Message msg = handler.obtainMessage(
+//							Constant.DESK_FILL_DATA_SUCCESS, list);
+//					handler.sendMessage(msg);
+//				} else {
+//					handler.sendEmptyMessage(Constant.DESK_FILL_DATA_FAIL);
+//				}
+//			}
+//		});
 	}
 
 	@Override

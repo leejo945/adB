@@ -1,10 +1,10 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -44,52 +44,52 @@ public class RegisterActivity extends BaseActivity {
 
 			// //账号
 			if (StringManager.isEmpty(account)) {
-				MyToast.show(this, R.string.warn_toast_account_isempty);
+				ToastManager.show(this, R.string.warn_toast_account_isempty);
 				return;
 			}
 			// 密码
 			if (StringManager.isEmpty(pwd)) {
-				MyToast.show(this, R.string.warn_toast_pwd_isempty);
+				ToastManager.show(this, R.string.warn_toast_pwd_isempty);
 				return;
 			}
 			if (!StringManager.isStandardPwd(pwd)) {
-				MyToast.show(this, R.string.warn_toast_pwd_unstandard);
+				ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
 			
 			
 			if (!StringManager.isSamePwd(pwd, surePwd)) {
-				MyToast.show(this, R.string.warn_toast_twice_pwd_difference);
+				ToastManager.show(this, R.string.warn_toast_twice_pwd_difference);
 				return;
 			}
 			// 联系人判空
 			if (StringManager.isEmpty(contacts)) {
-				MyToast.show(this, R.string.warn_toast_contacts_isempty);
+				ToastManager.show(this, R.string.warn_toast_contacts_isempty);
 				return;
 			}
 			// 手机号码判空
 			if (StringManager.isEmpty(cellPhone)) {
-				MyToast.show(this, R.string.warn_toast_cellphone_isempty);
+				ToastManager.show(this, R.string.warn_toast_cellphone_isempty);
 				return;
 			}
 			// 手机号码格式不对 不到11 位
 			if (!StringManager.isStandardCellphoneNumber(cellPhone)) {
-				MyToast.show(this, R.string.warn_toast_cellphone_unstandard);
+				ToastManager.show(this, R.string.warn_toast_cellphone_unstandard);
 				return;
 			}
 
 			// 邮箱
 			if (StringManager.isEmpty(mail)) {
-				MyToast.show(this, R.string.warn_toast_mail_isempty);
+				ToastManager.show(this, R.string.warn_toast_mail_isempty);
 				return;
 			}
 			if (!StringManager.isEmail(mail)) {
-				MyToast.show(this, R.string.warn_toast_mail_unstandard);
+				ToastManager.show(this, R.string.warn_toast_mail_unstandard);
 				return;
 			}
 			// 提交.......
 
-			UIHelper.switcher(this, ExtraCompanyInfoActivity.class);
+			UIManager.switcher(this, ExtraCompanyInfoActivity.class);
 
 			break;
 

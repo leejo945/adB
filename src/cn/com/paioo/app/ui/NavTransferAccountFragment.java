@@ -1,7 +1,7 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import cn.com.paioo.app.util.LogManager;

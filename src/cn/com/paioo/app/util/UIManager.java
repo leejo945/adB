@@ -9,7 +9,7 @@ import android.view.View;
 
  
 
-public class UIHelper {
+public class UIManager {
     public static View  getView(Context context,int resId){
     	return ((Activity)context).findViewById(resId);
     }  

@@ -3,8 +3,8 @@ package cn.com.paioo.app.ui;
 import java.util.Date;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.ToastManager;
+import cn.com.paioo.app.util.UIManager;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
 import android.os.Bundle;

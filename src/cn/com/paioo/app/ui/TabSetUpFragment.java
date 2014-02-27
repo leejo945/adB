@@ -1,8 +1,8 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.ToastManager;
+import cn.com.paioo.app.util.UIManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -57,28 +57,28 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 		// 设置界面
 		case R.id.setup_modify_contact_way_rl:
 			// 修改联系方式
-			UIHelper.switcher(fa, ModifyContactWayActivity.class);
+			UIManager.switcher(fa, ModifyContactWayActivity.class);
 			break;
 
 		case R.id.setup_modify_password_rl:
-			UIHelper.switcher(fa, ModifyPassword.class);
+			UIManager.switcher(fa, ModifyPassword.class);
 			// 修改密码
 			break;
 		case R.id.setup_suggest_rl:
-			UIHelper.switcher(fa, SuggestActivity.class);
+			UIManager.switcher(fa, SuggestActivity.class);
 			// 意见反馈
 			break;
 		case R.id.setup_about_us_rl:
 			// 关于我们
-			UIHelper.switcher(fa, AboutUs.class);
+			UIManager.switcher(fa, AboutUs.class);
 			break;
 		case R.id.setup_check_update_rl:
 			// 版本检测
-			MyToast.show(fa, "版本檢測中。。。。。");
+			ToastManager.show(fa, "版本檢測中。。。。。");
 			break;
 		case R.id.setup_safe_exit_bt:
 			// 退出账号
-			UIHelper.switcher(fa, LoginActivity.class);
+			UIManager.switcher(fa, LoginActivity.class);
 
 			break;
 		}

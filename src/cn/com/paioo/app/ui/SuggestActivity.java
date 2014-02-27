@@ -1,10 +1,10 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,13 +40,13 @@ public class SuggestActivity extends BaseActivity {
 			//Ã·Ωª
 			String content =  StringManager.getStringByET(mContent);
 			if(StringManager.isEmpty(content)){
-				MyToast.show(this, R.string.warn_toast_suggest_isempty);
+				ToastManager.show(this, R.string.warn_toast_suggest_isempty);
 				return;
 			}
 			
 			
 			
-			UIHelper.switcher(this, MainActivity.class);
+			UIManager.switcher(this, MainActivity.class);
 			break;
 		}
 	}

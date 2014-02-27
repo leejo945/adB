@@ -1,9 +1,9 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -64,19 +64,19 @@ public class NavRechargeFragment extends BaseFragment implements
 			String cardid = StringManager.getStringByET(mCardid);
 			String pwd = StringManager.getStringByET(mPwd);
 			if (StringManager.isEmpty(cardid)) {
-				MyToast.show(fa, R.string.warn_toast_cardid_isempty);
+				ToastManager.show(fa, R.string.warn_toast_cardid_isempty);
 				return;
 			}
 			if (!StringManager.isStandradCardid(cardid)) {
-				MyToast.show(fa, R.string.warn_toast_cardid_unstandard);
+				ToastManager.show(fa, R.string.warn_toast_cardid_unstandard);
 				return;
 			}
 			if (StringManager.isEmpty(pwd)) {
-				MyToast.show(fa, R.string.warn_toast_pwd_isempty);
+				ToastManager.show(fa, R.string.warn_toast_pwd_isempty);
 				return;
 			}
 			if (!StringManager.isStandardPwd(pwd)) {
-				MyToast.show(fa, R.string.warn_toast_pwd_unstandard);
+				ToastManager.show(fa, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
 

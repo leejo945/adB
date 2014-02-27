@@ -5,7 +5,6 @@ package cn.com.paioo.app.adapter;
 
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.entity.Product;
-import cn.com.paioo.app.util.ImageManager;
 import cn.com.paioo.app.util.LogManager;
 import android.content.Context;
  
@@ -53,7 +52,7 @@ public class GalleryAdapter extends BaseAdapter {
 		}  
 		
 		LogManager.e("paioo", "------"+urls[position]);
-		ImageManager.getInstance().displayImage(urls[position], holder.iv,ImageManager.getImageOptions());
+		//ImageManager.getInstance().displayImage(urls[position], holder.iv,ImageManager.getImageOptions());
 		return convertView;
 	}
      private static class ViewHolder{

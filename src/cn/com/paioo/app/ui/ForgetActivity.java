@@ -1,10 +1,10 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -31,11 +31,11 @@ public class ForgetActivity extends BaseActivity {
 		case R.id.forget_pwd_submit:
 			String userName  = StringManager.getStringByET(mUserName);
 			if(StringManager.isEmpty(userName)){
-				MyToast.show(this, "fuck ,这是用户名和邮箱一样的吗");
+				ToastManager.show(this, "fuck ,这是用户名和邮箱一样的吗");
 				return;
 			}
 			
-			UIHelper.switcher(this, MainActivity.class);
+			UIManager.switcher(this, MainActivity.class);
 			break;
 		}
 	}

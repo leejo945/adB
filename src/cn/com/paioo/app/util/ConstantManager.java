@@ -1,7 +1,15 @@
  
 package cn.com.paioo.app.util;
 
-public class Constant {
+public class ConstantManager {
+	/**
+	 * handler 用到的what
+	 */
+	public static final int SHOW = 0;
+	
+	
+	
+	
      /**
       * MainActivity中界面切换的索引
       */

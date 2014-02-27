@@ -29,27 +29,23 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp"
-               >
+                android:padding="10dp" >
 
                 <ImageView
                     style="@style/login_mail_pwd_iv"
                     android:src="@drawable/login_mail_icon" />
 
                 <AutoCompleteTextView
-                     
-                    android:id="@+id/login_mail_et"
+                    android:id="@+id/login_mail_actv"
                     style="@style/login_mail_pwd_et"
+                    android:completionThreshold="1"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
             </LinearLayout>
 
-              <include 
-                  layout="@layout/divider_horizontal"
-                  />
+            <include layout="@layout/divider_horizontal" />
 
             <LinearLayout
-                
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -76,14 +72,6 @@
             style="@style/login_login_register_bt"
             android:background="@drawable/selector_bt_orange"
             android:text="@string/login2" />
-
-        <ProgressBar
-            android:visibility="invisible"
-            android:id="@+id/login_pb"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="5dp" />
 
         <Button
             android:id="@+id/login_register_bt"

@@ -5,9 +5,9 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.adapter.ShareAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.ShareInfo;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import cn.com.paioo.app.view.ScrGridView;
 
 import android.app.Dialog;
@@ -77,13 +77,13 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 		if (position == list.size()-1) {
 			ClipboardManager cmb = (ClipboardManager) fa.getSystemService(Context.CLIPBOARD_SERVICE);
 			cmb.setText("http://www.gooogle.com");
-			MyToast.show(fa, R.string.warn_toast_already);
+			ToastManager.show(fa, R.string.warn_toast_already);
 			return;
 		}
 
 		String packName = list.get(position).packName;
 		if (StringManager.isEmpty(packName)) {
-			MyToast.show(fa, R.string.warn_toast_app_uninstall);
+			ToastManager.show(fa, R.string.warn_toast_app_uninstall);
 			return;
 		}
 		Intent it = new Intent(Intent.ACTION_SEND);

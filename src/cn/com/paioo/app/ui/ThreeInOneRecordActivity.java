@@ -12,7 +12,7 @@ import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.Record;
 import cn.com.paioo.app.entity.User;
-import cn.com.paioo.app.util.Constant;
+import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.view.PullToRefreshView;
 import cn.com.paioo.app.view.PullToRefreshView.OnContainerRefreshListener;
@@ -102,25 +102,25 @@ public class ThreeInOneRecordActivity extends BaseActivity implements
 	 */
 	public void pageLoad() {
 		mTitleBarPB.setVisibility(View.VISIBLE);
-		App.pool.addTask(new Thread() {
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				ArrayList<Record> list = DataService.getRecordList(++pageNum);
-				if (list.size() > 0) {
-					Message msg = handler.obtainMessage(
-							Constant.FILL_DATA_SUCCESS, list);
-					handler.sendMessage(msg);
-				} else {
-					handler.sendEmptyMessage(Constant.FILL_DATA_FAIL);
-				}
-			}
-		});
+//		App.pool.addTask(new Thread() {
+//			@Override
+//			public void run() {
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				ArrayList<Record> list = DataService.getRecordList(++pageNum);
+//				if (list.size() > 0) {
+//					Message msg = handler.obtainMessage(
+//							Constant.FILL_DATA_SUCCESS, list);
+//					handler.sendMessage(msg);
+//				} else {
+//					handler.sendEmptyMessage(Constant.FILL_DATA_FAIL);
+//				}
+//			}
+//		});
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class ThreeInOneRecordActivity extends BaseActivity implements
 			mTitleBarPB.setVisibility(View.GONE);
 			mPullRefresh.onComplete(new Date().toLocaleString());
 			switch (msg.what) {
-			case Constant.FILL_DATA_SUCCESS: {
+			case ConstantManager.FILL_DATA_SUCCESS: {
 				if (adapter == null) {
 					adapter = new ThreeInOneAdapter(
 							ThreeInOneRecordActivity.this,
@@ -153,7 +153,7 @@ public class ThreeInOneRecordActivity extends BaseActivity implements
 				break;
 			}
 
-			case Constant.FILL_DATA_FAIL:
+			case ConstantManager.FILL_DATA_FAIL:
 				break;
 			}
 		};

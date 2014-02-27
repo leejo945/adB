@@ -1,10 +1,10 @@
 package cn.com.paioo.app.ui;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -38,32 +38,32 @@ public class ModifyPassword extends BaseActivity {
 			String newPwd2 = StringManager.getStringByET(mNewPwd2);
 			//现在密码判空
 			if (StringManager.isEmpty(oldPwd)) {
-				MyToast.show(this, R.string.warn_toast_old_pwd_isempty);
+				ToastManager.show(this, R.string.warn_toast_old_pwd_isempty);
 				return;
 			} 
 			if(!StringManager.isStandardPwd(oldPwd)){
-				MyToast.show(this, R.string.warn_toast_old_pwd_unstandard);
+				ToastManager.show(this, R.string.warn_toast_old_pwd_unstandard);
 				return;
 			}
 			//新密码
 			if (StringManager.isEmpty(newPwd)) {
-				MyToast.show(this, R.string.warn_toast_pwd_isempty);
+				ToastManager.show(this, R.string.warn_toast_pwd_isempty);
 				return;
 			}
 			if (!StringManager.isStandardPwd(newPwd)) {
-				MyToast.show(this, R.string.warn_toast_pwd_unstandard);
+				ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
 			//确认二者密码一致
 			
 			if (!StringManager.isSamePwd(newPwd, newPwd2)) {
-				MyToast.show(this, R.string.warn_toast_twice_pwd_difference);
+				ToastManager.show(this, R.string.warn_toast_twice_pwd_difference);
 				return;
 			}
 			
 		 
 			
-			UIHelper.switcher(this, LoginActivity.class);
+			UIManager.switcher(this, LoginActivity.class);
 			break;
 		}
 	}

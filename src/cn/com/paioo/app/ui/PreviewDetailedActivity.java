@@ -10,10 +10,10 @@ import cn.com.paioo.app.adapter.ShareAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.ShareInfo;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -93,19 +93,19 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			break;
 		}
 		case R.id.preview_detailed_bus: {
-			MyToast.show(this, "公交信息");
+			ToastManager.show(this, "公交信息");
 			break;
 		}
 		case R.id.preview_detailed_cbd: {
-			MyToast.show(this, "商业中心");
+			ToastManager.show(this, "商业中心");
 			break;
 		}
 		case R.id.preview_detailed_business: {
-			MyToast.show(this, "用户信息");
+			ToastManager.show(this, "用户信息");
 			break;
 		}
 		case R.id.preview_detailed_time: {
-			MyToast.show(this, "时间。。。");
+			ToastManager.show(this, "时间。。。");
 			break;
 		}
 		}
@@ -120,13 +120,13 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			if (position == list.size() - 1) {
 				ClipboardManager cmb = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 				cmb.setText("http://www.gooogle.com");
-				MyToast.show(this, R.string.warn_toast_already);
+				ToastManager.show(this, R.string.warn_toast_already);
 				return;
 			}
 
 			String packName = list.get(position).packName;
 			if (StringManager.isEmpty(packName)) {
-				MyToast.show(this, R.string.warn_toast_app_uninstall);
+				ToastManager.show(this, R.string.warn_toast_app_uninstall);
 				return;
 			}
 			Intent it = new Intent(Intent.ACTION_SEND);
@@ -141,7 +141,7 @@ public class PreviewDetailedActivity extends BaseActivity implements
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("position", position);
 			map.put("urls", product.urls);
-			UIHelper.switcher(this, ChangePicsActivity.class,map);
+			UIManager.switcher(this, ChangePicsActivity.class,map);
 		}
 
 	}

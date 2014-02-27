@@ -14,6 +14,11 @@ import java.util.Map;
 import org.apache.http.HttpStatus;
 import org.json.JSONObject;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -28,6 +33,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import cn.com.paioo.app.util.LogManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.com.paioo.app.App;
@@ -38,10 +44,43 @@ import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.Record;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.entity.User;
-import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.ToastManager;
 
 public class DataService {
+ 	public static void test(Activity context,final TextView tv){
+ 		
+		//((App)context.getApplication()).newRequestQueue().add(new JsonObjectRequest("", new JSONObject(), new Response.Listener<JSONObject>() {
+
+//			@Override
+//			public void onResponse(JSONObject arg0) {
+//				 tv.setText(arg0.optString(""));
+//			}
+//		}, new Response.ErrorListener() {
+//
+//			@Override
+//			public void onErrorResponse(VolleyError arg0) {
+//				 //统一的发送一个信息到handler....
+//				
+//			}
+//		}));
+		
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static User login(String mail,String pwd){
 		 User user = null;
 		 user = new User();
@@ -128,19 +167,19 @@ public class DataService {
 
 	public static void updateAPK(final String serverPath, final Context context) {
 
-		App.pool.addTask(new Thread() {
-			public void run() {
-				File file = getFile(serverPath);
-				if (file != null) {
-					install(file, context);
-				} else {
-					Looper.prepare();
-					MyToast.show(context,
-							R.string.warn_toast_updateapp_exception);
-					Looper.loop();
-				}
-			};
-		});
+//		App.pool.addTask(new Thread() {
+//			public void run() {
+//				File file = getFile(serverPath);
+//				if (file != null) {
+//					install(file, context);
+//				} else {
+//					Looper.prepare();
+//					MyToast.show(context,
+//							R.string.warn_toast_updateapp_exception);
+//					Looper.loop();
+//				}
+//			};
+//		});
 	}
 
 	/**
@@ -158,7 +197,7 @@ public class DataService {
 		try {
 			URL url = new URL(serverPath);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setConnectTimeout(Constant.REQUSE_TTIMEOUT);
+			conn.setConnectTimeout(ConstantManager.REQUSE_TTIMEOUT);
 			if (conn.getResponseCode() == HttpStatus.SC_OK) {
 				is = conn.getInputStream();
 				if (Environment.getExternalStorageState().equals(

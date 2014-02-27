@@ -3,7 +3,7 @@ package cn.com.paioo.app.util;
 import android.content.Context;
 import android.widget.Toast;
 
-public class MyToast {
+public class ToastManager {
     
 	public static void show(Context context,Object text) {
        show(context, text, 0);

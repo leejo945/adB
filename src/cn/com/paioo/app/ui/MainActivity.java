@@ -13,10 +13,10 @@ import cn.com.paioo.app.adapter.SlideMenuAdapter;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.entity.AppUpdateInfo;
 
-import cn.com.paioo.app.util.Constant;
-import cn.com.paioo.app.util.MyToast;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.TitleManager;
-import cn.com.paioo.app.util.UIHelper;
+import cn.com.paioo.app.util.UIManager;
  
 
 import android.annotation.SuppressLint;
@@ -83,7 +83,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 	private FragmentManager fm;
 
-	private static int mainIndex = Constant.SLIDEMENU_INDEX_HOME;
+	private static int mainIndex = ConstantManager.SLIDEMENU_INDEX_HOME;
 	// 侧滑菜单的最上面的条目
 	private LinearLayout slidemenuItemRoot;
 
@@ -130,19 +130,19 @@ public class MainActivity extends SlidingFragmentActivity implements
 	}
 
 	private void updateApp() {
-		App.pool.addTask(new Thread() {
-			@Override
-			public void run() {
-				AppUpdateInfo appInfo = DataService
-						.getAppUpdateInfo(MainActivity.this);
-				if (appInfo != null) {
-					// 要更新 弹出对话框给用户提示
-					Message msg = handler.obtainMessage(APPUPDATE, appInfo);
-					handler.sendMessage(msg);
-				}
-
-			}
-		});
+//		App.pool.addTask(new Thread() {
+//			@Override
+//			public void run() {
+//				AppUpdateInfo appInfo = DataService
+//						.getAppUpdateInfo(MainActivity.this);
+//				if (appInfo != null) {
+//					// 要更新 弹出对话框给用户提示
+//					Message msg = handler.obtainMessage(APPUPDATE, appInfo);
+//					handler.sendMessage(msg);
+//				}
+//
+//			}
+//		});
 	}
 
 	private void showUpdateDialog(final AppUpdateInfo updateInfo) {
@@ -410,7 +410,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 	@Override
 	public void onBackPressed() {
 		if (fristBack == 0) {
-			MyToast.show(this, R.string.warn_toast_again_click_exit);
+			ToastManager.show(this, R.string.warn_toast_again_click_exit);
 			fristBack = System.currentTimeMillis();
 			handler.sendEmptyMessageDelayed(DESTORYFRISTBACK, BACKSPACTIEM);
 		} else {
