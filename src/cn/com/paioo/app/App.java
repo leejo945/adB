@@ -2,9 +2,6 @@ package cn.com.paioo.app;
 
 import java.util.ArrayList;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
  
 
  
@@ -18,7 +15,6 @@ import android.app.ProgressDialog;
 
 public class App extends Application {
 	public static AppUpdateInfo appUpdateInfo;
-   
 	// 项目中用到的线程池。。。
 	private static ArrayList<Activity> activitys;
 	private static User user;

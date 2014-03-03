@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+ 
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -23,13 +22,13 @@ import cn.com.paioo.app.App;
  
 
 public class NetManager {
-	private static RequestQueue queue;
-	public void addRequest(Context context){
-		if(queue==null){
-			queue = Volley.newRequestQueue(context);
-		}
-		queue.add(null);
-	}
+//	private static RequestQueue queue;
+//	public void addRequest(Context context){
+//		if(queue==null){
+//			queue = Volley.newRequestQueue(context);
+//		}
+//		queue.add(null);
+//	}
 	   
 	/**
 	 * ºÏ≤‚Õ¯¬Á «∑Òø…”√

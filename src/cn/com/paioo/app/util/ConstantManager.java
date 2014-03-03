@@ -2,13 +2,41 @@
 package cn.com.paioo.app.util;
 
 public class ConstantManager {
+	//-------------网络访问url-------------start-----------------
+	public static final String URL_LOGIN = "http://www.baidu.com";
+	
+	
+	
+	
+	
+	//-------------网络访问url-------------end-----------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
-	 * handler 用到的what
+	 * splash 
 	 */
 	public static final int SHOW = 0;
-	
-	
-	
+	public static final int SHOW_LOGO_TIME = 2000;//spalsh 展示logo多少时间后开始判断
+	public static final int FROM_SPLASH = 1;
+	public static final String SP_USER_NAME = "username";
+	public static final String SP_USER_PWD = "userpwd";
 	
      /**
       * MainActivity中界面切换的索引
@@ -50,6 +78,5 @@ public class ConstantManager {
 	public static final int FILL_DATA_SUCCESS = 6;
 	public static final int FILL_DATA_FAIL = 7;
 	
-	
-	
+
 }

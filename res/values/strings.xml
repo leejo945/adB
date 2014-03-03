@@ -193,6 +193,10 @@
       <string name="warn_toast_again_click_exit">再点一次退出</string>
           <string name="warn_toast_updateapp_exception">更新App异常</string>
        <string name="warn_toast_already">链接已复制</string>
+         <string name="warn_toast_net_error">网络不给力，请稍后重试...</string>
+       <!-- 登录界面 -->
+        <string name="warn_dialog_login">登录中，请稍等...</string>
+       
       <string name="warn_dialog_update">升级提醒</string>
       <string name="warn_dialog_sureupdate">确定更新</string>
       <string name="warn_dialog_cancle">取消</string>

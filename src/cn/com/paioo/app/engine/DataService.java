@@ -14,9 +14,13 @@ import java.util.Map;
 import org.apache.http.HttpStatus;
 import org.json.JSONObject;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -33,6 +37,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import cn.com.paioo.app.util.LogManager;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,51 +53,57 @@ import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.ToastManager;
 
 public class DataService {
- 	public static void test(Activity context,final TextView tv){
- 		
-		//((App)context.getApplication()).newRequestQueue().add(new JsonObjectRequest("", new JSONObject(), new Response.Listener<JSONObject>() {
+	private static RequestQueue mRequestQueue;
 
-//			@Override
-//			public void onResponse(JSONObject arg0) {
-//				 tv.setText(arg0.optString(""));
-//			}
-//		}, new Response.ErrorListener() {
-//
-//			@Override
-//			public void onErrorResponse(VolleyError arg0) {
-//				 //统一的发送一个信息到handler....
-//				
-//			}
-//		}));
-		
-	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static User login(String mail,String pwd){
-		 User user = null;
-		 user = new User();
-		 return user;
+	private static void addRequest(Request request, Context context) {
+		if (mRequestQueue == null) {
+			mRequestQueue = Volley.newRequestQueue(context);
+		}
+		mRequestQueue.add(request);
 	}
-	public static void logout(){
-		
+
+	/**
+	 * 
+	 * @param url
+	 * @param context
+	 * @param callBack
+	 * @return
+	 */
+	public static void login(String url, final Context context,
+			final NetCallBack callBack) {
+		StringRequest request = new StringRequest(url,
+				new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						Log.e("request", arg0);
+						callBack.netCallBack(arg0);
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						callBack.netErrorCallBack(context, arg0.toString());
+					}
+				});
+
+		addRequest(request, context);
+
 	}
-	
-	
-	
-	
+	/**
+	 * 注册
+	 * @param url
+	 * @param context
+	 * @param callBack
+	 */
+	public static void signUp(String url, final Context context,
+			final NetCallBack callBack) {
+		  
+	}
+	public static void logout() {
+
+	}
+
 	public static ArrayList<PresenterIncome> getPresenterIncomeList(int pageNum) {
 		ArrayList<PresenterIncome> list = new ArrayList<PresenterIncome>();
 		for (int i = 0; i < 10; i++) {
@@ -100,16 +111,7 @@ public class DataService {
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
 	 * 记录，包括广告消费，充值，转账等记录
 	 * 
@@ -167,19 +169,19 @@ public class DataService {
 
 	public static void updateAPK(final String serverPath, final Context context) {
 
-//		App.pool.addTask(new Thread() {
-//			public void run() {
-//				File file = getFile(serverPath);
-//				if (file != null) {
-//					install(file, context);
-//				} else {
-//					Looper.prepare();
-//					MyToast.show(context,
-//							R.string.warn_toast_updateapp_exception);
-//					Looper.loop();
-//				}
-//			};
-//		});
+		// App.pool.addTask(new Thread() {
+		// public void run() {
+		// File file = getFile(serverPath);
+		// if (file != null) {
+		// install(file, context);
+		// } else {
+		// Looper.prepare();
+		// MyToast.show(context,
+		// R.string.warn_toast_updateapp_exception);
+		// Looper.loop();
+		// }
+		// };
+		// });
 	}
 
 	/**
@@ -281,11 +283,11 @@ public class DataService {
 				ActivityInfo activityInfo = resInfo.activityInfo;
 				String packName = activityInfo.packageName;
 
-				LogManager.e("paioo", activityInfo.loadLabel(packManager) + "----"
-						+ activityInfo.name + "-------" + packName);
+				LogManager.e("paioo", activityInfo.loadLabel(packManager)
+						+ "----" + activityInfo.name + "-------" + packName);
 
 				if (packName.contains("sina")) {// 如果在手机中有该app，那么就将该包加入，如果没有点击的时候会给一个提示。请求安装
-                      sina.packName = packName;
+					sina.packName = packName;
 				}
 				if (packName.contains("tencent.mm")) {
 					friends.packName = packName;
@@ -305,7 +307,7 @@ public class DataService {
 				if (packName.contains("mms")) {
 					sms.packName = packName;
 				}
-				 
+
 			}
 		}
 
@@ -317,7 +319,7 @@ public class DataService {
 		list.add(qzone);
 		list.add(sms);
 		list.add(link);
-		
+
 		return list;
 
 	}

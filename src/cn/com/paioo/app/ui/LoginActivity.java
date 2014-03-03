@@ -1,52 +1,31 @@
 package cn.com.paioo.app.ui;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.engine.DataService;
-import cn.com.paioo.app.entity.User;
+import cn.com.paioo.app.engine.NetCallBack;
+import cn.com.paioo.app.engine.NetCallBackIml;
 import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.PreferencesManager;
 import cn.com.paioo.app.util.ToastManager;
-import cn.com.paioo.app.util.SecurityManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.UIManager;
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class LoginActivity extends Activity// BaseActivity
 {
-	private AutoCompleteTextView mMail;
+	private AutoCompleteTextView mUserName;
 	private EditText mPwd;
 	private Button mLogin;
-	private Handler handler =  new Handler(){
-		public void handleMessage(android.os.Message msg) {
-		 
-			switch (msg.what) {
-			case ConstantManager.FILL_DATA_SUCCESS:
-				
-				break;
 
-			case ConstantManager.FILL_DATA_FAIL:
-				
-				break;
-			}
-		};
-	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		App.addActivity(this);
@@ -54,11 +33,18 @@ public class LoginActivity extends Activity// BaseActivity
 		setContentView(R.layout.login);
 		super.onCreate(savedInstanceState);
 		init();
-	    
+	}
+
+	@Override
+	protected void onResume() {
+		String userName = PreferencesManager.getString(this,
+				ConstantManager.SP_USER_NAME);
+		mUserName.setText(userName);
+		super.onResume();
 	}
 
 	private void init() {
-		mMail = (AutoCompleteTextView) findViewById(R.id.login_mail_actv);
+		mUserName = (AutoCompleteTextView) findViewById(R.id.login_mail_actv);
 		mPwd = (EditText) findViewById(R.id.login_pwd_et);
 		mLogin = (Button) findViewById(R.id.login_login_bt);
 	}
@@ -66,67 +52,60 @@ public class LoginActivity extends Activity// BaseActivity
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.login_login_bt:
-             //登录成功。去首页
-			final String mail = StringManager.getStringByET(mMail);
-			final String pwd = StringManager.getStringByET(mPwd);
-			if (StringManager.isEmpty(mail)) {
-				ToastManager.show(this, R.string.warn_toast_mail_isempty);
-				return;
-			} 
-			if(!StringManager.isEmail(mail)){
-				ToastManager.show(this, R.string.warn_toast_mail_unstandard);
-				return;
-			}
-			if (StringManager.isEmpty(pwd)) {
-				ToastManager.show(this, R.string.warn_toast_pwd_isempty);
-				return;
-			}
-			if (!StringManager.isStandardPwd(pwd)) {
-				ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
-				return;
-			}
-			mLogin.setClickable(false);
-         
-			 
-			
-			
-//			App.pool.addTask(new Thread(){
-//				@Override
-//				public void run() {
-//					try { 
-//						Thread.sleep(3000);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					User user =  DataService.login(mail,SecurityManager.getMD5HashText(pwd));
-//					Message msg;
-//					if(user!=null){
-// 						  msg = handler.obtainMessage(Constant.FILL_DATA_SUCCESS);
-// 
-//						 UIHelper.switcher(LoginActivity.this, MainActivity.class);
-//					}else{
-//						msg = handler.obtainMessage(Constant.FILL_DATA_FAIL);
-//						
-//					}
-//					mLogin.setClickable(true);
-//					handler.sendMessage(msg);
-//					super.run();
-//				}
-//			});
-//			
-//			
-			
-			
+			// 登录成功。去首页
+			login();
 			break;
 
 		case R.id.login_register_bt:
+			// 注册
 			UIManager.switcher(this, RegisterActivity.class);
 			break;
 		case R.id.login_forget_pwd_tv:
-			//忘记密码界面
-			 UIManager.switcher(this, ForgetActivity.class);
+			// 忘记密码界面
+			UIManager.switcher(this, ForgetActivity.class);
 			break;
 		}
 	}
+
+	private void login() {
+		final String mail = StringManager.getStringByET(mUserName);
+		final String pwd = StringManager.getStringByET(mPwd);
+		if (StringManager.isEmpty(mail)) {
+			ToastManager.show(this, R.string.warn_toast_mail_isempty);
+			return;
+		}
+		if (!StringManager.isEmail(mail)) {
+			ToastManager.show(this, R.string.warn_toast_mail_unstandard);
+			return;
+		}
+		if (StringManager.isEmpty(pwd)) {
+			ToastManager.show(this, R.string.warn_toast_pwd_isempty);
+			return;
+		}
+		if (!StringManager.isStandardPwd(pwd)) {
+			ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
+			return;
+		}
+		final Dialog dialog = UIManager.getLoadingDialog(this,
+				R.string.warn_dialog_login);
+		dialog.show();
+		DataService.login(ConstantManager.URL_LOGIN, this, new NetCallBackIml() {
+			  @Override
+			public void netCallBack(Object response) {
+				dialog.dismiss();
+				PreferencesManager.setString(LoginActivity.this, ConstantManager.SP_USER_NAME, mail);
+				//返回的response做处理
+				UIManager.switcher(LoginActivity.this, MainActivity.class);
+				super.netCallBack(response);
+			}
+			  @Override
+			public void netErrorCallBack(Context context,String errorReason) {
+				dialog.dismiss();
+				super.netErrorCallBack(context,errorReason);
+			}
+		 
+		});
+
+	}
+
 }
