@@ -28,7 +28,7 @@ public class TabFinanceFragment extends BaseFragment implements
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		LogManager.e("paioo", "TabFinanceFragment   财务，，，，，创建");
-		return inflater.inflate(R.layout.nav_finance, container, false);
+		return inflater.inflate(R.layout.layout_nav_finance, container, false);
 	}
 
 	@Override

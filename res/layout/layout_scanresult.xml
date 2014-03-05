@@ -3,12 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-   
-    <TextView
-        android:id="@+id/textView1"
+    <include layout="@layout/title_bar"/>
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="推荐人收入"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:src="@drawable/scanresult" />
 
 </LinearLayout>

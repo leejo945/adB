@@ -43,17 +43,17 @@ public class SplashActivity extends Activity// BaseActivity
 			switch (msg.what) {
 			case ConstantManager.SHOW:
 				// 网络检测
-				// if (NetUtil.isNetworkConnected(getApplicationContext())) {
-				//
+				// if (NetManager.isNetworkConnected(getApplicationContext())) {
+					 //网络异常，请稍后重试
+				 //    return;
 				// }
 
-				User user = App.getUser();
+				User user = ((App)getApplication()).getUser();
 				if (user == null) {// 第一次登录，显示登录和注册按钮，显示指示圆圈
 					initIndicate();
 				} else {
 					// 非第一次登录，那么跳转到主界面
 					UIManager.switcher(SplashActivity.this, MainActivity.class);
-
 				}
 
 				break;
@@ -68,7 +68,7 @@ public class SplashActivity extends Activity// BaseActivity
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		App.addActivity(this);
-		setContentView(R.layout.splash);
+		setContentView(R.layout.layout_splash);
 		super.onCreate(savedInstanceState);
 
 		init();
@@ -78,8 +78,6 @@ public class SplashActivity extends Activity// BaseActivity
 	public void init() {
 		// 登录和注册按钮按照需要显示
 		handler.sendEmptyMessageDelayed(ConstantManager.SHOW, ConstantManager.SHOW_LOGO_TIME);
-
-		
 		//芝麻广告平台必须初始化显示
 		initLogo();
 	}
@@ -133,9 +131,11 @@ public class SplashActivity extends Activity// BaseActivity
 			HashMap<String, Object> map =  new HashMap<String, Object>();
 			map.put("from",ConstantManager.FROM_SPLASH );
 			UIManager.switcher(this, LoginActivity.class,map);
+			finish();//从splash界面到login界面跳转应该是单向的....
 			break;
 
 		case R.id.splash_register_bt:
+			//这个界面的跳转是双向的
 			UIManager.switcher(this, RegisterActivity.class);
 			break;
 		}

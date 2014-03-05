@@ -16,7 +16,7 @@ public class SuggestActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.suggest);
+		setContentView(R.layout.layout_suggest);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.suggest);
 	}

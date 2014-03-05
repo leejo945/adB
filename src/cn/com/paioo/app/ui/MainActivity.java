@@ -33,6 +33,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import cn.com.paioo.app.util.LogManager;
+import cn.com.paioo.app.view.ListViewInScrollView;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -114,9 +115,9 @@ public class MainActivity extends SlidingFragmentActivity implements
 		App.addActivity(this);
 		super.onCreate(savedInstanceState);
 		// 设置我们正文的显示布局，这和我们正常的Activity是一样的。
-		setContentView(R.layout.slidemenu_content);
+		setContentView(R.layout.layout_slidemenu_content);
 		// 设置侧滑菜单的布局
-		setBehindContentView(R.layout.slidemenu_menu);
+		setBehindContentView(R.layout.layout_slidemenu_menu);
 		// 初始化侧滑菜单
 
 		init();
@@ -207,27 +208,27 @@ public class MainActivity extends SlidingFragmentActivity implements
 		// 设置从左边拉动还是从右边拉动出现菜单
 		sm.setMode(SlidingMenu.LEFT);
 
-		ListView slv = (ListView) findViewById(R.id.slidemenu_lv);
+		ListViewInScrollView slv = (ListViewInScrollView) findViewById(R.id.slidemenu_lv);
 
-		if (slv.getHeaderViewsCount() == 0) {
-			View head = View.inflate(this, R.layout.slidemenu_head, null);
-			slidemenuItemRoot = (LinearLayout) head
-					.findViewById(R.id.slidemenu_item_root_ll);
-			ImageView headItemIcon = (ImageView) head
-					.findViewById(R.id.slidemenu_item_icon_iv);
-			TextView headItemName = (TextView) head
-					.findViewById(R.id.slidemenu_item_name_tv);
-			slidemenuItemRoot.setBackgroundColor(R.color.title_bar_bg);
-			headItemIcon.setImageResource(R.drawable.slidemenu_home);
-			headItemName.setText(R.string.slidemenu_home);
-			slv.addHeaderView(head);
-		}
+//		if (slv.getHeaderViewsCount() == 0) {
+//			View head = View.inflate(this, R.layout.slidemenu_head, null);
+//			slidemenuItemRoot = (LinearLayout) head
+//					.findViewById(R.id.slidemenu_item_root_ll);
+//			ImageView headItemIcon = (ImageView) head
+//					.findViewById(R.id.slidemenu_item_icon_iv);
+//			TextView headItemName = (TextView) head
+//					.findViewById(R.id.slidemenu_item_name_tv);
+//			slidemenuItemRoot.setBackgroundColor(R.color.title_bar_bg);
+//			headItemIcon.setImageResource(R.drawable.slidemenu_home);
+//			headItemName.setText(R.string.slidemenu_home);
+//			slv.addHeaderView(head);
+//		}
 
-		int[] icons = { R.drawable.slidemenu_financial,
+		int[] icons = {R.drawable.slidemenu_home, R.drawable.slidemenu_financial,
 				R.drawable.slidemenu_preview, R.drawable.slidemenu_recharge,
 				R.drawable.slidemenu_friends, R.drawable.slidemenu_transfer,
 				R.drawable.slidemenu_setup };
-		int[] names = { R.string.slidemenu_finance, R.string.slidemenu_preview,
+		int[] names = { R.string.slidemenu_home,R.string.slidemenu_finance, R.string.slidemenu_preview,
 				R.string.slidemenu_recharge, R.string.slidemenu_friends,
 				R.string.slidemenu_transfer, R.string.slidemenu_setup };
 
@@ -417,7 +418,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			LogManager.e(tag, System.currentTimeMillis() - fristBack + "");
 			if (System.currentTimeMillis() - fristBack <=BACKSPACTIEM) {
 				//退出app
-				App.exit();
+				((App)getApplication()).exit();
 				fristBack = 0;
 			}
 		}

@@ -3,7 +3,7 @@ package cn.com.paioo.app.util;
 
 public class ConstantManager {
 	//-------------ÍøÂç·ÃÎÊurl-------------start-----------------
-	public static final String URL_LOGIN = "http://www.baidu.com";
+	public static final String URL_LOGIN = "http://192.168.13.244:8080/adservice/member/locate/addMemLocate.do";
 	
 	
 	

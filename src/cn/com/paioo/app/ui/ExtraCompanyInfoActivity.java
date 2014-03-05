@@ -18,7 +18,7 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
-    	setContentView(R.layout.extra_company_info);
+    	setContentView(R.layout.layout_extra_company_info);
     	super.onCreate(savedInstanceState);
     	TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.eci_company_info_title);
     }
@@ -65,6 +65,11 @@ public class ExtraCompanyInfoActivity extends BaseActivity {
 				ToastManager.show(this, R.string.warn_toast_unagree);
             	return;
 			}
+			
+			
+			
+			
+			
 			UIManager.switcher(this, MainActivity.class);
 			break;
 			

@@ -19,6 +19,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -47,11 +48,18 @@ import cn.com.paioo.app.entity.AppUpdateInfo;
 import cn.com.paioo.app.entity.PresenterIncome;
 import cn.com.paioo.app.entity.Product;
 import cn.com.paioo.app.entity.Record;
+import cn.com.paioo.app.entity.ResultStatus;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.ToastManager;
 
+/**
+ * 绝大部分请求的响应数据都是JsonObject
+ * 
+ * @author lee
+ * 
+ */
 public class DataService {
 	private static RequestQueue mRequestQueue;
 
@@ -63,6 +71,28 @@ public class DataService {
 	}
 
 	/**
+	 * post传递方式中，实体部分传递的数据
+	 * 
+	 * @return
+	 */
+	private static JSONObject setBody() {
+		JSONObject body = new JSONObject();
+		return body;
+	}
+
+	/**
+	 * 判断返回的json数据是否正常，只有为ResultStatus.SUCCESS的时候才为返回的正常的数据
+	 * 
+	 * @param arg0
+	 * @return
+	 */
+	private static boolean isNormal(JSONObject arg0) {
+
+		return arg0.optInt("") == ResultStatus.SUCCESS;
+
+	}
+
+	/**
 	 * 
 	 * @param url
 	 * @param context
@@ -71,12 +101,55 @@ public class DataService {
 	 */
 	public static void login(String url, final Context context,
 			final NetCallBack callBack) {
-		StringRequest request = new StringRequest(url,
-				new Response.Listener<String>() {
+
+		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+				new Response.Listener<JSONObject>() {
 
 					@Override
-					public void onResponse(String arg0) {
-						Log.e("request", arg0);
+					public void onResponse(JSONObject arg0) {
+						// 如果回调了这个函数，说明就已经返回了真实的JSONObject函数了，数据真实了。但是不一定就是正确的数据。
+						// 还要通过返回的状态码去确定是否要去解析全部
+
+						User user = null;
+						if (isNormal(arg0)) {
+							user = new User();
+							// 解析为User
+							arg0.optString("");
+							// 传递user回去
+							callBack.netCallBack(user);
+						} else {
+							callBack.netErrorCallBack(context, "数据状态有误");
+						}
+
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						callBack.netErrorCallBack(context, arg0.toString());
+
+					}
+				});
+
+		addRequest(request, context);
+
+	}
+
+	/**
+	 * 注册
+	 * 
+	 * @param url
+	 * @param context
+	 * @param callBack
+	 */
+	public static void signUp(String url, final Context context,
+			final NetCallBack callBack) {
+		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+				new Response.Listener<JSONObject>() {
+
+					@Override
+					public void onResponse(JSONObject arg0) {
+
 						callBack.netCallBack(arg0);
 					}
 				}, new Response.ErrorListener() {
@@ -84,22 +157,87 @@ public class DataService {
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
 						callBack.netErrorCallBack(context, arg0.toString());
+
 					}
 				});
 
 		addRequest(request, context);
-
 	}
+
 	/**
-	 * 注册
+	 * 增加附加的公司信息
+	 * 
 	 * @param url
 	 * @param context
 	 * @param callBack
 	 */
-	public static void signUp(String url, final Context context,
+
+	public static void addExtraCompanyInfo(String url, final Context context,
 			final NetCallBack callBack) {
-		  
+		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+				new Response.Listener<JSONObject>() {
+
+					@Override
+					public void onResponse(JSONObject arg0) {
+
+						callBack.netCallBack(arg0);
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						callBack.netErrorCallBack(context, arg0.toString());
+
+					}
+				});
+
+		addRequest(request, context);
 	}
+
+	// ------------- 预览部分-----------start-------------- 
+	/**
+	 * 获得推送或者是桌面广告
+	 * @param url
+	 * @param context
+	 * @param callBack
+	 */
+	public static void getPushOrDeskAd(String url, final Context context,final int pageNum,
+			final NetCallBack callBack){
+		    JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+				new Response.Listener<JSONObject>() {
+					@Override
+					public void onResponse(JSONObject arg0) {
+					//	if(isNormal(arg0)){
+							ArrayList<Product> list = new ArrayList<Product>();
+							for (int i = 0; i < 10; i++) {
+								list.add(new Product());
+							}
+							//返回的是产品列表
+							callBack.netCallBack(list);
+						//}else{
+						//	callBack.netErrorCallBack(context, arg0.toString());
+						//}
+						
+						
+				
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						callBack.netErrorCallBack(context, arg0.toString());
+
+					}
+				});
+
+		addRequest(request, context);
+	}
+	
+	
+	
+
+	// ------------- 预览部分----------end-----------------
+
 	public static void logout() {
 
 	}
@@ -126,13 +264,7 @@ public class DataService {
 		return list;
 	}
 
-	public static ArrayList<Product> getPushOrDeskAdList(int pageNum) {
-		ArrayList<Product> list = new ArrayList<Product>();
-		for (int i = 0; i < 10; i++) {
-			list.add(new Product());
-		}
-		return list;
-	}
+ 
 
 	/**
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了

@@ -40,7 +40,7 @@ public class PreviewDetailedActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.preview_detailed);
+		setContentView(R.layout.layout_preview_detailed);
 		super.onCreate(savedInstanceState);
 		int titleResId = getIntent().getIntExtra("title", 0);
 		TitleManager.show(this, new int[] { TitleManager.BACK }, titleResId);

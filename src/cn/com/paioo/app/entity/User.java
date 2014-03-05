@@ -30,5 +30,6 @@ public class User {
 	 */
 	public String status;
 	// ---------------³äÖµ¼ÇÂ¼item×Ö¶Î-----------------------------//
-
+//-----------------------
+	public String userName;
 }

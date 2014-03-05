@@ -64,6 +64,6 @@
         android:orientation="vertical" >
     </LinearLayout>
 
-    <include layout="@layout/main_tab" />
+    <include layout="@layout/layout_main_tab" />
 
 </RelativeLayout>

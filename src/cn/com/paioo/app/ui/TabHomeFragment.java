@@ -34,7 +34,7 @@ public class TabHomeFragment extends BaseFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		LogManager.e("paioo", "TabFinanceFragment   Ö÷Ò³£¬£¬£¬£¬´´½¨");
-		return inflater.inflate(R.layout.nav_home, container, false);
+		return inflater.inflate(R.layout.layout_nav_home, container, false);
 	}
 
 	@Override

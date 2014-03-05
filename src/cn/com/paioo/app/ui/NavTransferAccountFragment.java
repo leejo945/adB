@@ -16,7 +16,7 @@ public class NavTransferAccountFragment extends BaseFragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		LogManager.e("paioo", "NavTransferAccountFragment   ×ªÕË£¬£¬£¬£¬£¬´´½¨");
-		return inflater.inflate(R.layout.transfer_accounts, container, false);
+		return inflater.inflate(R.layout.layout_transfer_accounts, container, false);
 	}
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {

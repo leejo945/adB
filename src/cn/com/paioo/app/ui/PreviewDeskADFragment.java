@@ -65,7 +65,7 @@ public class PreviewDeskADFragment extends PreViewBaseFragment implements
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		LogManager.e("paioo", "创建桌面广告");
-		return inflater.inflate(R.layout.preview_ad_desk, container, false);
+		return inflater.inflate(R.layout.layout_preview_ad_desk, container, false);
 	}
 	
 	@Override

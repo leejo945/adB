@@ -30,7 +30,7 @@ public class ChangePicsActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.change_pic);
+		setContentView(R.layout.layout_change_pic);
 		super.onCreate(savedInstanceState);
 		Intent i = getIntent();
 		int position = i.getIntExtra("position", -1);

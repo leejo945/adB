@@ -15,7 +15,7 @@ public class ModifyPassword extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.modify_password);
+		setContentView(R.layout.layout_modify_password);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.modify_password);
 	}

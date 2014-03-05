@@ -26,7 +26,7 @@ public class NavRechargeFragment extends BaseFragment implements
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		LogManager.e("paioo", "NavRechargeFragment   充值界面，，，，，，创建");
-		return inflater.inflate(R.layout.account_recharge, container, false);
+		return inflater.inflate(R.layout.layout_account_recharge, container, false);
 
 	}
  
@@ -88,8 +88,10 @@ public class NavRechargeFragment extends BaseFragment implements
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-
-		mCardid.setText(data.getStringExtra("result"));
+       if(data!=null){
+    	   mCardid.setText(data.getStringExtra("result"));
+       }
+		
 
 		super.onActivityResult(requestCode, resultCode, data);
 	}

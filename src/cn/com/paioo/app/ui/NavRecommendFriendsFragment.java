@@ -45,7 +45,7 @@ public class NavRecommendFriendsFragment extends BaseFragment implements
 			Bundle savedInstanceState) {
 		LogManager.e("paioo", "NavRecommendFriendsFragment  推荐好友，，，，，创建");
 
-		return inflater.inflate(R.layout.recommend_friends, container, false);
+		return inflater.inflate(R.layout.layout_recommend_friends, container, false);
 	}
 
 	@Override

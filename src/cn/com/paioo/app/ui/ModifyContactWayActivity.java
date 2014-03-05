@@ -14,7 +14,7 @@ public class ModifyContactWayActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.modify_contact_way);
+		setContentView(R.layout.layout_modify_contact_way);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.modify_contact_way);
 	}

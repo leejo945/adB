@@ -14,7 +14,7 @@ public class ForgetActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.forget_pwd);
+		setContentView(R.layout.layout_forget_pwd);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.find_pwd);
 

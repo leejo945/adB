@@ -9,7 +9,7 @@ public class AboutUs extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.about_us);
+		setContentView(R.layout.layout_about_us);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.about_us);
 	}

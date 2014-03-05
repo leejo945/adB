@@ -31,7 +31,7 @@ public class PresenterIncomeActivity extends BaseActivity implements OnContainer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
-    	setContentView(R.layout.presenter_income);
+    	setContentView(R.layout.layout_presenter_income);
     	super.onCreate(savedInstanceState);
     	TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.title_bar_title_referee_money);
     }

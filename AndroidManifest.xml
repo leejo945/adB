@@ -27,7 +27,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,7 @@
         </activity>
         <activity android:name=".ui.RegisterActivity" >
         </activity>
-        <activity android:name=".ui.LoginActivity" >
+        <activity android:name=".ui.SplashActivity" >
         </activity>
         <activity android:name=".ui.ExtraCompanyInfoActivity" >
         </activity>
@@ -67,6 +67,8 @@
         <activity android:name=".ui.PreviewDetailedActivity" >
         </activity>
         <activity android:name=".ui.PresenterIncomeActivity"></activity>
+        <activity android:name=".ui.ScanActivity"></activity>
+        <activity android:name=".ui.ScanResultActivity"></activity>
         <activity 
             android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden"
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"

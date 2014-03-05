@@ -1,6 +1,5 @@
 package cn.com.paioo.app.view;
 
-import cn.com.paioo.app.LoadData;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.ui.BaseFragment;
 import cn.com.paioo.app.ui.PreViewBaseFragment;

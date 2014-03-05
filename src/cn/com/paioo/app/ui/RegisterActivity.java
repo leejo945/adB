@@ -1,10 +1,18 @@
 package cn.com.paioo.app.ui;
 
+import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
+import cn.com.paioo.app.engine.DataService;
+import cn.com.paioo.app.engine.NetCallBackIml;
+import cn.com.paioo.app.entity.User;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.PreferencesManager;
 import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.TitleManager;
 import cn.com.paioo.app.util.UIManager;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +23,7 @@ public class RegisterActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.free_register);
+		setContentView(R.layout.layout_free_register);
 		super.onCreate(savedInstanceState);
 		TitleManager.show(this, new int[]{TitleManager.BACK}, R.string.free_register);
 
@@ -87,9 +95,27 @@ public class RegisterActivity extends BaseActivity {
 				ToastManager.show(this, R.string.warn_toast_mail_unstandard);
 				return;
 			}
+			
+			final Dialog dialog = UIManager.getLoadingDialog(this,
+					R.string.warn_dialog_login);
+			dialog.show();
 			// Ã·Ωª.......
-
-			UIManager.switcher(this, ExtraCompanyInfoActivity.class);
+			DataService.login(ConstantManager.URL_LOGIN, this, new NetCallBackIml() {
+				  @Override
+				public void netCallBack(Object response) {
+					dialog.dismiss();
+					
+					UIManager.switcher(RegisterActivity.this, ExtraCompanyInfoActivity.class);
+					super.netCallBack(response);
+				}
+				  @Override
+				public void netErrorCallBack(Context context,String errorReason) {
+					dialog.dismiss();
+					super.netErrorCallBack(context,errorReason);
+				}
+			 
+			});
+			
 
 			break;
 

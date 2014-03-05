@@ -20,7 +20,7 @@ public class TabSetUpFragment extends BaseFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		 LogManager.e("paioo", "TabSetUpFragment   …Ë÷√£¨£¨£¨£¨£¨¥¥Ω®");
-		return inflater.inflate(R.layout.nav_setup, container, false);
+		return inflater.inflate(R.layout.layout_nav_setup, container, false);
 	}
      @Override
     public void onActivityCreated(Bundle savedInstanceState) {

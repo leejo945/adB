@@ -35,7 +35,7 @@ public class TabPreViewFragmet extends BaseFragment implements OnTouchListener,
 			Bundle savedInstanceState) {
 		LogManager.e("paioo", "TabFinanceFragment   ‘§¿¿£¨£¨£¨£¨£¨¥¥Ω®");
 		// TODO Auto-generated method stub
-		return inflater.inflate(R.layout.nav_preview, container, false);
+		return inflater.inflate(R.layout.layout_nav_preview, container, false);
 	}
 
 	@Override

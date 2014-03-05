@@ -53,7 +53,7 @@ public class ThreeInOneRecordActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.three_in_one);
+		setContentView(R.layout.layout_three_in_one);
 		titleResId = getIntent().getIntExtra("title", 0);
 		TitleManager.show(this, new int[] { TitleManager.BACK }, titleResId);
 
