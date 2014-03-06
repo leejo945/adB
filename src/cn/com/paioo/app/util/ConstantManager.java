@@ -3,7 +3,8 @@ package cn.com.paioo.app.util;
 
 public class ConstantManager {
 	//-------------Õ¯¬Á∑√Œ url-------------start-----------------
-	public static final String URL_LOGIN = "http://192.168.13.244:8080/adservice/member/locate/addMemLocate.do";
+	public static final String ULR_BASE = "http://192.168.13.244:8080/";
+	public static final String URL_LOGIN = ULR_BASE+"adservice/member/locate/addMemLocate.do";
 	
 	
 	

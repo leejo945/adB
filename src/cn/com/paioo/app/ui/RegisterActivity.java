@@ -100,21 +100,21 @@ public class RegisterActivity extends BaseActivity {
 					R.string.warn_dialog_login);
 			dialog.show();
 			// Ã·Ωª.......
-			DataService.login(ConstantManager.URL_LOGIN, this, new NetCallBackIml() {
-				  @Override
-				public void netCallBack(Object response) {
-					dialog.dismiss();
-					
-					UIManager.switcher(RegisterActivity.this, ExtraCompanyInfoActivity.class);
-					super.netCallBack(response);
-				}
-				  @Override
-				public void netErrorCallBack(Context context,String errorReason) {
-					dialog.dismiss();
-					super.netErrorCallBack(context,errorReason);
-				}
-			 
-			});
+//			DataService.login(ConstantManager.URL_LOGIN, this, new NetCallBackIml() {
+//				  @Override
+//				public void netCallBack(Object response) {
+//					dialog.dismiss();
+//					
+//					UIManager.switcher(RegisterActivity.this, ExtraCompanyInfoActivity.class);
+//					super.netCallBack(response);
+//				}
+//				  @Override
+//				public void netErrorCallBack(Context context,String errorReason) {
+//					dialog.dismiss();
+//					super.netErrorCallBack(context,errorReason);
+//				}
+//			 
+//			});
 			
 
 			break;

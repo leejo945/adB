@@ -69,46 +69,47 @@ public class LoginActivity extends Activity// BaseActivity
 	}
 
 	private void login() {
-//		final String mail = StringManager.getStringByET(mUserName);
-//		final String pwd = StringManager.getStringByET(mPwd);
-//		if (StringManager.isEmpty(mail)) {
-//			ToastManager.show(this, R.string.warn_toast_mail_isempty);
-//			return;
-//		}
-//		if (!StringManager.isEmail(mail)) {
-//			ToastManager.show(this, R.string.warn_toast_mail_unstandard);
-//			return;
-//		}
-//		if (StringManager.isEmpty(pwd)) {
-//			ToastManager.show(this, R.string.warn_toast_pwd_isempty);
-//			return;
-//		}
-//		if (!StringManager.isStandardPwd(pwd)) {
-//			ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
-//			return;
-//		}
-//		final Dialog dialog = UIManager.getLoadingDialog(this,
-//				R.string.warn_dialog_login);
-//		dialog.show();
-//		DataService.login(ConstantManager.URL_LOGIN, this, new NetCallBackIml() {
-//			  @Override
-//			public void netCallBack(Object response) {
-//				dialog.dismiss();
-//				PreferencesManager.setString(LoginActivity.this, ConstantManager.SP_USER_NAME, mail);
-//				//返回的response做处理
-//				
-//				User user = (User) response;
-//				((App)getApplication()).setUser(user);
+		final String mail = StringManager.getStringByET(mUserName);
+		final String pwd = StringManager.getStringByET(mPwd);
+		if (StringManager.isEmpty(mail)) {
+			ToastManager.show(this, R.string.warn_toast_mail_isempty);
+			return;
+		}
+		if (!StringManager.isEmail(mail)) {
+			ToastManager.show(this, R.string.warn_toast_mail_unstandard);
+			return;
+		}
+		if (StringManager.isEmpty(pwd)) {
+			ToastManager.show(this, R.string.warn_toast_pwd_isempty);
+			return;
+		}
+		if (!StringManager.isStandardPwd(pwd)) {
+			ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
+			return;
+		}
+		final Dialog dialog = UIManager.getLoadingDialog(this,
+				R.string.warn_dialog_login);
+		dialog.show();
+		DataService.login(this, new NetCallBackIml() {
+			  @Override
+			public void netCallBack(Object response) {
+				dialog.dismiss();
+				PreferencesManager.setString(LoginActivity.this, ConstantManager.SP_USER_NAME, mail);
+				//返回的response做处理
+				
+				User user = (User) response;
+				((App)getApplication()).setUser(user);
 				UIManager.switcher(LoginActivity.this, ScanActivity.class);
-//				super.netCallBack(response);
-//			}
-//			  @Override
-//			public void netErrorCallBack(Context context,String errorReason) {
-//				dialog.dismiss();
-//				super.netErrorCallBack(context,errorReason);
-//			}
-//		 
-//		});
+				finish();
+				super.netCallBack(response);
+			}
+			  @Override
+			public void netErrorCallBack(Context context,String errorReason) {
+				dialog.dismiss();
+				super.netErrorCallBack(context,errorReason);
+			}
+		 
+		});
 
 	}
 

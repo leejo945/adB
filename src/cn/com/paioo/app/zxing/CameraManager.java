@@ -18,6 +18,7 @@ package cn.com.paioo.app.zxing;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -126,13 +127,13 @@ public final class CameraManager {
         throw new IOException();
       }
       camera.setPreviewDisplay(holder);
-
+      camera.setDisplayOrientation(90);
       if (!initialized) {
         initialized = true;
         configManager.initFromCameraParameters(camera);
       }
       configManager.setDesiredCameraParameters(camera);
-
+     
  //     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
       //是否使用前灯
 //      if (prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT, false)) {
@@ -236,6 +237,15 @@ public final class CameraManager {
       } else if (height > MAX_FRAME_HEIGHT) {
         height = MAX_FRAME_HEIGHT;
       }
+      
+      
+      int orientation = context.getResources().getConfiguration().orientation;
+		if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			width = height;
+		} else {
+			height = width;
+		}
+      
       int leftOffset = (screenResolution.x - width) / 2;
       int topOffset = (screenResolution.y - height) / 2;
       framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);

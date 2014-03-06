@@ -54,6 +54,7 @@ public class ZxingActivity extends Activity implements Callback {
 		// ≥ı ºªØ CameraManager
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+		viewfinderView.setCameraManager(CameraManager.get());
 		// hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
 	}

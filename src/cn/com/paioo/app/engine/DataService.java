@@ -88,7 +88,7 @@ public class DataService {
 	 */
 	private static boolean isNormal(JSONObject arg0) {
 
-		return arg0.optInt("") == ResultStatus.SUCCESS;
+		return arg0.optInt("Result") == 0;
 
 	}
 
@@ -99,10 +99,10 @@ public class DataService {
 	 * @param callBack
 	 * @return
 	 */
-	public static void login(String url, final Context context,
+	public static void login(final Context context,
 			final NetCallBack callBack) {
 
-		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+		JsonObjectRequest request = new JsonObjectRequest(ConstantManager.URL_LOGIN, setBody(),
 				new Response.Listener<JSONObject>() {
 
 					@Override
@@ -111,14 +111,14 @@ public class DataService {
 						// 还要通过返回的状态码去确定是否要去解析全部
 
 						User user = null;
-						if (isNormal(arg0)) {
+						if (isNormal(arg0)) {//状态码正确
 							user = new User();
 							// 解析为User
-							arg0.optString("");
+							arg0.optString("Data");
 							// 传递user回去
 							callBack.netCallBack(user);
 						} else {
-							callBack.netErrorCallBack(context, "数据状态有误");
+							callBack.netErrorCallBack(context, arg0.optString("Error"));
 						}
 
 					}
@@ -127,7 +127,6 @@ public class DataService {
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
 						callBack.netErrorCallBack(context, arg0.toString());
-
 					}
 				});
 

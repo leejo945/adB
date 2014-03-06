@@ -13,7 +13,12 @@ public abstract class NetCallBackIml implements NetCallBack {
 
 	@Override
 	public void netErrorCallBack(Context context,String errorReason) {
-		 ToastManager.show(context, context.getResources().getString(R.string.warn_toast_net_error));
+		if(errorReason!=null){
+			 ToastManager.show(context, errorReason);
+		}else{
+			ToastManager.show(context, context.getResources().getString(R.string.warn_toast_net_error));
+		}
+		 
 	}
 
 }
