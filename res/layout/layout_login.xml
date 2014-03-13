@@ -36,10 +36,11 @@
                     android:src="@drawable/login_mail_icon" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/login_mail_actv"
+                    android:maxLength="40"
+                    android:id="@+id/login_username_actv"
                     style="@style/login_mail_pwd_et"
                     android:completionThreshold="1"
-                    android:hint="@string/email"
+                    android:hint="@string/username"
                     android:inputType="textEmailAddress" />
             </LinearLayout>
 
@@ -60,6 +61,7 @@
                     android:src="@drawable/login_lock_icon" />
 
                 <EditText
+                    android:maxLength="16"
                     android:id="@+id/login_pwd_et"
                     style="@style/login_mail_pwd_et"
                     android:hint="@string/pwd"

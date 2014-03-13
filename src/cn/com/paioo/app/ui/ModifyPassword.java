@@ -41,7 +41,7 @@ public class ModifyPassword extends BaseActivity {
 				ToastManager.show(this, R.string.warn_toast_old_pwd_isempty);
 				return;
 			} 
-			if(!StringManager.isStandardPwd(oldPwd)){
+			if(!StringManager.isBadPwd(oldPwd)){
 				ToastManager.show(this, R.string.warn_toast_old_pwd_unstandard);
 				return;
 			}
@@ -50,7 +50,7 @@ public class ModifyPassword extends BaseActivity {
 				ToastManager.show(this, R.string.warn_toast_pwd_isempty);
 				return;
 			}
-			if (!StringManager.isStandardPwd(newPwd)) {
+			if (!StringManager.isBadPwd(newPwd)) {
 				ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
 				return;
 			}

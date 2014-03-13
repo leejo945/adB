@@ -16,7 +16,7 @@
 
 package cn.com.paioo.app.zxing;
 
-import cn.com.paioo.app.ui.ZxingActivity;
+import cn.com.paioo.app.ui.ScanInActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
@@ -40,12 +40,12 @@ final class DecodeThread extends Thread {
 
   public static final String BARCODE_BITMAP = "barcode_bitmap";
 
-  private final ZxingActivity activity;
+  private final ScanInActivity activity;
   private final Hashtable<DecodeHintType, Object> hints;
   private Handler handler;
   private final CountDownLatch handlerInitLatch;
 
-  DecodeThread(ZxingActivity activity,
+  DecodeThread(ScanInActivity activity,
                Vector<BarcodeFormat> decodeFormats,
                String characterSet,
                ResultPointCallback resultPointCallback) {

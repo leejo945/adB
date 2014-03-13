@@ -1,5 +1,7 @@
 package cn.com.paioo.app.ui;
 
+import java.util.HashMap;
+
 import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
 import cn.com.paioo.app.engine.DataService;
@@ -29,25 +31,33 @@ public class LoginActivity extends Activity// BaseActivity
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		App.addActivity(this);
-		// TODO Auto-generated method stub
-		setContentView(R.layout.layout_login);
+		//如果已经等了。那就不用了
+		if(!StringManager.isEmpty(PreferencesManager.getString(this, ConstantManager.SP_USER_NAME))){
+			UIManager.switcher(this, ScanBeforeActivity.class);
+			finish(); 
+		}else{
+			App.addActivity(this);
+			// TODO Auto-generated method stub
+			setContentView(R.layout.layout_login);
+			init();
+		}
+		
+		
+		
 		super.onCreate(savedInstanceState);
-		init();
+		
 	}
 
-	@Override
-	protected void onResume() {
+	 
+
+	private void init() {
+		
+		mUserName = (AutoCompleteTextView) findViewById(R.id.login_username_actv);
+		mPwd = (EditText) findViewById(R.id.login_pwd_et);
+		mLogin = (Button) findViewById(R.id.login_login_bt);
 		String userName = PreferencesManager.getString(this,
 				ConstantManager.SP_USER_NAME);
 		mUserName.setText(userName);
-		super.onResume();
-	}
-
-	private void init() {
-		mUserName = (AutoCompleteTextView) findViewById(R.id.login_mail_actv);
-		mPwd = (EditText) findViewById(R.id.login_pwd_et);
-		mLogin = (Button) findViewById(R.id.login_login_bt);
 	}
 
 	public void onClick(View v) {
@@ -69,37 +79,39 @@ public class LoginActivity extends Activity// BaseActivity
 	}
 
 	private void login() {
-		final String mail = StringManager.getStringByET(mUserName);
-		final String pwd = StringManager.getStringByET(mPwd);
-		if (StringManager.isEmpty(mail)) {
-			ToastManager.show(this, R.string.warn_toast_mail_isempty);
+ 		final String userName = StringManager.getStringByET(mUserName);
+ 		final String pwd = StringManager.getStringByET(mPwd);
+		if (StringManager.isEmpty(userName)) {
+			ToastManager.show(this, R.string.warn_toast_username_isempty);
 			return;
 		}
-		if (!StringManager.isEmail(mail)) {
-			ToastManager.show(this, R.string.warn_toast_mail_unstandard);
+		if (StringManager.isBadUserName(userName)) {
+			ToastManager.show(this, R.string.warn_toast_username_unstandard);
 			return;
 		}
 		if (StringManager.isEmpty(pwd)) {
 			ToastManager.show(this, R.string.warn_toast_pwd_isempty);
 			return;
 		}
-		if (!StringManager.isStandardPwd(pwd)) {
+		if (StringManager.isBadPwd(pwd)) {
 			ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
 			return;
 		}
 		final Dialog dialog = UIManager.getLoadingDialog(this,
 				R.string.warn_dialog_login);
 		dialog.show();
-		DataService.login(this, new NetCallBackIml() {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("loginId",userName);
+		map.put("password",pwd);
+		//只要一点击，就会保存用户的登录信息，主要是为了用户的二次登陆
+		PreferencesManager.setString(this, ConstantManager.SP_USER_NAME, userName);
+		DataService.login(map,this, new NetCallBackIml() {
 			  @Override
 			public void netCallBack(Object response) {
 				dialog.dismiss();
-				PreferencesManager.setString(LoginActivity.this, ConstantManager.SP_USER_NAME, mail);
 				//返回的response做处理
-				
-				User user = (User) response;
-				((App)getApplication()).setUser(user);
-				UIManager.switcher(LoginActivity.this, ScanActivity.class);
+				((App)getApplication()).setUser((User) response);
+				UIManager.switcher(LoginActivity.this, ScanBeforeActivity.class);
 				finish();
 				super.netCallBack(response);
 			}

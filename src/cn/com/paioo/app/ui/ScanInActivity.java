@@ -1,12 +1,20 @@
 package cn.com.paioo.app.ui;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Vector;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
+import cn.com.paioo.app.App;
 import cn.com.paioo.app.R;
+import cn.com.paioo.app.engine.DataService;
+import cn.com.paioo.app.engine.NetCallBackIml;
+import cn.com.paioo.app.entity.User;
+import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.PreferencesManager;
+import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.UIManager;
 import cn.com.paioo.app.zxing.CameraManager;
 import cn.com.paioo.app.zxing.CaptureActivityHandler;
@@ -15,7 +23,9 @@ import cn.com.paioo.app.zxing.ViewfinderView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -32,10 +42,11 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
 
-public class ZxingActivity extends Activity implements Callback {
+public class ScanInActivity extends Activity implements Callback {
 
 	private CaptureActivityHandler handler;
 	private ViewfinderView viewfinderView;
+	private View result;
 	private boolean hasSurface;
 	private Vector<BarcodeFormat> decodeFormats;
 	private String characterSet;
@@ -46,6 +57,7 @@ public class ZxingActivity extends Activity implements Callback {
 	// private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
 	private SurfaceHolder surfaceHolder;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +69,8 @@ public class ZxingActivity extends Activity implements Callback {
 		viewfinderView.setCameraManager(CameraManager.get());
 		// hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
+		result = findViewById(R.id.result);
 	}
-
-
 
 	@Override
 	protected void onResume() {
@@ -75,15 +86,6 @@ public class ZxingActivity extends Activity implements Callback {
 		decodeFormats = null;
 		characterSet = null;
 		vibrate = true;
-
-		// playBeep = true;
-		// AudioManager audioService = (AudioManager)
-		// getSystemService(AUDIO_SERVICE);
-		// if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
-		// {
-		// playBeep = false;
-		// }
-		// initBeepSound();
 
 	}
 
@@ -168,39 +170,14 @@ public class ZxingActivity extends Activity implements Callback {
 	public void handleDecode(final Result obj, Bitmap barcode) {
 		inactivityTimer.onActivity();
 		viewfinderView.setVisibility(View.GONE);
-		findViewById(R.id.result).setVisibility(View.VISIBLE);
-
+		result.setVisibility(View.VISIBLE);
 		playBeepSoundAndVibrate();
-		// viewfinderView.drawResultBitmap(barcode);
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("扫描结果:")
-		.setMessage(obj.getText()) 
-				.setPositiveButton("确定", new OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						UIManager.switcher(ZxingActivity.this, ScanResultActivity.class);
-						
-//						
-//						Intent i = new Intent();
-//						i.putExtra("result", obj.getText());
-//						setResult(1, i);
-						finish();
-
-					}
-				}).setNegativeButton("取消", new OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						restartPreviewAfterDelay(1000);
-
-					}
-				});
-		builder.create().show();
-
-		// txtResult.setText(obj.getBarcodeFormat().toString() + ":"
-		// + obj.getText());
-	}
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put(ConstantManager.ZXING_SCANRESULT, obj.getText().toString().trim());
+		UIManager.switcher(ScanInActivity.this, ScanAfterActivity.class,
+				map);
+		finish();
+ }
 
 	// 充值扫描视图
 	private void resetStatusView() {

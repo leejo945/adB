@@ -8,10 +8,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.http.HttpStatus;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.android.volley.Request;
@@ -19,9 +23,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.ImageLoader.ImageCache;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -32,6 +40,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
@@ -39,6 +48,7 @@ import android.os.Looper;
 import android.os.Message;
 import cn.com.paioo.app.util.LogManager;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +61,11 @@ import cn.com.paioo.app.entity.Record;
 import cn.com.paioo.app.entity.ResultStatus;
 import cn.com.paioo.app.entity.ShareInfo;
 import cn.com.paioo.app.entity.User;
+import cn.com.paioo.app.entity.WebResult;
 import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.ImageManager;
+import cn.com.paioo.app.util.NetManager;
+import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.ToastManager;
 
 /**
@@ -61,7 +75,13 @@ import cn.com.paioo.app.util.ToastManager;
  * 
  */
 public class DataService {
+	private static final String tag = "DataService";
 	private static RequestQueue mRequestQueue;
+	/**
+	 * 1、当服务端出错后，后台打印服务端错误信息，前台提示网络部给力 2、当网络不有信号，但是无法连接到internet的时候也是这种提示
+	 */
+	private static final String SERVER_ERROR_TOAST = "网络不给力，请稍后重试!";
+	private static final String NET_UNABLE_TOAST = "网络不给力，请稍后重试...";
 
 	private static void addRequest(Request request, Context context) {
 		if (mRequestQueue == null) {
@@ -71,13 +91,21 @@ public class DataService {
 	}
 
 	/**
-	 * post传递方式中，实体部分传递的数据
+	 * 组装url
 	 * 
 	 * @return
 	 */
-	private static JSONObject setBody() {
-		JSONObject body = new JSONObject();
-		return body;
+	private static String makeUrl(String url, HashMap<String, Object> map) {
+		StringBuffer sb = null;
+		if (map != null) {
+			sb = new StringBuffer(url + "?");
+			Set<String> keys = map.keySet();
+			for (String key : keys) {
+				sb.append(key + "=" + map.get(key) + "&");
+			}
+		}
+		LogManager.e(tag, "网络访问url----" + sb == null ? url : sb.toString());
+		return sb == null ? "" : sb.toString();
 	}
 
 	/**
@@ -88,7 +116,7 @@ public class DataService {
 	 */
 	private static boolean isNormal(JSONObject arg0) {
 
-		return arg0.optInt("Result") == 0;
+		return arg0.optInt("Result") == ResultStatus.SUCCESS;
 
 	}
 
@@ -99,26 +127,27 @@ public class DataService {
 	 * @param callBack
 	 * @return
 	 */
-	public static void login(final Context context,
-			final NetCallBack callBack) {
+	public static void login(final HashMap<String, Object> map,
+			final Context context, final NetCallBack callBack) {
+		if (!NetManager.isNetworkConnected(context)) {
+			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
+			return;
+		}
 
-		JsonObjectRequest request = new JsonObjectRequest(ConstantManager.URL_LOGIN, setBody(),
+		JsonObjectRequest request = new JsonObjectRequest(makeUrl(
+				ConstantManager.URL_LOGIN, map), null,
 				new Response.Listener<JSONObject>() {
-
 					@Override
 					public void onResponse(JSONObject arg0) {
-						// 如果回调了这个函数，说明就已经返回了真实的JSONObject函数了，数据真实了。但是不一定就是正确的数据。
-						// 还要通过返回的状态码去确定是否要去解析全部
-
-						User user = null;
-						if (isNormal(arg0)) {//状态码正确
-							user = new User();
-							// 解析为User
-							arg0.optString("Data");
-							// 传递user回去
+						LogManager.e(tag, "网络访问的结果--" + arg0.toString());
+						if (isNormal(arg0)) {
+							User user = new User();
+							JSONObject data = arg0.optJSONObject("Data");
+							user.advertiseid = data.optInt("advertiseid");
 							callBack.netCallBack(user);
 						} else {
-							callBack.netErrorCallBack(context, arg0.optString("Error"));
+							callBack.netErrorCallBack(context,
+									arg0.optString("Error"));
 						}
 
 					}
@@ -126,11 +155,75 @@ public class DataService {
 
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
-						callBack.netErrorCallBack(context, arg0.toString());
+						LogManager.e(tag, "服务端出问题了----" + arg0.toString());
+						callBack.netErrorCallBack(context, SERVER_ERROR_TOAST);
 					}
 				});
 
 		addRequest(request, context);
+
+	}
+
+	/**
+	 * 二维码验证
+	 * 
+	 * @param map
+	 * @param context
+	 * @param callBack
+	 */
+	public static void sendQrInfo(final HashMap<String, Object> map,
+			final Context context, final NetCallBack callBack) {
+		if (!NetManager.isNetworkConnected(context)) {
+			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
+			return;
+		}
+
+		JsonObjectRequest request = new JsonObjectRequest(makeUrl(
+				ConstantManager.URL_SENDQRCODE, map), null,
+				new Response.Listener<JSONObject>() {
+					@Override
+					public void onResponse(JSONObject arg0) {
+						LogManager.e(tag, "-------------" + arg0.toString());
+						// if (isNormal(arg0)) {
+						// 验证成功了。(包括优惠券可用/不可用)
+						
+						Product p = new Product();
+						p.couponStatus = arg0.optString("Error");
+						String data = arg0.optString("Data");
+						if (!StringManager.isEmpty(data)) {//没有数据返回了
+							try {
+								JSONObject jsonObject =  new JSONObject(data);
+								p.describe = jsonObject.optString("title");
+								p.xiaofeima = jsonObject.optString("qdcode");
+								p.urls = new String[] { jsonObject.optString("imgurl") };
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						}
+						callBack.netCallBack(p);// success
+
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						LogManager.e(tag, "服务端出问题了----" + arg0.toString());
+						callBack.netErrorCallBack(context, SERVER_ERROR_TOAST);
+					}
+				});
+
+		addRequest(request, context);
+	}
+/**
+ * 用于加载图片
+ * @param iv
+ * @param url
+ */
+	public static void loadImage(ImageView iv, String url) {
+		ImageManager.getInstance().displayImage(url, iv,
+				ImageManager.getImageOptions());
 
 	}
 
@@ -143,7 +236,7 @@ public class DataService {
 	 */
 	public static void signUp(String url, final Context context,
 			final NetCallBack callBack) {
-		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 
 					@Override
@@ -173,7 +266,7 @@ public class DataService {
 
 	public static void addExtraCompanyInfo(String url, final Context context,
 			final NetCallBack callBack) {
-		JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 
 					@Override
@@ -193,32 +286,31 @@ public class DataService {
 		addRequest(request, context);
 	}
 
-	// ------------- 预览部分-----------start-------------- 
+	// ------------- 预览部分-----------start--------------
 	/**
 	 * 获得推送或者是桌面广告
+	 * 
 	 * @param url
 	 * @param context
 	 * @param callBack
 	 */
-	public static void getPushOrDeskAd(String url, final Context context,final int pageNum,
-			final NetCallBack callBack){
-		    JsonObjectRequest request = new JsonObjectRequest(url, setBody(),
+	public static void getPushOrDeskAd(String url, final Context context,
+			final int pageNum, final NetCallBack callBack) {
+		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject arg0) {
-					//	if(isNormal(arg0)){
-							ArrayList<Product> list = new ArrayList<Product>();
-							for (int i = 0; i < 10; i++) {
-								list.add(new Product());
-							}
-							//返回的是产品列表
-							callBack.netCallBack(list);
-						//}else{
-						//	callBack.netErrorCallBack(context, arg0.toString());
-						//}
-						
-						
-				
+						// if(isNormal(arg0)){
+						ArrayList<Product> list = new ArrayList<Product>();
+						for (int i = 0; i < 10; i++) {
+							list.add(new Product());
+						}
+						// 返回的是产品列表
+						callBack.netCallBack(list);
+						// }else{
+						// callBack.netErrorCallBack(context, arg0.toString());
+						// }
+
 					}
 				}, new Response.ErrorListener() {
 
@@ -231,9 +323,6 @@ public class DataService {
 
 		addRequest(request, context);
 	}
-	
-	
-	
 
 	// ------------- 预览部分----------end-----------------
 
@@ -262,8 +351,6 @@ public class DataService {
 		}
 		return list;
 	}
-
- 
 
 	/**
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了

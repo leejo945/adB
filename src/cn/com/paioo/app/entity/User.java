@@ -32,4 +32,10 @@ public class User {
 	// ---------------充值记录item字段-----------------------------//
 //-----------------------
 	public String userName;
+	
+	/**
+	 * 商户id
+	 */
+	public int advertiseid;
+	
 }

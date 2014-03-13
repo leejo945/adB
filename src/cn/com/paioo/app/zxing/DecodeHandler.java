@@ -17,7 +17,7 @@
 package cn.com.paioo.app.zxing;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.ui.ZxingActivity;
+import cn.com.paioo.app.ui.ScanInActivity;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
@@ -40,10 +40,10 @@ final class DecodeHandler extends Handler {
 
   private static final String TAG = DecodeHandler.class.getSimpleName();
 
-  private final ZxingActivity activity;
+  private final ScanInActivity activity;
   private final MultiFormatReader multiFormatReader;
 
-  DecodeHandler(ZxingActivity activity, Hashtable<DecodeHintType, Object> hints) {
+  DecodeHandler(ScanInActivity activity, Hashtable<DecodeHintType, Object> hints) {
     multiFormatReader = new MultiFormatReader();
     multiFormatReader.setHints(hints);
     this.activity = activity;

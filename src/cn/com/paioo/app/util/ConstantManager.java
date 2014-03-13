@@ -3,10 +3,26 @@ package cn.com.paioo.app.util;
 
 public class ConstantManager {
 	//-------------网络访问url-------------start-----------------
-	public static final String ULR_BASE = "http://192.168.13.244:8080/";
-	public static final String URL_LOGIN = ULR_BASE+"adservice/member/locate/addMemLocate.do";
+	/**
+	 * 基础ip
+	 */
+	//http://113.105.222.72/adbizappservice/
+	public static final String URL_BASE = "http://113.105.222.72/";
+	 //adbizappservice
+	public static final String URL_SERVICE = "adbizappservice/";
 	
-	
+	/**
+	 * 登录
+	 * 
+	 * http://192.168.13.5:8080/adbizservice/admin/security/login.do
+	 */
+	public static final String URL_LOGIN = URL_BASE+URL_SERVICE+"admin/security/login.do";
+	/**
+	 * 发送扫描二维码扫描结果
+	 */ 
+	 
+	public static final String URL_SENDQRCODE = URL_BASE+URL_SERVICE+"admin/qrcode/QrCode.do";
+	 
 	
 	
 	
@@ -38,7 +54,7 @@ public class ConstantManager {
 	public static final int FROM_SPLASH = 1;
 	public static final String SP_USER_NAME = "username";
 	public static final String SP_USER_PWD = "userpwd";
-	
+	public static final String SP_USER_ADVERTISEID = "useradvertiseid";
      /**
       * MainActivity中界面切换的索引
       */
@@ -62,7 +78,10 @@ public class ConstantManager {
 	public static final int RESPONSE_TIMEOUT = 3000;
 	
 	
+	//-------intent 传递--------------
+	public static final String ZXING_SCANRESULT = "scanresult";
 	
+	//------------------------------
 	
 	
 	

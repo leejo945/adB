@@ -56,7 +56,7 @@ public class NavRechargeFragment extends BaseFragment implements
 		case R.id.recharge_barcode_iv:
 			// ¶þÎ¬Âë½çÃæ
 			// UIHelper.switcher(fa,ZxingActivity.class);
-			Intent i = new Intent(fa, ZxingActivity.class);
+			Intent i = new Intent(fa, ScanInActivity.class);
 			startActivityForResult(i, 1);
 			break;
 
@@ -75,7 +75,7 @@ public class NavRechargeFragment extends BaseFragment implements
 				ToastManager.show(fa, R.string.warn_toast_pwd_isempty);
 				return;
 			}
-			if (!StringManager.isStandardPwd(pwd)) {
+			if (!StringManager.isBadPwd(pwd)) {
 				ToastManager.show(fa, R.string.warn_toast_pwd_unstandard);
 				return;
 			}

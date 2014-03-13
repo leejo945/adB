@@ -60,7 +60,7 @@ public class RegisterActivity extends BaseActivity {
 				ToastManager.show(this, R.string.warn_toast_pwd_isempty);
 				return;
 			}
-			if (!StringManager.isStandardPwd(pwd)) {
+			if (!StringManager.isBadPwd(pwd)) {
 				ToastManager.show(this, R.string.warn_toast_pwd_unstandard);
 				return;
 			}
@@ -81,18 +81,18 @@ public class RegisterActivity extends BaseActivity {
 				return;
 			}
 			// 手机号码格式不对 不到11 位
-			if (!StringManager.isStandardCellphoneNumber(cellPhone)) {
+			if (!StringManager.isBadUserName(cellPhone)) {
 				ToastManager.show(this, R.string.warn_toast_cellphone_unstandard);
 				return;
 			}
 
 			// 邮箱
 			if (StringManager.isEmpty(mail)) {
-				ToastManager.show(this, R.string.warn_toast_mail_isempty);
+				ToastManager.show(this, R.string.warn_toast_username_isempty);
 				return;
 			}
 			if (!StringManager.isEmail(mail)) {
-				ToastManager.show(this, R.string.warn_toast_mail_unstandard);
+				ToastManager.show(this, R.string.warn_toast_username_unstandard);
 				return;
 			}
 			

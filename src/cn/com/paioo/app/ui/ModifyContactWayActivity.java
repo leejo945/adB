@@ -46,7 +46,7 @@ public class ModifyContactWayActivity extends BaseActivity {
 				return;
 			}
 			// 手机号码格式不对
-			if (!StringManager.isStandardCellphoneNumber(cellPhone)) {
+			if (!StringManager.isBadUserName(cellPhone)) {
 				ToastManager.show(this, R.string.warn_toast_cellphone_unstandard);
 				return;
 			}
@@ -61,11 +61,11 @@ public class ModifyContactWayActivity extends BaseActivity {
 				return;
 			}
 			if (StringManager.isEmpty(mail)) {
-				ToastManager.show(this, R.string.warn_toast_mail_isempty);
+				ToastManager.show(this, R.string.warn_toast_username_isempty);
 				return;
 			}
 			if (!StringManager.isEmail(mail)) {
-				ToastManager.show(this, R.string.warn_toast_mail_unstandard);
+				ToastManager.show(this, R.string.warn_toast_username_unstandard);
 				return;
 			}
 			// //提交.......

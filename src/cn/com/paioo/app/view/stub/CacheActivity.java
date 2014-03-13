@@ -67,7 +67,7 @@ public class CacheActivity extends  Activity implements OnScrollListener {
 //	}
 
 	private void initCache() {
-		mPlaceHolderBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		mPlaceHolderBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.app_logo);
 	    final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
 
 	    final int cacheSize = maxMemory / 2;

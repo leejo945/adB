@@ -103,7 +103,7 @@ public final class ViewfinderView extends View {
 		
 		int width = canvas.getWidth();
 		int height = canvas.getHeight();
-		Log.e("zxing", "画布产生的" + width + "----" + height);
+		//Log.e("zxing", "画布产生的" + width + "----" + height);
 		// Draw the exterior (i.e. outside the framing rect) darkened
 		paint.setColor(resultBitmap != null ? resultColor : maskColor);
 		

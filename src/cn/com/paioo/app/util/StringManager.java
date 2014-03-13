@@ -49,19 +49,11 @@ public class StringManager {
 	 * @param number
 	 * @return
 	 */
-	public static boolean isStandardPwd(String number) {
-		return number.length()<6?false:true;
+	public static boolean isBadPwd(String number) {
+		return number.length()<6;
 	}
 
-	/**
-	 * 是否标准的手机号码
-	 * 
-	 * @param number
-	 * @return
-	 */
-	public static boolean isStandardCellphoneNumber(String number) {
-		return number.length() == 11 ? true : false;
-	}
+ 
 
 	/**
 	 * 判断是否为标准的固话号码？
@@ -72,6 +64,15 @@ public class StringManager {
 	public static boolean isStandardTelephoneNumber(String number) {
 		return true;
 	}
+	/**
+	 *  1-20 个中文，  3-40个e文或数字
+	 * @param number
+	 * @return
+	 */
+	public static boolean isBadUserName(String userName){
+		 return false;
+	}
+	
 
 	/**
 	 * 将EditText中中文本获取到
@@ -187,20 +188,7 @@ public class StringManager {
 	 * @return boolean
 	 */
 	public static boolean isEmpty(String input) {
-		if (input == null || "".equals(input)){
-			return true;
-		}
-		return false;
-
-		// for ( int i = 0; i < input.length(); i++ )
-		// {
-		// char c = input.charAt( i );
-		// if ( c != ' ' && c != '\t' && c != '\r' && c != '\n' )
-		// {
-		// return false;
-		// }
-		// }
-		// return true;
+		return  input == null || "".equals(input);
 	}
 
 	/**

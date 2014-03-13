@@ -17,7 +17,7 @@
 package cn.com.paioo.app.zxing;
 
 import cn.com.paioo.app.R;
-import cn.com.paioo.app.ui.ZxingActivity;
+import cn.com.paioo.app.ui.ScanInActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -42,7 +42,7 @@ public final class CaptureActivityHandler extends Handler {
 
   private static final String TAG = CaptureActivityHandler.class.getSimpleName();
 
-  private final ZxingActivity activity;
+  private final ScanInActivity activity;
   private final DecodeThread decodeThread;
   private State state;
 
@@ -52,7 +52,7 @@ public final class CaptureActivityHandler extends Handler {
     DONE
   }
 
-  public CaptureActivityHandler(ZxingActivity activity, Vector<BarcodeFormat> decodeFormats,
+  public CaptureActivityHandler(ScanInActivity activity, Vector<BarcodeFormat> decodeFormats,
       String characterSet) {
     this.activity = activity;
     decodeThread = new DecodeThread(activity, decodeFormats, characterSet,

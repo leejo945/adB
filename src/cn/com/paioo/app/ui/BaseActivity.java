@@ -20,7 +20,7 @@ public class BaseActivity extends Activity {
 		App.removeActivity(this);
 		super.onDestroy();
 	}
-  
+    
     public void init(){}
     public void setListener(){}
 

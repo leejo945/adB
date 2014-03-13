@@ -23,6 +23,7 @@ public class PreferencesManager {
 		return editor;
 	}
 
+	
 	public static void setString(Context context, String key, String value) {
 		getEditorInstance(context).putString(key, value).commit();
 	}
@@ -30,7 +31,13 @@ public class PreferencesManager {
 	public static void setBoolean(Context context, String key, boolean value) {
 		getEditorInstance(context).putBoolean(key, value).commit();
 	}
-
+    public static void setInt(Context context, String key, int value){
+    	getEditorInstance(context).putInt(key, value).commit();
+    }
+	
+	
+	
+	
 	public static String getString(Context context, String key) {
 		return getString(context, key, "");
 	};
@@ -42,5 +49,7 @@ public class PreferencesManager {
 	public static boolean getBoolean(Context context, String key) {
 		return getPreferencesInstance(context).getBoolean(key, false);
 	}
-
+    public static int getInt(Context context, String key){
+    	return getPreferencesInstance(context).getInt(key, -1);
+    }
 }
