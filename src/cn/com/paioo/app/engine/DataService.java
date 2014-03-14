@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +16,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.http.HttpStatus;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
@@ -42,6 +45,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
@@ -65,7 +70,6 @@ import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.entity.WebResult;
 import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.ImageManager;
-import cn.com.paioo.app.util.NetManager;
 import cn.com.paioo.app.util.StringManager;
 import cn.com.paioo.app.util.ToastManager;
 
@@ -75,7 +79,7 @@ import cn.com.paioo.app.util.ToastManager;
  * @author lee
  * 
  */
-public class DataService {
+public class DataService   {
 	private static final String tag = "DataService";
 	private static RequestQueue mRequestQueue;
 	/**
@@ -84,42 +88,7 @@ public class DataService {
 	private static final String SERVER_ERROR_TOAST = "网络不给力，请稍后重试!";
 	private static final String NET_UNABLE_TOAST = "网络不给力，请稍后重试...";
 
-	private static void addRequest(Request request, Context context) {
-		if (mRequestQueue == null) {
-			mRequestQueue = Volley.newRequestQueue(context);
-		}
-		mRequestQueue.add(request);
-	}
-
-	/**
-	 * 组装url
-	 * 
-	 * @return
-	 */
-	private static String makeUrl(String url, HashMap<String, Object> map) {
-		StringBuffer sb = null;
-		if (map != null) {
-			sb = new StringBuffer(url + "?");
-			Set<String> keys = map.keySet();
-			for (String key : keys) {
-				sb.append(key + "=" + map.get(key) + "&");
-			}
-		}
-		LogManager.e(tag, "网络访问url----" + sb == null ? url : sb.toString());
-		return sb == null ? "" : sb.toString();
-	}
-
-	/**
-	 * 判断返回的json数据是否正常，只有为ResultStatus.SUCCESS的时候才为返回的正常的数据
-	 * 
-	 * @param arg0
-	 * @return
-	 */
-	private static boolean isNormal(JSONObject arg0) {
-
-		return arg0.optInt("Result") == ResultStatus.SUCCESS;
-
-	}
+  
 
 	/**
 	 * 
@@ -130,7 +99,7 @@ public class DataService {
 	 */
 	public static void login(final HashMap<String, Object> map,
 			final Context context, final NetCallBack callBack) {
-		if (!NetManager.isNetworkConnected(context)) {
+		if (!isNetworkConnected(context)) {
 			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
 			return;
 		}
@@ -174,7 +143,7 @@ public class DataService {
 	 */
 	public static void sendQrInfo(final HashMap<String, Object> map,
 			final Context context, final NetCallBack callBack) {
-		if (!NetManager.isNetworkConnected(context)) {
+		if (!isNetworkConnected(context)) {
 			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
 			return;
 		}
@@ -219,17 +188,7 @@ public class DataService {
 		addRequest(request, context);
 	}
 
-	/**
-	 * 用于加载图片
-	 * 
-	 * @param iv
-	 * @param url
-	 */
-	public static void loadImage(ImageView iv, String url) {
-		ImageManager.getInstance().displayImage(url, iv,
-				ImageManager.getImageOptions());
-
-	}
+	
 
 	/**
 	 * 注册
@@ -358,15 +317,12 @@ public class DataService {
 
 	/**
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了
-	 * 
 	 * @throws Exception
 	 */
 	public static void getAppUpdateInfo(final Context context) {
-
 		try {
 			final PackageInfo info = context.getPackageManager()
 					.getPackageInfo(context.getPackageName(), 0);
-
 			JsonObjectRequest request = new JsonObjectRequest(
 					ConstantManager.URL_CHECK_APP_VERSION, null,
 					new Response.Listener<JSONObject>() {
@@ -375,18 +331,16 @@ public class DataService {
 							LogManager.e(tag, "数据" + arg0.toString());
 							JSONObject obj = arg0.optJSONObject("Data");
 							if (obj!=null) {
-								LogManager.e(tag, "数据" + obj);
 								int newVersion = obj.optInt("VersionCode");
 								AppUpdateInfo appInfo = null;
 								if (newVersion > info.versionCode) {// 当前版本和服务端的版本比较
 									appInfo = new AppUpdateInfo();
-									// appInfo.version = newVersion;
 									// "1、修改XXXXX\n2、修改XXX\n3、修改XXX\n4 、修改ＸＸＸ\n";//
 									appInfo.description = obj
 											.optString("Version_Note");// 升级描述
-									// "http://fwh.paioo.com.cn/fuservice/fuwenhua.apk";//
-									appInfo.apkurl = obj
-											.optString("VersionUrl"); // 升级的apk
+									// "http://app.paioo.com.cn/apk/pzm.apk"
+									appInfo.apkurl = 
+											obj.optString("VersionUrl"); // 升级的apk
 								}
 								((NetCallBack) context).netCallBack(appInfo);
 							}
@@ -395,7 +349,7 @@ public class DataService {
 
 						@Override
 						public void onErrorResponse(VolleyError arg0) {
-							LogManager.e(tag, "升级验证异常。。。。请检查服务端.....");
+							LogManager.e(tag, "检查升级异常。。。。请检查服务端.....");
 							// callBack.netErrorCallBack(context,
 							// arg0.toString());
 						}
@@ -403,10 +357,10 @@ public class DataService {
 
 			addRequest(request, context);
 
-			LogManager.d(tag, "什么情况66666666666");
+			 
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			LogManager.d(tag, "什么情况");
+			 
+			 
 			e.printStackTrace();
 		}
 
@@ -452,7 +406,7 @@ public class DataService {
 			URL url = new URL(serverPath);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			// conn.setConnectTimeout(AppConfig.TIMEOUT);
-			if (conn.getResponseCode() == 200) {
+			if (conn.getResponseCode() == HttpStatus.SC_OK) {
 				// 获得下载文件的总大小
 				int maxLength = conn.getContentLength();
 				// pd.setMax(maxLength);
@@ -471,9 +425,9 @@ public class DataService {
 						.getSystemService(Context.NOTIFICATION_SERVICE);
 				Notification mNotification = new Notification();
 				mNotification.icon = R.drawable.app_logo;
-				mNotification.setLatestEventInfo(context, "富文化更新", "正在下载 0%",
-						null);
-				mNotifyManager.notify(0, mNotification);
+ 				mNotification.setLatestEventInfo(context, "app更新", "正在下载 0%",
+ 						null);
+ 				mNotifyManager.notify(0, mNotification);
 
 				// ----------------------
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -487,7 +441,6 @@ public class DataService {
 					fos.write(buffer, 0, len);
 					process += len;
 					int newRatio = (int) (((double) process / (double) maxLength) * 100);
-
 					if (!list.contains(newRatio)) {// 不在list的时候，
 						Message msg = handler.obtainMessage(
 								ConstantManager.UPDATE_APP_MSG, newRatio);
@@ -660,4 +613,110 @@ public class DataService {
 		return list;
 
 	}
+	/**
+	 * 用于加载图片
+	 * 
+	 * @param iv
+	 * @param url
+	 */
+	public static void loadImage(ImageView iv, String url) {
+		ImageManager.getInstance().displayImage(url, iv,
+				ImageManager.getImageOptions());
+
+	}
+	
+	private static void addRequest(Request request, Context context) {
+		if (mRequestQueue == null) {
+			mRequestQueue = Volley.newRequestQueue(context);
+		}
+		mRequestQueue.add(request);
+	}
+
+	/**
+	 * 组装url
+	 * 
+	 * @return
+	 */
+	private static String makeUrl(String url, HashMap<String, Object> map) {
+		StringBuffer sb = null;
+		if (map != null) {
+			sb = new StringBuffer(url + "?");
+			Set<String> keys = map.keySet();
+			for (String key : keys) {
+				sb.append(key + "=" + map.get(key) + "&");
+			}
+		}
+		LogManager.e(tag, "网络访问url----" + sb == null ? url : sb.toString());
+		return sb == null ? "" : sb.toString();
+	}
+
+	/**
+	 * 判断返回的json数据是否正常，只有为ResultStatus.SUCCESS的时候才为返回的正常的数据
+	 * 
+	 * @param arg0
+	 * @return
+	 */
+	private static boolean isNormal(JSONObject arg0) {
+
+		return arg0.optInt("Result") == ResultStatus.SUCCESS;
+
+	}
+	
+	
+
+	/**
+	 * 检测网络是否可用
+	 * 
+	 * @return
+	 */
+	public static boolean isNetworkConnected(Context context) {
+		ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		return ni != null && ni.isConnectedOrConnecting();
+	}
+
+	/**
+	 * 获取当前网络类型(手机只有两种网络wifi，mobile;mobile就是2g/3g)
+	 * 
+	 * @return 0：没有网络 1：WIFI网络 2：WAP网络 3：NET网络
+	 */
+	public static final int NETTYPE_WIFI = 0x01;
+	public static final int NETTYPE_MOBILE_CMWAP = 0x02;
+	public static final int NETTYPE_MOBILE_CMNET = 0x03;
+
+	public static int getNetworkType(Context context) {
+		int netType = 0;
+		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		if (networkInfo == null) {
+			return netType;
+		}
+		int nType = networkInfo.getType();
+		if (nType == ConnectivityManager.TYPE_MOBILE) {
+			String extraInfo = networkInfo.getExtraInfo();
+			if (!StringManager.isEmpty(extraInfo)) {
+				if (extraInfo.toLowerCase().equals("cmnet")) {
+					netType = NETTYPE_MOBILE_CMNET;
+				} else {
+					netType = NETTYPE_MOBILE_CMWAP;
+				}
+			}
+		} else if (nType == ConnectivityManager.TYPE_WIFI) {
+			netType = NETTYPE_WIFI;
+		}
+		return netType;
+	}
+
+ 
+
+	
+	
+ 
+
+	
+ 
+	
+	
+	
+	
 }

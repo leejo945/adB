@@ -13,7 +13,6 @@ import cn.com.paioo.app.adapter.ViewPagerAdapter;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.ToastManager;
-import cn.com.paioo.app.util.NetManager;
 import cn.com.paioo.app.util.UIManager;
 import android.app.Activity;
 import android.content.Intent;

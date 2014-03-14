@@ -7,10 +7,11 @@ public class ConstantManager {
 	 * »ù´¡ip
 	 */
 	//http://113.105.222.72/adbizappservice/
+//	http://192.168.13.5:8080/adbizservice/admin/update/getApp.do?
 	public static final String URL_BASE = "http://113.105.222.72/";
 	 //adbizappservice
+	//public static final String URL_SERVICE = "adbizappservice/";
 	public static final String URL_SERVICE = "adbizappservice/";
-	
 	/**
 	 * µÇÂ¼
 	 * 
@@ -105,4 +106,6 @@ public class ConstantManager {
 	public static final int FILL_DATA_FAIL = 7;
 	public static final int UPDATE_APP_INIT  = 8;
 	public static final int UPDATE_APP_MSG  = 9;
+	public static final int DOWNLOAD_APK_ERROR = 10;
+	
 }

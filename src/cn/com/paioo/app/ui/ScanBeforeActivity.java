@@ -8,6 +8,7 @@ import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.engine.NetCallBack;
 import cn.com.paioo.app.entity.AppUpdateInfo;
 import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.LogManager;
 import cn.com.paioo.app.util.PreferencesManager;
 import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.UIManager;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 
 public class ScanBeforeActivity extends BaseActivity implements
 		OnClickListener, NetCallBack {
+String tag = "ScanBeforeActivity";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -127,10 +129,18 @@ public class ScanBeforeActivity extends BaseActivity implements
 
 					@Override
 					public void onClick(View v) {
-						// 点击确定马上升级
-						DataService.updateAPK(updateInfo.apkurl,
-								ScanBeforeActivity.this, handler);
 						dialog.dismiss();
+						String url = updateInfo.apkurl;
+						Log.e(url, "url----"+url);
+						// 点击确定马上升级
+						if(url.endsWith(".apk")){
+							DataService.updateAPK(updateInfo.apkurl,
+									ScanBeforeActivity.this, handler);
+						}else{
+							handler.sendEmptyMessage(ConstantManager.DOWNLOAD_APK_ERROR);
+						}
+						
+					
 					}
 				});
 		dialog.findViewById(R.id.dialog_cancle).setOnClickListener(
@@ -165,6 +175,10 @@ public class ScanBeforeActivity extends BaseActivity implements
 					mNotificationManager.notify(0, mNotification);
 
 				}
+				break;
+			case ConstantManager.DOWNLOAD_APK_ERROR:
+				LogManager.e(tag, "apk更新异常....");
+				//ToastManager.show(this, );
 				break;
 			}
 		};
