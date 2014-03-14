@@ -22,7 +22,11 @@ public class ConstantManager {
 	 */ 
 	 
 	public static final String URL_SENDQRCODE = URL_BASE+URL_SERVICE+"admin/qrcode/QrCode.do";
-	 
+	 /**
+	  * 检查app是否需要更新
+	  * "http://192.168.13.5:8080/adbizservice/admin/update/getApp.do"
+	  */
+	public static final String URL_CHECK_APP_VERSION = URL_BASE+URL_SERVICE+"admin/update/getApp.do";//URL_BASE+URL_SERVICE;
 	
 	
 	
@@ -87,7 +91,9 @@ public class ConstantManager {
 	
 	
 	
-	//handler中用到的what
+	/**
+	 * handler中用到的what
+	 */
 	public static final int PUSH_FILL_DATA_SUCCESS = 0;
 	public static final int PUSH_FILL_DATA_FAIL = 1;
 	public static final int PUSH_FILL_DATA_EXCEPTION = 2;
@@ -97,6 +103,6 @@ public class ConstantManager {
 	
 	public static final int FILL_DATA_SUCCESS = 6;
 	public static final int FILL_DATA_FAIL = 7;
-	
-
+	public static final int UPDATE_APP_INIT  = 8;
+	public static final int UPDATE_APP_MSG  = 9;
 }

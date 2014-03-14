@@ -1,64 +1,64 @@
 package cn.com.paioo.app.entity;
 
+ 
+
 /**
- * WebResult×´Ì¬Âë
- * 
+ * WebResultçŠ¶æ€ç 
  * @author jinli.yuan
- * @since 13-12-5 ÏÂÎç4:49
+ * @since 13-12-5 ä¸‹åˆ4:49
  */
 public final class ResultStatus {
 
-	private ResultStatus() {
-	}
+    private ResultStatus() {
+    }
+
+    /**
+     * æˆåŠŸ
+     */
+    public static final int SUCCESS =  100;
+
+    /**
+     * æœªçŸ¥
+     */
+    public static final int UNKNOWN =  101;
+
+    /**
+     * å¼‚å¸¸
+     */
+    public static final int ERROR = 102;
+
+    /**
+     * ä¼ é€’çš„å‚æ•°ä¸æ­£ç¡®
+     */
+    public static final int PARAM_ERROR = 103;
+
+    /**
+     * æœªç™»å½•
+     */
+    public static final int UNLOGIN = 104;
+
+    /**
+     * æœªæ‰¾åˆ°è®°å½•
+     */
+    public static final int NOT_FOUND = 105;
+
+    /**
+     * çŠ¶æ€è¢«é”å®š
+     */
+    public static final int LOCKED = 106;
+
+    /**
+     * ç™»å½•ç”¨æˆ·ä¸å®é™…æ“ä½œç”¨æˆ·ï¼Œç”¨æˆ·IDä¸ä¸€è‡´(ä¸åŒï¼Œä¸ä¸€è‡´ï¼‰
+     */
+    public static final int UNIDENTIFIED = 107;
+
+    /**
+     * å¤±è´¥
+     */
+    public static final int FAIL = 108;
 
 	/**
-	 * ³É¹¦
-	 */
-	public static final int SUCCESS = 100;
-
-	/**
-	 * Î´Öª
-	 */
-	public static final int UNKNOWN = 101;
-
-	/**
-	 * Òì³£
-	 */
-	public static final int ERROR = 102;
-
-	/**
-	 * ´«µİµÄ²ÎÊı²»ÕıÈ·
-	 */
-	public static final int PARAM_ERROR = 103;
-
-	/**
-	 * Î´µÇÂ¼
-	 */
-	public static final int UNLOGIN = 104;
-
-	/**
-	 * Î´ÕÒµ½¼ÇÂ¼
-	 */
-	public static final int NOT_FOUND = 105;
-
-	/**
-	 * ×´Ì¬±»Ëø¶¨
-	 */
-	public static final int LOCKED = 106;
-
-	/**
-	 * µÇÂ¼ÓÃ»§ÓëÊµ¼Ê²Ù×÷ÓÃ»§£¬ÓÃ»§ID²»Ò»ÖÂ(²»Í¬£¬²»Ò»ÖÂ£©
-	 */
-	public static final int UNIDENTIFIED = 107;
-
-	/**
-	 * Ê§°Ü
-	 */
-	public static final int FAIL = 108;
-
-	/**
-	 * ÖØ¸´Ìá½»£¬ÖØ¸´µÄÇëÇó
+	 * é‡å¤æäº¤ï¼Œé‡å¤çš„è¯·æ±‚
 	 */
 	public static final int REPEAT = 109;
-
 }

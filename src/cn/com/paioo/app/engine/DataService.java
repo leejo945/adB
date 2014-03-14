@@ -39,6 +39,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -186,21 +187,22 @@ public class DataService {
 						LogManager.e(tag, "-------------" + arg0.toString());
 						// if (isNormal(arg0)) {
 						// 验证成功了。(包括优惠券可用/不可用)
-						
+
 						Product p = new Product();
 						p.couponStatus = arg0.optString("Error");
 						String data = arg0.optString("Data");
-						if (!StringManager.isEmpty(data)) {//没有数据返回了
+						if (!StringManager.isEmpty(data)) {// 没有数据返回了
 							try {
-								JSONObject jsonObject =  new JSONObject(data);
+								JSONObject jsonObject = new JSONObject(data);
 								p.describe = jsonObject.optString("title");
 								p.xiaofeima = jsonObject.optString("qdcode");
-								p.urls = new String[] { jsonObject.optString("imgurl") };
+								p.urls = new String[] { jsonObject
+										.optString("imgurl") };
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							
+
 						}
 						callBack.netCallBack(p);// success
 
@@ -216,11 +218,13 @@ public class DataService {
 
 		addRequest(request, context);
 	}
-/**
- * 用于加载图片
- * @param iv
- * @param url
- */
+
+	/**
+	 * 用于加载图片
+	 * 
+	 * @param iv
+	 * @param url
+	 */
 	public static void loadImage(ImageView iv, String url) {
 		ImageManager.getInstance().displayImage(url, iv,
 				ImageManager.getImageOptions());
@@ -354,52 +358,80 @@ public class DataService {
 
 	/**
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了
+	 * 
+	 * @throws Exception
 	 */
-	public static AppUpdateInfo getAppUpdateInfo(Context context) {
-		AppUpdateInfo appInfo = null;
+	public static void getAppUpdateInfo(final Context context) {
+
 		try {
-			String data = "";// HttpUtil.postDataByGet(AppConfig.URL_APP_UPDATE,
-			// null, context);
-			PackageInfo info = context.getPackageManager().getPackageInfo(
-					context.getPackageName(), 0);
-			// app当前版本
-			String oldVersion = info.versionName;
+			final PackageInfo info = context.getPackageManager()
+					.getPackageInfo(context.getPackageName(), 0);
 
-			// JSONObject obj = new JSONObject(data).optJSONObject("Data");
-			String newVersion = "2.1";// obj.optInt("version") + "";
-			if (!newVersion.trim().equals(oldVersion.trim())) {// 版本要升级
-				appInfo = new AppUpdateInfo();
-				appInfo.version = newVersion;
-				appInfo.description = "1、修改XXXXX\n2、修改XXX\n3、修改XXX\n4 、修改ＸＸＸ\n";// obj.optString("log");//升级描述
-				appInfo.apkurl = "http://fwh.paioo.com.cn/fuservice/fuwenhua.apk";// obj.getString("describe");//升级的apk
-																					// url地址
-			}
-		} catch (Exception e) {
+			JsonObjectRequest request = new JsonObjectRequest(
+					ConstantManager.URL_CHECK_APP_VERSION, null,
+					new Response.Listener<JSONObject>() {
+						@Override
+						public void onResponse(JSONObject arg0) {
+							LogManager.e(tag, "数据" + arg0.toString());
+							JSONObject obj = arg0.optJSONObject("Data");
+							if (obj!=null) {
+								LogManager.e(tag, "数据" + obj);
+								int newVersion = obj.optInt("VersionCode");
+								AppUpdateInfo appInfo = null;
+								if (newVersion > info.versionCode) {// 当前版本和服务端的版本比较
+									appInfo = new AppUpdateInfo();
+									// appInfo.version = newVersion;
+									// "1、修改XXXXX\n2、修改XXX\n3、修改XXX\n4 、修改ＸＸＸ\n";//
+									appInfo.description = obj
+											.optString("Version_Note");// 升级描述
+									// "http://fwh.paioo.com.cn/fuservice/fuwenhua.apk";//
+									appInfo.apkurl = obj
+											.optString("VersionUrl"); // 升级的apk
+								}
+								((NetCallBack) context).netCallBack(appInfo);
+							}
+						}
+					}, new Response.ErrorListener() {
 
+						@Override
+						public void onErrorResponse(VolleyError arg0) {
+							LogManager.e(tag, "升级验证异常。。。。请检查服务端.....");
+							// callBack.netErrorCallBack(context,
+							// arg0.toString());
+						}
+					});
+
+			addRequest(request, context);
+
+			LogManager.d(tag, "什么情况66666666666");
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			LogManager.d(tag, "什么情况");
 			e.printStackTrace();
 		}
-		return appInfo;
+
 	}
 
 	/*
 	 * 更新apk
 	 */
 
-	public static void updateAPK(final String serverPath, final Context context) {
+	public static void updateAPK(final String serverPath,
+			final Context context, final Handler handler) {
+		new Thread() {
+			public void run() {
+				File file = getFile(serverPath, context, handler);
+				if (file != null) {
+					install(file, context);
+				} else {
+					Looper.prepare();
+					ToastManager.show(context,
+							R.string.warn_toast_updateapp_exception);
+					Looper.loop();
+				}
+			};
+		}.start();
 
-		// App.pool.addTask(new Thread() {
-		// public void run() {
-		// File file = getFile(serverPath);
-		// if (file != null) {
-		// install(file, context);
-		// } else {
-		// Looper.prepare();
-		// MyToast.show(context,
-		// R.string.warn_toast_updateapp_exception);
-		// Looper.loop();
-		// }
-		// };
-		// });
 	}
 
 	/**
@@ -410,36 +442,66 @@ public class DataService {
 	 * @param context
 	 * @return
 	 */
-	private static File getFile(String serverPath) {
+
+	private static File getFile(String serverPath, Context context,
+			Handler handler) {
+		// pd.setCancelable(false);
 		FileOutputStream fos = null;
 		InputStream is = null;
-		File file = null;
 		try {
 			URL url = new URL(serverPath);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setConnectTimeout(ConstantManager.REQUSE_TTIMEOUT);
-			if (conn.getResponseCode() == HttpStatus.SC_OK) {
+			// conn.setConnectTimeout(AppConfig.TIMEOUT);
+			if (conn.getResponseCode() == 200) {
+				// 获得下载文件的总大小
+				int maxLength = conn.getContentLength();
+				// pd.setMax(maxLength);
 				is = conn.getInputStream();
-				if (Environment.getExternalStorageState().equals(
-						Environment.MEDIA_MOUNTED)) {
-					file = new File(Environment.getExternalStorageDirectory()
-							.getAbsolutePath()
-							+ "/"
-							+ serverPath.substring(serverPath.lastIndexOf("/")));
-					fos = new FileOutputStream(file);
-					byte[] buffer = new byte[1024];
-					int len = 0;
-					while ((len = is.read(buffer)) != -1) {
-						fos.write(buffer, 0, len);
-						LogManager.e("paioo", len + "");
-					}
-				} else {
-					// 没有sd卡
-				}
 
+				File file = new File(Environment.getExternalStorageDirectory()
+						.getAbsolutePath()
+						+ "/"
+						+ serverPath.substring(serverPath.lastIndexOf("/")));
+				fos = new FileOutputStream(file);
+				byte[] buffer = new byte[1024];
+				int len = 0;
+				int process = 0;
+				// ----------------------
+				NotificationManager mNotifyManager = (NotificationManager) context
+						.getSystemService(Context.NOTIFICATION_SERVICE);
+				Notification mNotification = new Notification();
+				mNotification.icon = R.drawable.app_logo;
+				mNotification.setLatestEventInfo(context, "富文化更新", "正在下载 0%",
+						null);
+				mNotifyManager.notify(0, mNotification);
+
+				// ----------------------
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("maxLength", maxLength);
+				map.put("mNotifyManager", mNotifyManager);
+				map.put("mNotification", mNotification);
+				handler.sendMessage(handler.obtainMessage(
+						ConstantManager.UPDATE_APP_INIT, map));
+				ArrayList<Integer> list = new ArrayList<Integer>();
+				while ((len = is.read(buffer)) != -1) {
+					fos.write(buffer, 0, len);
+					process += len;
+					int newRatio = (int) (((double) process / (double) maxLength) * 100);
+
+					if (!list.contains(newRatio)) {// 不在list的时候，
+						Message msg = handler.obtainMessage(
+								ConstantManager.UPDATE_APP_MSG, newRatio);
+						handler.sendMessage(msg);
+						list.add(newRatio);
+					}
+
+				}
+				return file;
 			}
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		} finally {
 			if (fos != null) {
 				try {
@@ -459,10 +521,67 @@ public class DataService {
 				}
 			}
 		}
-		return file;
+		return null;
 	}
 
-	// 下载app 完成后 自动的提示去安装
+	// private static File getFile(String serverPath) {
+	// FileOutputStream fos = null;
+	// InputStream is = null;
+	// File file = null;
+	// try {
+	// URL url = new URL(serverPath);
+	// HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	// conn.setConnectTimeout(ConstantManager.REQUSE_TTIMEOUT);
+	// if (conn.getResponseCode() == HttpStatus.SC_OK) {
+	// is = conn.getInputStream();
+	// if (Environment.getExternalStorageState().equals(
+	// Environment.MEDIA_MOUNTED)) {
+	// file = new File(Environment.getExternalStorageDirectory()
+	// .getAbsolutePath()
+	// + "/"
+	// + serverPath.substring(serverPath.lastIndexOf("/")));
+	// fos = new FileOutputStream(file);
+	// byte[] buffer = new byte[1024];
+	// int len = 0;
+	// while ((len = is.read(buffer)) != -1) {
+	// fos.write(buffer, 0, len);
+	// LogManager.e("paioo", len + "");
+	// }
+	// } else {
+	// // 没有sd卡
+	// }
+	//
+	// }
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// } finally {
+	// if (fos != null) {
+	// try {
+	// fos.flush();
+	// fos.close();
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
+	// if (is != null) {
+	// try {
+	// is.close();
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
+	// }
+	// return file;
+	// }
+
+	/**
+	 * 下载app 完成后 自动的提示去安装
+	 * 
+	 * @param file
+	 * @param context
+	 */
 	private static void install(File file, Context context) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_VIEW);

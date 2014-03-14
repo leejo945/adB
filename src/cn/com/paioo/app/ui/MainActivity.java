@@ -100,7 +100,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 			case APPUPDATE:
 				AppUpdateInfo appInfo = (AppUpdateInfo) msg.obj;
 				showUpdateDialog(appInfo);
-				App.appUpdateInfo = appInfo;
+			//	App.appUpdateInfo = appInfo;
 				break;
 
 			case DESTORYFRISTBACK:
@@ -158,9 +158,9 @@ public class MainActivity extends SlidingFragmentActivity implements
 					@Override
 					public void onClick(View v) {
 						// 点击确定马上升级
-						DataService.updateAPK(updateInfo.apkurl,
-								MainActivity.this);
-						dialog.dismiss();
+//						DataService.updateAPK(updateInfo.apkurl,
+//								MainActivity.this);
+//						dialog.dismiss();
 					}
 				});
 		dialog.findViewById(R.id.dialog_cancle).setOnClickListener(

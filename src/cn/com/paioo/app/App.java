@@ -44,6 +44,7 @@ public class App extends Application {
 	 * ÍË³öÕû¸öapp
 	 */
 	public   void exit() {
+		appUpdateInfo =null;
 		for (Activity activity : activitys) {
 			activity.finish();
 		}
