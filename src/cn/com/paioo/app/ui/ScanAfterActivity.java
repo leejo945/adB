@@ -16,11 +16,14 @@ import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.ImageManager;
 import cn.com.paioo.app.util.LogManager;
 import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.ThreadPool;
 import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.UIManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +34,56 @@ public class ScanAfterActivity extends BaseActivity {
 	private ImageView mResultIcon;
 	private TextView mResultTV;
 	private LinearLayout mProductInfo;
+	private   Dialog dialog;
+    private Handler handler = new Handler(){
+    	public void handleMessage(android.os.Message msg) {
+    		if(dialog!=null&&dialog.isShowing()){
+    			dialog.dismiss();
+    		}
+    		switch (msg.what) {
+			case 0:
+				Product p = (Product) msg.obj;
+				// 验证如果优惠券没有使用，p中就会有url ,会有商品描述
+				if (StringManager.isEmpty(p.describe)) {
+					// 商家优惠券。不行
+					mResultIcon.setImageResource(R.drawable.scan_error);
+					mProductInfo.setVisibility(View.GONE);
+				} else {
+					// 优惠券通过。显示商家信息
+					mResultIcon
+							.setImageResource(R.drawable.scan_success);
+					TextView describe = (TextView) findViewById(R.id.pr_info_describe_tv);
+					TextView xfm = (TextView) findViewById(R.id.pr_info_xfm_tv);
+					ImageView iv = (ImageView) findViewById(R.id.pr_info_url_niv);
+					describe.setText(p.describe);
+					xfm.setText(String.valueOf(p.xiaofeima));
+					DataService.loadImage(iv, p.urls[0]);
 
+					mProductInfo.setVisibility(View.VISIBLE);
+				}
+				// 无论商品目前是什么状态。都要提示文字
+				mResultTV.setText(p.couponStatus);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				break;
+
+			 
+			}
+    	};
+    };
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.layout_scanresult);
@@ -68,62 +120,70 @@ public class ScanAfterActivity extends BaseActivity {
 	private void verifyQrCode(String scanResult) {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		int advertisedid = ((App) getApplication()).getUser().advertiseid;
-		if (advertisedid == -1) {// 数据被清除
-			ToastManager.show(this, "数据被清除，请重新登录");
-			UIManager.switcher(this, LoginActivity.class);
-			((App) getApplication()).exit();
-			return;
-		}
-		final Dialog dialog = UIManager.getLoadingDialog(this,
+		 dialog = UIManager.getLoadingDialog(this,
 				R.string.warn_dialog_verify_qrcode);
 		dialog.show();
 		 map.put("advertiseid", advertisedid);
 		 map.put("qrcode", scanResult);
 		// map.put("advertiseid", 447);
 		// map.put("qrcode", 123477);
- 	 	 DataService.sendQrInfo(map, getApplicationContext(),
-				new NetCallBackIml() {
-					@Override
-					public void netCallBack(Object response) {
-						dialog.dismiss();
-						// 返回的response做处理
-						Product p = (Product) response;
-
-						LogManager.e(tag, "传递回来的p" + p.describe);
-
-						// 验证如果优惠券没有使用，p中就会有url ,会有商品描述
-						if (StringManager.isEmpty(p.describe)) {
-						 
-							// 商家优惠券。不行
-							mResultIcon.setImageResource(R.drawable.scan_error);
-							mProductInfo.setVisibility(View.GONE);
-						} else {
-							 
-							// 优惠券通过。显示商家信息
-							mResultIcon
-									.setImageResource(R.drawable.scan_success);
-							TextView describe = (TextView) findViewById(R.id.pr_info_describe_tv);
-							TextView xfm = (TextView) findViewById(R.id.pr_info_xfm_tv);
-							ImageView iv = (ImageView) findViewById(R.id.pr_info_url_niv);
-							describe.setText(p.describe);
-							xfm.setText(String.valueOf(p.xiaofeima));
-							DataService.loadImage(iv, p.urls[0]);
-
-							mProductInfo.setVisibility(View.VISIBLE);
-						}
-						// 无论商品目前是什么状态。都要提示文字
-						mResultTV.setText(p.couponStatus);
-						super.netCallBack(response);
-					}
-
-					@Override
-					public void netErrorCallBack(Context context,
-							String errorReason) {
-						dialog.dismiss();
-						super.netErrorCallBack(context, errorReason);
-					}
-
-				});
+		 
+		 ThreadPool.getInstance().addTask(new Runnable() {
+			
+			@Override
+			public void run() {  
+				Product p =  DataService.sendQrInfo(map, ScanAfterActivity.this);
+			    Message msg = handler.obtainMessage(0, p);
+			    handler.sendMessage(msg);
+			}
+		});
+		 
+		 
+		
+		 
+// 	 	 DataService.sendQrInfo(map, getApplicationContext(),
+//				new NetCallBackIml() {
+//					@Override
+//					public void netCallBack(Object response) {
+//						dialog.dismiss();
+//						// 返回的response做处理
+//						Product p = (Product) response;
+//
+//						LogManager.e(tag, "传递回来的p" + p.describe);
+//
+//						// 验证如果优惠券没有使用，p中就会有url ,会有商品描述
+//						if (StringManager.isEmpty(p.describe)) {
+//						 
+//							// 商家优惠券。不行
+//							mResultIcon.setImageResource(R.drawable.scan_error);
+//							mProductInfo.setVisibility(View.GONE);
+//						} else {
+//							 
+//							// 优惠券通过。显示商家信息
+//							mResultIcon
+//									.setImageResource(R.drawable.scan_success);
+//							TextView describe = (TextView) findViewById(R.id.pr_info_describe_tv);
+//							TextView xfm = (TextView) findViewById(R.id.pr_info_xfm_tv);
+//							ImageView iv = (ImageView) findViewById(R.id.pr_info_url_niv);
+//							describe.setText(p.describe);
+//							xfm.setText(String.valueOf(p.xiaofeima));
+//							DataService.loadImage(iv, p.urls[0]);
+//
+//							mProductInfo.setVisibility(View.VISIBLE);
+//						}
+//						// 无论商品目前是什么状态。都要提示文字
+//						mResultTV.setText(p.couponStatus);
+//						super.netCallBack(response);
+//					}
+//
+//					@Override
+//					public void netErrorCallBack(Context context,
+//							String errorReason) {
+//						dialog.dismiss();
+//						super.netErrorCallBack(context, errorReason);
+//					}
+//
+//				});
 		 
 				}
 }

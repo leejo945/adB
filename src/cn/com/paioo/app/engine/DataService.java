@@ -43,7 +43,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
- 
+
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -91,7 +91,7 @@ import cn.com.paioo.app.util.ToastManager;
  * @author lee
  * 
  */
-public class DataService   {
+public class DataService {
 	private static final String tag = "DataService";
 	private static RequestQueue mRequestQueue;
 	/**
@@ -100,8 +100,6 @@ public class DataService   {
 	private static final String SERVER_ERROR_TOAST = "网络不给力，请稍后重试!";
 	private static final String NET_UNABLE_TOAST = "网络不给力，请稍后重试...";
 
-  
-
 	/**
 	 * 
 	 * @param url
@@ -109,7 +107,7 @@ public class DataService   {
 	 * @param callBack
 	 * @return
 	 */
-	public static  void login(final HashMap<String, Object> map,
+	public static void login(final HashMap<String, Object> map,
 			final Context context, final NetCallBack callBack) {
 		if (!isNetworkConnected(context)) {
 			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
@@ -122,7 +120,7 @@ public class DataService   {
 					public void onResponse(JSONObject arg0) {
 						LogManager.e(tag, "网络访问的结果--" + arg0.toString());
 						if (isNormal(arg0)) {
-							 LogManager.e(tag, "状态码是否正确呢");
+							LogManager.e(tag, "状态码是否正确呢");
 							User user = new User();
 							JSONObject data = arg0.optJSONObject("Data");
 							user.advertiseid = data.optInt("advertiseid");
@@ -153,54 +151,71 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static  void sendQrInfo(final HashMap<String, Object> map,
-			final Context context, final NetCallBack callBack) {
-		if (!isNetworkConnected(context)) {
-			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
-			return;
+	public static Product sendQrInfo(final HashMap<String, Object> map,
+			final Context context) {
+//		if (!isNetworkConnected(context)) {
+//			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
+//			return;
+//		}
+		String s = postDataByGet(ConstantManager.URL_SENDQRCODE, map, context);
+		LogManager.e(tag, "-------------" + s);
+		Product  p = new Product();
+		try {
+			// {"Result":103,"Error":"验证失败,非本商家优惠券","Data":""}
+			JSONObject arg0 = new JSONObject(s);
+			p.couponStatus = arg0.optString("Error");
+			String data = arg0.optString("Data");
+			if (!StringManager.isEmpty(data)) {// 没有数据返回了
+				JSONObject jsonObject = new JSONObject(data);
+				p.describe = jsonObject.optString("title");
+				p.xiaofeima = jsonObject.optString("qdcode");
+				p.urls = new String[] { jsonObject.optString("imgurl") };
+			}
+		} catch (JSONException e1) {
+			e1.printStackTrace();
 		}
 
-		JsonObjectRequest request = new JsonObjectRequest(makeUrl(
-				ConstantManager.URL_SENDQRCODE, map), null,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject arg0) {
-						LogManager.e(tag, "-------------" + arg0.toString());
-						// if (isNormal(arg0)) {
-						// 验证成功了。(包括优惠券可用/不可用)
-
-						Product p = new Product();
-						p.couponStatus = arg0.optString("Error");
-						String data = arg0.optString("Data");
-						if (!StringManager.isEmpty(data)) {// 没有数据返回了
-							try {
-								JSONObject jsonObject = new JSONObject(data);
-								p.describe = jsonObject.optString("title");
-								p.xiaofeima = jsonObject.optString("qdcode");
-								p.urls = new String[] { jsonObject
-										.optString("imgurl") };
-							} catch (JSONException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-
-						}
-						callBack.netCallBack(p);// success
-
-					}
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError arg0) {
-						LogManager.e(tag, "服务端出问题了----" + arg0.toString());
-						callBack.netErrorCallBack(context, SERVER_ERROR_TOAST);
-					}
-				});
- 
-		addRequest(request, context);
+		
+		return p;
+		// JsonObjectRequest request = new JsonObjectRequest(makeUrl(
+		// ConstantManager.URL_SENDQRCODE, map), null,
+		// new Response.Listener<JSONObject>() {
+		// @Override
+		// public void onResponse(JSONObject arg0) {
+		// LogManager.e(tag, "-------------" + arg0.toString());
+		// // if (isNormal(arg0)) {
+		// // 验证成功了。(包括优惠券可用/不可用)
+		//
+		// Product p = new Product();
+		// p.couponStatus = arg0.optString("Error");
+		// String data = arg0.optString("Data");
+		// if (!StringManager.isEmpty(data)) {// 没有数据返回了
+		// try {
+		// JSONObject jsonObject = new JSONObject(data);
+		// p.describe = jsonObject.optString("title");
+		// p.xiaofeima = jsonObject.optString("qdcode");
+		// p.urls = new String[] { jsonObject
+		// .optString("imgurl") };
+		// } catch (JSONException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		// }
+		// callBack.netCallBack(p);// success
+		//
+		// }
+		// }, new Response.ErrorListener() {
+		//
+		// @Override
+		// public void onErrorResponse(VolleyError arg0) {
+		// LogManager.e(tag, "服务端出问题了----" + arg0.toString());
+		// callBack.netErrorCallBack(context, SERVER_ERROR_TOAST);
+		// }
+		// });
+		//
+		// addRequest(request, context);
 	}
-
-	
 
 	/**
 	 * 注册
@@ -209,7 +224,7 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static  void signUp(String url, final Context context,
+	public static void signUp(String url, final Context context,
 			final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -239,7 +254,7 @@ public class DataService   {
 	 * @param callBack
 	 */
 
-	public static  void addExtraCompanyInfo(String url, final Context context,
+	public static void addExtraCompanyInfo(String url, final Context context,
 			final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -269,7 +284,7 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static  void getPushOrDeskAd(String url, final Context context,
+	public static void getPushOrDeskAd(String url, final Context context,
 			final int pageNum, final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -329,9 +344,10 @@ public class DataService   {
 
 	/**
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了
+	 * 
 	 * @throws Exception
 	 */
-	public static  void getAppUpdateInfo(final Context context) {
+	public static void getAppUpdateInfo(final Context context) {
 		try {
 			final PackageInfo info = context.getPackageManager()
 					.getPackageInfo(context.getPackageName(), 0);
@@ -342,7 +358,7 @@ public class DataService   {
 						public void onResponse(JSONObject arg0) {
 							LogManager.e(tag, "数据" + arg0.toString());
 							JSONObject obj = arg0.optJSONObject("Data");
-							if (obj!=null) {
+							if (obj != null) {
 								int newVersion = obj.optInt("VersionCode");
 								AppUpdateInfo appInfo = null;
 								if (newVersion > info.versionCode) {// 当前版本和服务端的版本比较
@@ -351,8 +367,8 @@ public class DataService   {
 									appInfo.description = obj
 											.optString("Version_Note");// 升级描述
 									// "http://app.paioo.com.cn/apk/pzm.apk"
-									appInfo.apkurl = 
-											obj.optString("VersionUrl"); // 升级的apk
+									appInfo.apkurl = obj
+											.optString("VersionUrl"); // 升级的apk
 								}
 								((NetCallBack) context).netCallBack(appInfo);
 							}
@@ -369,10 +385,8 @@ public class DataService   {
 
 			addRequest(request, context);
 
-			 
 		} catch (NameNotFoundException e) {
-			 
-			 
+
 			e.printStackTrace();
 		}
 
@@ -437,9 +451,9 @@ public class DataService   {
 						.getSystemService(Context.NOTIFICATION_SERVICE);
 				Notification mNotification = new Notification();
 				mNotification.icon = R.drawable.app_logo;
- 				mNotification.setLatestEventInfo(context, "app更新", "正在下载 0%",
- 						null);
- 				mNotifyManager.notify(0, mNotification);
+				mNotification.setLatestEventInfo(context, "app更新", "正在下载 0%",
+						null);
+				mNotifyManager.notify(0, mNotification);
 
 				// ----------------------
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -625,6 +639,7 @@ public class DataService   {
 		return list;
 
 	}
+
 	/**
 	 * 用于加载图片
 	 * 
@@ -636,12 +651,12 @@ public class DataService   {
 				ImageManager.getImageOptions());
 
 	}
-	
-	private static  void addRequest(Request request, Context context) {
-		 if (mRequestQueue == null) {
+
+	private static void addRequest(Request request, Context context) {
+		if (mRequestQueue == null) {
 			mRequestQueue = Volley.newRequestQueue(context);
-		 }
-		 LogManager.e(tag, "队列中请求个数"+mRequestQueue.getSequenceNumber());
+		}
+		LogManager.e(tag, "队列中请求个数" + mRequestQueue.getSequenceNumber());
 		mRequestQueue.add(request);
 	}
 
@@ -674,8 +689,6 @@ public class DataService   {
 		return arg0.optInt("Result") == ResultStatus.SUCCESS;
 
 	}
-	
-	
 
 	/**
 	 * 检测网络是否可用
@@ -683,7 +696,8 @@ public class DataService   {
 	 * @return
 	 */
 	public static boolean isNetworkConnected(Context context) {
-		ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo ni = cm.getActiveNetworkInfo();
 		return ni != null && ni.isConnectedOrConnecting();
 	}
@@ -699,7 +713,8 @@ public class DataService   {
 
 	public static int getNetworkType(Context context) {
 		int netType = 0;
-		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager connectivityManager = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		if (networkInfo == null) {
 			return netType;
@@ -720,15 +735,10 @@ public class DataService   {
 		return netType;
 	}
 
- 
-
-	
-	
- 
-
-	//-----------------test---------------------------------
+	// -----------------test---------------------------------
 	public static ArrayList<String> urls = new ArrayList<String>();
 	private static final int TIMEOUT = 5000;
+
 	public static String postDataByGet(String url, Map<String, Object> dataMap,
 			Context context) {
 		String result = "";
@@ -760,15 +770,14 @@ public class DataService   {
 			} else {
 				urlStr = url;
 			}
-
 			// urlStr 为get请求的时候拼接起来的字符串
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			// 请求超时
 			httpClient.getParams().setParameter(
-					CoreConnectionPNames.CONNECTION_TIMEOUT,  TIMEOUT);
+					CoreConnectionPNames.CONNECTION_TIMEOUT, TIMEOUT);
 			// 响应超时
 			httpClient.getParams().setParameter(
-					CoreConnectionPNames.SO_TIMEOUT,  TIMEOUT);
+					CoreConnectionPNames.SO_TIMEOUT, TIMEOUT);
 			HttpGet httpGet = new HttpGet(urlStr);
 			try {
 				HttpResponse httpResponse = httpClient.execute(httpGet);
@@ -780,7 +789,6 @@ public class DataService   {
 					result = "{\"Result\":1,\"Error\":\"服务端连接异常，请稍后重试...\",\"Data\":\"\"}";
 				}
 			} catch (ClientProtocolException e) {
-
 				e.printStackTrace();
 				result = "{\"Result\":1,\"Error\":\"服务端连接异常，请稍后重试...\",\"Data\":\"\"}";
 			} catch (ParseException e) {
@@ -794,10 +802,7 @@ public class DataService   {
 			urls.remove(tempUrl);
 		}
 		// 到这里后result 就不可能为空字符串了
-
 		return result;
 	}
-	
-	
-	
+
 }
