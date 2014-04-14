@@ -9,6 +9,7 @@ import cn.com.paioo.app.engine.NetCallBack;
 import cn.com.paioo.app.engine.NetCallBackIml;
 import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.ConstantManager;
+import cn.com.paioo.app.util.LogManager;
 import cn.com.paioo.app.util.PreferencesManager;
 import cn.com.paioo.app.util.ToastManager;
 import cn.com.paioo.app.util.StringManager;
@@ -41,17 +42,12 @@ public class LoginActivity extends Activity// BaseActivity
 			setContentView(R.layout.layout_login);
 			init();
 		}
-		
-		
-		
 		super.onCreate(savedInstanceState);
-		
 	}
 
 	 
 
 	private void init() {
-		
 		mUserName = (AutoCompleteTextView) findViewById(R.id.login_username_actv);
 		mPwd = (EditText) findViewById(R.id.login_pwd_et);
 		mLogin = (Button) findViewById(R.id.login_login_bt);
@@ -103,15 +99,24 @@ public class LoginActivity extends Activity// BaseActivity
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("loginId",userName);
 		map.put("password",pwd);
-		//只要一点击，就会保存用户的登录信息，主要是为了用户的二次登陆
-		PreferencesManager.setString(this, ConstantManager.SP_USER_NAME, userName);
-		DataService.login(map,this, new NetCallBackIml() {
+	     DataService.login(map,this, new NetCallBackIml() {
 			  @Override
 			public void netCallBack(Object response) {
 				dialog.dismiss();
+				//只要一点击，就会保存用户的登录信息，主要是为了用户的二次登陆
+				PreferencesManager.setString(LoginActivity.this, ConstantManager.SP_USER_NAME, userName);
 				//返回的response做处理
+			 
 				((App)getApplication()).setUser((User) response);
+				LogManager.e("xx", "保存的用户-----"+(User) response);
 				UIManager.switcher(LoginActivity.this, ScanBeforeActivity.class);
+				
+			 
+			 	
+			 	 
+				
+				
+				
 				finish();
 				super.netCallBack(response);
 			}

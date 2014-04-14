@@ -81,33 +81,33 @@ public class PreviewPushADFragment extends PreViewBaseFragment implements
 			dialog.show();
 			mTitleBarPB.setVisibility(View.VISIBLE);
 		}
-		DataService.getPushOrDeskAd(ConstantManager.URL_LOGIN, fa, ++pageNum,
-				new NetCallBackIml() {
-					@Override
-					public void netCallBack(Object response) {
-						closeShow();
-						ArrayList<Product> list = (ArrayList<Product>) response;
-						if (list.size() > 0) {
-							if (adAdapter == null) {
-								adAdapter = new PreviewAdapter(fa, list, 0);
-								mAdGV.setAdapter(adAdapter);
-							} else {
-								adAdapter.setData(list);
-								adAdapter.notifyDataSetChanged();
-							}
-						}
-
-						super.netCallBack(response);
-					}
-
-					@Override
-					public void netErrorCallBack(Context context,
-							String errorReason) {
-						closeShow();
-						super.netErrorCallBack(context, errorReason);
-					}
-
-				});
+//		DataService.getPushOrDeskAd(ConstantManager.URL_LOGIN, fa, ++pageNum,
+//				new NetCallBackIml() {
+//					@Override
+//					public void netCallBack(Object response) {
+//						closeShow();
+//						ArrayList<Product> list = (ArrayList<Product>) response;
+//						if (list.size() > 0) {
+//							if (adAdapter == null) {
+//								adAdapter = new PreviewAdapter(fa, list, 0);
+//								mAdGV.setAdapter(adAdapter);
+//							} else {
+//								adAdapter.setData(list);
+//								adAdapter.notifyDataSetChanged();
+//							}
+//						}
+//
+//						super.netCallBack(response);
+//					}
+//
+//					@Override
+//					public void netErrorCallBack(Context context,
+//							String errorReason) {
+//						closeShow();
+//						super.netErrorCallBack(context, errorReason);
+//					}
+//
+//				});
 
 		// App.pool.addTask(new Thread() {
 		// @Override

@@ -1,12 +1,14 @@
 package cn.com.paioo.app.entity;
 
+import java.io.Serializable;
+
 /**
  * 该实体类，包含了所有的实体字段
  * 
  * @author Administrator
  * 
  */
-public class User {
+public class User implements Serializable{
 
 	// ---------------充值记录item字段-----------------------------//
 	/**

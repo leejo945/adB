@@ -3,6 +3,7 @@ package cn.com.paioo.app.util;
 import java.util.Map;
 
 import cn.com.paioo.app.R;
+import cn.com.paioo.app.entity.User;
 
  
 
@@ -65,6 +66,8 @@ public class UIManager {
         		}
         		if(obj instanceof String[]){
         			i.putExtra(name, (String[])obj);
+        		}if(obj instanceof User){
+        			i.putExtra(name, (User)obj);
         		}
         		
         	}

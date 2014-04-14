@@ -7,6 +7,7 @@ import cn.com.paioo.app.R;
 import cn.com.paioo.app.engine.DataService;
 import cn.com.paioo.app.engine.NetCallBack;
 import cn.com.paioo.app.entity.AppUpdateInfo;
+import cn.com.paioo.app.entity.User;
 import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.LogManager;
 import cn.com.paioo.app.util.PreferencesManager;
@@ -38,10 +39,9 @@ String tag = "ScanBeforeActivity";
 
 	@Override
 	public void init() {
+ 	
 		if (App.appUpdateInfo == null) {
-
 			DataService.getAppUpdateInfo(this);
-
 		}
 		super.init();
 	}

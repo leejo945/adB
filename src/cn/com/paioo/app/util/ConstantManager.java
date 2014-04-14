@@ -6,15 +6,16 @@ public class ConstantManager {
 	/**
 	 * »ù´¡ip
 	 */
-	//http://113.105.222.72/adbizappservice/
-//	http://192.168.13.5:8080/adbizservice/admin/update/getApp.do?
-	public static final String URL_BASE = "http://113.105.222.72/";
-	 //adbizappservice
-	//public static final String URL_SERVICE = "adbizappservice/";
+
+ 
+	//http://192.168.13.5:8080/adbizappservice/
+	// public static final String URL_BASE = "http://www.paioo.com.cn/";
+    //  public static final String URL_BASE = "http://192.168.13.5:8080/";
+	 public static final String URL_BASE = "http://113.105.222.72/";
+	 //adbizappservice/
 	public static final String URL_SERVICE = "adbizappservice/";
 	/**
 	 * µÇÂ¼
-	 * 
 	 * http://192.168.13.5:8080/adbizservice/admin/security/login.do
 	 */
 	public static final String URL_LOGIN = URL_BASE+URL_SERVICE+"admin/security/login.do";

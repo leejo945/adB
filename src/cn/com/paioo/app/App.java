@@ -1,5 +1,9 @@
 package cn.com.paioo.app;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -13,6 +17,8 @@ import cn.com.paioo.app.ui.LoginActivity;
 import cn.com.paioo.app.util.ConstantManager;
 import cn.com.paioo.app.util.PreferencesManager;
 import cn.com.paioo.app.util.StringManager;
+import cn.com.paioo.app.util.ThreadPool;
+ 
 import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
@@ -52,7 +58,8 @@ public class App extends Application {
 
 	public void setUser(User _user) {
 		user = _user;
-		saveUser(_user);
+		 saveUser(_user);
+		//saveUserInfoToFile(_user);
 	}
 
 	private void saveUser(User _user) {
@@ -99,4 +106,71 @@ public class App extends Application {
 				.build();
 		ImageLoader.getInstance().init(config);
 	}
+   
+   
+   
+   
+   /**
+	 * ±£¥Ê”√ªß
+	 * 
+	 * @param user
+	 */
+   private static final String SAVE_USER_FILENAME = "user";
+   private void saveUserInfoToFile(final User user) {
+
+		ThreadPool.getInstance().addTask(new Runnable() {
+
+			@Override
+			public void run() {
+				File file = new File(getFilesDir().getAbsolutePath(),
+						SAVE_USER_FILENAME);
+				FileOutputStream fos = null;
+				ObjectOutputStream oos = null;
+				try {
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+					fos = new FileOutputStream(file);
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(user);
+					oos.flush();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					if (fos != null) {
+						try {
+							fos.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (oos != null) {
+						try {
+							oos.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+
+			}
+		});
+
+	}
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }

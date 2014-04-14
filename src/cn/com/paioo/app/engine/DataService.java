@@ -15,8 +15,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,12 +43,14 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
-
+ 
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -97,13 +109,12 @@ public class DataService   {
 	 * @param callBack
 	 * @return
 	 */
-	public static void login(final HashMap<String, Object> map,
+	public static  void login(final HashMap<String, Object> map,
 			final Context context, final NetCallBack callBack) {
 		if (!isNetworkConnected(context)) {
 			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
 			return;
 		}
-
 		JsonObjectRequest request = new JsonObjectRequest(makeUrl(
 				ConstantManager.URL_LOGIN, map), null,
 				new Response.Listener<JSONObject>() {
@@ -111,6 +122,7 @@ public class DataService   {
 					public void onResponse(JSONObject arg0) {
 						LogManager.e(tag, "网络访问的结果--" + arg0.toString());
 						if (isNormal(arg0)) {
+							 LogManager.e(tag, "状态码是否正确呢");
 							User user = new User();
 							JSONObject data = arg0.optJSONObject("Data");
 							user.advertiseid = data.optInt("advertiseid");
@@ -141,7 +153,7 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static void sendQrInfo(final HashMap<String, Object> map,
+	public static  void sendQrInfo(final HashMap<String, Object> map,
 			final Context context, final NetCallBack callBack) {
 		if (!isNetworkConnected(context)) {
 			callBack.netErrorCallBack(context, NET_UNABLE_TOAST);
@@ -184,7 +196,7 @@ public class DataService   {
 						callBack.netErrorCallBack(context, SERVER_ERROR_TOAST);
 					}
 				});
-
+ 
 		addRequest(request, context);
 	}
 
@@ -197,7 +209,7 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static void signUp(String url, final Context context,
+	public static  void signUp(String url, final Context context,
 			final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -227,7 +239,7 @@ public class DataService   {
 	 * @param callBack
 	 */
 
-	public static void addExtraCompanyInfo(String url, final Context context,
+	public static  void addExtraCompanyInfo(String url, final Context context,
 			final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -257,7 +269,7 @@ public class DataService   {
 	 * @param context
 	 * @param callBack
 	 */
-	public static void getPushOrDeskAd(String url, final Context context,
+	public static  void getPushOrDeskAd(String url, final Context context,
 			final int pageNum, final NetCallBack callBack) {
 		JsonObjectRequest request = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
@@ -319,7 +331,7 @@ public class DataService   {
 	 * app是否有更新 如果AppUpdateInfo 不为空， 就是要更新了
 	 * @throws Exception
 	 */
-	public static void getAppUpdateInfo(final Context context) {
+	public static  void getAppUpdateInfo(final Context context) {
 		try {
 			final PackageInfo info = context.getPackageManager()
 					.getPackageInfo(context.getPackageName(), 0);
@@ -625,10 +637,11 @@ public class DataService   {
 
 	}
 	
-	private static void addRequest(Request request, Context context) {
-		if (mRequestQueue == null) {
+	private static  void addRequest(Request request, Context context) {
+		 if (mRequestQueue == null) {
 			mRequestQueue = Volley.newRequestQueue(context);
-		}
+		 }
+		 LogManager.e(tag, "队列中请求个数"+mRequestQueue.getSequenceNumber());
 		mRequestQueue.add(request);
 	}
 
@@ -713,9 +726,77 @@ public class DataService   {
 	
  
 
-	
- 
-	
+	//-----------------test---------------------------------
+	public static ArrayList<String> urls = new ArrayList<String>();
+	private static final int TIMEOUT = 5000;
+	public static String postDataByGet(String url, Map<String, Object> dataMap,
+			Context context) {
+		String result = "";
+		// 防止过度请求
+		String tempUrl = url.substring(0, url.indexOf(".do"));
+		// 首先判断网络
+		if (!DataService.isNetworkConnected(context)) {
+			result = "{\"Result\":1,\"Error\":\"网络异常，请稍后重试...\",\"Data\":\"\"}";
+		} else if (urls.contains(tempUrl)) {// 请求过来的时候，看看上次的请求是否返回.为ture
+			result = "{\"Result\":1,\"Error\":\"请不要重复请求...\",\"Data\":\"\"}";
+		} else {// 开始正式访问
+			// 要传递的数据
+			StringBuilder query = new StringBuilder();
+			String urlStr = "";
+			if (dataMap != null) {
+				Set<Entry<String, Object>> setAll = dataMap.entrySet();
+				Iterator<Entry<String, Object>> itAll = setAll.iterator();
+				while (itAll.hasNext()) {
+					Map.Entry<String, Object> entry = (Map.Entry<String, Object>) itAll
+							.next();
+					String key = entry.getKey().toString();
+					String value = entry.getValue().toString();
+					query.append(key).append("=").append(value).append("&");
+				}
+				String theQuery = query.substring(0, query.lastIndexOf("&"));
+				// 上传数据格式
+				urlStr = url + "?" + theQuery;
+
+			} else {
+				urlStr = url;
+			}
+
+			// urlStr 为get请求的时候拼接起来的字符串
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			// 请求超时
+			httpClient.getParams().setParameter(
+					CoreConnectionPNames.CONNECTION_TIMEOUT,  TIMEOUT);
+			// 响应超时
+			httpClient.getParams().setParameter(
+					CoreConnectionPNames.SO_TIMEOUT,  TIMEOUT);
+			HttpGet httpGet = new HttpGet(urlStr);
+			try {
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					HttpEntity entity = httpResponse.getEntity();
+					result = EntityUtils.toString(entity);
+				} else {
+					// 连接服务端失败后(除了返回200状态码，都是服务端连接失败)
+					result = "{\"Result\":1,\"Error\":\"服务端连接异常，请稍后重试...\",\"Data\":\"\"}";
+				}
+			} catch (ClientProtocolException e) {
+
+				e.printStackTrace();
+				result = "{\"Result\":1,\"Error\":\"服务端连接异常，请稍后重试...\",\"Data\":\"\"}";
+			} catch (ParseException e) {
+				e.printStackTrace();
+				result = "{\"Result\":1,\"Error\":\"解析数据失败，请稍后重试...\",\"Data\":\"\"}";
+			} catch (IOException e) {
+				e.printStackTrace();
+				result = "{\"Result\":1,\"Error\":\"数据获取异常，请稍后重试...\",\"Data\":\"\"}";
+			}
+			// 一个请求完毕,无论说明结果，将这个请求的链接删除
+			urls.remove(tempUrl);
+		}
+		// 到这里后result 就不可能为空字符串了
+
+		return result;
+	}
 	
 	
 	
